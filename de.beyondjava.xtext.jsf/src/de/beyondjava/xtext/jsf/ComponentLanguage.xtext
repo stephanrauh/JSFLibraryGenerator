@@ -1,0 +1,23 @@
+grammar de.beyondjava.xtext.jsf.ComponentLanguage with org.eclipse.xtext.common.Terminals
+
+generate componentLanguage "http://www.beyondjava.de/xtext/jsf/ComponentLanguage"
+
+Domainmodel :
+  (elements += Component)*
+;
+  
+Component:
+  'component' name = ID '{'
+  	(attributes += Attribute)*
+  '}'
+;
+
+Attribute:
+	name= ID ':' type = Attributetype (desc = STRING)? ';'
+;
+
+Attributetype:
+	'String' | 'Boolean' | 'Integer'
+;
+  
+ 
