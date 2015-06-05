@@ -1,4 +1,9 @@
 *.class
+src-gen/
+xtend-gen/
+.settings/
+.launch/
+.bin/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
