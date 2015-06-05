@@ -12,11 +12,14 @@
     </genClasses>
     <genClasses ecoreClass="ComponentLanguage.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/implementedBy"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/renderedBy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentLanguage.ecore#//Component/attributes"/>
     </genClasses>
     <genClasses ecoreClass="ComponentLanguage.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/required"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/desc"/>
     </genClasses>
   </genPackages>

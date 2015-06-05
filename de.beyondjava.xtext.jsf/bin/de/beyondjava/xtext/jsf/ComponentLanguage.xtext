@@ -7,17 +7,28 @@ Domainmodel :
 ;
   
 Component:
-  'component' name = ID '{'
+  'widget' name = ID
+  ('implemented_by ' implementedBy += QualifiedName)?
+  ('rendered_by ' renderedBy += QualifiedName)? 
+  '{'
   	(attributes += Attribute)*
   '}'
 ;
 
 Attribute:
-	name= ID ':' type = Attributetype (desc = STRING)? ';'
+	name= ID (type = Attributetype)? (required='mandatory')?  ( desc = STRING)?
+;
+
+QualifiedName:
+  ID ('.' ID)*
 ;
 
 Attributetype:
-	'String' | 'Boolean' | 'Integer'
+	'String' | 'Boolean' | 'Integer' | 'javax.el.MethodExpression' | 'javax.faces.event.ActionListener' 
+	| 'javax.faces.component.UIComponent'
+	| 'javax.faces.event.ValueChangeListener'
+	| 'java.faces.convert.Converter'
+	| 'javax.faces.validator.Validator'
 ;
   
  
