@@ -3,6 +3,7 @@
  */
 package de.beyondjava.xtext.jsf.generator
 
+import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 import de.beyondjava.xtext.jsf.componentLanguage.Component
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
@@ -17,20 +18,54 @@ class RendererGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstUpper + "/" + e.name.toFirstUpper + "Renderer.java", e.compile)
+			fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstLower + "/" + e.name.toFirstUpper + "Renderer.java", e.compile)
 		}
 	}
 
 	def compile(Component e) ''' 
-		/** to do */
-		package net.bootsfaces.components.«e.name»;
+		/**
+		 *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+		 *  
+		 *  This file is part of BootsFaces.
+		 *  
+		 *  BootsFaces is free software: you can redistribute it and/or modify
+		 *  it under the terms of the GNU Lesser General Public License as published by
+		 *  the Free Software Foundation, either version 3 of the License, or
+		 *  (at your option) any later version.
+		 *
+		 *  BootsFaces is distributed in the hope that it will be useful,
+		 *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+		 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		 *  GNU Lesser General Public License for more details.
+		 *
+		 *  You should have received a copy of the GNU Lesser General Public License
+		 *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
+		 */
+
+		package net.bootsfaces.component.«e.name.toFirstLower»;
+		
+		import javax.faces.component.*;
+		import java.util.Map;
+
+		import javax.faces.context.FacesContext;
+		import javax.faces.context.ResponseWriter;
+		import javax.faces.render.FacesRenderer;
+		
+		import net.bootsfaces.render.CoreRenderer;
+		import net.bootsfaces.render.Tooltip;
+		
 		
 		/** This class generates the HTML code of &lt;b:«e.name» /&gt;. */
 		@FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.«e.widgetClass»")
-		public class «e.widgetClass»Renderer {
+		public class «e.widgetClass»Renderer extends CoreRenderer {
+			«IF e.processesInput!=null»
 			«generateDecodeMethod(e)»
+			«ENDIF»
 			
+			
+			«IF e.hasChildren!=null»
 			«generateEncodeBeginMethod(e)»
+			«ENDIF»
 			
 			«generateEncodeEndMethod(e)»
 		}
@@ -86,16 +121,27 @@ class RendererGenerator implements IGenerator {
 				String clientId = «e.widget».getClientId();
 
 				// Simple demo widget that simply renders every attribute value
-				rw.startElement("«e.widgetClass», «e.widget»");
-				Tooltip.generateTooltip(«e.widget», attrs, rw);
+				rw.startElement("«e.widget»", «e.widget»);
+				Tooltip.generateTooltip(context, attrs, rw);
 				
 			    «FOR f : e.attributes»
-			        rw.writeAttribute("«f.name»", «e.widget».get«f.name.toFirstUpper», "«f.name»");
+			        rw.writeAttribute("«f.name»", «e.widget»«getGetter(f)»«f.name»");
 			    «ENDFOR»
-			    rw.writeText("Dummy content of b:«e.widgetClass»");
+			    rw.writeText("Dummy content of b:«e.widgetClass»", null);
 				rw.endElement("«e.widgetClass»");
 			}
 		'''
+		
+
+		def getGetter(Attribute f)
+		{ 
+			if ("Boolean".equals(f.type)) {
+				'''.is«f.name.toFirstUpper»(), "'''
+			}
+			else {
+				'''.get«f.name.toFirstUpper»(), "'''
+			}
+		}
 	
 	
 	def widgetClass(Component c) {

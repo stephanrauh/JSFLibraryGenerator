@@ -3,7 +3,7 @@ widget alert implemented_by net.bootsfaces.component.Alert
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     closable            Boolean                                            "If true close button will be displayed."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     severity                                                               "Severity of the Alert, can be success, info, warning, danger. Default is warning."
     title                                                                  "Bold Title displayed before your message."
     tooltip                                                                "The text of the tooltip."
@@ -18,9 +18,9 @@ widget badge implemented_by net.bootsfaces.component.Badge
  {
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     severity                                                               "Severity of the Badge, can be info, success, warning, important, error, inverse. Default is warning."
-    value                                                        mandatory "Label text."
+    value                 mandatory inherited                              "Label text."
 }
 
 
@@ -54,7 +54,7 @@ widget button implemented_by net.bootsfaces.component.Button
     onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
     outcome                                                                "The outcome to navigate to."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Size of the Button, can be large, small, mini. If not specified, Standard size button is rendered."
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
@@ -65,7 +65,7 @@ widget button implemented_by net.bootsfaces.component.Button
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                        mandatory "Button text."
+    value                 mandatory inherited                              "Button text."
 }
 
 
@@ -74,7 +74,7 @@ widget buttonGroup implemented_by net.bootsfaces.component.ButtonGroup
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
     orientation                                                            "Orientation can be horizontal(default) or vertical."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Size of the grouped Buttons, can be lg, sm or xs."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -88,7 +88,7 @@ widget buttonToolbar implemented_by net.bootsfaces.component.ButtonToolbar
  {
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -108,7 +108,7 @@ widget column implemented_by net.bootsfaces.layout.Column
     offsetLg            Integer                                            "Integer value to specify how many columns to offset."
     offsetSm            Integer                                            "Integer value to specify how many columns to offset."
     offsetXs            Integer                                            "Integer value to specify how many columns to offset."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     span                Integer                                            "Integer value to specify how many columns to span."
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
@@ -151,7 +151,7 @@ widget commandButton implemented_by net.bootsfaces.component.CommandButton
     onmouseover                                                            "Client side callback to execute when a pointer input element is moved onto input element."
     onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Size of the Button, can be large, small, mini. If not specified, Standard size button is rendered."
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
@@ -164,7 +164,7 @@ widget commandButton implemented_by net.bootsfaces.component.CommandButton
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     type                                                                   "The button type, can be submit, button, reset ; default submit."
     update                                                                 "Component(s) to be updated with ajax."
-    value                                                        mandatory "Button text."
+    value                 mandatory inherited                              "Button text."
 }
 
 
@@ -172,7 +172,7 @@ widget container implemented_by net.bootsfaces.layout.Container
  {
     fluid               Boolean                                            "Boolean value default is false; when set to true, the container will be \"fluid\": a full width container, spanning the entire width of the viewport."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
     tooltip                                                                "The text of the tooltip."
@@ -194,7 +194,7 @@ widget datepicker implemented_by net.bootsfaces.component.DatePicker
     mode                                                                   "Controls how the Calendar is showed, can be inline or popup. Default is popup."
     numberOfMonths      Integer                                            "Number of months to show."
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     showButtonPanel     Boolean                                            "Boolean value to specify if row Buttons to the bottom of calendar should be shown."
     showWeek            Boolean                                            "Boolean value to specify if Week number should be shown."
     tooltip                                                                "The text of the tooltip."
@@ -202,7 +202,7 @@ widget datepicker implemented_by net.bootsfaces.component.DatePicker
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                                  "Value."
+    value                 inherited                                        "Value."
 }
 
 
@@ -212,14 +212,14 @@ widget dropButton implemented_by net.bootsfaces.component.DropButton
     drop                                                                   "Use up For Dropup and down for Dropdown, default is down."
     id                                                                     "Unique identifier of the component in a namingContainer."
     look                                                                   "Look of the Button, can be primary, info, success, warning, danger. If not specified, a standard gray button will be rendered."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "The size of the Button.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                        mandatory "The Label for the Button Dropdown."
+    value                 mandatory inherited                              "The Label for the Button Dropdown."
 }
 
 
@@ -228,13 +228,13 @@ widget dropMenu implemented_by net.bootsfaces.component.DropMenu
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     drop                                                                   "Use up For Dropup and down for Dropdown, default is down."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                        mandatory "The Label for the Dropdown."
+    value                 mandatory inherited                              "The Label for the Dropdown."
 }
 
 
@@ -248,8 +248,8 @@ widget icon implemented_by net.bootsfaces.component.Icon
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     flip                                                                   "Flip the icon: can be H (horizontal) or V (vertical)."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    name                                                         mandatory "Icon name, mandatory."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    name                  mandatory                                        "Icon name, mandatory."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     rotate                                                                 "Rotate 90 degrees the icon: Can be L,R."
     size                                                                   "Icon Size: legal values are lg, 2x, 3x, 4x, 5x."
     spin                Boolean                                            "Boolean value: if true the icon will spin."
@@ -267,8 +267,8 @@ widget iconAwesome implemented_by net.bootsfaces.component.IconAwesome
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     flip                                                                   "Flip the icon: can be H (horizontal) or V (vertical)."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    name                                                         mandatory "Icon name, mandatory."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    name                  mandatory                                        "Icon name, mandatory."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     rotate                                                                 "Rotate 90 degrees the icon: Can be L,R."
     size                                                                   "Icon Size: legal values are lg, 2x, 3x, 4x, 5x."
     spin                Boolean                                            "Boolean value: if true the icon will spin."
@@ -286,7 +286,7 @@ widget inputSecret implemented_by net.bootsfaces.component.InputSecret rendered_
     alt                                                                    "Alternate textual description of the input element."
     autocomplete                                                           "Controls browser autocomplete behavior."
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
-    converter           java.faces.convert.Converter                       "An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
+    converter           java.faces.convert.Converter  inherited            "An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
     converterMessage                                                       "Message to display when conversion fails."
     dir                                                                    "Direction indication for text that does not inherit directionality."
     disabled            boolean                                            "Disables the input element, default is false."
@@ -313,7 +313,7 @@ widget inputSecret implemented_by net.bootsfaces.component.InputSecret rendered_
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            boolean                                            "Flag indicating that this input element will prevent changes by the user."
     renderLabel                                                            "Allows you to suprress automatic rendering of labels. Used by AngularFaces, too."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
     size                int                                                "Number of characters used to determine the width of the input element."
@@ -330,7 +330,7 @@ widget inputSecret implemented_by net.bootsfaces.component.InputSecret rendered_
     type                                                                   "Type of the input. The default is text."
     validator           javax.faces.validator.Validator                    "A method expression referring to a method validationg the input."
     validatorMessage                                                       "Message to display when validation fails."
-    value                                                                  "Value."
+    value                 inherited                                        "Value."
     valueChangeListener javax.faces.event.ValueChangeListener              "A method binding expression referring to a method for handling a valuchangeevent."
 }
 
@@ -341,7 +341,7 @@ widget inputText implemented_by net.bootsfaces.component.InputText rendered_by n
     alt                                                                    "Alternate textual description of the input element."
     autocomplete                                                           "Controls browser autocomplete behavior."
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
-    converter           java.faces.convert.Converter                       "An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
+    converter           java.faces.convert.Converter  inherited            "An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
     converterMessage                                                       "Message to display when conversion fails."
     dir                                                                    "Direction indication for text that does not inherit directionality."
     disabled            boolean                                            "Disables the input element, default is false."
@@ -368,7 +368,7 @@ widget inputText implemented_by net.bootsfaces.component.InputText rendered_by n
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            boolean                                            "Flag indicating that this input element will prevent changes by the user."
     renderLabel                                                            "Allows you to suprress automatic rendering of labels. Used by AngularFaces, too."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
     size                int                                                "Number of characters used to determine the width of the input element."
@@ -385,7 +385,7 @@ widget inputText implemented_by net.bootsfaces.component.InputText rendered_by n
     type                                                                   "Type of the input. The default is text."
     validator           javax.faces.validator.Validator                    "A method expression referring to a method validationg the input."
     validatorMessage                                                       "Message to display when validation fails."
-    value                                                                  "Value."
+    value                 inherited                                        "Value."
     valueChangeListener javax.faces.event.ValueChangeListener              "A method binding expression referring to a method for handling a valuchangeevent."
 }
 
@@ -401,7 +401,7 @@ widget internalIE8CompatibilityLink implemented_by net.bootsfaces.component.Inte
 widget jumbotron implemented_by net.bootsfaces.layout.Jumbotron
  {
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -414,9 +414,9 @@ widget label implemented_by net.bootsfaces.component.Label
  {
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     severity                                                               "Severity of the Label, can be primary, success, info, warning, danger. Default is warning."
-    text                                                         mandatory "Label text."
+    text                  mandatory                                        "Label text."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -429,7 +429,7 @@ widget listLinks implemented_by net.bootsfaces.component.ListLinks
  {
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -450,7 +450,7 @@ widget messages implemented_by net.bootsfaces.component.Messages rendered_by net
     id                                                                     "Get a string which uniquely identifies this UIComponent within the scope of the nearest ancestor NamingContainer component. The id is not necessarily unique across all components in the current view."
     infoClass                                                              "CSS class to be used for messages with severity \"INFO\"."
     infoStyle                                                              "CSS style to be used for messages with severity \"INFO\"."
-    rendered            Boolean                                            "A boolean value that indicates whether this component should be rendered. Default value: true."
+    rendered            Boolean  inherited                                 "A boolean value that indicates whether this component should be rendered. Default value: true."
     showDetail          Boolean                                            "Specifies whether the detailed information from the message should be shown. Default to false."
     showSummary                                                            "Specifies whether the summary information from the message should be shown. Defaults to true."
     style                                                                  "HTML: CSS styling instructions."
@@ -471,8 +471,8 @@ widget modal implemented_by net.bootsfaces.component.Modal
     backdrop            Boolean                                            "By default, you can close a modal dialog by clicking somewhere outside the modal. Set backdrop=\"false\" to disable this feature."
     closeOnEscape       Boolean                                            "By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape=\"false\" to disable this feature."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Modal's size. Possible values modal-sm, modal-lg"
     styleClass                                                             "Style class of this element."
     title                                                                  "Bold title displayed in Modal's header."
@@ -490,7 +490,7 @@ widget navBar implemented_by net.bootsfaces.component.NavBar
     fluid               Boolean                                            "Boolean value default is false; when set to true the navbar container will be \"fluid\": a full width container, spanning the entire width of the viewport."
     id                                                                     "Unique identifier of the component in a namingContainer."
     inverse             Boolean                                            "Boolean value to specify if Navbar should use inverse color scheme."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     static              Boolean                                            "If true, a full-width navbar that scrolls away with the page will be rendered. Can be true or false, default false."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -517,13 +517,13 @@ widget navCommandLink implemented_by net.bootsfaces.component.NavCommandLink
     onclick                                                                "JavaScript function which is called when the widget is clicked."
     onmouseover                                                            "JavaScript function which is called when the mouse hovers over the widget."
     outcome                                                                "The outcome to navigate to."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                                  "Navigation Link text."
+    value                 inherited                                        "Navigation Link text."
 }
 
 
@@ -542,13 +542,13 @@ widget navLink implemented_by net.bootsfaces.component.NavLink
     onclick                                                                "JavaScript function which is called when the widget is clicked."
     onmouseover                                                            "JavaScript function which is called when the mouse hovers over the widget."
     outcome                                                                "The outcome to navigate to."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                                  "Navigation Link text."
+    value                 inherited                                        "Navigation Link text."
 }
 
 
@@ -557,7 +557,7 @@ widget navbarLinks implemented_by net.bootsfaces.component.NavBarLinks
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
     pull                                                                   "Can be right or left. Pulls the element right or left."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
@@ -575,7 +575,7 @@ widget panel implemented_by net.bootsfaces.layout.Panel
     contentStyle                                                           "Inline style of the content area."
     id                                                                     "Unique identifier of the component in a namingContainer."
     look                                                                   "Look of the Panel, can be primary, success, info, warning, danger. Default is warning."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     style                                                                  "Inline style of the entire panel area."
     styleClass                                                             "Style class of the input element."
     title                                                                  "Title is optional: if specified, the heading facet will not be rendered and the panel will render with a heading with this Title."
@@ -591,7 +591,7 @@ widget panel implemented_by net.bootsfaces.layout.Panel
 
 widget panelGrid implemented_by net.bootsfaces.component.PanelGrid
  {
-    colSpans                                                     mandatory "Comma-separated list of the column spans"
+    colSpans              mandatory                                        "Comma-separated list of the column spans"
     columnclasses                                                          "Comma-separated list of the CSS classes assigned to each colum."
     id                                                                     "Unique identifier of the component in a namingContainer."
     size                                                                   "Optional. Legal values are lg, md, sm and xs. Default is lg. Influences the grid size."
@@ -613,7 +613,7 @@ widget poll implemented_by net.bootsfaces.component.Poll
     id                                                                     "Unique identifier of the component in a namingContainer."
     interval                                                               "How often is the poll action to be called? Denotes the number of milliseconds between polls. Default value is 1000."
     once                                                                   "If true, the poll is called only once. Default value: false."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     update                                                                 "Which region of the screen is to be updated? Default value: @form"
 }
 
@@ -621,7 +621,7 @@ widget poll implemented_by net.bootsfaces.component.Poll
 widget row implemented_by net.bootsfaces.layout.Row
  {
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
     tooltip                                                                "The text of the tooltip."
@@ -638,7 +638,7 @@ widget selectBooleanCheckbox implemented_by net.bootsfaces.component.SelectBoole
     alt                                                                    "Alternate textual description of the input element."
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     caption                                                                "Caption of the check box (text behind the check box, as opposed to the label, which may be above the check box)"
-    converter           java.faces.convert.Converter                       "An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
+    converter           java.faces.convert.Converter  inherited            "An el expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
     converterMessage                                                       "Message to display when conversion fails."
     dir                                                                    "Direction indication for text that does not inherit directionality."
     disabled            boolean                                            "Disables the input element, default is false."
@@ -663,7 +663,7 @@ widget selectBooleanCheckbox implemented_by net.bootsfaces.component.SelectBoole
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
     readonly            boolean                                            "Flag indicating that this input element will prevent changes by the user."
     renderLabel                                                            "Allows you to suprress automatic rendering of labels. Used by AngularFaces, too."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     span                Integer                                            "The size of the input specified as number of grid columns."
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of the input element."
@@ -674,7 +674,7 @@ widget selectBooleanCheckbox implemented_by net.bootsfaces.component.SelectBoole
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                                  "EL expression referring to the back-end bean attribute providing the value of the field."
+    value                 inherited                                        "EL expression referring to the back-end bean attribute providing the value of the field."
     valueChangeListener javax.faces.event.ValueChangeListener              "A method binding expression referring to a method for handling a valuchangeevent."
 }
 
@@ -708,7 +708,7 @@ widget selectOneMenu implemented_by net.bootsfaces.component.SelectOneMenu
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            boolean                                            "Flag indicating that this input element will prevent changes by the user."
     renderLabel                                                            "Allows you to suprress automatic rendering of labels. Used by AngularFaces, too."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
     size                int                                                "Number of characters used to determine the width of the input element."
@@ -722,7 +722,7 @@ widget selectOneMenu implemented_by net.bootsfaces.component.SelectOneMenu
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                                  "Value."
+    value                 inherited                                        "Value."
 }
 
 
@@ -737,14 +737,14 @@ widget slider implemented_by net.bootsfaces.component.Slider
     min                 Integer                                            "The minimum value of the slider. (default 0)"
     mode                                                                   "Mode of the Slider Widget.<br>There are three modes available : badge, edit and basic.<br> In <b>basic mode</b>, only the slider and the label(if present) will be shown and the slider value will be hidden.<br> In <b>badge mode</b>, the default, the slider value will be shown in a badge.<br> In <b>edit mode</b>, an editable input field showing the slider value will be shown; in this mode you can change the value by sliding or editing the value in the field."
     orientation                                                            "Determines whether the slider handles move horizontally (min on left, max on right) or vertically (min on bottom, max on top).<br> Possible values: \"horizontal\"(default), \"vertical\", \"vertical-bottom\".<br> If <b>vertical</b> is specified, the Label is rendered on top, then the value and the slider on the bottom.<br> If <b>vertical-bottom</b> is specified, the slider is rendered on top, then the value and the Label on the bottom."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     step                Integer                                            "The step of the slider."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value                                                                  "Value."
+    value                 inherited                                        "Value."
 }
 
 
@@ -780,19 +780,19 @@ widget thumbnail implemented_by net.bootsfaces.component.Thumbnail
  {
     binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-}
+} 
 
 
 widget well implemented_by net.bootsfaces.layout.Well
  {
     id                                                                     "Unique identifier of the component in a namingContainer."
-    rendered            Boolean                                            "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    rendered            Boolean  inherited                                 "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Size can be large or small and controls padding and rounded corners."
     tooltip                                                                "The text of the tooltip."
     tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."

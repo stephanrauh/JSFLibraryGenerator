@@ -182,31 +182,83 @@ ruleComponent returns [EObject current=null]
 	    }
 
 )
-))?	otherlv_6='{' 
+))?(
+(
+		lv_processesInput_6_0=	'processes_input' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_4());
+        newLeafNode(lv_processesInput_6_0, grammarAccess.getComponentAccess().getProcessesInputProcesses_inputKeyword_4_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getComponentRule());
+	        }
+       		setWithLastConsumed($current, "processesInput", lv_processesInput_6_0, "processes_input");
+	    }
+
+)
+)?(	otherlv_7='extends' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getComponentAccess().getExtendsKeyword_5_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getComponentAccess().getAttributesAttributeParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getComponentAccess().getExtendsQualifiedNameParserRuleCall_5_1_0()); 
 	    }
-		lv_attributes_7_0=ruleAttribute		{
+		lv_extends_8_0=ruleQualifiedName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getComponentRule());
+	        }
+       		set(
+       			$current, 
+       			"extends",
+        		lv_extends_8_0, 
+        		"QualifiedName");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?(
+(
+		lv_hasChildren_9_0=	'has_children' 
+    {
+        newLeafNode(lv_hasChildren_9_0, grammarAccess.getComponentAccess().getHasChildrenHas_childrenKeyword_6_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getComponentRule());
+	        }
+       		setWithLastConsumed($current, "hasChildren", lv_hasChildren_9_0, "has_children");
+	    }
+
+)
+)?	otherlv_10='{' 
+    {
+    	newLeafNode(otherlv_10, grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_7());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getComponentAccess().getAttributesAttributeParserRuleCall_8_0()); 
+	    }
+		lv_attributes_11_0=ruleAttribute		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getComponentRule());
 	        }
        		add(
        			$current, 
        			"attributes",
-        		lv_attributes_7_0, 
+        		lv_attributes_11_0, 
         		"Attribute");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_8='}' 
+)*	otherlv_12='}' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_12, grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_9());
     }
 )
 ;

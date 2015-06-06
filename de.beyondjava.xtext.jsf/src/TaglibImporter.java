@@ -8,19 +8,93 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class TaglibImporter {
-	private static Map<String, String> inheritedAttributes = new HashMap<String, String>() { {
-		put("rendered", null);
-		put("value", null);
-		put("converter", null);
-	}};
-	
+	private static Map<String, String> inheritedAttributes = new HashMap<String, String>() {
+		{
+			put("rendered", null);
+			put("value", null);
+			put("converter", null);
+		}
+	};
+
+	private static Map<String, String> derivedFrom = new HashMap<String, String>() {
+		{
+			put("alert", "UIComponentBase");
+			put("badge", "UIComponentBase");
+			put("button", "HtmlOutcomeTargetButton");
+			put("buttonGroup", "net.bootsfaces.component.GenContainerDiv");
+			put("buttonToolbar", "net.bootsfaces.component.GenContainerDiv");
+			put("commandButton", "HtmlCommandButton");
+			put("datePicker", "HtmlInputText");
+			put("dropButton", "UIComponentBase");
+			put("dropMenu", "UIComponentBase");
+			put("fetchBeanInfos", "UIComponentBase");
+			put("icon", "UIComponentBase");
+			put("iconAwesome", "UIComponentBase");
+			put("inputSecret", "net.bootsfaces.component.InputText");
+			put("inputText", "HtmlInputText");
+			put("label", "UIComponentBase");
+			put("listLinks", "net.bootsfaces.component.LinksContainer");
+			put("messages", "UIMessages");
+			put("modal", "UIComponentBase");
+			put("navBar", "UIComponentBase");
+			put("navBarLinks", "net.bootsfaces.component.LinksContainer");
+			put("navCommandLink", "UICommand");
+			put("navLink", "HtmlOutcomeTargetLink");
+			put("poll", "HtmlCommandButton");
+			put("selectBooleanCheckbox", "HtmlInputText");
+			put("selectOneMenu", "HtmlInputText");
+			put("slider", "HtmlInputText");
+			put("tab", "UIOutput");
+			put("tabView", "UIOutput");
+			put("thumbnail", "UIComponentBase");
+		}
+	};
+
+	private static Map<String, String> hasChildren = new HashMap<String, String>() {
+		{
+			put("alert", null);
+			put("buttonGroup", null);
+			put("buttonToolbar", null);
+			put("column", null);
+			put("container", null);
+			put("dropButton", null);
+			put("dropMenu", null);
+			put("jumbotron", null);
+			put("listLinks", null);
+			put("modal", null);
+			put("navBar", null);
+			put("navBarLinks", null);
+			put("panel", null);
+			put("pillLinks", null);
+			put("row", null);
+			put("tabLinks", null);
+			put("thumbnail", null);
+			put("well", null);
+		}
+	};
+
+	private static Map<String, String> inputWidgets = new HashMap<String, String>() {
+		{
+			put("commandButton", null);
+			put("datePicker", null);
+			put("inputText", null);
+			put("navCommandLink", null);
+			put("panel", null);
+			put("poll", null);
+			put("selectBooleanCheckbox", null);
+			put("slider", null);
+			put("tab", null);
+			put("tabView", null);
+		}
+	};
+
 	public static void main(String[] args) throws FileNotFoundException {
 		String content = new Scanner(new File("taglib.xml")).useDelimiter("\\Z").next();
 		content = content.replaceAll("(?s)<!--.*?-->", "");
 		content = content.replace("<![CDATA[", "");
 		content = content.replace("]]>", "");
 		String[] tags = content.split("<tag>|</tag>");
-		
+
 		List<String> dsl = new ArrayList<>();
 		for (String tag : tags) {
 			if (tag.contains("<tag-name>")) {
@@ -29,14 +103,16 @@ public class TaglibImporter {
 			}
 		}
 		Collections.sort(dsl);
-		for (String s:dsl) System.out.println(s);
+		for (String s : dsl)
+			System.out.println(s);
 	}
 
 	private static String analyseTag(String tag) {
 		String result = "";
+		String tagname = "";
 		List<String> attributeDSL = new ArrayList<>();
 		boolean firstAttribute = true;
-		boolean hasTooltip=false;
+		boolean hasTooltip = false;
 		String parts[] = tag.split("</tag-name>|</component>|</attribute>");
 		for (String part : parts) {
 			part = part.trim();
@@ -44,7 +120,8 @@ public class TaglibImporter {
 				int pos = part.indexOf("<tag-name>");
 				part = part.substring(pos);
 				part = part.replace("<tag-name>", "");
-				result += ("widget " + part);
+				tagname = part;
+				result += ("widget " + tagname);
 			} else if (part.startsWith("<component>")) {
 				String component = part.replace("<component>", "").trim();
 				String cc[] = component.split("</component-type>|</renderer-type>");
@@ -52,10 +129,10 @@ public class TaglibImporter {
 					c = c.trim();
 					if (c.startsWith("<component-type>")) {
 						c = c.replace("<component-type>", "").trim();
-						result += (" implemented_by " + c);
+						result += ("\r\n       implemented_by " + c);
 					} else if (c.startsWith("<renderer-type>")) {
 						c = c.replace("<renderer-type>", "").trim();
-						result += " rendered_by " + c;
+						result += "\r\n       rendered_by " + c;
 					}
 
 				}
@@ -67,7 +144,7 @@ public class TaglibImporter {
 				String required = "";
 				String type = "";
 				String description = "";
-				String inherited="";
+				String inherited = "";
 				for (String property : properties) {
 					property = property.trim();
 					if (property.startsWith("<name>")) {
@@ -78,8 +155,10 @@ public class TaglibImporter {
 							String n = nn[i];
 							name += n.substring(0, 1).toUpperCase() + n.substring(1);
 						}
-						if (name.startsWith("tooltip")) hasTooltip=true;
-						if (inheritedAttributes.containsKey(name)) inherited="inherited";
+						if (name.startsWith("tooltip"))
+							hasTooltip = true;
+						if (inheritedAttributes.containsKey(name))
+							inherited = "inherited";
 					}
 					if (property.startsWith("<description>")) {
 						description = name = property.replace("<description>", "");
@@ -100,10 +179,19 @@ public class TaglibImporter {
 						}
 					}
 				}
-				attributeDSL.add("    " + fixedLength(name, 20) + fixedLength(type + " " + required + " " + inherited, 50)
-						+ description);
+				attributeDSL.add("    " + fixedLength(name, 20)
+						+ fixedLength(type + " " + required + " " + inherited, 50) + description);
 			}
 
+		}
+		if (inputWidgets.containsKey(tagname)) {
+			result += "\r\n       processes_input";
+		}
+		if (derivedFrom.containsKey(tagname)) {
+			result += "\r\n       extends " + derivedFrom.get(tagname);
+		}
+		if (hasChildren.containsKey(tagname)) {
+			result += "\r\n       has_children";
 		}
 		result += "\r\n";
 		result += (" {");

@@ -21,17 +21,18 @@ class ComponentGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstUpper + "/" +e.name.toFirstUpper + ".java", e.compile)
+			fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstLower + "/" +e.name.toFirstUpper + ".java", e.compile)
 		}
 	}
 
 	def compile(Component e) '''
 		«e.generateCopyrightHeader» 
-		package net.bootsfaces.components.«e.name»;
+		package net.bootsfaces.component.«e.name.toFirstLower»;
+		
+		import javax.faces.component.*;
 		
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
-		public class «e.name.toFirstUpper» extends «
-		parentClass(e)» {
+		public class «e.name.toFirstUpper» extends «parentClass(e)» {
 			
 			«e.generateMetadata»
 			
@@ -47,7 +48,13 @@ class ComponentGenerator implements IGenerator {
 	'''
 	
 	def parentClass(Component component) {
-		return "UIComponent";
+		if (component.extends!=null) {
+			return component.extends;
+		}
+		if (component.processesInput != null) {
+			return "UIInput";
+		}
+		return "UIOutput";
 	}
 
 	def generateAccessors(Attribute e) '''
@@ -56,7 +63,7 @@ class ComponentGenerator implements IGenerator {
 		 * «e.desc» <br />
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
-		public «e.generateAttributeType» get«e.name.toFirstUpper» () {
+		public «e.generateAttributeType» «e.getter» {
 			return («e.generateAttributeType») getStateHelper().eval(PropertyKeys.«e.name», null);
 		}
 		
@@ -70,8 +77,22 @@ class ComponentGenerator implements IGenerator {
 		
 	'''
 	
+	def getGetter(Attribute f)
+	{ 
+		if ("boolean".equals(f.type)) {
+			'''is«f.name.toFirstUpper»()'''
+		}
+		else {
+			'''get«f.name.toFirstUpper»()'''
+		}
+	}
+
+	
 	def generateAttributeType(Attribute a) { 
-	    '''«IF a.type == null»String«ELSE»«a.type»« ENDIF»'''
+		if (null==a.type) "String"
+		else if ("Boolean".equals(a.type)) "boolean"
+		else if ("Integer".equals(a.type)) "int"
+		else a.type;
 	}
 	
 	def generateMetadata(Component e) ''' 
@@ -81,7 +102,7 @@ class ComponentGenerator implements IGenerator {
 		
 		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstUpper»";
 		
-		public CommandButton() {
+		public «e.name.toFirstUpper»() {
 			setRendererType(DEFAULT_RENDERER);
 		}
 		
@@ -92,7 +113,25 @@ class ComponentGenerator implements IGenerator {
 	'''
 
 	def generateCopyrightHeader(Component e) '''
-		/** todo */
+		/**
+		 *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+		 *  
+		 *  This file is part of BootsFaces.
+		 *  
+		 *  BootsFaces is free software: you can redistribute it and/or modify
+		 *  it under the terms of the GNU Lesser General Public License as published by
+		 *  the Free Software Foundation, either version 3 of the License, or
+		 *  (at your option) any later version.
+		 *
+		 *  BootsFaces is distributed in the hope that it will be useful,
+		 *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+		 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		 *  GNU Lesser General Public License for more details.
+		 *
+		 *  You should have received a copy of the GNU Lesser General Public License
+		 *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
+		 */
+
     	'''
 	
 	def List<Attribute> notInherited(List<Attribute> elements) {
@@ -117,16 +156,17 @@ class ComponentGenerator implements IGenerator {
 		«ENDFOR»
 		
 		
-		    String toString;
+		        String toString;
 		
-		    PropertyKeys(String toString) {
-		        this.toString = toString;
-		    }
+		        PropertyKeys(String toString) {
+		            this.toString = toString;
+		        }
 		
-		    PropertyKeys() {}
+		        PropertyKeys() {}
 		
-		    public String toString() {
-		        return ((this.toString != null) ? this.toString : super.toString());
+		        public String toString() {
+		            return ((this.toString != null) ? this.toString : super.toString());
+		        }
 		    }
 	'''
 }

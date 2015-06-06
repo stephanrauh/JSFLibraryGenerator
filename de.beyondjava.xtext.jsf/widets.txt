@@ -1,0 +1,76 @@
+widget alert implemented_by net.bootsfaces.component.Alert
+
+widget badge implemented_by net.bootsfaces.component.Badge
+
+widget button implemented_by net.bootsfaces.component.Button
+
+widget buttonGroup implemented_by net.bootsfaces.component.ButtonGroup
+
+widget buttonToolbar implemented_by net.bootsfaces.component.ButtonToolbar
+
+widget column implemented_by net.bootsfaces.layout.Column
+
+widget commandButton implemented_by net.bootsfaces.component.CommandButton
+
+widget container implemented_by net.bootsfaces.layout.Container
+
+widget datepicker implemented_by net.bootsfaces.component.DatePicker
+
+widget dropButton implemented_by net.bootsfaces.component.DropButton
+
+widget dropMenu implemented_by net.bootsfaces.component.DropMenu
+
+widget fetchBeanInfos implemented_by net.bootsfaces.component.FetchBeanInfos
+
+widget icon implemented_by net.bootsfaces.component.Icon
+
+widget iconAwesome implemented_by net.bootsfaces.component.IconAwesome
+
+widget inputSecret implemented_by net.bootsfaces.component.InputSecret rendered_by net.bootsfaces.component.InputTextRenderer
+
+widget inputText implemented_by net.bootsfaces.component.InputText rendered_by net.bootsfaces.component.InputTextRenderer
+
+widget internalFALink implemented_by net.bootsfaces.component.InternalFALink
+
+widget internalIE8CompatibilityLink implemented_by net.bootsfaces.component.InternalIE8CompatibilityLink
+
+widget jumbotron implemented_by net.bootsfaces.layout.Jumbotron
+
+widget label implemented_by net.bootsfaces.component.Label
+
+widget listLinks implemented_by net.bootsfaces.component.ListLinks
+
+widget messages implemented_by net.bootsfaces.component.Messages rendered_by net.bootsfaces.component.MessagesRenderer
+
+widget modal implemented_by net.bootsfaces.component.Modal
+
+widget navBar implemented_by net.bootsfaces.component.NavBar
+
+widget navCommandLink implemented_by net.bootsfaces.component.NavCommandLink
+
+widget navLink implemented_by net.bootsfaces.component.NavLink
+
+widget navbarLinks implemented_by net.bootsfaces.component.NavBarLinks
+
+widget panel implemented_by net.bootsfaces.layout.Panel
+
+widget panelGrid implemented_by net.bootsfaces.component.PanelGrid
+
+widget poll implemented_by net.bootsfaces.component.Poll
+
+widget row implemented_by net.bootsfaces.layout.Row
+
+widget selectBooleanCheckbox implemented_by net.bootsfaces.component.SelectBooleanCheckbox
+
+widget selectOneMenu implemented_by net.bootsfaces.component.SelectOneMenu
+
+widget slider implemented_by net.bootsfaces.component.Slider
+
+widget tab implemented_by net.bootsfaces.component.Tab
+
+widget tabView implemented_by net.bootsfaces.component.TabView
+
+widget thumbnail implemented_by net.bootsfaces.component.Thumbnail
+
+widget well implemented_by net.bootsfaces.layout.Well
+

@@ -18,7 +18,7 @@ class TaglibGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstUpper + "/" + e.name.toFirstUpper +
+			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
 				".taglib.xml", e.compile)
 		}
 	}
