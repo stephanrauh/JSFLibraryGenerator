@@ -17,31 +17,9 @@ import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 class ComponentLanguageGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile(e.name, e.compile)
-		}
+		new TaglibGenerator().doGenerate(resource, fsa);
+		new ComponentGenerator().doGenerate(resource, fsa);
+		new RendererGenerator().doGenerate(resource, fsa);
 	}
 
-	def compile(Component e) ''' 
-		  package net.bootsfaces.components.«e.name»;
-		
-		public class «e.name» {
-		  «FOR f : e.attributes»
-		  	«f.compile»
-		  «ENDFOR»
-		}
-	'''
-
-	def compile(Attribute e) ''' 
-		public «e.type» get«e.name.toFirstUpper» () {
-			return «e.name»;
-		}
-	'''
-
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
-//				.join(', '))
-//	}
 }
