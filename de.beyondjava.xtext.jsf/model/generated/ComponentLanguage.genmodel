@@ -20,6 +20,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/inherited"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/desc"/>
     </genClasses>
   </genPackages>

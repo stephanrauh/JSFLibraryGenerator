@@ -16,7 +16,7 @@ Component:
 ;
 
 Attribute:
-	name= ID (type = Attributetype)? (required='mandatory')?  ( desc = STRING)?
+	name= ID (type = Attributetype)? (required='mandatory')? (inherited='inherited')?  ( desc = STRING)?
 ;
 
 QualifiedName:

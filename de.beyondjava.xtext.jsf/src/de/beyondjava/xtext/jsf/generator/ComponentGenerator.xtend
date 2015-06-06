@@ -8,6 +8,9 @@ import de.beyondjava.xtext.jsf.componentLanguage.Component
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
+import java.util.List
+import java.util.jar.Attributes
+import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -35,7 +38,9 @@ class ComponentGenerator implements IGenerator {
 		«e.generateProperties» 
 			
 		  «FOR f : e.attributes»
-		  	«f.generateAccessors»
+		    «IF f.inherited==null» 
+			  	«f.generateAccessors»
+		  	«ENDIF»
 		  «ENDFOR»
 		}
 		
@@ -90,10 +95,25 @@ class ComponentGenerator implements IGenerator {
 		/** todo */
     	'''
 	
+	def List<Attribute> notInherited(List<Attribute> elements) {
+		val result = newArrayList()
+		elements.forEach[a | if (a.inherited==null) result.add(a)]
+		result
+		
+//		var result = new ArrayList<Attribute>();
+//		
+//		FOR a: elements
+//			result.add(a)
+//		ENDFOR
+//   	 	elements.get(0)
+  	}
+	
 	def generateProperties(Component e) '''
 		    protected enum PropertyKeys {
-		«FOR f : e.attributes SEPARATOR ',' AFTER ';' »
-		     «f.name»
+		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';' »
+		    «IF f.inherited==null» 
+		    	«f.name»
+		    «ENDIF»
 		«ENDFOR»
 		
 		

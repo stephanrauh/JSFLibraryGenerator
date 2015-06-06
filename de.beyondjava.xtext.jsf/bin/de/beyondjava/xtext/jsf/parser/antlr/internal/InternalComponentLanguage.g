@@ -282,9 +282,24 @@ ruleAttribute returns [EObject current=null]
 )
 )?(
 (
-		lv_desc_3_0=RULE_STRING
+		lv_inherited_3_0=	'inherited' 
+    {
+        newLeafNode(lv_inherited_3_0, grammarAccess.getAttributeAccess().getInheritedInheritedKeyword_3_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAttributeRule());
+	        }
+       		setWithLastConsumed($current, "inherited", lv_inherited_3_0, "inherited");
+	    }
+
+)
+)?(
+(
+		lv_desc_4_0=RULE_STRING
 		{
-			newLeafNode(lv_desc_3_0, grammarAccess.getAttributeAccess().getDescSTRINGTerminalRuleCall_3_0()); 
+			newLeafNode(lv_desc_4_0, grammarAccess.getAttributeAccess().getDescSTRINGTerminalRuleCall_4_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -293,7 +308,7 @@ ruleAttribute returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"desc",
-        		lv_desc_3_0, 
+        		lv_desc_4_0, 
         		"STRING");
 	    }
 

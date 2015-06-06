@@ -3,6 +3,7 @@
 'Integer'=13
 'String'=11
 'implemented_by '=23
+'inherited'=27
 'java.faces.convert.Converter'=18
 'javax.el.MethodExpression'=14
 'javax.faces.component.UIComponent'=16
@@ -37,3 +38,4 @@ T__23=23
 T__24=24
 T__25=25
 T__26=26
+T__27=27

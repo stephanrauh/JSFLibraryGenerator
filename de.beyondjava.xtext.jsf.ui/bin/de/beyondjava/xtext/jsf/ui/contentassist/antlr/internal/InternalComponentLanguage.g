@@ -722,6 +722,7 @@ rule__Attribute__Group__3
     }
 :
 	rule__Attribute__Group__3__Impl
+	rule__Attribute__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -733,15 +734,45 @@ rule__Attribute__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getDescAssignment_3()); }
-(rule__Attribute__DescAssignment_3)?
-{ after(grammarAccess.getAttributeAccess().getDescAssignment_3()); }
+{ before(grammarAccess.getAttributeAccess().getInheritedAssignment_3()); }
+(rule__Attribute__InheritedAssignment_3)?
+{ after(grammarAccess.getAttributeAccess().getInheritedAssignment_3()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__Attribute__Group__4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Attribute__Group__4__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Attribute__Group__4__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeAccess().getDescAssignment_4()); }
+(rule__Attribute__DescAssignment_4)?
+{ after(grammarAccess.getAttributeAccess().getDescAssignment_4()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -1005,14 +1036,37 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Attribute__DescAssignment_3
+rule__Attribute__InheritedAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getAttributeAccess().getDescSTRINGTerminalRuleCall_3_0()); }
-	RULE_STRING{ after(grammarAccess.getAttributeAccess().getDescSTRINGTerminalRuleCall_3_0()); }
+{ before(grammarAccess.getAttributeAccess().getInheritedInheritedKeyword_3_0()); }
+(
+{ before(grammarAccess.getAttributeAccess().getInheritedInheritedKeyword_3_0()); }
+
+	'inherited' 
+
+{ after(grammarAccess.getAttributeAccess().getInheritedInheritedKeyword_3_0()); }
+)
+
+{ after(grammarAccess.getAttributeAccess().getInheritedInheritedKeyword_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Attribute__DescAssignment_4
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAttributeAccess().getDescSTRINGTerminalRuleCall_4_0()); }
+	RULE_STRING{ after(grammarAccess.getAttributeAccess().getDescSTRINGTerminalRuleCall_4_0()); }
 )
 
 ;

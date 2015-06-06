@@ -1,12 +1,19 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class TaglibImporter {
+	private static Map<String, String> inheritedAttributes = new HashMap<String, String>() { {
+		put("rendered", null);
+		put("value", null);
+		put("converter", null);
+	}};
+	
 	public static void main(String[] args) throws FileNotFoundException {
 		String content = new Scanner(new File("taglib.xml")).useDelimiter("\\Z").next();
 		content = content.replaceAll("(?s)<!--.*?-->", "");
@@ -29,6 +36,7 @@ public class TaglibImporter {
 		String result = "";
 		List<String> attributeDSL = new ArrayList<>();
 		boolean firstAttribute = true;
+		boolean hasTooltip=false;
 		String parts[] = tag.split("</tag-name>|</component>|</attribute>");
 		for (String part : parts) {
 			part = part.trim();
@@ -59,6 +67,7 @@ public class TaglibImporter {
 				String required = "";
 				String type = "";
 				String description = "";
+				String inherited="";
 				for (String property : properties) {
 					property = property.trim();
 					if (property.startsWith("<name>")) {
@@ -69,6 +78,8 @@ public class TaglibImporter {
 							String n = nn[i];
 							name += n.substring(0, 1).toUpperCase() + n.substring(1);
 						}
+						if (name.startsWith("tooltip")) hasTooltip=true;
+						if (inheritedAttributes.containsKey(name)) inherited="inherited";
 					}
 					if (property.startsWith("<description>")) {
 						description = name = property.replace("<description>", "");
@@ -89,7 +100,7 @@ public class TaglibImporter {
 						}
 					}
 				}
-				attributeDSL.add("    " + fixedLength(name, 20) + fixedLength(type, 40) + fixedLength(required, 10)
+				attributeDSL.add("    " + fixedLength(name, 20) + fixedLength(type + " " + required + " " + inherited, 50)
 						+ description);
 			}
 
@@ -117,7 +128,7 @@ public class TaglibImporter {
 	}
 
 	private static String fixedLength(String s, int length) {
-		return (s + "                                              ").substring(0, length);
+		return (s + "                                                            ").substring(0, length);
 	}
 
 }
