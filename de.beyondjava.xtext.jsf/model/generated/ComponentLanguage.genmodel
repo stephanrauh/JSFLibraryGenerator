@@ -17,11 +17,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/processesInput"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/extends"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/hasChildren"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/description"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentLanguage.ecore#//Component/attributes"/>
     </genClasses>
     <genClasses ecoreClass="ComponentLanguage.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/defaultValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/required"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/inherited"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/desc"/>

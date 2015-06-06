@@ -32,6 +32,7 @@ class ComponentGenerator implements IGenerator {
 		import javax.faces.component.*;
 		
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
+		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
 		public class «e.name.toFirstUpper» extends «parentClass(e)» {
 			
 			«e.generateMetadata»
@@ -63,23 +64,37 @@ class ComponentGenerator implements IGenerator {
 		 * «e.desc» <br />
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
-		public «e.generateAttributeType» «e.getter» {
-			return («e.generateAttributeType») getStateHelper().eval(PropertyKeys.«e.name», null);
+		public «e.attributeType» «e.getter» {
+			«e.objectType» value = («e.objectType»)getStateHelper().eval(PropertyKeys.«e.name»«e.defaultValueTerm»);
+			return «optionalTypeCast(e)» value;
 		}
 		
 		/**
 		 * «e.desc» <br />
 		 * Usually this method is called internally by the JSF engine.
 		 */
-		public void set«e.name.toFirstUpper»(«e.generateAttributeType» _«e.name») {
+		public void set«e.name.toFirstUpper»(«e.attributeType» _«e.name») {
 		    getStateHelper().put(PropertyKeys.«e.name», _«e.name»);
 	    }
 		
 	'''
 	
+	def getDefaultValueTerm(Attribute a) {
+		if (a.defaultValue!=null) ', ' + a.defaultValue
+		else if ("Integer".equals(a.type)) ', 0'
+		else if ("Boolean".equals(a.type)) ', false'
+		else ''
+	}
+	
+	
+	def optionalTypeCast(Attribute e) {
+		if (e.objectType!=e.attributeType) '('+e.attributeType+')'
+		else ''
+	}
+	
 	def getGetter(Attribute f)
 	{ 
-		if ("boolean".equals(f.type)) {
+		if ("Boolean".equals(f.type)) {
 			'''is«f.name.toFirstUpper»()'''
 		}
 		else {
@@ -87,8 +102,13 @@ class ComponentGenerator implements IGenerator {
 		}
 	}
 
+	def getObjectType(Attribute a) { 
+		if (null==a.type) "String"
+		else a.type;
+	}
+
 	
-	def generateAttributeType(Attribute a) { 
+	def getAttributeType(Attribute a) { 
 		if (null==a.type) "String"
 		else if ("Boolean".equals(a.type)) "boolean"
 		else if ("Integer".equals(a.type)) "int"
@@ -96,11 +116,11 @@ class ComponentGenerator implements IGenerator {
 	}
 	
 	def generateMetadata(Component e) ''' 
-		public static final String COMPONENT_TYPE = "net.bootsfaces.component.«e.name.toFirstUpper»";
+		public static final String COMPONENT_TYPE = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 		
 		public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
 		
-		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstUpper»";
+		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 		
 		public «e.name.toFirstUpper»() {
 			setRendererType(DEFAULT_RENDERER);

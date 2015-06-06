@@ -2663,7 +2663,7 @@
 			<description><![CDATA[Disables the input element, default is false.]]></description>
 			<name>disabled</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[A localized user presentable name.]]></description>
@@ -2675,13 +2675,13 @@
 			<description><![CDATA[Flag indicating that this input element will prevent changes by the user.]]></description>
 			<name>readonly</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Number of characters used to determine the width of the input element.]]></description>
 			<name>size</name>
 			<required>false</required>
-			<type>int</type>
+			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Inline style of the input element.]]></description>
@@ -2980,7 +2980,7 @@
 			<description><![CDATA[Disables the input element, default is false.]]></description>
 			<name>disabled</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[A localized user presentable name.]]></description>
@@ -2992,13 +2992,13 @@
 			<description><![CDATA[Flag indicating that this input element will prevent changes by the user.]]></description>
 			<name>readonly</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Number of characters used to determine the width of the input element.]]></description>
 			<name>size</name>
 			<required>false</required>
-			<type>int</type>
+			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Inline style of the input element.]]></description>
@@ -3255,7 +3255,7 @@
 			<description><![CDATA[Disables the input element, default is false.]]></description>
 			<name>disabled</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[A localized user presentable name.]]></description>
@@ -3267,7 +3267,7 @@
 			<description><![CDATA[Flag indicating that this input element will prevent changes by the user.]]></description>
 			<name>readonly</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Inline style of the input element.]]></description>
@@ -3690,7 +3690,7 @@
 			<description><![CDATA[Disables the input element, default is false.]]></description>
 			<name>disabled</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[A localized user presentable name.]]></description>
@@ -3702,13 +3702,13 @@
 			<description><![CDATA[Flag indicating that this input element will prevent changes by the user.]]></description>
 			<name>readonly</name>
 			<required>false</required>
-			<type>boolean</type>
+			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Number of characters used to determine the width of the input element.]]></description>
 			<name>size</name>
 			<required>false</required>
-			<type>int</type>
+			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[Inline style of the input element.]]></description>

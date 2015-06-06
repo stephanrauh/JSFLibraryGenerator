@@ -45,6 +45,7 @@ class RendererGenerator implements IGenerator {
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 		
 		import javax.faces.component.*;
+		import java.io.IOException;
 		import java.util.Map;
 
 		import javax.faces.context.FacesContext;
@@ -56,7 +57,7 @@ class RendererGenerator implements IGenerator {
 		
 		
 		/** This class generates the HTML code of &lt;b:«e.name» /&gt;. */
-		@FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.«e.widgetClass»")
+		@FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.«e.name.toFirstLower».«e.widgetClass»")
 		public class «e.widgetClass»Renderer extends CoreRenderer {
 			«IF e.processesInput!=null»
 			«generateDecodeMethod(e)»
@@ -77,9 +78,7 @@ class RendererGenerator implements IGenerator {
 		    public void decode(FacesContext context, UIComponent component) {
 		        «e.widgetClass» «e.widget» = («e.widgetClass») component;
 		    
-		        if («e.widget».isDisabled() || «e.widget».isReadonly()) {
-		            return;
-		        }
+		    	«e.returnIfDisabled»
 		    
 		        decodeBehaviors(context, «e.widget»);
 		    
@@ -91,11 +90,24 @@ class RendererGenerator implements IGenerator {
 		        }
 		    }
 		'''
+	
+	def getReturnIfDisabled(Component component) {
+		if (component.attributes.exists[a | "disabled" == a.name])
+		{
+			return '''
+				if («component.widget».isDisabled() || «component.widget».isReadonly()) {
+				    return;
+				}
+			'''
+		}
+		""
+	}
+	
 
 	def generateEncodeBeginMethod(Component e)
 		'''
 			@Override
-			public void encodeBegin(FacesContext context, UIComponent component) {
+			public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 			    if (!component.isRendered()) {
 			        return;
 			    }
@@ -111,7 +123,7 @@ class RendererGenerator implements IGenerator {
 	def generateEncodeEndMethod(Component e)
 		'''
 			@Override
-			public void encodeEnd(FacesContext context, UIComponent component) {
+			public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 			    if (!component.isRendered()) {
 			        return;
 			    }
@@ -125,21 +137,30 @@ class RendererGenerator implements IGenerator {
 				Tooltip.generateTooltip(context, attrs, rw);
 				
 			    «FOR f : e.attributes»
-			        rw.writeAttribute("«f.name»", «e.widget»«getGetter(f)»«f.name»");
+			        rw.writeAttribute("«f.name»", «parameterAsString(e, f)», "«f.name»");
 			    «ENDFOR»
 			    rw.writeText("Dummy content of b:«e.widgetClass»", null);
 				rw.endElement("«e.widgetClass»");
 			}
 		'''
 		
+		/** Boolean parameters are rendered slightly unexpected by JSF, so it's better to pass the desired String for the sake of clarity */
+		def parameterAsString(Component e, Attribute f) {
+			if ("Boolean"==f.type)
+				'''String.valueOf(«e.widget»«getGetter(f)»)'''
+			else
+				'''«e.widget»«getGetter(f)»'''
+		}
+		
+		
 
 		def getGetter(Attribute f)
 		{ 
 			if ("Boolean".equals(f.type)) {
-				'''.is«f.name.toFirstUpper»(), "'''
+				'''.is«f.name.toFirstUpper»()'''
 			}
 			else {
-				'''.get«f.name.toFirstUpper»(), "'''
+				'''.get«f.name.toFirstUpper»()'''
 			}
 		}
 	

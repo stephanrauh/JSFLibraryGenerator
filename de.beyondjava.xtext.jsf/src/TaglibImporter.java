@@ -15,6 +15,17 @@ public class TaglibImporter {
 			put("converter", null);
 		}
 	};
+	
+	private static Map<String, String> defaultValues= new HashMap<String, String>() {
+		{
+			put("backdrop", "true");
+			put("closeOnEscape", "true");
+			put("collapsible", "true");
+		}
+	};
+
+	
+	
 
 	private static Map<String, String> derivedFrom = new HashMap<String, String>() {
 		{
@@ -158,7 +169,7 @@ public class TaglibImporter {
 						if (name.startsWith("tooltip"))
 							hasTooltip = true;
 						if (inheritedAttributes.containsKey(name))
-							inherited = "inherited";
+							inherited = " inherited";
 					}
 					if (property.startsWith("<description>")) {
 						description = name = property.replace("<description>", "");
@@ -179,8 +190,12 @@ public class TaglibImporter {
 						}
 					}
 				}
+				String defaultValue="";
+				if (defaultValues.containsKey(name)) {
+					defaultValue = " default \"" + defaultValues.get(name) + "\"";
+				}
 				attributeDSL.add("    " + fixedLength(name, 20)
-						+ fixedLength(type + " " + required + " " + inherited, 50) + description);
+						+ fixedLength(type + defaultValue + required + inherited, 50) + description);
 			}
 
 		}
@@ -216,7 +231,7 @@ public class TaglibImporter {
 	}
 
 	private static String fixedLength(String s, int length) {
-		return (s + "                                                            ").substring(0, length);
+		return (s.trim() + "                                                            ").substring(0, length);
 	}
 
 }

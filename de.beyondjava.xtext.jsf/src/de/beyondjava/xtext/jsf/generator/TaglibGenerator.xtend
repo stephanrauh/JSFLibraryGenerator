@@ -50,10 +50,15 @@ class TaglibGenerator implements IGenerator {
 		<attribute>
 			«IF a.desc != null»<description><![CDATA[«a.desc.replace("\\\"", "\"")»]]></description>«ENDIF»
 			<name>«a.name»</name>
-			<required>«a.required»</required>
+			<required>«a.requiredToBoolean»</required>
 			<type>«a.generateAttributeType»</type>
 		</attribute>
 	'''
+	
+	def requiredToBoolean(Attribute a) {
+		if (a.required==null) return "false"
+		else return "true"
+	}
 
 	def generateAttributeType(Attribute a) {
 		'''«IF a.type == null»java.lang.String«ELSE»«a.type»«ENDIF»'''
