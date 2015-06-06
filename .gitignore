@@ -1,5 +1,8 @@
 *.class
-src-gen/
+de.beyondjava.xtext.jsf/src-gen/
+de.beyondjava.xtext.jsf.sdk/src-gen/
+de.beyondjava.xtext.jsf.tests/src-gen/
+de.beyondjava.xtext.jsf.ui/src-gen/
 xtend-gen/
 .settings/
 .launch/

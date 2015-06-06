@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+	version="2.0">
+	<namespace>http://bootsfaces.net/ui</namespace>
+	
+	<tag>
+		<tag-name>commandButton</tag-name>
+		<component>
+			<component-type>net.bootsfaces.component.commandButton.CommandButton</component-type>
+		</component>
+		
+	  <attribute>
+	  	<description><![CDATA[Access key to transfer focus to the input element.]]></description>
+	  	<name>accesskey</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The button action, this can be method expression or a string outcome.]]></description>
+	  	<name>action</name>
+	  	<required>false</required>
+	  	<type>javax.el.MethodExpression</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[A method expression that refers to a method with this signature: void methodName(Action-Event).]]></description>
+	  	<name>actionListener</name>
+	  	<required>false</required>
+	  	<type>javax.faces.event.ActionListener</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Whether the Button submits the form with ajax.]]></description>
+	  	<name>ajax</name>
+	  	<required>false</required>
+	  	<type>Boolean</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[An el expression referring to a server side UIComponent instance in a backing bean.]]></description>
+	  	<name>binding</name>
+	  	<required>false</required>
+	  	<type>javax.faces.component.UIComponent</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Direction indication for text that does not inherit directionality.]]></description>
+	  	<name>dir</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Boolean value to specify if the button is disabled.]]></description>
+	  	<name>disabled</name>
+	  	<required>false</required>
+	  	<type>Boolean</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Button Icon, can be one of the Bootstrap icon names. Alignment can be specified with iconAlign attribute.]]></description>
+	  	<name>icon</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Alignment can right or left.]]></description>
+	  	<name>iconAlign</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Font Awesome Icon to show in this CommandButton, can be one of the Font Awesome icon names. Alignment can be specified with the iconAlign attribute.]]></description>
+	  	<name>iconAwesome</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Unique identifier of the component in a namingContainer.]]></description>
+	  	<name>id</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false.]]></description>
+	  	<name>immediate</name>
+	  	<required>false</required>
+	  	<type>Boolean</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[A localized user presentable name.]]></description>
+	  	<name>lang</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Look of the Button, can be primary, block, info, success, warning, important, danger. If not specified, Standard gray button with gradient is rendered.]]></description>
+	  	<name>look</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when input element loses focus.]]></description>
+	  	<name>onblur</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when input element loses focus and its value has been modified since gaining focus.]]></description>
+	  	<name>onchange</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The onclick attribute.]]></description>
+	  	<name>onclick</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Javascript to be executed when ajax completes with success.]]></description>
+	  	<name>oncomplete</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when input element is double clicked.]]></description>
+	  	<name>ondblclick</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when input element receives focus.]]></description>
+	  	<name>onfocus</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a key is pressed down over input element.]]></description>
+	  	<name>onkeydown</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a key is pressed and released over input element.]]></description>
+	  	<name>onkeypress</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a key is released over input element.]]></description>
+	  	<name>onkeyup</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a pointer input element is pressed down over input element.]]></description>
+	  	<name>onmousedown</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a pointer input element is moved within input element.]]></description>
+	  	<name>onmousemove</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a pointer input element is moved away from input element.]]></description>
+	  	<name>onmouseout</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a pointer input element is moved onto input element.]]></description>
+	  	<name>onmouseover</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when a pointer input element is released over input element.]]></description>
+	  	<name>onmouseup</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Client side callback to execute when text within input element is selected by user.]]></description>
+	  	<name>onselect</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
+	  	<name>rendered</name>
+	  	<required>false</required>
+	  	<type>Boolean</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Size of the Button, can be large, small, mini. If not specified, Standard size button is rendered.]]></description>
+	  	<name>size</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Inline style of the input element.]]></description>
+	  	<name>style</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Style class of this element.]]></description>
+	  	<name>styleClass</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Advisory tooltip information.]]></description>
+	  	<name>tabindex</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Advisory tooltip information.]]></description>
+	  	<name>title</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The text of the tooltip.]]></description>
+	  	<name>tooltip</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+	  	<name>tooltipDelay</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+	  	<name>tooltipDelayHide</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
+	  	<name>tooltipDelayShow</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>
+	  	<name>tooltipPosition</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[The button type, can be submit, button, reset ; default submit.]]></description>
+	  	<name>type</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Component(s) to be updated with ajax.]]></description>
+	  	<name>update</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
+	  	<description><![CDATA[Button text.]]></description>
+	  	<name>value</name>
+	  	<required>true</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	</tag>
+
+</facelet-taglib>
