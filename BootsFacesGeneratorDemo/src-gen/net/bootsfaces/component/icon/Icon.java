@@ -20,10 +20,12 @@
 package net.bootsfaces.component.icon;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:icon /&gt;. */
 @FacesComponent("net.bootsfaces.component.icon.Icon")
-public class Icon extends UIComponentBase {
+public class Icon extends UIComponentBase  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.icon.Icon";
 	
@@ -32,6 +34,9 @@ public class Icon extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.icon.Icon";
 	
 	public Icon() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

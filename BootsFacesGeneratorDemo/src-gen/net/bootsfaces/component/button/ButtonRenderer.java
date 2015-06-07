@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.button.Button")
 public class ButtonRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:button.
+	 * @param context the FacesContext.
+	 * @param component the current b:button.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Button button = (Button) component;
-		Map<String, Object> attrs = button.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = button.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("button", button);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, button, rw);
 		
 	    rw.writeAttribute("accesskey", button.getAccesskey(), "accesskey");
 	    rw.writeAttribute("binding", button.getBinding(), "binding");
@@ -91,7 +95,11 @@ public class ButtonRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayShow", button.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", button.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", button.getValue(), "value");
-	    rw.writeText("Dummy content of b:Button", null);
-		rw.endElement("Button");
+		rw.writeText("Dummy content of b:button", null);
+		rw.endElement("button");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

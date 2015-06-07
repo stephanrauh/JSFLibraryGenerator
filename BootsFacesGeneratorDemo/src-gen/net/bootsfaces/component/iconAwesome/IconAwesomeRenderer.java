@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.iconAwesome.IconAwesome")
 public class IconAwesomeRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:iconAwesome.
+	 * @param context the FacesContext.
+	 * @param component the current b:iconAwesome.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		IconAwesome iconAwesome = (IconAwesome) component;
-		Map<String, Object> attrs = iconAwesome.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = iconAwesome.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("iconAwesome", iconAwesome);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, iconAwesome, rw);
 		
 	    rw.writeAttribute("addon", String.valueOf(iconAwesome.isAddon()), "addon");
 	    rw.writeAttribute("binding", iconAwesome.getBinding(), "binding");
@@ -65,7 +69,11 @@ public class IconAwesomeRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", iconAwesome.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", iconAwesome.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", iconAwesome.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:IconAwesome", null);
-		rw.endElement("IconAwesome");
+		rw.writeText("Dummy content of b:iconAwesome", null);
+		rw.endElement("iconAwesome");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

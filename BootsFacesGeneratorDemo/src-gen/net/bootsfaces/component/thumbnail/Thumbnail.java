@@ -20,10 +20,12 @@
 package net.bootsfaces.component.thumbnail;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:thumbnail /&gt;. */
 @FacesComponent("net.bootsfaces.component.thumbnail.Thumbnail")
-public class Thumbnail extends UIComponentBase {
+public class Thumbnail extends UIComponentBase  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.thumbnail.Thumbnail";
 	
@@ -32,6 +34,9 @@ public class Thumbnail extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.thumbnail.Thumbnail";
 	
 	public Thumbnail() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

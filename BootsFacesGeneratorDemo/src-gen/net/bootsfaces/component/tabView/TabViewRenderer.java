@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:tabView /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.tabView.TabView")
 public class TabViewRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:tabView. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:tabView.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    TabView tabView = (TabView) component;
@@ -42,28 +50,32 @@ public class TabViewRenderer extends CoreRenderer {
 	    decodeBehaviors(context, tabView);
 	
 	    String clientId = tabView.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(tabView);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	tabView.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:tabView.
+	 * @param context the FacesContext.
+	 * @param component the current b:tabView.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		TabView tabView = (TabView) component;
-		Map<String, Object> attrs = tabView.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = tabView.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("tabView", tabView);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, tabView, rw);
 		
 	    rw.writeAttribute("activeIndex", tabView.getActiveIndex(), "activeIndex");
 	    rw.writeAttribute("contentClass", tabView.getContentClass(), "contentClass");
@@ -75,7 +87,11 @@ public class TabViewRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", tabView.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", tabView.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", tabView.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:TabView", null);
-		rw.endElement("TabView");
+		rw.writeText("Dummy content of b:tabView", null);
+		rw.endElement("tabView");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

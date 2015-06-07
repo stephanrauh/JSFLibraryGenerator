@@ -35,23 +35,30 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.fetchBeanInfos.FetchBeanInfos")
 public class FetchBeanInfosRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:fetchBeanInfos.
+	 * @param context the FacesContext.
+	 * @param component the current b:fetchBeanInfos.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		FetchBeanInfos fetchBeanInfos = (FetchBeanInfos) component;
-		Map<String, Object> attrs = fetchBeanInfos.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = fetchBeanInfos.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("fetchBeanInfos", fetchBeanInfos);
-		Tooltip.generateTooltip(context, attrs, rw);
 		
-	    rw.writeText("Dummy content of b:FetchBeanInfos", null);
-		rw.endElement("FetchBeanInfos");
+		rw.writeText("Dummy content of b:fetchBeanInfos", null);
+		rw.endElement("fetchBeanInfos");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

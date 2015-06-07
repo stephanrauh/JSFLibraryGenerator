@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:slider /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.slider.Slider")
 public class SliderRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:slider. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:slider.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    Slider slider = (Slider) component;
@@ -42,28 +50,32 @@ public class SliderRenderer extends CoreRenderer {
 	    decodeBehaviors(context, slider);
 	
 	    String clientId = slider.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(slider);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	slider.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:slider.
+	 * @param context the FacesContext.
+	 * @param component the current b:slider.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Slider slider = (Slider) component;
-		Map<String, Object> attrs = slider.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = slider.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("slider", slider);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, slider, rw);
 		
 	    rw.writeAttribute("binding", slider.getBinding(), "binding");
 	    rw.writeAttribute("handleShape", slider.getHandleShape(), "handleShape");
@@ -82,7 +94,11 @@ public class SliderRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayShow", slider.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", slider.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", slider.getValue(), "value");
-	    rw.writeText("Dummy content of b:Slider", null);
-		rw.endElement("Slider");
+		rw.writeText("Dummy content of b:slider", null);
+		rw.endElement("slider");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

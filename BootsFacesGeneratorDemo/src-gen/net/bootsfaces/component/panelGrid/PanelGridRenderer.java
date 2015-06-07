@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.panelGrid.PanelGrid")
 public class PanelGridRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:panelGrid.
+	 * @param context the FacesContext.
+	 * @param component the current b:panelGrid.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		PanelGrid panelGrid = (PanelGrid) component;
-		Map<String, Object> attrs = panelGrid.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = panelGrid.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("panelGrid", panelGrid);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, panelGrid, rw);
 		
 	    rw.writeAttribute("colSpans", panelGrid.getColSpans(), "colSpans");
 	    rw.writeAttribute("columnclasses", panelGrid.getColumnclasses(), "columnclasses");
@@ -62,7 +66,11 @@ public class PanelGridRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", panelGrid.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", panelGrid.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", panelGrid.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:PanelGrid", null);
-		rw.endElement("PanelGrid");
+		rw.writeText("Dummy content of b:panelGrid", null);
+		rw.endElement("panelGrid");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

@@ -20,10 +20,12 @@
 package net.bootsfaces.component.tabView;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:tabView /&gt;. */
 @FacesComponent("net.bootsfaces.component.tabView.TabView")
-public class TabView extends UIOutput {
+public class TabView extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.tabView.TabView";
 	
@@ -32,6 +34,9 @@ public class TabView extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.tabView.TabView";
 	
 	public TabView() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

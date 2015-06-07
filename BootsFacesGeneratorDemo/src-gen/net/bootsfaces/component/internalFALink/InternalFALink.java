@@ -21,9 +21,10 @@ package net.bootsfaces.component.internalFALink;
 
 import javax.faces.component.*;
 
+
 /** This class holds the attributes of &lt;b:internalFALink /&gt;. */
 @FacesComponent("net.bootsfaces.component.internalFALink.InternalFALink")
-public class InternalFALink extends UIOutput {
+public class InternalFALink extends UIOutput  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.internalFALink.InternalFALink";
 	
@@ -32,6 +33,8 @@ public class InternalFALink extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.internalFALink.InternalFALink";
 	
 	public InternalFALink() {
+		
+		
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

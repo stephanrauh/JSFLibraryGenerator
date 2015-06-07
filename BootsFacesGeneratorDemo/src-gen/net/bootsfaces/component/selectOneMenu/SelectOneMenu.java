@@ -20,10 +20,12 @@
 package net.bootsfaces.component.selectOneMenu;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:selectOneMenu /&gt;. */
 @FacesComponent("net.bootsfaces.component.selectOneMenu.SelectOneMenu")
-public class SelectOneMenu extends HtmlInputText {
+public class SelectOneMenu extends HtmlInputText  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.selectOneMenu.SelectOneMenu";
 	
@@ -32,6 +34,9 @@ public class SelectOneMenu extends HtmlInputText {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.selectOneMenu.SelectOneMenu";
 	
 	public SelectOneMenu() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

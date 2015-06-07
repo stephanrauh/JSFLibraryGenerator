@@ -20,10 +20,12 @@
 package net.bootsfaces.component.alert;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:alert /&gt;. */
 @FacesComponent("net.bootsfaces.component.alert.Alert")
-public class Alert extends UIComponentBase {
+public class Alert extends UIComponentBase  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.alert.Alert";
 	
@@ -32,6 +34,9 @@ public class Alert extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.alert.Alert";
 	
 	public Alert() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

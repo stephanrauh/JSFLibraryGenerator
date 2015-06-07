@@ -20,10 +20,12 @@
 package net.bootsfaces.component.datepicker;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:datepicker /&gt;. */
 @FacesComponent("net.bootsfaces.component.datepicker.Datepicker")
-public class Datepicker extends UIOutput {
+public class Datepicker extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.datepicker.Datepicker";
 	
@@ -32,6 +34,9 @@ public class Datepicker extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.datepicker.Datepicker";
 	
 	public Datepicker() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

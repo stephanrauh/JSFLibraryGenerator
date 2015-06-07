@@ -20,10 +20,12 @@
 package net.bootsfaces.component.buttonGroup;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:buttonGroup /&gt;. */
 @FacesComponent("net.bootsfaces.component.buttonGroup.ButtonGroup")
-public class ButtonGroup extends net.bootsfaces.component.GenContainerDiv {
+public class ButtonGroup extends net.bootsfaces.component.GenContainerDiv  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.buttonGroup.ButtonGroup";
 	
@@ -32,6 +34,9 @@ public class ButtonGroup extends net.bootsfaces.component.GenContainerDiv {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.buttonGroup.ButtonGroup";
 	
 	public ButtonGroup() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

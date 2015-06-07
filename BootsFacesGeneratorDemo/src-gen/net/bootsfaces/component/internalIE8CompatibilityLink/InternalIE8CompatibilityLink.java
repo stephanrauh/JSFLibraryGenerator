@@ -21,9 +21,10 @@ package net.bootsfaces.component.internalIE8CompatibilityLink;
 
 import javax.faces.component.*;
 
+
 /** This class holds the attributes of &lt;b:internalIE8CompatibilityLink /&gt;. */
 @FacesComponent("net.bootsfaces.component.internalIE8CompatibilityLink.InternalIE8CompatibilityLink")
-public class InternalIE8CompatibilityLink extends UIOutput {
+public class InternalIE8CompatibilityLink extends UIOutput  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.internalIE8CompatibilityLink.InternalIE8CompatibilityLink";
 	
@@ -32,6 +33,8 @@ public class InternalIE8CompatibilityLink extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.internalIE8CompatibilityLink.InternalIE8CompatibilityLink";
 	
 	public InternalIE8CompatibilityLink() {
+		
+		
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

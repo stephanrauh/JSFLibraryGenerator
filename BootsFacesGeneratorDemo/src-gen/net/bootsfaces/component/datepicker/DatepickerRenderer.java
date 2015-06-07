@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.datepicker.Datepicker")
 public class DatepickerRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:datepicker.
+	 * @param context the FacesContext.
+	 * @param component the current b:datepicker.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Datepicker datepicker = (Datepicker) component;
-		Map<String, Object> attrs = datepicker.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = datepicker.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("datepicker", datepicker);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, datepicker, rw);
 		
 	    rw.writeAttribute("binding", datepicker.getBinding(), "binding");
 	    rw.writeAttribute("changeMonth", String.valueOf(datepicker.isChangeMonth()), "changeMonth");
@@ -69,7 +73,11 @@ public class DatepickerRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayShow", datepicker.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", datepicker.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", datepicker.getValue(), "value");
-	    rw.writeText("Dummy content of b:Datepicker", null);
-		rw.endElement("Datepicker");
+		rw.writeText("Dummy content of b:datepicker", null);
+		rw.endElement("datepicker");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

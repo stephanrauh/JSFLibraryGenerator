@@ -20,10 +20,12 @@
 package net.bootsfaces.component.listLinks;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:listLinks /&gt;. */
 @FacesComponent("net.bootsfaces.component.listLinks.ListLinks")
-public class ListLinks extends net.bootsfaces.component.LinksContainer {
+public class ListLinks extends net.bootsfaces.component.LinksContainer  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.listLinks.ListLinks";
 	
@@ -32,6 +34,9 @@ public class ListLinks extends net.bootsfaces.component.LinksContainer {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.listLinks.ListLinks";
 	
 	public ListLinks() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

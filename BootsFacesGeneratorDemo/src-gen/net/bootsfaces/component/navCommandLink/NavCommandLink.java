@@ -20,10 +20,12 @@
 package net.bootsfaces.component.navCommandLink;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:navCommandLink /&gt;. */
 @FacesComponent("net.bootsfaces.component.navCommandLink.NavCommandLink")
-public class NavCommandLink extends UICommand {
+public class NavCommandLink extends UICommand  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.navCommandLink.NavCommandLink";
 	
@@ -32,6 +34,9 @@ public class NavCommandLink extends UICommand {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.navCommandLink.NavCommandLink";
 	
 	public NavCommandLink() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

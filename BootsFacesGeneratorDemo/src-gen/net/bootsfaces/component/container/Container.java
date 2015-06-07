@@ -20,10 +20,12 @@
 package net.bootsfaces.component.container;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:container /&gt;. */
 @FacesComponent("net.bootsfaces.component.container.Container")
-public class Container extends UIOutput {
+public class Container extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.container.Container";
 	
@@ -32,6 +34,9 @@ public class Container extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.container.Container";
 	
 	public Container() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

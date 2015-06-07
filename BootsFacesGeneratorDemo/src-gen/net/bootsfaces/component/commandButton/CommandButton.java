@@ -20,10 +20,12 @@
 package net.bootsfaces.component.commandButton;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:commandButton /&gt;. */
 @FacesComponent("net.bootsfaces.component.commandButton.CommandButton")
-public class CommandButton extends HtmlCommandButton {
+public class CommandButton extends HtmlCommandButton  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.commandButton.CommandButton";
 	
@@ -32,6 +34,9 @@ public class CommandButton extends HtmlCommandButton {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.commandButton.CommandButton";
 	
 	public CommandButton() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

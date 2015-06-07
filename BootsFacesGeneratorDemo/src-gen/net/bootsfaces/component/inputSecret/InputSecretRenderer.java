@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.inputSecret.InputSecret")
 public class InputSecretRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:inputSecret.
+	 * @param context the FacesContext.
+	 * @param component the current b:inputSecret.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		InputSecret inputSecret = (InputSecret) component;
-		Map<String, Object> attrs = inputSecret.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = inputSecret.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("inputSecret", inputSecret);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, inputSecret, rw);
 		
 	    rw.writeAttribute("accesskey", inputSecret.getAccesskey(), "accesskey");
 	    rw.writeAttribute("alt", inputSecret.getAlt(), "alt");
@@ -101,7 +105,11 @@ public class InputSecretRenderer extends CoreRenderer {
 	    rw.writeAttribute("validatorMessage", inputSecret.getValidatorMessage(), "validatorMessage");
 	    rw.writeAttribute("value", inputSecret.getValue(), "value");
 	    rw.writeAttribute("valueChangeListener", inputSecret.getValueChangeListener(), "valueChangeListener");
-	    rw.writeText("Dummy content of b:InputSecret", null);
-		rw.endElement("InputSecret");
+		rw.writeText("Dummy content of b:inputSecret", null);
+		rw.endElement("inputSecret");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

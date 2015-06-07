@@ -21,9 +21,10 @@ package net.bootsfaces.component.fetchBeanInfos;
 
 import javax.faces.component.*;
 
+
 /** This class holds the attributes of &lt;b:fetchBeanInfos /&gt;. */
 @FacesComponent("net.bootsfaces.component.fetchBeanInfos.FetchBeanInfos")
-public class FetchBeanInfos extends UIComponentBase {
+public class FetchBeanInfos extends UIComponentBase  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.fetchBeanInfos.FetchBeanInfos";
 	
@@ -32,6 +33,8 @@ public class FetchBeanInfos extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.fetchBeanInfos.FetchBeanInfos";
 	
 	public FetchBeanInfos() {
+		
+		
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

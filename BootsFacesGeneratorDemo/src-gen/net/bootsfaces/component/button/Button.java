@@ -20,10 +20,12 @@
 package net.bootsfaces.component.button;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:button /&gt;. */
 @FacesComponent("net.bootsfaces.component.button.Button")
-public class Button extends HtmlOutcomeTargetButton {
+public class Button extends HtmlOutcomeTargetButton  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.button.Button";
 	
@@ -32,6 +34,9 @@ public class Button extends HtmlOutcomeTargetButton {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.button.Button";
 	
 	public Button() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

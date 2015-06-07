@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.selectOneMenu.SelectOneMenu")
 public class SelectOneMenuRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:selectOneMenu.
+	 * @param context the FacesContext.
+	 * @param component the current b:selectOneMenu.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		SelectOneMenu selectOneMenu = (SelectOneMenu) component;
-		Map<String, Object> attrs = selectOneMenu.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = selectOneMenu.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("selectOneMenu", selectOneMenu);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, selectOneMenu, rw);
 		
 	    rw.writeAttribute("accesskey", selectOneMenu.getAccesskey(), "accesskey");
 	    rw.writeAttribute("alt", selectOneMenu.getAlt(), "alt");
@@ -93,7 +97,11 @@ public class SelectOneMenuRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayShow", selectOneMenu.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", selectOneMenu.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", selectOneMenu.getValue(), "value");
-	    rw.writeText("Dummy content of b:SelectOneMenu", null);
-		rw.endElement("SelectOneMenu");
+		rw.writeText("Dummy content of b:selectOneMenu", null);
+		rw.endElement("selectOneMenu");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

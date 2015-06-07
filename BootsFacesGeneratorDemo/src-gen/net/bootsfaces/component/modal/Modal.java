@@ -21,9 +21,10 @@ package net.bootsfaces.component.modal;
 
 import javax.faces.component.*;
 
+
 /** This class holds the attributes of &lt;b:modal /&gt;. */
 @FacesComponent("net.bootsfaces.component.modal.Modal")
-public class Modal extends UIComponentBase {
+public class Modal extends UIComponentBase  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.modal.Modal";
 	
@@ -32,6 +33,8 @@ public class Modal extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.modal.Modal";
 	
 	public Modal() {
+		
+		
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

@@ -20,10 +20,12 @@
 package net.bootsfaces.component.selectBooleanCheckbox;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:selectBooleanCheckbox /&gt;. */
 @FacesComponent("net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox")
-public class SelectBooleanCheckbox extends HtmlInputText {
+public class SelectBooleanCheckbox extends HtmlInputText  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox";
 	
@@ -32,6 +34,9 @@ public class SelectBooleanCheckbox extends HtmlInputText {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox";
 	
 	public SelectBooleanCheckbox() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

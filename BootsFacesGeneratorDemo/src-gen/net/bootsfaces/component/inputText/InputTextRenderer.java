@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:inputText /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.inputText.InputText")
 public class InputTextRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:inputText. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:inputText.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    InputText inputText = (InputText) component;
@@ -45,28 +53,32 @@ public class InputTextRenderer extends CoreRenderer {
 	    decodeBehaviors(context, inputText);
 	
 	    String clientId = inputText.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(inputText);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	inputText.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:inputText.
+	 * @param context the FacesContext.
+	 * @param component the current b:inputText.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		InputText inputText = (InputText) component;
-		Map<String, Object> attrs = inputText.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = inputText.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("inputText", inputText);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, inputText, rw);
 		
 	    rw.writeAttribute("accesskey", inputText.getAccesskey(), "accesskey");
 	    rw.writeAttribute("alt", inputText.getAlt(), "alt");
@@ -118,7 +130,11 @@ public class InputTextRenderer extends CoreRenderer {
 	    rw.writeAttribute("validatorMessage", inputText.getValidatorMessage(), "validatorMessage");
 	    rw.writeAttribute("value", inputText.getValue(), "value");
 	    rw.writeAttribute("valueChangeListener", inputText.getValueChangeListener(), "valueChangeListener");
-	    rw.writeText("Dummy content of b:InputText", null);
-		rw.endElement("InputText");
+		rw.writeText("Dummy content of b:inputText", null);
+		rw.endElement("inputText");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

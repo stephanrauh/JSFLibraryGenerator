@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:commandButton /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.commandButton.CommandButton")
 public class CommandButtonRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:commandButton. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:commandButton.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    CommandButton commandButton = (CommandButton) component;
@@ -45,28 +53,32 @@ public class CommandButtonRenderer extends CoreRenderer {
 	    decodeBehaviors(context, commandButton);
 	
 	    String clientId = commandButton.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(commandButton);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	commandButton.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:commandButton.
+	 * @param context the FacesContext.
+	 * @param component the current b:commandButton.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		CommandButton commandButton = (CommandButton) component;
-		Map<String, Object> attrs = commandButton.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = commandButton.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("commandButton", commandButton);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, commandButton, rw);
 		
 	    rw.writeAttribute("accesskey", commandButton.getAccesskey(), "accesskey");
 	    rw.writeAttribute("action", commandButton.getAction(), "action");
@@ -111,7 +123,11 @@ public class CommandButtonRenderer extends CoreRenderer {
 	    rw.writeAttribute("type", commandButton.getType(), "type");
 	    rw.writeAttribute("update", commandButton.getUpdate(), "update");
 	    rw.writeAttribute("value", commandButton.getValue(), "value");
-	    rw.writeText("Dummy content of b:CommandButton", null);
-		rw.endElement("CommandButton");
+		rw.writeText("Dummy content of b:commandButton", null);
+		rw.endElement("commandButton");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

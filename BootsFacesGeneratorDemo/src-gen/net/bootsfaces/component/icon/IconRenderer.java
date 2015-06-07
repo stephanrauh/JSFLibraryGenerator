@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.icon.Icon")
 public class IconRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:icon.
+	 * @param context the FacesContext.
+	 * @param component the current b:icon.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Icon icon = (Icon) component;
-		Map<String, Object> attrs = icon.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = icon.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("icon", icon);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, icon, rw);
 		
 	    rw.writeAttribute("addon", String.valueOf(icon.isAddon()), "addon");
 	    rw.writeAttribute("binding", icon.getBinding(), "binding");
@@ -65,7 +69,11 @@ public class IconRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", icon.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", icon.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", icon.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:Icon", null);
-		rw.endElement("Icon");
+		rw.writeText("Dummy content of b:icon", null);
+		rw.endElement("icon");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

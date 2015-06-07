@@ -20,10 +20,12 @@
 package net.bootsfaces.component.label;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:label /&gt;. */
 @FacesComponent("net.bootsfaces.component.label.Label")
-public class Label extends UIComponentBase {
+public class Label extends UIComponentBase  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.label.Label";
 	
@@ -32,6 +34,9 @@ public class Label extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.label.Label";
 	
 	public Label() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

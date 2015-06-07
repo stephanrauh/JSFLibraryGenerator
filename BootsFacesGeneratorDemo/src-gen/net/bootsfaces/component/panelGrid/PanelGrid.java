@@ -20,10 +20,12 @@
 package net.bootsfaces.component.panelGrid;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:panelGrid /&gt;. */
 @FacesComponent("net.bootsfaces.component.panelGrid.PanelGrid")
-public class PanelGrid extends UIOutput {
+public class PanelGrid extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.panelGrid.PanelGrid";
 	
@@ -32,6 +34,9 @@ public class PanelGrid extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.panelGrid.PanelGrid";
 	
 	public PanelGrid() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

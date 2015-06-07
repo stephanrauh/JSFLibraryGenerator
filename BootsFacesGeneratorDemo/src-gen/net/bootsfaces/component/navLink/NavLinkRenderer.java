@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.navLink.NavLink")
 public class NavLinkRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:navLink.
+	 * @param context the FacesContext.
+	 * @param component the current b:navLink.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		NavLink navLink = (NavLink) component;
-		Map<String, Object> attrs = navLink.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = navLink.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("navLink", navLink);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, navLink, rw);
 		
 	    rw.writeAttribute("active", String.valueOf(navLink.isActive()), "active");
 	    rw.writeAttribute("binding", navLink.getBinding(), "binding");
@@ -71,7 +75,11 @@ public class NavLinkRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayShow", navLink.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", navLink.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", navLink.getValue(), "value");
-	    rw.writeText("Dummy content of b:NavLink", null);
-		rw.endElement("NavLink");
+		rw.writeText("Dummy content of b:navLink", null);
+		rw.endElement("navLink");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

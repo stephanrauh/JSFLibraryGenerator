@@ -20,10 +20,12 @@
 package net.bootsfaces.component.jumbotron;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:jumbotron /&gt;. */
 @FacesComponent("net.bootsfaces.component.jumbotron.Jumbotron")
-public class Jumbotron extends UIOutput {
+public class Jumbotron extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.jumbotron.Jumbotron";
 	
@@ -32,6 +34,9 @@ public class Jumbotron extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.jumbotron.Jumbotron";
 	
 	public Jumbotron() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

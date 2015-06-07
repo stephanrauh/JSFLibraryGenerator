@@ -35,28 +35,35 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.badge.Badge")
 public class BadgeRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:badge.
+	 * @param context the FacesContext.
+	 * @param component the current b:badge.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Badge badge = (Badge) component;
-		Map<String, Object> attrs = badge.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = badge.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("badge", badge);
-		Tooltip.generateTooltip(context, attrs, rw);
 		
 	    rw.writeAttribute("binding", badge.getBinding(), "binding");
 	    rw.writeAttribute("id", badge.getId(), "id");
 	    rw.writeAttribute("rendered", String.valueOf(badge.isRendered()), "rendered");
 	    rw.writeAttribute("severity", badge.getSeverity(), "severity");
 	    rw.writeAttribute("value", badge.getValue(), "value");
-	    rw.writeText("Dummy content of b:Badge", null);
-		rw.endElement("Badge");
+		rw.writeText("Dummy content of b:badge", null);
+		rw.endElement("badge");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

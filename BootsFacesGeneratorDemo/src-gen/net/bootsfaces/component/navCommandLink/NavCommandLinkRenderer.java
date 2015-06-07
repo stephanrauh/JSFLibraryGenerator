@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:navCommandLink /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.navCommandLink.NavCommandLink")
 public class NavCommandLinkRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:navCommandLink. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:navCommandLink.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    NavCommandLink navCommandLink = (NavCommandLink) component;
@@ -42,28 +50,32 @@ public class NavCommandLinkRenderer extends CoreRenderer {
 	    decodeBehaviors(context, navCommandLink);
 	
 	    String clientId = navCommandLink.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(navCommandLink);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	navCommandLink.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:navCommandLink.
+	 * @param context the FacesContext.
+	 * @param component the current b:navCommandLink.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		NavCommandLink navCommandLink = (NavCommandLink) component;
-		Map<String, Object> attrs = navCommandLink.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = navCommandLink.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("navCommandLink", navCommandLink);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, navCommandLink, rw);
 		
 	    rw.writeAttribute("action", navCommandLink.getAction(), "action");
 	    rw.writeAttribute("actionListener", navCommandLink.getActionListener(), "actionListener");
@@ -87,7 +99,11 @@ public class NavCommandLinkRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayShow", navCommandLink.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", navCommandLink.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", navCommandLink.getValue(), "value");
-	    rw.writeText("Dummy content of b:NavCommandLink", null);
-		rw.endElement("NavCommandLink");
+		rw.writeText("Dummy content of b:navCommandLink", null);
+		rw.endElement("navCommandLink");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

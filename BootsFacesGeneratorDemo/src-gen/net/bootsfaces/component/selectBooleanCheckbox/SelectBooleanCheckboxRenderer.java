@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:selectBooleanCheckbox /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox")
 public class SelectBooleanCheckboxRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:selectBooleanCheckbox. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:selectBooleanCheckbox.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    SelectBooleanCheckbox selectBooleanCheckbox = (SelectBooleanCheckbox) component;
@@ -45,28 +53,32 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 	    decodeBehaviors(context, selectBooleanCheckbox);
 	
 	    String clientId = selectBooleanCheckbox.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(selectBooleanCheckbox);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	selectBooleanCheckbox.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:selectBooleanCheckbox.
+	 * @param context the FacesContext.
+	 * @param component the current b:selectBooleanCheckbox.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		SelectBooleanCheckbox selectBooleanCheckbox = (SelectBooleanCheckbox) component;
-		Map<String, Object> attrs = selectBooleanCheckbox.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = selectBooleanCheckbox.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("selectBooleanCheckbox", selectBooleanCheckbox);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, selectBooleanCheckbox, rw);
 		
 	    rw.writeAttribute("accesskey", selectBooleanCheckbox.getAccesskey(), "accesskey");
 	    rw.writeAttribute("alt", selectBooleanCheckbox.getAlt(), "alt");
@@ -110,7 +122,11 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", selectBooleanCheckbox.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("value", selectBooleanCheckbox.getValue(), "value");
 	    rw.writeAttribute("valueChangeListener", selectBooleanCheckbox.getValueChangeListener(), "valueChangeListener");
-	    rw.writeText("Dummy content of b:SelectBooleanCheckbox", null);
-		rw.endElement("SelectBooleanCheckbox");
+		rw.writeText("Dummy content of b:selectBooleanCheckbox", null);
+		rw.endElement("selectBooleanCheckbox");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

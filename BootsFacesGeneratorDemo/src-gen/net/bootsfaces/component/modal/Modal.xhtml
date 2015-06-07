@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition template="/applayout/pageTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="content">
+		<style>
+td {
+	padding: 8px;
+}
+</style>
+		<h1>Modal (&lt;b:modal /&gt;)</h1>
+
+		<p>Describe in a few words what <code>&lt;b:modal&gt;</code> is about.</p>
+		<h1>Basic usage</h1>
+		<p>Put a short description in simple words here.</p>
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Attributes of &lt;b:modal &gt;</b>
+			</f:facet>
+			<table class="table table-striped table-hover"
+				style="background-color: #fff">
+				<thead>
+					<tr>
+						<th>Attribute</th>
+						<th>Default value</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					    <td>backdrop</td>
+					    <td> true </td>
+					    <td>By default, you can close a modal dialog by clicking somewhere outside the modal. Set backdrop="false" to disable this feature.</td>
+					</tr>
+					<tr>
+					    <td>closeOnEscape</td>
+					    <td> true </td>
+					    <td>By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape="false" to disable this feature.</td>
+					</tr>
+					<tr>
+					    <td>id</td>
+					    <td>(none)</td>
+					    <td>Unique identifier of the component in a namingContainer.</td>
+					</tr>
+					<tr>
+					    <td>rendered</td>
+					    <td>false</td>
+					    <td>Boolean value to specify the rendering of the component, when set to false component will not be rendered.</td>
+					</tr>
+					<tr>
+					    <td>rendered</td>
+					    <td>false</td>
+					    <td>Boolean value to specify the rendering of the component, when set to false component will not be rendered.</td>
+					</tr>
+					<tr>
+					    <td>size</td>
+					    <td>(none)</td>
+					    <td>Modal's size. Possible values modal-sm, modal-lg</td>
+					</tr>
+					<tr>
+					    <td>styleClass</td>
+					    <td>(none)</td>
+					    <td>Style class of this element.</td>
+					</tr>
+					<tr>
+					    <td>title</td>
+					    <td>(none)</td>
+					    <td>Bold title displayed in Modal's header.</td>
+					</tr>
+				</tbody>
+			</table>
+		</b:panel>
+		<b:panel look="info">
+			<f:facet name="heading">
+				<b>Skinning</b>
+			</f:facet>
+			<ul>
+				<li>Tell the world which CSS classes can be used to change the
+					look of the component.</li>
+			</ul>
+		</b:panel>
+
+		<script type="text/javascript">
+      		SyntaxHighlighter.all();
+    	</script>
+		<br />
+		<br />
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

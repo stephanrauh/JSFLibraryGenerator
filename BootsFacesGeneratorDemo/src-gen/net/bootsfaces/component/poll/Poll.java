@@ -21,9 +21,10 @@ package net.bootsfaces.component.poll;
 
 import javax.faces.component.*;
 
+
 /** This class holds the attributes of &lt;b:poll /&gt;. */
 @FacesComponent("net.bootsfaces.component.poll.Poll")
-public class Poll extends HtmlCommandButton {
+public class Poll extends HtmlCommandButton  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.poll.Poll";
 	
@@ -32,6 +33,8 @@ public class Poll extends HtmlCommandButton {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.poll.Poll";
 	
 	public Poll() {
+		
+		
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

@@ -20,10 +20,12 @@
 package net.bootsfaces.component.dropMenu;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:dropMenu /&gt;. */
 @FacesComponent("net.bootsfaces.component.dropMenu.DropMenu")
-public class DropMenu extends UIComponentBase {
+public class DropMenu extends UIComponentBase  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.dropMenu.DropMenu";
 	
@@ -32,6 +34,9 @@ public class DropMenu extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.dropMenu.DropMenu";
 	
 	public DropMenu() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

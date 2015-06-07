@@ -20,10 +20,12 @@
 package net.bootsfaces.component.navbarLinks;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:navbarLinks /&gt;. */
 @FacesComponent("net.bootsfaces.component.navbarLinks.NavbarLinks")
-public class NavbarLinks extends UIOutput {
+public class NavbarLinks extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.navbarLinks.NavbarLinks";
 	
@@ -32,6 +34,9 @@ public class NavbarLinks extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.navbarLinks.NavbarLinks";
 	
 	public NavbarLinks() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

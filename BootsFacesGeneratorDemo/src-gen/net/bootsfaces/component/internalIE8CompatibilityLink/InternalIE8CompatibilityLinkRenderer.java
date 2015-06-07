@@ -35,23 +35,30 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.internalIE8CompatibilityLink.InternalIE8CompatibilityLink")
 public class InternalIE8CompatibilityLinkRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:internalIE8CompatibilityLink.
+	 * @param context the FacesContext.
+	 * @param component the current b:internalIE8CompatibilityLink.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		InternalIE8CompatibilityLink internalIE8CompatibilityLink = (InternalIE8CompatibilityLink) component;
-		Map<String, Object> attrs = internalIE8CompatibilityLink.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = internalIE8CompatibilityLink.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("internalIE8CompatibilityLink", internalIE8CompatibilityLink);
-		Tooltip.generateTooltip(context, attrs, rw);
 		
-	    rw.writeText("Dummy content of b:InternalIE8CompatibilityLink", null);
-		rw.endElement("InternalIE8CompatibilityLink");
+		rw.writeText("Dummy content of b:internalIE8CompatibilityLink", null);
+		rw.endElement("internalIE8CompatibilityLink");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

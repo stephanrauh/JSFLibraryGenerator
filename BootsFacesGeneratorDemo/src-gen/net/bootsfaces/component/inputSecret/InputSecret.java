@@ -20,10 +20,12 @@
 package net.bootsfaces.component.inputSecret;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:inputSecret /&gt;. */
 @FacesComponent("net.bootsfaces.component.inputSecret.InputSecret")
-public class InputSecret extends net.bootsfaces.component.InputText {
+public class InputSecret extends net.bootsfaces.component.InputText  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.inputSecret.InputSecret";
 	
@@ -32,6 +34,9 @@ public class InputSecret extends net.bootsfaces.component.InputText {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.inputSecret.InputSecret";
 	
 	public InputSecret() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

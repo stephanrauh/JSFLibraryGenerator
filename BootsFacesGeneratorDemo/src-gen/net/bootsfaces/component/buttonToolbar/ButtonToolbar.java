@@ -20,10 +20,12 @@
 package net.bootsfaces.component.buttonToolbar;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:buttonToolbar /&gt;. */
 @FacesComponent("net.bootsfaces.component.buttonToolbar.ButtonToolbar")
-public class ButtonToolbar extends net.bootsfaces.component.GenContainerDiv {
+public class ButtonToolbar extends net.bootsfaces.component.GenContainerDiv  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.buttonToolbar.ButtonToolbar";
 	
@@ -32,6 +34,9 @@ public class ButtonToolbar extends net.bootsfaces.component.GenContainerDiv {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.buttonToolbar.ButtonToolbar";
 	
 	public ButtonToolbar() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

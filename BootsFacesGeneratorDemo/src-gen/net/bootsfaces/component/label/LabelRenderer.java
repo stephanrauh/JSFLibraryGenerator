@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.label.Label")
 public class LabelRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:label.
+	 * @param context the FacesContext.
+	 * @param component the current b:label.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Label label = (Label) component;
-		Map<String, Object> attrs = label.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = label.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("label", label);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, label, rw);
 		
 	    rw.writeAttribute("binding", label.getBinding(), "binding");
 	    rw.writeAttribute("id", label.getId(), "id");
@@ -61,7 +65,11 @@ public class LabelRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", label.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", label.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", label.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:Label", null);
-		rw.endElement("Label");
+		rw.writeText("Dummy content of b:label", null);
+		rw.endElement("label");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

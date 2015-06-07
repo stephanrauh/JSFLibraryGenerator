@@ -20,10 +20,12 @@
 package net.bootsfaces.component.slider;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:slider /&gt;. */
 @FacesComponent("net.bootsfaces.component.slider.Slider")
-public class Slider extends HtmlInputText {
+public class Slider extends HtmlInputText  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.slider.Slider";
 	
@@ -32,6 +34,9 @@ public class Slider extends HtmlInputText {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.slider.Slider";
 	
 	public Slider() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

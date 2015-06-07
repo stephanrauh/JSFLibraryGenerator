@@ -20,10 +20,12 @@
 package net.bootsfaces.component.messages;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:messages /&gt;. */
 @FacesComponent("net.bootsfaces.component.messages.Messages")
-public class Messages extends UIMessages {
+public class Messages extends UIMessages  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.messages.Messages";
 	
@@ -32,6 +34,9 @@ public class Messages extends UIMessages {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.messages.Messages";
 	
 	public Messages() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

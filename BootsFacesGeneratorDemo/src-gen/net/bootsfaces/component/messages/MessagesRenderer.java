@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.messages.Messages")
 public class MessagesRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:messages.
+	 * @param context the FacesContext.
+	 * @param component the current b:messages.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Messages messages = (Messages) component;
-		Map<String, Object> attrs = messages.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = messages.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("messages", messages);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, messages, rw);
 		
 	    rw.writeAttribute("dir", messages.getDir(), "dir");
 	    rw.writeAttribute("errorClass", messages.getErrorClass(), "errorClass");
@@ -74,7 +78,11 @@ public class MessagesRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", messages.getTooltipPosition(), "tooltipPosition");
 	    rw.writeAttribute("warnClass", messages.getWarnClass(), "warnClass");
 	    rw.writeAttribute("warnStyle", messages.getWarnStyle(), "warnStyle");
-	    rw.writeText("Dummy content of b:Messages", null);
-		rw.endElement("Messages");
+		rw.writeText("Dummy content of b:messages", null);
+		rw.endElement("messages");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

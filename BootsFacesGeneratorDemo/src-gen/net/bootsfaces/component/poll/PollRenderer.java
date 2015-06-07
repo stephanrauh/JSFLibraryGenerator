@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:poll /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.poll.Poll")
 public class PollRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:poll. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:poll.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    Poll poll = (Poll) component;
@@ -42,28 +50,31 @@ public class PollRenderer extends CoreRenderer {
 	    decodeBehaviors(context, poll);
 	
 	    String clientId = poll.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(poll);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	poll.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:poll.
+	 * @param context the FacesContext.
+	 * @param component the current b:poll.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Poll poll = (Poll) component;
-		Map<String, Object> attrs = poll.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = poll.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("poll", poll);
-		Tooltip.generateTooltip(context, attrs, rw);
 		
 	    rw.writeAttribute("action", poll.getAction(), "action");
 	    rw.writeAttribute("actionListener", poll.getActionListener(), "actionListener");
@@ -73,7 +84,11 @@ public class PollRenderer extends CoreRenderer {
 	    rw.writeAttribute("once", poll.getOnce(), "once");
 	    rw.writeAttribute("rendered", String.valueOf(poll.isRendered()), "rendered");
 	    rw.writeAttribute("update", poll.getUpdate(), "update");
-	    rw.writeText("Dummy content of b:Poll", null);
-		rw.endElement("Poll");
+		rw.writeText("Dummy content of b:poll", null);
+		rw.endElement("poll");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

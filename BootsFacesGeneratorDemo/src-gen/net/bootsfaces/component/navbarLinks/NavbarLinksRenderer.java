@@ -35,21 +35,25 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.navbarLinks.NavbarLinks")
 public class NavbarLinksRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:navbarLinks.
+	 * @param context the FacesContext.
+	 * @param component the current b:navbarLinks.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		NavbarLinks navbarLinks = (NavbarLinks) component;
-		Map<String, Object> attrs = navbarLinks.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = navbarLinks.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("navbarLinks", navbarLinks);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, navbarLinks, rw);
 		
 	    rw.writeAttribute("binding", navbarLinks.getBinding(), "binding");
 	    rw.writeAttribute("id", navbarLinks.getId(), "id");
@@ -60,7 +64,11 @@ public class NavbarLinksRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", navbarLinks.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", navbarLinks.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", navbarLinks.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:NavbarLinks", null);
-		rw.endElement("NavbarLinks");
+		rw.writeText("Dummy content of b:navbarLinks", null);
+		rw.endElement("navbarLinks");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

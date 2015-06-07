@@ -21,9 +21,10 @@ package net.bootsfaces.component.badge;
 
 import javax.faces.component.*;
 
+
 /** This class holds the attributes of &lt;b:badge /&gt;. */
 @FacesComponent("net.bootsfaces.component.badge.Badge")
-public class Badge extends UIComponentBase {
+public class Badge extends UIComponentBase  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.badge.Badge";
 	
@@ -32,6 +33,8 @@ public class Badge extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.badge.Badge";
 	
 	public Badge() {
+		
+		
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

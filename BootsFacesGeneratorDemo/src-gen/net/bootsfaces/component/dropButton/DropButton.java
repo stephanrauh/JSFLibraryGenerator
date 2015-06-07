@@ -20,10 +20,12 @@
 package net.bootsfaces.component.dropButton;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:dropButton /&gt;. */
 @FacesComponent("net.bootsfaces.component.dropButton.DropButton")
-public class DropButton extends UIComponentBase {
+public class DropButton extends UIComponentBase  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.dropButton.DropButton";
 	
@@ -32,6 +34,9 @@ public class DropButton extends UIComponentBase {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.dropButton.DropButton";
 	
 	public DropButton() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

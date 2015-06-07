@@ -20,10 +20,12 @@
 package net.bootsfaces.component.row;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:row /&gt;. */
 @FacesComponent("net.bootsfaces.component.row.Row")
-public class Row extends UIOutput {
+public class Row extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.row.Row";
 	
@@ -32,6 +34,9 @@ public class Row extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.row.Row";
 	
 	public Row() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

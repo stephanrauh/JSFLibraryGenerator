@@ -20,10 +20,12 @@
 package net.bootsfaces.component.panel;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:panel /&gt;. */
 @FacesComponent("net.bootsfaces.component.panel.Panel")
-public class Panel extends UIInput {
+public class Panel extends UIInput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.panel.Panel";
 	
@@ -32,6 +34,9 @@ public class Panel extends UIInput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.panel.Panel";
 	
 	public Panel() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	

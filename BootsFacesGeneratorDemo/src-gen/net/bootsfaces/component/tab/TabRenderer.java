@@ -34,6 +34,14 @@ import net.bootsfaces.render.Tooltip;
 /** This class generates the HTML code of &lt;b:tab /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.tab.Tab")
 public class TabRenderer extends CoreRenderer {
+	/**
+	 * This methods receives and processes input made by the user. More specifically, it ckecks whether the
+	 * user has interacted with the current b:tab. The default implementation simply stores
+	 * the input value in the list of submitted values. If the validation checks are passed,
+	 * the values in the <code>submittedValues</code> list are store in the backend bean.
+	 * @param context the FacesContext.
+	 * @param component the current b:tab.
+	 */  
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
 	    Tab tab = (Tab) component;
@@ -42,28 +50,32 @@ public class TabRenderer extends CoreRenderer {
 	    decodeBehaviors(context, tab);
 	
 	    String clientId = tab.getClientId(context);
-	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(tab);
+	    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
 	
 	    if (submittedValue != null) {
 	    	tab.setSubmittedValue(submittedValue);
 	    }
 	}
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:tab.
+	 * @param context the FacesContext.
+	 * @param component the current b:tab.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		Tab tab = (Tab) component;
-		Map<String, Object> attrs = tab.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = tab.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("tab", tab);
-		Tooltip.generateTooltip(context, attrs, rw);
+		Tooltip.generateTooltip(context, tab, rw);
 		
 	    rw.writeAttribute("id", tab.getId(), "id");
 	    rw.writeAttribute("styleClass", tab.getStyleClass(), "styleClass");
@@ -73,7 +85,11 @@ public class TabRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipDelayHide", tab.getTooltipDelayHide(), "tooltipDelayHide");
 	    rw.writeAttribute("tooltipDelayShow", tab.getTooltipDelayShow(), "tooltipDelayShow");
 	    rw.writeAttribute("tooltipPosition", tab.getTooltipPosition(), "tooltipPosition");
-	    rw.writeText("Dummy content of b:Tab", null);
-		rw.endElement("Tab");
+		rw.writeText("Dummy content of b:tab", null);
+		rw.endElement("tab");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

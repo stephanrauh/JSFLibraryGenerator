@@ -35,23 +35,30 @@ import net.bootsfaces.render.Tooltip;
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.internalFALink.InternalFALink")
 public class InternalFALinkRenderer extends CoreRenderer {
 	
-	
-	
+	/**
+	 * This methods generates the HTML code of the current b:internalFALink.
+	 * @param context the FacesContext.
+	 * @param component the current b:internalFALink.
+	 * @throws IOException thrown if something goes wrong when writing the HTML code.
+	 */  
 	@Override
-	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 	    if (!component.isRendered()) {
 	        return;
 	    }
 		InternalFALink internalFALink = (InternalFALink) component;
-		Map<String, Object> attrs = internalFALink.getAttributes();
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = internalFALink.getClientId();
-	
+		
+		// put custom code here
 		// Simple demo widget that simply renders every attribute value
 		rw.startElement("internalFALink", internalFALink);
-		Tooltip.generateTooltip(context, attrs, rw);
 		
-	    rw.writeText("Dummy content of b:InternalFALink", null);
-		rw.endElement("InternalFALink");
+		rw.writeText("Dummy content of b:internalFALink", null);
+		rw.endElement("internalFALink");
+		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		
 	}
+	
+	
 }

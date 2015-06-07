@@ -20,10 +20,12 @@
 package net.bootsfaces.component.well;
 
 import javax.faces.component.*;
+import net.bootsfaces.render.Tooltip;
+
 
 /** This class holds the attributes of &lt;b:well /&gt;. */
 @FacesComponent("net.bootsfaces.component.well.Well")
-public class Well extends UIOutput {
+public class Well extends UIOutput  implements net.bootsfaces.render.IHasTooltip  {
 	
 	public static final String COMPONENT_TYPE = "net.bootsfaces.component.well.Well";
 	
@@ -32,6 +34,9 @@ public class Well extends UIOutput {
 	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.well.Well";
 	
 	public Well() {
+		
+		
+	Tooltip.addResourceFile();
 		setRendererType(DEFAULT_RENDERER);
 	}
 	
