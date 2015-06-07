@@ -5,12 +5,10 @@ package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 import de.beyondjava.xtext.jsf.componentLanguage.Component
+import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import java.util.List
-import java.util.jar.Attributes
-import java.util.ArrayList
 
 /**
  * Generates code from your model files on save.
@@ -30,10 +28,14 @@ class ComponentGenerator implements IGenerator {
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 		
 		import javax.faces.component.*;
+		«IF e.hasTooltip!=null»
+			import net.bootsfaces.render.Tooltip;
+		«ENDIF»
+		
 		
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
 		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
-		public class «e.name.toFirstUpper» extends «parentClass(e)» {
+		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
 			
 			«e.generateMetadata»
 			
@@ -123,6 +125,11 @@ class ComponentGenerator implements IGenerator {
 		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 		
 		public «e.name.toFirstUpper»() {
+			
+			
+		«IF e.hasTooltip!=null»
+			Tooltip.addResourceFile();
+		«ENDIF»
 			setRendererType(DEFAULT_RENDERER);
 		}
 		

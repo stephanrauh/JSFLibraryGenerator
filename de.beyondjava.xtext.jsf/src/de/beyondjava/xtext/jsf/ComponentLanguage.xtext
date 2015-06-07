@@ -12,6 +12,7 @@ Component:
 	(processesInput='processes_input')?
 	('extends' extends=QualifiedName)?
 	(hasChildren='has_children')?
+	(hasTooltip='has_tooltip')?
 	('description' description=STRING)?
 	'{'
 	   (attributes+=Attribute)*

@@ -208,6 +208,9 @@ public class TaglibImporter {
 		if (hasChildren.containsKey(tagname)) {
 			result += "\r\n       has_children";
 		}
+		if (hasTooltip) {
+			result += "\r\n       has_tooltip";
+		}
 		result += "\r\n";
 		result += (" {");
 		if (!firstAttribute)

@@ -234,15 +234,30 @@ ruleComponent returns [EObject current=null]
 	    }
 
 )
-)?(	otherlv_10='description' 
+)?(
+(
+		lv_hasTooltip_10_0=	'has_tooltip' 
     {
-    	newLeafNode(otherlv_10, grammarAccess.getComponentAccess().getDescriptionKeyword_7_0());
+        newLeafNode(lv_hasTooltip_10_0, grammarAccess.getComponentAccess().getHasTooltipHas_tooltipKeyword_7_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getComponentRule());
+	        }
+       		setWithLastConsumed($current, "hasTooltip", lv_hasTooltip_10_0, "has_tooltip");
+	    }
+
+)
+)?(	otherlv_11='description' 
+    {
+    	newLeafNode(otherlv_11, grammarAccess.getComponentAccess().getDescriptionKeyword_8_0());
     }
 (
 (
-		lv_description_11_0=RULE_STRING
+		lv_description_12_0=RULE_STRING
 		{
-			newLeafNode(lv_description_11_0, grammarAccess.getComponentAccess().getDescriptionSTRINGTerminalRuleCall_7_1_0()); 
+			newLeafNode(lv_description_12_0, grammarAccess.getComponentAccess().getDescriptionSTRINGTerminalRuleCall_8_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -251,36 +266,36 @@ ruleComponent returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"description",
-        		lv_description_11_0, 
+        		lv_description_12_0, 
         		"STRING");
 	    }
 
 )
-))?	otherlv_12='{' 
+))?	otherlv_13='{' 
     {
-    	newLeafNode(otherlv_12, grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_8());
+    	newLeafNode(otherlv_13, grammarAccess.getComponentAccess().getLeftCurlyBracketKeyword_9());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getComponentAccess().getAttributesAttributeParserRuleCall_9_0()); 
+	        newCompositeNode(grammarAccess.getComponentAccess().getAttributesAttributeParserRuleCall_10_0()); 
 	    }
-		lv_attributes_13_0=ruleAttribute		{
+		lv_attributes_14_0=ruleAttribute		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getComponentRule());
 	        }
        		add(
        			$current, 
        			"attributes",
-        		lv_attributes_13_0, 
+        		lv_attributes_14_0, 
         		"Attribute");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_14='}' 
+)*	otherlv_15='}' 
     {
-    	newLeafNode(otherlv_14, grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_10());
+    	newLeafNode(otherlv_15, grammarAccess.getComponentAccess().getRightCurlyBracketKeyword_11());
     }
 )
 ;
