@@ -4,10 +4,8 @@
 package de.beyondjava.xtext.jsf.generator
 
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
-import de.beyondjava.xtext.jsf.componentLanguage.Component
-import de.beyondjava.xtext.jsf.componentLanguage.Attribute
+import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
@@ -21,6 +19,7 @@ class ComponentLanguageGenerator implements IGenerator {
 		new ComponentGenerator().doGenerate(resource, fsa);
 		new RendererGenerator().doGenerate(resource, fsa);
 		new DocumentationGenerator().doGenerate(resource, fsa);
+		new AttributesDocumentationGenerator().doGenerate(resource, fsa);
 	}
 
 }
