@@ -194,6 +194,9 @@ public class TaglibImporter {
 				if (defaultValues.containsKey(name)) {
 					defaultValue = " default \"" + defaultValues.get(name) + "\"";
 				}
+				if (name.equals("tooltipDelay") || name.equals("tooltipDelayHide")|| name.equals("tooltipDelayShow")) {
+					type="Integer";
+				}
 				attributeDSL.add("    " + fixedLength(name, 20)
 						+ fixedLength(type + defaultValue + required + inherited, 50) + description);
 			}

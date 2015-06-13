@@ -148,7 +148,7 @@ class RendererGenerator implements IGenerator {
 				rw.writeText("Dummy content of b:«e.widget»", null);
 				«IF e.hasChildren==null»
 				    rw.endElement("«e.widget»");
-				    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+				    Tooltip.activateTooltips(context, «e.widget».getAttributes(), «e.widget»);
 				«ENDIF»
 				
 			}
