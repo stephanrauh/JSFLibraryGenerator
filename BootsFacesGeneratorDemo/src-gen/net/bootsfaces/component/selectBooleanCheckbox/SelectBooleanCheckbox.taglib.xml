@@ -181,7 +181,7 @@
 	  	<type>Boolean</type>
 	  </attribute>
 	  <attribute>
-	  	<description><![CDATA[Allows you to suprress automatic rendering of labels. Used by AngularFaces, too.]]></description>
+	  	<description><![CDATA[Allows you to suppress automatic rendering of labels. Used by AngularFaces, too.]]></description>
 	  	<name>renderLabel</name>
 	  	<required>false</required>
 	  	<type>java.lang.String</type>

@@ -571,7 +571,7 @@ tooltipPosition
 	
 
 	/**
-	 * Allows you to suprress automatic rendering of labels. Used by AngularFaces, too. <br />
+	 * Allows you to suppress automatic rendering of labels. Used by AngularFaces, too. <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getRenderLabel() {
@@ -580,7 +580,7 @@ tooltipPosition
 	}
 	
 	/**
-	 * Allows you to suprress automatic rendering of labels. Used by AngularFaces, too. <br />
+	 * Allows you to suppress automatic rendering of labels. Used by AngularFaces, too. <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setRenderLabel(String _renderLabel) {
