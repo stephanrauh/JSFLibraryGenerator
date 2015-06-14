@@ -504,9 +504,9 @@ rule__Component__Group__7__Impl
     }
 :
 (
-{ before(grammarAccess.getComponentAccess().getHasTooltipAssignment_7()); }
-(rule__Component__HasTooltipAssignment_7)?
-{ after(grammarAccess.getComponentAccess().getHasTooltipAssignment_7()); }
+{ before(grammarAccess.getComponentAccess().getHas_tooltipAssignment_7()); }
+(rule__Component__Has_tooltipAssignment_7)?
+{ after(grammarAccess.getComponentAccess().getHas_tooltipAssignment_7()); }
 )
 
 ;
@@ -1404,22 +1404,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Component__HasTooltipAssignment_7
+rule__Component__Has_tooltipAssignment_7
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getComponentAccess().getHasTooltipHas_tooltipKeyword_7_0()); }
+{ before(grammarAccess.getComponentAccess().getHas_tooltipHas_tooltipKeyword_7_0()); }
 (
-{ before(grammarAccess.getComponentAccess().getHasTooltipHas_tooltipKeyword_7_0()); }
+{ before(grammarAccess.getComponentAccess().getHas_tooltipHas_tooltipKeyword_7_0()); }
 
 	'has_tooltip' 
 
-{ after(grammarAccess.getComponentAccess().getHasTooltipHas_tooltipKeyword_7_0()); }
+{ after(grammarAccess.getComponentAccess().getHas_tooltipHas_tooltipKeyword_7_0()); }
 )
 
-{ after(grammarAccess.getComponentAccess().getHasTooltipHas_tooltipKeyword_7_0()); }
+{ after(grammarAccess.getComponentAccess().getHas_tooltipHas_tooltipKeyword_7_0()); }
 )
 
 ;

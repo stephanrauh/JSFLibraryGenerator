@@ -28,14 +28,14 @@ class ComponentGenerator implements IGenerator {
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 		
 		import javax.faces.component.*;
-		«IF e.hasTooltip!=null»
+		«IF e.has_tooltip!=null»
 			import net.bootsfaces.render.Tooltip;
 		«ENDIF»
 		
 		
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
 		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
-		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
+		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.has_tooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
 			
 			«e.generateMetadata»
 			
@@ -127,7 +127,7 @@ class ComponentGenerator implements IGenerator {
 		public «e.name.toFirstUpper»() {
 			
 			
-		«IF e.hasTooltip!=null»
+		«IF e.has_tooltip!=null»
 			Tooltip.addResourceFile();
 		«ENDIF»
 			setRendererType(DEFAULT_RENDERER);

@@ -1,0 +1,38 @@
+grammar de.beyondjava.xtext.jsf.ComponentLanguage with org.eclipse.xtext.common.Terminals
+
+generate componentLanguage "http://www.beyondjava.de/xtext/jsf/ComponentLanguage"
+
+Domainmodel:
+	(elements+=Component)*;
+
+Component:
+	'widget' name=ID
+	('implemented_by ' implementedBy+=QualifiedName)?
+	('rendered_by ' renderedBy+=QualifiedName)?
+	(processesInput='processes_input')?
+	('extends' extends=QualifiedName)?
+	(hasChildren='has_children')?
+	(has_tooltip='has_tooltip')?
+	('description' description=STRING)?
+	'{'
+	   (attributes+=Attribute)*
+	'}';
+
+Attribute:
+	name=ID (type=Attributetype)? ('default' defaultValue=STRING)? (required='mandatory')? (inherited='inherited')? (desc=STRING)?;
+
+QualifiedName:
+	ID ('.' ID)*;
+
+Attributetype:
+	'String' 
+	| 'Boolean' 
+	| 'Integer' 
+	| 'javax.el.MethodExpression'
+	| 'javax.faces.event.ActionListener'
+	| 'javax.faces.component.UIComponent'
+	| 'javax.faces.event.ValueChangeListener'
+	| 'java.faces.convert.Converter'
+	| 'javax.faces.validator.Validator';
+  
+ 
