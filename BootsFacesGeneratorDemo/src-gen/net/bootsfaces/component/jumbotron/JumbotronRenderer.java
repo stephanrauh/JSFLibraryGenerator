@@ -89,7 +89,7 @@ public class JumbotronRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = jumbotron.getClientId();
 		rw.endElement("jumbotron");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

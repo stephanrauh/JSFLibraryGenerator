@@ -94,7 +94,7 @@ public class DropButtonRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = dropButton.getClientId();
 		rw.endElement("dropButton");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

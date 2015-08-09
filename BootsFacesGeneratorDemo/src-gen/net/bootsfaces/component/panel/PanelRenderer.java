@@ -122,7 +122,7 @@ public class PanelRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = panel.getClientId();
 		rw.endElement("panel");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

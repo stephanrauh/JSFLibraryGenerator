@@ -61,7 +61,6 @@ public class BadgeRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", badge.getValue(), "value");
 		rw.writeText("Dummy content of b:badge", null);
 		rw.endElement("badge");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
 		
 	}
 	

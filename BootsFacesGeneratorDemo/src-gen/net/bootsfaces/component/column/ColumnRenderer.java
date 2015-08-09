@@ -100,7 +100,7 @@ public class ColumnRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = column.getClientId();
 		rw.endElement("column");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

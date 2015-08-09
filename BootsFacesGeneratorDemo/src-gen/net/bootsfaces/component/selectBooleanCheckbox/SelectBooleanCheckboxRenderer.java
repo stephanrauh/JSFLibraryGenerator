@@ -108,7 +108,7 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 	    rw.writeAttribute("onmouseup", selectBooleanCheckbox.getOnmouseup(), "onmouseup");
 	    rw.writeAttribute("onselect", selectBooleanCheckbox.getOnselect(), "onselect");
 	    rw.writeAttribute("readonly", String.valueOf(selectBooleanCheckbox.isReadonly()), "readonly");
-	    rw.writeAttribute("renderLabel", selectBooleanCheckbox.getRenderLabel(), "renderLabel");
+	    rw.writeAttribute("renderLabel", String.valueOf(selectBooleanCheckbox.isRenderLabel()), "renderLabel");
 	    rw.writeAttribute("rendered", String.valueOf(selectBooleanCheckbox.isRendered()), "rendered");
 	    rw.writeAttribute("span", selectBooleanCheckbox.getSpan(), "span");
 	    rw.writeAttribute("style", selectBooleanCheckbox.getStyle(), "style");
@@ -124,7 +124,7 @@ public class SelectBooleanCheckboxRenderer extends CoreRenderer {
 	    rw.writeAttribute("valueChangeListener", selectBooleanCheckbox.getValueChangeListener(), "valueChangeListener");
 		rw.writeText("Dummy content of b:selectBooleanCheckbox", null);
 		rw.endElement("selectBooleanCheckbox");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, selectBooleanCheckbox);
 		
 	}
 	

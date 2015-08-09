@@ -93,7 +93,7 @@ public class AlertRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = alert.getClientId();
 		rw.endElement("alert");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

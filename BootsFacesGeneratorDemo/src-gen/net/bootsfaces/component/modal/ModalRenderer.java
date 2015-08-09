@@ -89,7 +89,6 @@ public class ModalRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = modal.getClientId();
 		rw.endElement("modal");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
 	
 	}
 	

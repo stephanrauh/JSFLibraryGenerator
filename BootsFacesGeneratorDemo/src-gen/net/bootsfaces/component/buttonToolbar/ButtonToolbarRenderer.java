@@ -90,7 +90,7 @@ public class ButtonToolbarRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = buttonToolbar.getClientId();
 		rw.endElement("buttonToolbar");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

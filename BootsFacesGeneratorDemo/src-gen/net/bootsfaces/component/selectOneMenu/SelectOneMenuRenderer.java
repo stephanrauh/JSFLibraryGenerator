@@ -81,7 +81,7 @@ public class SelectOneMenuRenderer extends CoreRenderer {
 	    rw.writeAttribute("onselect", selectOneMenu.getOnselect(), "onselect");
 	    rw.writeAttribute("placeholder", selectOneMenu.getPlaceholder(), "placeholder");
 	    rw.writeAttribute("readonly", String.valueOf(selectOneMenu.isReadonly()), "readonly");
-	    rw.writeAttribute("renderLabel", selectOneMenu.getRenderLabel(), "renderLabel");
+	    rw.writeAttribute("renderLabel", String.valueOf(selectOneMenu.isRenderLabel()), "renderLabel");
 	    rw.writeAttribute("rendered", String.valueOf(selectOneMenu.isRendered()), "rendered");
 	    rw.writeAttribute("required", String.valueOf(selectOneMenu.isRequired()), "required");
 	    rw.writeAttribute("requiredMessage", selectOneMenu.getRequiredMessage(), "requiredMessage");
@@ -99,7 +99,7 @@ public class SelectOneMenuRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", selectOneMenu.getValue(), "value");
 		rw.writeText("Dummy content of b:selectOneMenu", null);
 		rw.endElement("selectOneMenu");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, selectOneMenu);
 		
 	}
 	

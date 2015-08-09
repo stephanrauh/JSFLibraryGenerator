@@ -56,7 +56,6 @@ public class FetchBeanInfosRenderer extends CoreRenderer {
 		
 		rw.writeText("Dummy content of b:fetchBeanInfos", null);
 		rw.endElement("fetchBeanInfos");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
 		
 	}
 	

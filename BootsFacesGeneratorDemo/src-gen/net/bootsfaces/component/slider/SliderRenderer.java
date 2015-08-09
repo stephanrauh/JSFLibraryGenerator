@@ -96,7 +96,7 @@ public class SliderRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", slider.getValue(), "value");
 		rw.writeText("Dummy content of b:slider", null);
 		rw.endElement("slider");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, slider);
 		
 	}
 	

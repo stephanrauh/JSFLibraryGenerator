@@ -16,7 +16,7 @@
 	  	<description><![CDATA[Optional attribute to define which tab is active initially.]]></description>
 	  	<name>activeIndex</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[Style class of the div surrounding the panes.]]></description>
@@ -37,6 +37,12 @@
 	  	<type>java.lang.String</type>
 	  </attribute>
 	  <attribute>
+	  	<description><![CDATA[The role can be used to provide information to screenreaders.]]></description>
+	  	<name>role</name>
+	  	<required>false</required>
+	  	<type>java.lang.String</type>
+	  </attribute>
+	  <attribute>
 	  	<description><![CDATA[Style class of the div surrounding this element.]]></description>
 	  	<name>styleClass</name>
 	  	<required>false</required>
@@ -52,19 +58,19 @@
 	  	<description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelay</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelayHide</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelayShow</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>

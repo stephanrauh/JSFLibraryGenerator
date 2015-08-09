@@ -71,7 +71,7 @@ public class IconAwesomeRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", iconAwesome.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:iconAwesome", null);
 		rw.endElement("iconAwesome");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, iconAwesome);
 		
 	}
 	

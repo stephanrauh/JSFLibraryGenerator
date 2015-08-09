@@ -67,7 +67,7 @@ public class LabelRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", label.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:label", null);
 		rw.endElement("label");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, label);
 		
 	}
 	

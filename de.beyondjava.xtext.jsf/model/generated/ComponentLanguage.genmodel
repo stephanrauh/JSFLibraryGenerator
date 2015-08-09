@@ -17,7 +17,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/processesInput"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/extends"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/hasChildren"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/has_tooltip"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/hasTooltip"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/description"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentLanguage.ecore#//Component/attributes"/>
     </genClasses>

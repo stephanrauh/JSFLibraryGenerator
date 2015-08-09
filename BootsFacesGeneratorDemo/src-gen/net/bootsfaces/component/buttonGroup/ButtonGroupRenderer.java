@@ -92,7 +92,7 @@ public class ButtonGroupRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = buttonGroup.getClientId();
 		rw.endElement("buttonGroup");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

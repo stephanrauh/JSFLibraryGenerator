@@ -28,14 +28,14 @@ class ComponentGenerator implements IGenerator {
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 		
 		import javax.faces.component.*;
-		«IF e.has_tooltip!=null»
+		«IF e.hasTooltip!=null»
 			import net.bootsfaces.render.Tooltip;
 		«ENDIF»
 		
 		
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
 		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
-		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.has_tooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
+		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
 			
 			«e.generateMetadata»
 			
@@ -63,7 +63,7 @@ class ComponentGenerator implements IGenerator {
 	def generateAccessors(Attribute e) '''
 	
 		/**
-		 * «e.desc» <br />
+		 * «e.desc» <P>
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
@@ -72,7 +72,7 @@ class ComponentGenerator implements IGenerator {
 		}
 		
 		/**
-		 * «e.desc» <br />
+		 * «e.desc» <P>
 		 * Usually this method is called internally by the JSF engine.
 		 */
 		public void set«e.name.toFirstUpper»(«e.attributeType» _«e.name») {
@@ -127,7 +127,7 @@ class ComponentGenerator implements IGenerator {
 		public «e.name.toFirstUpper»() {
 			
 			
-		«IF e.has_tooltip!=null»
+		«IF e.hasTooltip!=null»
 			Tooltip.addResourceFile();
 		«ENDIF»
 			setRendererType(DEFAULT_RENDERER);

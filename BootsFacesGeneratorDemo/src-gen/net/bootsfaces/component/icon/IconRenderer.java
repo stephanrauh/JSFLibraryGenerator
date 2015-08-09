@@ -71,7 +71,7 @@ public class IconRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", icon.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:icon", null);
 		rw.endElement("icon");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, icon);
 		
 	}
 	

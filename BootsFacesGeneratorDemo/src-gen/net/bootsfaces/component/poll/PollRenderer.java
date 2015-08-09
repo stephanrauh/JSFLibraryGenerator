@@ -86,7 +86,6 @@ public class PollRenderer extends CoreRenderer {
 	    rw.writeAttribute("update", poll.getUpdate(), "update");
 		rw.writeText("Dummy content of b:poll", null);
 		rw.endElement("poll");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
 		
 	}
 	

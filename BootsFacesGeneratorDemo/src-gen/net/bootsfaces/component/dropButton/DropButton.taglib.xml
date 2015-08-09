@@ -58,19 +58,19 @@
 	  	<description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelay</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelayHide</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelayShow</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>

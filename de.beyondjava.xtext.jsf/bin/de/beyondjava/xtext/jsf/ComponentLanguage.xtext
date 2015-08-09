@@ -12,7 +12,7 @@ Component:
 	(processesInput='processes_input')?
 	('extends' extends=QualifiedName)?
 	(hasChildren='has_children')?
-	(has_tooltip='has_tooltip')?
+	(hasTooltip='has_tooltip')?
 	('description' description=STRING)?
 	'{'
 	   (attributes+=Attribute)*

@@ -92,7 +92,7 @@ public class DropMenuRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = dropMenu.getClientId();
 		rw.endElement("dropMenu");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

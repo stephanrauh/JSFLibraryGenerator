@@ -138,7 +138,7 @@ class RendererGenerator implements IGenerator {
 				// put custom code here
 				// Simple demo widget that simply renders every attribute value
 				rw.startElement("«e.widget»", «e.widget»);
-				«IF e.has_tooltip!=null» 
+				«IF e.hasTooltip!=null» 
 					Tooltip.generateTooltip(context, «e.widget», rw);
 				«ENDIF»
 				
@@ -148,7 +148,7 @@ class RendererGenerator implements IGenerator {
 				rw.writeText("Dummy content of b:«e.widget»", null);
 				«IF e.hasChildren==null»
 				    rw.endElement("«e.widget»");
-				    «IF e.has_tooltip!=null»
+				    «IF e.hasTooltip!=null»
 				    Tooltip.activateTooltips(context, «e.widget»);
 				    «ENDIF»
 				«ENDIF»
@@ -179,7 +179,7 @@ class RendererGenerator implements IGenerator {
 				ResponseWriter rw = context.getResponseWriter();
 				String clientId = «e.widget».getClientId();
 				rw.endElement("«e.widget»");
-				«IF e.has_tooltip != null»
+				«IF e.hasTooltip != null»
 					Tooltip.activateTooltips(fc, c);
 			    «ENDIF»
 

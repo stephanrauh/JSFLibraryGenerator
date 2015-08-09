@@ -75,7 +75,7 @@ public class DatepickerRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", datepicker.getValue(), "value");
 		rw.writeText("Dummy content of b:datepicker", null);
 		rw.endElement("datepicker");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, datepicker);
 		
 	}
 	

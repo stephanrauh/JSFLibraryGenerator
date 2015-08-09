@@ -66,7 +66,7 @@ public class NavbarLinksRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", navbarLinks.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:navbarLinks", null);
 		rw.endElement("navbarLinks");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, navbarLinks);
 		
 	}
 	

@@ -46,7 +46,10 @@ public class Tab extends UIOutput  implements net.bootsfaces.render.IHasTooltip 
 	
 	
     protected enum PropertyKeys {
+contentStyle,
 id,
+onclick,
+style,
 styleClass,
 title,
 tooltip,
@@ -71,6 +74,24 @@ tooltipPosition
 	
 
 	/**
+	 * Inline CSS of the div surrounding the tab pane. <br />
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getContentStyle() {
+		String value = (String)getStateHelper().eval(PropertyKeys.contentStyle);
+		return  value;
+	}
+	
+	/**
+	 * Inline CSS of the div surrounding the tab pane. <br />
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setContentStyle(String _contentStyle) {
+	    getStateHelper().put(PropertyKeys.contentStyle, _contentStyle);
+    }
+	
+
+	/**
 	 * Unique identifier of the component in a namingContainer. <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
@@ -85,6 +106,42 @@ tooltipPosition
 	 */
 	public void setId(String _id) {
 	    getStateHelper().put(PropertyKeys.id, _id);
+    }
+	
+
+	/**
+	 * Optional Javascript function that's called when the tab is clicked. <br />
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getOnclick() {
+		String value = (String)getStateHelper().eval(PropertyKeys.onclick);
+		return  value;
+	}
+	
+	/**
+	 * Optional Javascript function that's called when the tab is clicked. <br />
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOnclick(String _onclick) {
+	    getStateHelper().put(PropertyKeys.onclick, _onclick);
+    }
+	
+
+	/**
+	 * Inline CSS of the tab. <br />
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getStyle() {
+		String value = (String)getStateHelper().eval(PropertyKeys.style);
+		return  value;
+	}
+	
+	/**
+	 * Inline CSS of the tab. <br />
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setStyle(String _style) {
+	    getStateHelper().put(PropertyKeys.style, _style);
     }
 	
 
@@ -146,16 +203,16 @@ tooltipPosition
 	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltipDelay() {
-		String value = (String)getStateHelper().eval(PropertyKeys.tooltipDelay);
-		return  value;
+	public int getTooltipDelay() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
+		return (int) value;
 	}
 	
 	/**
 	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltipDelay(String _tooltipDelay) {
+	public void setTooltipDelay(int _tooltipDelay) {
 	    getStateHelper().put(PropertyKeys.tooltipDelay, _tooltipDelay);
     }
 	
@@ -164,16 +221,16 @@ tooltipPosition
 	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltipDelayHide() {
-		String value = (String)getStateHelper().eval(PropertyKeys.tooltipDelayHide);
-		return  value;
+	public int getTooltipDelayHide() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
+		return (int) value;
 	}
 	
 	/**
 	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltipDelayHide(String _tooltipDelayHide) {
+	public void setTooltipDelayHide(int _tooltipDelayHide) {
 	    getStateHelper().put(PropertyKeys.tooltipDelayHide, _tooltipDelayHide);
     }
 	
@@ -182,16 +239,16 @@ tooltipPosition
 	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltipDelayShow() {
-		String value = (String)getStateHelper().eval(PropertyKeys.tooltipDelayShow);
-		return  value;
+	public int getTooltipDelayShow() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
+		return (int) value;
 	}
 	
 	/**
 	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltipDelayShow(String _tooltipDelayShow) {
+	public void setTooltipDelayShow(int _tooltipDelayShow) {
 	    getStateHelper().put(PropertyKeys.tooltipDelayShow, _tooltipDelayShow);
     }
 	

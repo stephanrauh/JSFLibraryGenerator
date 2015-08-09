@@ -81,6 +81,7 @@ public class TabViewRenderer extends CoreRenderer {
 	    rw.writeAttribute("contentClass", tabView.getContentClass(), "contentClass");
 	    rw.writeAttribute("contentStyle", tabView.getContentStyle(), "contentStyle");
 	    rw.writeAttribute("id", tabView.getId(), "id");
+	    rw.writeAttribute("role", tabView.getRole(), "role");
 	    rw.writeAttribute("styleClass", tabView.getStyleClass(), "styleClass");
 	    rw.writeAttribute("tooltip", tabView.getTooltip(), "tooltip");
 	    rw.writeAttribute("tooltipDelay", tabView.getTooltipDelay(), "tooltipDelay");
@@ -89,7 +90,7 @@ public class TabViewRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", tabView.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:tabView", null);
 		rw.endElement("tabView");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, tabView);
 		
 	}
 	

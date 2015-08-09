@@ -236,7 +236,7 @@ valueChangeListener
 	
 
 	/**
-	 * The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) . <br />
+	 * The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) . <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getFieldSize() {
@@ -245,7 +245,7 @@ valueChangeListener
 	}
 	
 	/**
-	 * The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) . <br />
+	 * The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) . <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setFieldSize(String _fieldSize) {
@@ -290,7 +290,7 @@ valueChangeListener
 	
 
 	/**
-	 * The Label of the field . <br />
+	 * The label of the field. <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getLabel() {
@@ -299,7 +299,7 @@ valueChangeListener
 	}
 	
 	/**
-	 * The Label of the field . <br />
+	 * The label of the field. <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setLabel(String _label) {
@@ -635,16 +635,16 @@ valueChangeListener
 	 * Allows you to suppress automatic rendering of labels. Used by AngularFaces, too. <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getRenderLabel() {
-		String value = (String)getStateHelper().eval(PropertyKeys.renderLabel);
-		return  value;
+	public boolean isRenderLabel() {
+		Boolean value = (Boolean)getStateHelper().eval(PropertyKeys.renderLabel, true);
+		return (boolean) value;
 	}
 	
 	/**
 	 * Allows you to suppress automatic rendering of labels. Used by AngularFaces, too. <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setRenderLabel(String _renderLabel) {
+	public void setRenderLabel(boolean _renderLabel) {
 	    getStateHelper().put(PropertyKeys.renderLabel, _renderLabel);
     }
 	
@@ -815,16 +815,16 @@ valueChangeListener
 	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltipDelay() {
-		String value = (String)getStateHelper().eval(PropertyKeys.tooltipDelay);
-		return  value;
+	public int getTooltipDelay() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
+		return (int) value;
 	}
 	
 	/**
 	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltipDelay(String _tooltipDelay) {
+	public void setTooltipDelay(int _tooltipDelay) {
 	    getStateHelper().put(PropertyKeys.tooltipDelay, _tooltipDelay);
     }
 	
@@ -833,16 +833,16 @@ valueChangeListener
 	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltipDelayHide() {
-		String value = (String)getStateHelper().eval(PropertyKeys.tooltipDelayHide);
-		return  value;
+	public int getTooltipDelayHide() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
+		return (int) value;
 	}
 	
 	/**
 	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltipDelayHide(String _tooltipDelayHide) {
+	public void setTooltipDelayHide(int _tooltipDelayHide) {
 	    getStateHelper().put(PropertyKeys.tooltipDelayHide, _tooltipDelayHide);
     }
 	
@@ -851,16 +851,16 @@ valueChangeListener
 	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltipDelayShow() {
-		String value = (String)getStateHelper().eval(PropertyKeys.tooltipDelayShow);
-		return  value;
+	public int getTooltipDelayShow() {
+		Integer value = (Integer)getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
+		return (int) value;
 	}
 	
 	/**
 	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <br />
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltipDelayShow(String _tooltipDelayShow) {
+	public void setTooltipDelayShow(int _tooltipDelayShow) {
 	    getStateHelper().put(PropertyKeys.tooltipDelayShow, _tooltipDelayShow);
     }
 	

@@ -11,9 +11,9 @@ widget alert
     severity                                                               "Severity of the Alert, can be success, info, warning, danger. Default is warning."
     title                                                                  "Bold Title displayed before your message."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -70,9 +70,9 @@ widget button
     tabindex                                                               "Advisory tooltip information."
     title                                                                  "Advisory tooltip information."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               mandatory inherited                                "Button text."
 }
@@ -90,9 +90,9 @@ widget buttonGroup
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Size of the grouped Buttons, can be lg, sm or xs."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -107,9 +107,9 @@ widget buttonToolbar
     id                                                                     "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -133,9 +133,9 @@ widget column
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -182,9 +182,9 @@ widget commandButton
     tabindex                                                               "Advisory tooltip information."
     title                                                                  "Advisory tooltip information."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     type                                                                   "The button type, can be submit, button, reset ; default submit."
     update                                                                 "Component(s) to be updated with ajax."
@@ -203,9 +203,9 @@ widget container
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -227,9 +227,9 @@ widget datepicker
     showButtonPanel     Boolean                                            "Boolean value to specify if row Buttons to the bottom of calendar should be shown."
     showWeek            Boolean                                            "Boolean value to specify if Week number should be shown."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Value."
 }
@@ -248,9 +248,9 @@ widget dropButton
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "The size of the Button.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               mandatory inherited                                "The Label for the Button Dropdown."
 }
@@ -267,9 +267,9 @@ widget dropMenu
     id                                                                     "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               mandatory inherited                                "The Label for the Dropdown."
 }
@@ -279,7 +279,7 @@ widget fetchBeanInfos
        implemented_by net.bootsfaces.component.FetchBeanInfos
        extends UIComponentBase
  {}
- 
+
 
 widget icon
        implemented_by net.bootsfaces.component.Icon
@@ -296,9 +296,9 @@ widget icon
     size                                                                   "Icon Size: legal values are lg, 2x, 3x, 4x, 5x."
     spin                Boolean                                            "Boolean value: if true the icon will spin."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -318,9 +318,9 @@ widget iconAwesome
     size                                                                   "Icon Size: legal values are lg, 2x, 3x, 4x, 5x."
     spin                Boolean                                            "Boolean value: if true the icon will spin."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -339,10 +339,10 @@ widget inputSecret
     converterMessage                                                       "Message to display when conversion fails."
     dir                                                                    "Direction indication for text that does not inherit directionality."
     disabled            Boolean                                            "Disables the input element, default is false."
-    fieldSize                                                              "The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    fieldSize                                                              "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
     id                                                                     "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
-    label                                                                  "The Label of the field ."
+    label                                                                  "The label of the field."
     lang                                                                   "A localized user presentable name."
     maxlength           Integer                                            "The maximum length of the input."
     onblur                                                                 "Client side callback to execute when input element loses focus."
@@ -361,7 +361,7 @@ widget inputSecret
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
-    renderLabel                                                            "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    renderLabel         Boolean default "true"                             "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
@@ -372,9 +372,9 @@ widget inputSecret
     tabindex                                                               "Advisory tooltip information."
     title                                                                  "Advisory tooltip information."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     type                                                                   "Type of the input. The default is text."
     validator           javax.faces.validator.Validator                    "A method expression referring to a method validationg the input."
@@ -399,10 +399,10 @@ widget inputText
     converterMessage                                                       "Message to display when conversion fails."
     dir                                                                    "Direction indication for text that does not inherit directionality."
     disabled            Boolean                                            "Disables the input element, default is false."
-    fieldSize                                                              "The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    fieldSize                                                              "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
     id                                                                     "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
-    label                                                                  "The Label of the field ."
+    label                                                                  "The label of the field."
     lang                                                                   "A localized user presentable name."
     maxlength           Integer                                            "The maximum length of the input."
     onblur                                                                 "Client side callback to execute when input element loses focus."
@@ -421,7 +421,7 @@ widget inputText
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
-    renderLabel                                                            "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    renderLabel         Boolean default "true"                             "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
@@ -432,9 +432,9 @@ widget inputText
     tabindex                                                               "Advisory tooltip information."
     title                                                                  "Advisory tooltip information."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     type                                                                   "Type of the input. The default is text."
     validator           javax.faces.validator.Validator                    "A method expression referring to a method validationg the input."
@@ -462,9 +462,9 @@ widget jumbotron
     id                                                                     "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -480,9 +480,9 @@ widget label
     severity                                                               "Severity of the Label, can be primary, success, info, warning, danger. Default is warning."
     text                mandatory                                          "Label text."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -497,9 +497,9 @@ widget listLinks
     id                                                                     "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -527,9 +527,9 @@ widget messages
     styleClass                                                             "The CSS class for this element.  Corresponds to the HTML 'class' attribute."
     tooltip                                                                "If true, the message summary will be rendered as a tooltip (i.e. HTML title attribute)."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     warnClass                                                              "CSS class to be used for messages with severity \"WARN\"."
     warnStyle                                                              "CSS style to be used for messages with severity \"WARN\"."
@@ -570,9 +570,9 @@ widget navBar
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     static              Boolean                                            "If true, a full-width navbar that scrolls away with the page will be rendered. Can be true or false, default false."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -600,9 +600,9 @@ widget navCommandLink
     outcome                                                                "The outcome to navigate to."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Navigation Link text."
 }
@@ -628,9 +628,9 @@ widget navLink
     outcome                                                                "The outcome to navigate to."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Navigation Link text."
 }
@@ -645,15 +645,15 @@ widget navbarLinks
     pull                                                                   "Can be right or left. Pulls the element right or left."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
 
 widget panel
-       implemented_by net.bootsfaces.layout.Panel
+       implemented_by net.bootsfaces.component.panel.Panel
        processes_input
        has_children
        has_tooltip
@@ -672,9 +672,9 @@ widget panel
     titleClass                                                             "TitleClass is optional: if specified, the title will be displayed with this specific class"
     titleStyle                                                             "Inline style of the title area."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -690,9 +690,9 @@ widget panelGrid
     style                                                                  "CSS inline style of the div surrounding the panel grid."
     styleClass                                                             "Style class of the div surrounding the panel grid."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -723,9 +723,9 @@ widget row
     style                                                                  "Inline style of the input element."
     styleClass                                                             "Style class of this element."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -744,7 +744,7 @@ widget selectBooleanCheckbox
     converterMessage                                                       "Message to display when conversion fails."
     dir                                                                    "Direction indication for text that does not inherit directionality."
     disabled            Boolean                                            "Disables the input element, default is false."
-    fieldSize                                                              "The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    fieldSize                                                              "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
     id                                                                     "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     label                                                                  "The label above of the field ."
@@ -764,7 +764,7 @@ widget selectBooleanCheckbox
     onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
-    renderLabel                                                            "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    renderLabel         Boolean default "true"                             "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     span                Integer                                            "The size of the input specified as number of grid columns."
     style                                                                  "Inline style of the input element."
@@ -772,67 +772,16 @@ widget selectBooleanCheckbox
     tabindex                                                               "Advisory tooltip information."
     title                                                                  "Advisory tooltip information."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "EL expression referring to the back-end bean attribute providing the value of the field."
     valueChangeListener javax.faces.event.ValueChangeListener              "A method binding expression referring to a method for handling a valuchangeevent."
 }
 
 
-widget selectOneMenu
-       implemented_by net.bootsfaces.component.SelectOneMenu
-       extends HtmlInputText
-       has_tooltip
- {
-    accesskey                                                              "Access key to transfer focus to the input element."
-    alt                                                                    "Alternate textual description of the input element."
-    binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
-    dir                                                                    "Direction indication for text that does not inherit directionality."
-    disabled            Boolean                                            "Disables the input element, default is false."
-    fieldSize                                                              "The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
-    id                                                                     "Unique identifier of the component in a namingContainer."
-    immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
-    label                                                                  "The Label of the field ."
-    lang                                                                   "A localized user presentable name."
-    onblur                                                                 "Client side callback to execute when input element loses focus."
-    onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
-    onclick                                                                "OnClick DHTML event ."
-    ondblclick                                                             "Client side callback to execute when input element is double clicked."
-    onfocus                                                                "Client side callback to execute when input element receives focus."
-    onkeydown                                                              "Client side callback to execute when a key is pressed down over input element."
-    onkeypress                                                             "Client side callback to execute when a key is pressed and released over input element."
-    onkeyup                                                                "Client side callback to execute when a key is released over input element."
-    onmousedown                                                            "Client side callback to execute when a pointer input element is pressed down over input element."
-    onmousemove                                                            "Client side callback to execute when a pointer input element is moved within input element."
-    onmouseout                                                             "Client side callback to execute when a pointer input element is moved away from input element."
-    onmouseover                                                            "Client side callback to execute when a pointer input element is moved onto input element."
-    onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
-    onselect                                                               "Client side callback to execute when text within input element is selected by user."
-    placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
-    readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
-    renderLabel                                                            "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
-    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
-    required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
-    requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
-    size                Integer                                            "Number of characters used to determine the width of the input element."
-    span                Integer                                            "The size of the input specified as number of grid columns."
-    style                                                                  "Inline style of the input element."
-    styleClass                                                             "Style class of the input element."
-    tabindex                                                               "Advisory tooltip information."
-    title                                                                  "Advisory tooltip information."
-    tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    value               inherited                                          "Value."
-}
-
 widget selectMultiMenu
-       implemented_by net.bootsfaces.component.SelectMultiMenu
-       extends HtmlInputText
        has_tooltip
        description "Similar to a traditional combobox, but with the option to select multiple values."
  {
@@ -846,6 +795,62 @@ widget selectMultiMenu
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     label                                                                  "The Label of the field ."
     lang                                                                   "A localized user presentable name."
+    maxHeight           Integer                                            "Maximum height of the options panel."
+    nonSelectedText     String                                             "Text which is displayed if no option has been selected."
+    nSelectedText       String                                             "Text which is displayed if more than numberDisplayed options have been selected."
+    allSelectedText     String                                             "Text which is displayed if every option has been selected."
+    numberDisplayed     Integer                                            "Maximum number of options displayed in the button."
+    includeSelectAllOption Boolean                                         "If true, you can select every option with a single click."
+    selectAllText       String                                             "The text displayed for the select all option."
+    enableFiltering     Boolean	                                           "Set to true or false to enable or disable the filter. A filter input will be added to dynamically filter all options."
+    filterPlaceholder	String                                             "The placeholder used for the filter input."
+    
+    radiobuttons        Boolean default "false"                            "Set to true to display radiobuttons instead of checkboxes. Of course, in this case you can only select one option, so the widget's name is sort of a misnomer."
+    disableIfEmpty      Boolean default "false"                            "If true, the button is disabled if no options are given."
+    dropRight           Boolean default "false"                            "Moves the drop-down-area from the left hand side to the right hand side."
+    onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
+    ondropdownshow                                                         "Client side callback called when the drop-down area is shown."
+    ondropdownhide                                                         "Client side callback called when the drop-down area is hidden."
+    buttonClass         String                                             "The CSS class of the button."
+    styleClass                                                             "Style class of the input element. Is translated to the buttonContainer attribute."
+    buttonWidth         Integer                                            "The width of the multiselect button may be fixed using this option."
+    enableCaseInsensitiveFiltering  Boolean default "false"                "If set to true, the filter is case-insensitive."
+
+    placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
+    readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
+    renderLabel         Boolean default "true"                             "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
+    required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
+    requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
+    size                Integer                                            "Number of characters used to determine the width of the input element."
+    span                Integer                                            "The size of the input specified as number of grid columns."
+    style                                                                  "Inline style of the input element."
+    tabindex                                                               "Advisory tooltip information."
+    title                                                                  "Advisory tooltip information."
+    tooltip                                                                "The text of the tooltip."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    value               inherited                                          "Value."
+}
+
+
+widget selectOneMenu
+       extends HtmlInputText
+       has_tooltip
+       description "This component is also known as combobox or drop-down-menu."
+ {
+    accesskey                                                              "Access key to transfer focus to the input element."
+    alt                                                                    "Alternate textual description of the input element."
+    binding             javax.faces.component.UIComponent                  "An el expression referring to a server side UIComponent instance in a backing bean."
+    dir                                                                    "Direction indication for text that does not inherit directionality."
+    disabled            Boolean                                            "Disables the input element, default is false."
+    fieldSize                                                              "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    id                                                                     "Unique identifier of the component in a namingContainer."
+    immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
+    label                                                                  "The label of the field."
+    lang                                                                   "A localized user presentable name."
     onblur                                                                 "Client side callback to execute when input element loses focus."
     onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
     onclick                                                                "OnClick DHTML event ."
@@ -862,7 +867,7 @@ widget selectMultiMenu
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
-    renderLabel                                                            "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    renderLabel         Boolean  default "true"                            "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     requiredMessage                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
@@ -873,13 +878,12 @@ widget selectMultiMenu
     tabindex                                                               "Advisory tooltip information."
     title                                                                  "Advisory tooltip information."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Value."
 }
-
 
 
 widget slider
@@ -900,49 +904,51 @@ widget slider
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     step                Integer                                            "The step of the slider."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Value."
 }
 
 
 widget tab
-       implemented_by net.bootsfaces.component.Tab
        processes_input
        extends UIOutput
        has_tooltip
  {
+    contentStyle                                                           "Inline CSS of the div surrounding the tab pane."
     id                                                                     "Unique identifier of the component in a namingContainer."
+    onclick                                                                "Optional Javascript function that's called when the tab is clicked."
+    style                                                                  "Inline CSS of the tab."
     styleClass                                                             "Style class of the div surrounding the tab pane."
     title                                                                  "Caption of the tab."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
 
 widget tabView
-       implemented_by net.bootsfaces.component.TabView
        processes_input
        extends UIOutput
        has_tooltip
  {
-    activeIndex                                                            "Optional attribute to define which tab is active initially."
+    activeIndex         Integer                                            "Optional attribute to define which tab is active initially."
     contentClass                                                           "Style class of the div surrounding the panes."
     contentStyle                                                           "Inline CSS style of the div surrounding the panes."
     id                                                                     "Unique identifier of the component in a namingContainer."
+    role                                                                   "The role can be used to provide information to screenreaders."
     styleClass                                                             "Style class of the div surrounding this element."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-} 
-  
+}
+
 
 widget thumbnail
        implemented_by net.bootsfaces.component.Thumbnail
@@ -954,9 +960,9 @@ widget thumbnail
     id                                                                     "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 
@@ -970,9 +976,9 @@ widget well
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false component will not be rendered."
     size                                                                   "Size can be large or small and controls padding and rounded corners."
     tooltip                                                                "The text of the tooltip."
-    tooltipDelay                                                           "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayHide                                                       "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltipDelayShow                                                       "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelay        Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayHide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
+    tooltipDelayShow    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltipPosition                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
 }
 

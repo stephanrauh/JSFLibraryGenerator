@@ -77,7 +77,7 @@ public class NavLinkRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", navLink.getValue(), "value");
 		rw.writeText("Dummy content of b:navLink", null);
 		rw.endElement("navLink");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, navLink);
 		
 	}
 	

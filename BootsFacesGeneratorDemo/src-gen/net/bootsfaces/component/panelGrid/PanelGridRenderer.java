@@ -68,7 +68,7 @@ public class PanelGridRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", panelGrid.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:panelGrid", null);
 		rw.endElement("panelGrid");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, panelGrid);
 		
 	}
 	

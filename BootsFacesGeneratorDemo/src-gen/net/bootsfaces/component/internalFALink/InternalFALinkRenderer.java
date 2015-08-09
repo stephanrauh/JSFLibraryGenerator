@@ -56,7 +56,6 @@ public class InternalFALinkRenderer extends CoreRenderer {
 		
 		rw.writeText("Dummy content of b:internalFALink", null);
 		rw.endElement("internalFALink");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
 		
 	}
 	

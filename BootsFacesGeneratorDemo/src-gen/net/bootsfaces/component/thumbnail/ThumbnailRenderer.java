@@ -90,7 +90,7 @@ public class ThumbnailRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = thumbnail.getClientId();
 		rw.endElement("thumbnail");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

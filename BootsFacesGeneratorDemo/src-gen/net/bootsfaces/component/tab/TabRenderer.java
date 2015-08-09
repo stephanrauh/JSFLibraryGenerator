@@ -77,7 +77,10 @@ public class TabRenderer extends CoreRenderer {
 		rw.startElement("tab", tab);
 		Tooltip.generateTooltip(context, tab, rw);
 		
+	    rw.writeAttribute("contentStyle", tab.getContentStyle(), "contentStyle");
 	    rw.writeAttribute("id", tab.getId(), "id");
+	    rw.writeAttribute("onclick", tab.getOnclick(), "onclick");
+	    rw.writeAttribute("style", tab.getStyle(), "style");
 	    rw.writeAttribute("styleClass", tab.getStyleClass(), "styleClass");
 	    rw.writeAttribute("title", tab.getTitle(), "title");
 	    rw.writeAttribute("tooltip", tab.getTooltip(), "tooltip");
@@ -87,7 +90,7 @@ public class TabRenderer extends CoreRenderer {
 	    rw.writeAttribute("tooltipPosition", tab.getTooltipPosition(), "tooltipPosition");
 		rw.writeText("Dummy content of b:tab", null);
 		rw.endElement("tab");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, tab);
 		
 	}
 	

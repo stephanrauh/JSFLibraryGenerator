@@ -110,7 +110,7 @@ public class InputTextRenderer extends CoreRenderer {
 	    rw.writeAttribute("onselect", inputText.getOnselect(), "onselect");
 	    rw.writeAttribute("placeholder", inputText.getPlaceholder(), "placeholder");
 	    rw.writeAttribute("readonly", String.valueOf(inputText.isReadonly()), "readonly");
-	    rw.writeAttribute("renderLabel", inputText.getRenderLabel(), "renderLabel");
+	    rw.writeAttribute("renderLabel", String.valueOf(inputText.isRenderLabel()), "renderLabel");
 	    rw.writeAttribute("rendered", String.valueOf(inputText.isRendered()), "rendered");
 	    rw.writeAttribute("required", String.valueOf(inputText.isRequired()), "required");
 	    rw.writeAttribute("requiredMessage", inputText.getRequiredMessage(), "requiredMessage");
@@ -132,7 +132,7 @@ public class InputTextRenderer extends CoreRenderer {
 	    rw.writeAttribute("valueChangeListener", inputText.getValueChangeListener(), "valueChangeListener");
 		rw.writeText("Dummy content of b:inputText", null);
 		rw.endElement("inputText");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, inputText);
 		
 	}
 	

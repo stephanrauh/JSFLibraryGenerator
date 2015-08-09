@@ -90,7 +90,7 @@ public class ListLinksRenderer extends CoreRenderer {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = listLinks.getClientId();
 		rw.endElement("listLinks");
-	    Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(fc, c);
 	
 	}
 	

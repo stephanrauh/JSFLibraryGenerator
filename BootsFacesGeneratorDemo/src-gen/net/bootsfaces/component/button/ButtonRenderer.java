@@ -97,7 +97,7 @@ public class ButtonRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", button.getValue(), "value");
 		rw.writeText("Dummy content of b:button", null);
 		rw.endElement("button");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, button);
 		
 	}
 	

@@ -85,7 +85,7 @@ public class InputSecretRenderer extends CoreRenderer {
 	    rw.writeAttribute("onselect", inputSecret.getOnselect(), "onselect");
 	    rw.writeAttribute("placeholder", inputSecret.getPlaceholder(), "placeholder");
 	    rw.writeAttribute("readonly", String.valueOf(inputSecret.isReadonly()), "readonly");
-	    rw.writeAttribute("renderLabel", inputSecret.getRenderLabel(), "renderLabel");
+	    rw.writeAttribute("renderLabel", String.valueOf(inputSecret.isRenderLabel()), "renderLabel");
 	    rw.writeAttribute("rendered", String.valueOf(inputSecret.isRendered()), "rendered");
 	    rw.writeAttribute("required", String.valueOf(inputSecret.isRequired()), "required");
 	    rw.writeAttribute("requiredMessage", inputSecret.getRequiredMessage(), "requiredMessage");
@@ -107,7 +107,7 @@ public class InputSecretRenderer extends CoreRenderer {
 	    rw.writeAttribute("valueChangeListener", inputSecret.getValueChangeListener(), "valueChangeListener");
 		rw.writeText("Dummy content of b:inputSecret", null);
 		rw.endElement("inputSecret");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, inputSecret);
 		
 	}
 	

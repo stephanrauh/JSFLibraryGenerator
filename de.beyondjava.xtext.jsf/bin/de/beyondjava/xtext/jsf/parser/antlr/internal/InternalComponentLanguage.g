@@ -236,16 +236,16 @@ ruleComponent returns [EObject current=null]
 )
 )?(
 (
-		lv_has_tooltip_10_0=	'has_tooltip' 
+		lv_hasTooltip_10_0=	'has_tooltip' 
     {
-        newLeafNode(lv_has_tooltip_10_0, grammarAccess.getComponentAccess().getHas_tooltipHas_tooltipKeyword_7_0());
+        newLeafNode(lv_hasTooltip_10_0, grammarAccess.getComponentAccess().getHasTooltipHas_tooltipKeyword_7_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getComponentRule());
 	        }
-       		setWithLastConsumed($current, "has_tooltip", lv_has_tooltip_10_0, "has_tooltip");
+       		setWithLastConsumed($current, "hasTooltip", lv_hasTooltip_10_0, "has_tooltip");
 	    }
 
 )

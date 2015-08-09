@@ -61,7 +61,7 @@
 	  	<type>Boolean</type>
 	  </attribute>
 	  <attribute>
-	  	<description><![CDATA[The size of the input.Possible values are xs (extra small), sm (small), md (medium) and lg (large) .]]></description>
+	  	<description><![CDATA[The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) .]]></description>
 	  	<name>fieldSize</name>
 	  	<required>false</required>
 	  	<type>java.lang.String</type>
@@ -79,7 +79,7 @@
 	  	<type>Boolean</type>
 	  </attribute>
 	  <attribute>
-	  	<description><![CDATA[The Label of the field .]]></description>
+	  	<description><![CDATA[The label of the field.]]></description>
 	  	<name>label</name>
 	  	<required>false</required>
 	  	<type>java.lang.String</type>
@@ -196,7 +196,7 @@
 	  	<description><![CDATA[Allows you to suppress automatic rendering of labels. Used by AngularFaces, too.]]></description>
 	  	<name>renderLabel</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Boolean</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[Boolean value to specify the rendering of the component, when set to false component will not be rendered.]]></description>
@@ -262,19 +262,19 @@
 	  	<description><![CDATA[The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelay</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelayHide</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay).]]></description>
 	  	<name>tooltipDelayShow</name>
 	  	<required>false</required>
-	  	<type>java.lang.String</type>
+	  	<type>Integer</type>
 	  </attribute>
 	  <attribute>
 	  	<description><![CDATA[Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom".]]></description>

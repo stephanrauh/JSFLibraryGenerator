@@ -56,7 +56,6 @@ public class InternalIE8CompatibilityLinkRenderer extends CoreRenderer {
 		
 		rw.writeText("Dummy content of b:internalIE8CompatibilityLink", null);
 		rw.endElement("internalIE8CompatibilityLink");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
 		
 	}
 	

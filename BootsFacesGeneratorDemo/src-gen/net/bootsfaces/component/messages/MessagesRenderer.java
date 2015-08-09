@@ -80,7 +80,7 @@ public class MessagesRenderer extends CoreRenderer {
 	    rw.writeAttribute("warnStyle", messages.getWarnStyle(), "warnStyle");
 		rw.writeText("Dummy content of b:messages", null);
 		rw.endElement("messages");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, messages);
 		
 	}
 	

@@ -125,7 +125,7 @@ public class CommandButtonRenderer extends CoreRenderer {
 	    rw.writeAttribute("value", commandButton.getValue(), "value");
 		rw.writeText("Dummy content of b:commandButton", null);
 		rw.endElement("commandButton");
-		Tooltip.activateTooltips(fc, c.getAttributes(), c);
+		Tooltip.activateTooltips(context, commandButton);
 		
 	}
 	
