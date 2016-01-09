@@ -58,10 +58,27 @@ class AttributesDocumentationGenerator implements IGenerator {
 
 	def generateAttribute(Attribute a) '''
 		<tr>
-		    <td>«a.name»</td>
+		    <td>«a.name»«a.name.alternativeWriting»</td>
 		    <td>«IF a.defaultValue!=null» «a.defaultValue» «ELSEIF a.type=="Boolean"»false«ELSEIF a.type=="Integer"»0 «ELSE»(none)«ENDIF»</td>
 		    <td>«IF a.desc != null»«a.desc.replace("\\\"", "\"")»«ENDIF»</td>
 		</tr>
 	'''
+	
+	def alternativeWriting(String s) {
+		if (s.contains('-')) {
+			return "<br />" + toCamelCase(s) + " (alternative writing)"
+		}
+		return ""
+	}
+	
+	def toCamelCase(String s) {
+		var pos = 0 as int
+		var cc = s
+		while (cc.contains('-')) {
+			pos = cc.indexOf('-');
+			cc = cc.substring(0, pos) + cc.substring(pos+1, pos+2).toUpperCase() + cc.substring(pos+2);
+		}
+		return cc
+	}
 	
 }

@@ -67,7 +67,7 @@ class ComponentGenerator implements IGenerator {
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
-			«e.objectType» value = («e.objectType»)getStateHelper().eval(PropertyKeys.«e.name»«e.defaultValueTerm»);
+			«e.objectType» value = («e.objectType»)getStateHelper().eval(PropertyKeys.«e.name.toCamelCase»«e.defaultValueTerm»);
 			return «optionalTypeCast(e)» value;
 		}
 		
@@ -75,14 +75,15 @@ class ComponentGenerator implements IGenerator {
 		 * «e.desc» <P>
 		 * Usually this method is called internally by the JSF engine.
 		 */
-		public void set«e.name.toFirstUpper»(«e.attributeType» _«e.name») {
-		    getStateHelper().put(PropertyKeys.«e.name», _«e.name»);
+		public void set«e.name.toCamelCase.toFirstUpper»(«e.attributeType» _«e.name.toCamelCase») {
+		    getStateHelper().put(PropertyKeys.«e.name.toCamelCase», _«e.name.toCamelCase»);
 	    }
 		
 	'''
 	
 	def getDefaultValueTerm(Attribute a) {
-		if (a.defaultValue!=null) ', ' + a.defaultValue
+		if (a.defaultValue!=null && a.type == null) ', "' + a.defaultValue + '"'
+		else if (a.defaultValue!=null) ', ' + a.defaultValue
 		else if ("Integer".equals(a.type)) ', 0'
 		else if ("Boolean".equals(a.type)) ', false'
 		else ''
@@ -97,10 +98,10 @@ class ComponentGenerator implements IGenerator {
 	def getGetter(Attribute f)
 	{ 
 		if ("Boolean".equals(f.type)) {
-			'''is«f.name.toFirstUpper»()'''
+			'''is«f.name.toCamelCase.toFirstUpper»()'''
 		}
 		else {
-			'''get«f.name.toFirstUpper»()'''
+			'''get«f.name.toCamelCase.toFirstUpper»()'''
 		}
 	}
 
@@ -124,6 +125,8 @@ class ComponentGenerator implements IGenerator {
 		
 		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 		
+		private Map<String, Object> attributes = null;
+		
 		public «e.name.toFirstUpper»() {
 			
 			
@@ -135,6 +138,13 @@ class ComponentGenerator implements IGenerator {
 		
 		public String getFamily() {
 			return COMPONENT_FAMILY;
+		}
+		
+		@Override
+		public Map<String, Object> getAttributes() {
+			if (attributes == null)
+				attributes = new AttributeMapWrapper(super.getAttributes());
+			return attributes;
 		}
 		
 	'''
@@ -178,7 +188,7 @@ class ComponentGenerator implements IGenerator {
 		    protected enum PropertyKeys {
 		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';' »
 		    «IF f.inherited==null» 
-		    	«f.name»
+		    	«f.name.toCamelCase»
 		    «ENDIF»
 		«ENDFOR»
 		
@@ -196,4 +206,15 @@ class ComponentGenerator implements IGenerator {
 		        }
 		    }
 	'''
+	
+		def toCamelCase(String s) {
+		var pos = 0 as int
+		var cc = s
+		while (cc.contains('-')) {
+			pos = cc.indexOf('-');
+			cc = cc.substring(0, pos) + cc.substring(pos+1, pos+2).toUpperCase() + cc.substring(pos+2);
+		}
+		return cc
+	}
+	
 }

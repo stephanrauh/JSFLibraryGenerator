@@ -53,7 +53,25 @@ class TaglibGenerator implements IGenerator {
 			<required>«a.requiredToBoolean»</required>
 			<type>«a.generateAttributeType»</type>
 		</attribute>
+		«IF a.name.contains("-")»
+			<attribute>
+				«IF a.desc != null»<description><![CDATA[«a.desc.replace("\\\"", "\"")»]]></description>«ENDIF»
+				<name>«a.name.toCamelCase»</name>
+				<required>«a.requiredToBoolean»</required>
+				<type>«a.generateAttributeType»</type>
+			</attribute>
+		«ENDIF»
 	'''
+	
+	def toCamelCase(String s) {
+		var pos = 0 as int
+		var cc = s
+		while (cc.contains('-')) {
+			pos = cc.indexOf('-');
+			cc = cc.substring(0, pos) + cc.substring(pos+1, pos+2).toUpperCase() + cc.substring(pos+2);
+		}
+		return cc
+	}
 	
 	def requiredToBoolean(Attribute a) {
 		if (a.required==null) return "false"

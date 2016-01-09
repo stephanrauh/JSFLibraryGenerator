@@ -19,10 +19,13 @@ Component:
 	'}';
 
 Attribute:
-	name=ID (type=Attributetype)? ('default' defaultValue=STRING)? (required='mandatory')? (inherited='inherited')? (desc=STRING)?;
+	name=CSSID (type=Attributetype)? ('default' defaultValue=STRING)? (required='mandatory')? (inherited='inherited')? (desc=STRING)?;
 
 QualifiedName:
 	ID ('.' ID)*;
+	
+CSSID:
+	ID ('-' ID)*;
 
 Attributetype:
 	'String' 
