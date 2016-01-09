@@ -1,12 +1,15 @@
 *.class
+BootsFacesGeneratorDemo/src-gen/
 de.beyondjava.xtext.jsf/src-gen/
 de.beyondjava.xtext.jsf.sdk/src-gen/
 de.beyondjava.xtext.jsf.tests/src-gen/
 de.beyondjava.xtext.jsf.ui/src-gen/
+de.beyondjava.xtext.jsf.ui/bin/
 xtend-gen/
 .settings/
 .launch/
 .bin/
+.DS_Store
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
