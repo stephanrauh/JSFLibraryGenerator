@@ -32,33 +32,33 @@ class TaglibGenerator implements IGenerator {
 	version="2.0">
 	<namespace>http://bootsfaces.net/ui</namespace>
 	
-	<tag>
-		<tag-name>«widget.name.toFirstLower»</tag-name>
-		<component>
-			<component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
-		</component>
+  <tag>
+    <tag-name>«widget.name.toFirstLower»</tag-name>
+    <component>
+      <component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
+    </component>
 		
 	  «FOR f : widget.attributes»
 	  	«f.generateAttribute»
 	  «ENDFOR»
-	</tag>
+  </tag>
 
 </facelet-taglib>
 	'''
 
 	def generateAttribute(Attribute a) '''
 		<attribute>
-			«IF a.desc != null»<description><![CDATA[«a.desc.replace("\\\"", "\"")»]]></description>«ENDIF»
-			<name>«a.name»</name>
-			<required>«a.requiredToBoolean»</required>
-			<type>«a.generateAttributeType»</type>
+		  «IF a.desc != null»<description><![CDATA[«a.desc.replace("\\\"", "\"")»]]></description>«ENDIF»
+		  <name>«a.name»</name>
+		  <required>«a.requiredToBoolean»</required>
+		  <type>«a.generateAttributeType»</type>
 		</attribute>
 		«IF a.name.contains("-")»
 			<attribute>
-				«IF a.desc != null»<description><![CDATA[«a.desc.replace("\\\"", "\"")»]]></description>«ENDIF»
-				<name>«a.name.toCamelCase»</name>
-				<required>«a.requiredToBoolean»</required>
-				<type>«a.generateAttributeType»</type>
+			  «IF a.desc != null»<description><![CDATA[«a.desc.replace("\\\"", "\"")»]]></description>«ENDIF»
+			  <name>«a.name.toCamelCase»</name>
+			  <required>«a.requiredToBoolean»</required>
+			  <type>«a.generateAttributeType»</type>
 			</attribute>
 		«ENDIF»
 	'''
