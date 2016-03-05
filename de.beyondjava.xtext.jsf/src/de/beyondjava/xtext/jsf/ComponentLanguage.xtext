@@ -36,6 +36,8 @@ Attributetype:
 	| 'javax.faces.component.UIComponent'
 	| 'javax.faces.event.ValueChangeListener'
 	| 'java.faces.convert.Converter'
-	| 'javax.faces.validator.Validator';
+	| 'java.util.List'
+	| 'javax.faces.validator.Validator'
+	| 'TreeNodeEventListener';
   
  
