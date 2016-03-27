@@ -38,6 +38,7 @@ Attributetype:
 	| 'java.faces.convert.Converter'
 	| 'java.util.List'
 	| 'javax.faces.validator.Validator'
-	| 'TreeNodeEventListener';
+	| 'TreeNodeEventListener'
+	| 'Map<' QualifiedName ', ' QualifiedName '>';
   
  

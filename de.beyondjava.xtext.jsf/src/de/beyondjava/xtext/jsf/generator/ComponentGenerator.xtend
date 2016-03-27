@@ -27,10 +27,14 @@ class ComponentGenerator implements IGenerator {
 		«e.generateCopyrightHeader» 
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 		
+		import javax.el.ValueExpression;
+		import javax.faces.application.ResourceDependencies;
+		import javax.faces.application.ResourceDependency;
 		import javax.faces.component.*;
 		«IF e.hasTooltip!=null»
 			import net.bootsfaces.render.Tooltip;
 		«ENDIF»
+		import net.bootsfaces.utils.BsfUtils;
 		
 		
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
@@ -125,8 +129,6 @@ class ComponentGenerator implements IGenerator {
 		
 		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 		
-		private Map<String, Object> attributes = null;
-		
 		public «e.name.toFirstUpper»() {
 			
 			
@@ -140,13 +142,10 @@ class ComponentGenerator implements IGenerator {
 			return COMPONENT_FAMILY;
 		}
 		
-		@Override
-		public Map<String, Object> getAttributes() {
-			if (attributes == null)
-				attributes = new AttributeMapWrapper(super.getAttributes());
-			return attributes;
-		}
-		
+		public void setValueExpression(String name, ValueExpression binding) {
+			name = BsfUtils.snakeCaseToCamelCase(name);
+			super.setValueExpression(name, binding);
+		}		
 	'''
 
 	def generateCopyrightHeader(Component e) '''

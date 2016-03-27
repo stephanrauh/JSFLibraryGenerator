@@ -37,7 +37,6 @@ class TaglibGenerator implements IGenerator {
     <component>
       <component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
     </component>
-		
 	  «FOR f : widget.attributes»
 	  	«f.generateAttribute»
 	  «ENDFOR»
@@ -79,7 +78,10 @@ class TaglibGenerator implements IGenerator {
 	}
 
 	def generateAttributeType(Attribute a) {
-		'''«IF a.type == null»java.lang.String«ELSE»«a.type»«ENDIF»'''
+		'''«IF a.type == null»java.lang.String«
+		ELSEIF a.type == 'Boolean'»java.lang.Boolean«
+		ELSEIF a.type == 'Integer'»java.lang.Integer«
+		ELSE»«a.type»«ENDIF»'''
 	}
 
 }
