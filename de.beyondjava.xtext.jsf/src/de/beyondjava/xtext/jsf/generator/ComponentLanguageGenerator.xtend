@@ -20,6 +20,7 @@ class ComponentLanguageGenerator implements IGenerator {
 		new RendererGenerator().doGenerate(resource, fsa);
 		new DocumentationGenerator().doGenerate(resource, fsa);
 		new AttributesDocumentationGenerator().doGenerate(resource, fsa);
+		new BeanInfoGenerator().doGenerate(resource, fsa);
 	}
 
 }
