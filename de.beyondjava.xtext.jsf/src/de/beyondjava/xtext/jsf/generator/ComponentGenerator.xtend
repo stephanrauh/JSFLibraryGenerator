@@ -130,8 +130,6 @@ class ComponentGenerator implements IGenerator {
 		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 		
 		public «e.name.toFirstUpper»() {
-			
-			
 		«IF e.hasTooltip!=null»
 			Tooltip.addResourceFile();
 		«ENDIF»
@@ -142,6 +140,9 @@ class ComponentGenerator implements IGenerator {
 			return COMPONENT_FAMILY;
 		}
 		
+		/** 
+		 * Manage EL-expression for snake-case attributes
+		 */
 		public void setValueExpression(String name, ValueExpression binding) {
 			name = BsfUtils.snakeCaseToCamelCase(name);
 			super.setValueExpression(name, binding);
@@ -190,7 +191,6 @@ class ComponentGenerator implements IGenerator {
 		    	«f.name.toCamelCase»
 		    «ENDIF»
 		«ENDFOR»
-		
 		
 		        String toString;
 		
