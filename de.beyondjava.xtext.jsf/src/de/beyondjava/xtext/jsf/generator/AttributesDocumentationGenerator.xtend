@@ -37,21 +37,23 @@ class AttributesDocumentationGenerator implements IGenerator {
 			<f:facet name="heading">
 				<b>Attributes of &lt;b:«widget.name.toFirstLower» &gt;</b>
 			</f:facet>
-			<table class="table table-striped table-hover"
-				style="background-color: #fff">
-				<thead>
-					<tr>
-						<th>Attribute</th>
-						<th>Default value</th>
-						<th>Description</th>
-					</tr>
-				</thead>
-				<tbody>
-					«FOR f : widget.attributes»
-					  «f.generateAttribute»
-					«ENDFOR»
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<table class="table table-striped table-hover"
+					style="background-color: #fff">
+					<thead>
+						<tr>
+							<th>Attribute</th>
+							<th>Default value</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						«FOR f : widget.attributes»
+						  «f.generateAttribute»
+						«ENDFOR»
+					</tbody>
+				</table>
+			</div>
 		</b:panel>
 </ui:fragment>
 	'''
