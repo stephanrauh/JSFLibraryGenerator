@@ -33,7 +33,7 @@ class BeanInfoGenerator implements IGenerator {
 		 * 
 		 * @author Dario D'Urzo
 		 */
-		public class «e.name.toFirstUpper» extends «parentClass(e)» {
+		public class «e.name.toFirstUpper»BeanInfo extends «parentClass(e)» {
 			
 			/**
 			 * Get the reference decorated class
