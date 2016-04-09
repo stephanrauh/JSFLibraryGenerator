@@ -71,7 +71,7 @@ class ComponentGenerator implements IGenerator {
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
-			return «optionalTypeCast(e)» «e.objectType» value = («e.objectType»)getStateHelper().eval(«e.name.propertyKey»«e.defaultValueTerm»);
+			return «optionalTypeCast(e)» («e.objectType»)getStateHelper().eval(«e.name.propertyKey»«e.defaultValueTerm»);
 		}
 		
 		/**
