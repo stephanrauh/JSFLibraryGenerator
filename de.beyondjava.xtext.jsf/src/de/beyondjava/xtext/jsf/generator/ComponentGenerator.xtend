@@ -71,8 +71,7 @@ class ComponentGenerator implements IGenerator {
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
-			«e.objectType» value = («e.objectType»)getStateHelper().eval(PropertyKeys.«e.name.toCamelCase»«e.defaultValueTerm»);
-			return «optionalTypeCast(e)» value;
+			return «optionalTypeCast(e)» «e.objectType» value = («e.objectType»)getStateHelper().eval(«e.name.propertyKey»«e.defaultValueTerm»);
 		}
 		
 		/**
@@ -80,13 +79,32 @@ class ComponentGenerator implements IGenerator {
 		 * Usually this method is called internally by the JSF engine.
 		 */
 		public void set«e.name.toCamelCase.toFirstUpper»(«e.attributeType» _«e.name.toCamelCase») {
-		    getStateHelper().put(PropertyKeys.«e.name.toCamelCase», _«e.name.toCamelCase»);
+		    getStateHelper().put(«e.name.propertyKey», _«e.name.toCamelCase»);
 	    }
 		
 	'''
 	
+	def getPropertyKey(String s) {
+		if (s.propertyKeyValue.startsWith("\"")) {
+			return s.propertyKeyValue;
+		} else {
+			return "PropertyKeys." + s.propertyKeyValue;
+		}
+		
+	}
+	
+	def getPropertyKeyValue(String s) {
+		if (s == "static") {
+			return "\""+s+"\"";
+		} else {
+			return s.toCamelCase;
+		}
+	}
+	
+	
 	def getDefaultValueTerm(Attribute a) {
 		if (a.defaultValue!=null && a.type == null) ', "' + a.defaultValue + '"'
+		else if (a.defaultValue!=null && a.type == "String") ', "' + a.defaultValue + '"'
 		else if (a.defaultValue!=null) ', ' + a.defaultValue
 		else if ("Integer".equals(a.type)) ', 0'
 		else if ("Boolean".equals(a.type)) ', false'
@@ -131,8 +149,11 @@ class ComponentGenerator implements IGenerator {
 		
 		public «e.name.toFirstUpper»() {
 		«IF e.hasTooltip!=null»
-			Tooltip.addResourceFile();
+			«"    Tooltip.addResourceFile();"»
+			«"    AddResourcesListener.addThemedCSSResource(\"tooltip.css\");"»
 		«ENDIF»
+			AddResourcesListener.addThemedCSSResource("core.css");
+			AddResourcesListener.addThemedCSSResource("bsf.css");
 			setRendererType(DEFAULT_RENDERER);
 		}
 		
@@ -151,7 +172,7 @@ class ComponentGenerator implements IGenerator {
 
 	def generateCopyrightHeader(Component e) '''
 		/**
-		 *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+		 *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu), Dario D'Urzo and Stephan Rauh (http://www.beyondjava.net).
 		 *  
 		 *  This file is part of BootsFaces.
 		 *  
@@ -173,7 +194,11 @@ class ComponentGenerator implements IGenerator {
 	
 	def List<Attribute> notInherited(List<Attribute> elements) {
 		val result = newArrayList()
-		elements.forEach[a | if (a.inherited==null) result.add(a)]
+		elements.forEach[a | 
+			             if ((a.inherited==null) && (!a.name.propertyKeyValue.startsWith("\""))) {
+			                result.add(a)
+		                 }
+		]
 		result
 		
 //		var result = new ArrayList<Attribute>();
@@ -187,9 +212,7 @@ class ComponentGenerator implements IGenerator {
 	def generateProperties(Component e) '''
 		    protected enum PropertyKeys {
 		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';' »
-		    «IF f.inherited==null» 
-		    	«f.name.toCamelCase»
-		    «ENDIF»
+		    «"		"»«f.name.propertyKeyValue»
 		«ENDFOR»
 		
 		        String toString;
