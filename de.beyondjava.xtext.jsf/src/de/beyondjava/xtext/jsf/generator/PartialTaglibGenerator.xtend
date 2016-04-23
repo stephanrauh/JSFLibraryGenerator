@@ -11,41 +11,38 @@ import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class TaglibGenerator implements IGenerator {
+class PartialTaglibGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		fsa.generateFile("../src/main/meta/META-INF/bootsfaces-b.taglib.xml", resource.compile());
+		for (e : resource.allContents.toIterable.filter(Component)) {
+			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
+				".taglib.xml", e.compile)
+		}
 	}
 
-	def compile(Resource resource) '''
-	<?xml version="1.0" encoding="UTF-8"?>
-	<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-		http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
-		version="2.0">
-		<namespace>http://bootsfaces.net/ui</namespace>
-		«FOR e : resource.allContents.toIterable.filter(Component)»
-		  «e.compile»
-	    «ENDFOR»
-		</facelet-taglib>
-		'''
-
 	def compile(Component widget) '''
-
-  <!-- *********** b:«widget.name.toFirstLower» ************************* -->
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+	version="2.0">
+	<namespace>http://bootsfaces.net/ui</namespace>
+	
   <tag>
-  	<tag-name>«widget.name.toFirstLower»</tag-name>
-  	<component>
-  		<component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
-  	</component>
-	«FOR f : widget.attributes»
-	«f.generateAttribute»
-	«ENDFOR»
+    <tag-name>«widget.name.toFirstLower»</tag-name>
+    <component>
+      <component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
+    </component>
+	  «FOR f : widget.attributes»
+	  	«f.generateAttribute»
+	  «ENDFOR»
   </tag>
+
+</facelet-taglib>
 	'''
 
 	def generateAttribute(Attribute a) '''
@@ -64,7 +61,7 @@ class TaglibGenerator implements IGenerator {
 			</attribute>
 		«ENDIF»
 	'''
-
+	
 	def toCamelCase(String s) {
 		var pos = 0 as int
 		var cc = s
@@ -74,7 +71,7 @@ class TaglibGenerator implements IGenerator {
 		}
 		return cc
 	}
-
+	
 	def requiredToBoolean(Attribute a) {
 		if (a.required==null) return "false"
 		else return "true"
@@ -84,7 +81,6 @@ class TaglibGenerator implements IGenerator {
 		'''«IF a.type == null»java.lang.String«
 		ELSEIF a.type == 'Boolean'»java.lang.Boolean«
 		ELSEIF a.type == 'Integer'»java.lang.Integer«
-		ELSEIF a.type.startsWith("Map<")»java.util.Map«
 		ELSE»«a.type»«ENDIF»'''
 	}
 
