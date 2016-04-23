@@ -17,32 +17,35 @@ import org.eclipse.xtext.generator.IGenerator
 class TaglibGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
-				".taglib.xml", e.compile)
-		}
+		fsa.generateFile("../src/main/meta/META-INF/bootsfaces-generated.taglib.xml", resource.compile());
 	}
+	
+	def compile(Resource resource) '''
+	<?xml version="1.0" encoding="UTF-8"?>
+	<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+		http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+		version="2.0">
+		<namespace>http://bootsfaces.net/ui</namespace>
+		«FOR e : resource.allContents.toIterable.filter(Component)»
+		  «e.compile»
+	    «ENDFOR»
+		</facelet-taglib>
+		'''
 
 	def compile(Component widget) '''
-<?xml version="1.0" encoding="UTF-8"?>
-<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
-	version="2.0">
-	<namespace>http://bootsfaces.net/ui</namespace>
-	
+  	
+  <!-- *********** b:«widget.name.toFirstLower» ************************* -->  
   <tag>
-    <tag-name>«widget.name.toFirstLower»</tag-name>
-    <component>
-      <component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
-    </component>
-	  «FOR f : widget.attributes»
-	  	«f.generateAttribute»
-	  «ENDFOR»
+  	<tag-name>«widget.name.toFirstLower»</tag-name>
+  	<component>
+  		<component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
+  	</component>
+	«FOR f : widget.attributes»
+	«f.generateAttribute»
+	«ENDFOR»
   </tag>
-
-</facelet-taglib>
 	'''
 
 	def generateAttribute(Attribute a) '''

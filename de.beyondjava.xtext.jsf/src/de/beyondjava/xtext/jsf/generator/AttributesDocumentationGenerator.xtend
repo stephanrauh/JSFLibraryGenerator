@@ -5,13 +5,15 @@ package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 import de.beyondjava.xtext.jsf.componentLanguage.Component
+import java.io.File
+import java.io.FileWriter
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class AttributesDocumentationGenerator implements IGenerator {
@@ -20,7 +22,48 @@ class AttributesDocumentationGenerator implements IGenerator {
 		for (e : resource.allContents.toIterable.filter(Component)) {
 			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
 				"Attributes.xhtml", e.compile)
+			var targetFileAsString = e.name.findDocumentationFolder
+			if (null != targetFileAsString) {
+				var targetFile = new File(targetFileAsString.toString)
+				targetFile.delete();
+				val writer = new FileWriter(targetFile)
+				writer.append(e.compile.toString.replace("\t", "  "));
+				writer.close();
+			}
 		}
+	}
+
+	def findDocumentationFolder(String widget) {
+		var docFolder=new File("/Users/stephan/git/BootsFacesWeb/src/main/webapp");
+		if (docFolder.exists()) {
+			var targetFolder = findDocumentationFolder(docFolder, widget);
+
+			if (null != targetFolder) {
+				return targetFolder;
+			}
+		}
+		return null;
+	}
+
+	def findDocumentationFolder(File docFolder, String widget) {
+		var files = docFolder.listFiles();
+		for (File f : files) {
+			if (f.isDirectory) {
+				var target = findDocumentationFolder(f, widget);
+				if (null != target) {
+					return target;
+				}
+			} else {
+				var filename = f.name;
+				var targetFileName = widget.toFirstUpper +
+				"Attributes.xhtml";
+				if (targetFileName.equalsIgnoreCase(filename)) {
+					return f.absolutePath;
+				}
+
+			}
+		}
+		return null;
 	}
 
 	def compile(Component widget) '''
@@ -65,14 +108,14 @@ class AttributesDocumentationGenerator implements IGenerator {
 		    <td>«IF a.desc != null»«a.desc.replace("\\\"", "\"")»«ENDIF»</td>
 		</tr>
 	'''
-	
+
 	def alternativeWriting(String s) {
 		if (s.contains('-')) {
 			return "<br />" + toCamelCase(s) + " (alternative writing)"
 		}
 		return ""
 	}
-	
+
 	def toCamelCase(String s) {
 		var pos = 0 as int
 		var cc = s
@@ -82,5 +125,5 @@ class AttributesDocumentationGenerator implements IGenerator {
 		}
 		return cc
 	}
-	
+
 }
