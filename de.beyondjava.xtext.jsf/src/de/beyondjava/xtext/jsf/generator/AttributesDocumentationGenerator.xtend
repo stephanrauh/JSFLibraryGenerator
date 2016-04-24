@@ -7,8 +7,12 @@ import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 import de.beyondjava.xtext.jsf.componentLanguage.Component
 import java.io.File
 import java.io.FileWriter
+import java.net.URI
+import org.eclipse.core.runtime.FileLocator
+import org.eclipse.core.runtime.URIUtil
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IFileSystemAccessExtension2
 import org.eclipse.xtext.generator.IGenerator
 
 /**
@@ -22,19 +26,35 @@ class AttributesDocumentationGenerator implements IGenerator {
 		for (e : resource.allContents.toIterable.filter(Component)) {
 			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
 				"Attributes.xhtml", e.compile)
-			var targetFileAsString = e.name.findDocumentationFolder
-			if (null != targetFileAsString) {
-				var targetFile = new File(targetFileAsString.toString)
-				targetFile.delete();
-				val writer = new FileWriter(targetFile)
-				writer.append(e.compile.toString.replace("\t", "  "));
-				writer.close();
+			var webProject = fsa.findWebProjectFolder
+			if (null != webProject) {
+				var targetFileAsString = e.name.findDocumentationFolder(webProject)
+				if (null != targetFileAsString) {
+					var targetFile = new File(targetFileAsString.toString)
+					targetFile.delete();
+					val writer = new FileWriter(targetFile)
+					writer.append(e.compile.toString.replace("\t", "  "));
+					writer.close();
+				}
 			}
 		}
 	}
 
-	def findDocumentationFolder(String widget) {
-		var docFolder=new File("/Users/stephan/git/BootsFacesWeb/src/main/webapp");
+	def findWebProjectFolder(IFileSystemAccess fsa) {
+		var uri = (fsa as IFileSystemAccessExtension2).getURI("../../BootsFacesWeb/src/main/webapp");
+		var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
+		System.out.println(uri);
+		var file = FileLocator.toFileURL(eclipseURL);
+		var pathname = file.toString().replace("file:", "");
+		if (new File(pathname).exists()) {
+			return pathname;
+		}
+		return null;
+	}
+
+	def findDocumentationFolder(String widget, String pathname) {
+
+		var docFolder=new File(pathname);
 		if (docFolder.exists()) {
 			var targetFolder = findDocumentationFolder(docFolder, widget);
 

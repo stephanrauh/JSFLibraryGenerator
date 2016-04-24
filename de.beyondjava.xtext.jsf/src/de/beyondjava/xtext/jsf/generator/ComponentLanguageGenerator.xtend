@@ -19,6 +19,7 @@ class ComponentLanguageGenerator implements IGenerator {
 		new PartialTaglibGenerator().doGenerate(resource, fsa);
 		new ComponentGenerator().doGenerate(resource, fsa);
 		new ComponentListGenerator().doGenerate(resource, fsa);
+		new ComponentUpdateGenerator().doGenerate(resource, fsa);
 		new RendererGenerator().doGenerate(resource, fsa);
 		new DocumentationGenerator().doGenerate(resource, fsa);
 		new AttributesDocumentationGenerator().doGenerate(resource, fsa);
