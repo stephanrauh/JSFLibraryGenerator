@@ -12,7 +12,7 @@ import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class ComponentGenerator implements IGenerator {
@@ -24,9 +24,9 @@ class ComponentGenerator implements IGenerator {
 	}
 
 	def compile(Component e) '''
-		«e.generateCopyrightHeader» 
+		«e.generateCopyrightHeader»
 		package net.bootsfaces.component.«e.name.toFirstLower»;
-		
+
 		import javax.el.ValueExpression;
 		import javax.faces.application.ResourceDependencies;
 		import javax.faces.application.ResourceDependency;
@@ -35,25 +35,25 @@ class ComponentGenerator implements IGenerator {
 			import net.bootsfaces.render.Tooltip;
 		«ENDIF»
 		import net.bootsfaces.utils.BsfUtils;
-		
-		
+
+
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
 		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
 		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
-			
+
 			«e.generateMetadata»
-			
-		«e.generateProperties» 
-			
+
+		«e.generateProperties»
+
 		  «FOR f : e.attributes»
-		    «IF f.inherited==null» 
+		    «IF f.inherited==null»
 			  	«f.generateAccessors»
 		  	«ENDIF»
 		  «ENDFOR»
 		}
-		
+
 	'''
-	
+
 	def parentClass(Component component) {
 		if (component.extends!=null) {
 			return component.extends;
@@ -65,34 +65,41 @@ class ComponentGenerator implements IGenerator {
 	}
 
 	def generateAccessors(Attribute e) '''
-	
+
 		/**
 		 * «e.desc» <P>
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
-			return «optionalTypeCast(e)» («e.objectType»)getStateHelper().eval(«e.name.propertyKey»«e.defaultValueTerm»);
+			return «optionalTypeCast(e)» («e.objectType»)getStateHelper().eval(«e.name.propertyKey.validIdentifier»«e.defaultValueTerm»);
 		}
-		
+
 		/**
 		 * «e.desc» <P>
 		 * Usually this method is called internally by the JSF engine.
 		 */
 		public void set«e.name.toCamelCase.toFirstUpper»(«e.attributeType» _«e.name.toCamelCase») {
-		    getStateHelper().put(«e.name.propertyKey», _«e.name.toCamelCase»);
-	    }
-		
+		    getStateHelper().put(«e.name.propertyKey.validIdentifier», _«e.name.toCamelCase»);
+		}
+
 	'''
-	
+
+	def validIdentifier(String s) {
+		if ("for".equals(s)) {
+			return "_for";
+		}
+		return s;
+	}
+
 	def getPropertyKey(String s) {
 		if (s.propertyKeyValue.startsWith("\"")) {
 			return s.propertyKeyValue;
 		} else {
-			return "PropertyKeys." + s.propertyKeyValue;
+			return "PropertyKeys." + s.propertyKeyValue.validIdentifier;
 		}
-		
+
 	}
-	
+
 	def getPropertyKeyValue(String s) {
 		if (s == "static") {
 			return "\""+s+"\"";
@@ -100,8 +107,8 @@ class ComponentGenerator implements IGenerator {
 			return s.toCamelCase;
 		}
 	}
-	
-	
+
+
 	def getDefaultValueTerm(Attribute a) {
 		if (a.defaultValue!=null && a.type == null) ', "' + a.defaultValue + '"'
 		else if (a.defaultValue!=null && a.type == "String") ', "' + a.defaultValue + '"'
@@ -110,15 +117,15 @@ class ComponentGenerator implements IGenerator {
 		else if ("Boolean".equals(a.type)) ', false'
 		else ''
 	}
-	
-	
+
+
 	def optionalTypeCast(Attribute e) {
 		if (e.objectType!=e.attributeType) '('+e.attributeType+')'
 		else ''
 	}
-	
+
 	def getGetter(Attribute f)
-	{ 
+	{
 		if ("Boolean".equals(f.type)) {
 			'''is«f.name.toCamelCase.toFirstUpper»()'''
 		}
@@ -127,26 +134,26 @@ class ComponentGenerator implements IGenerator {
 		}
 	}
 
-	def getObjectType(Attribute a) { 
+	def getObjectType(Attribute a) {
 		if (null==a.type) "String"
 		else a.type;
 	}
 
-	
-	def getAttributeType(Attribute a) { 
+
+	def getAttributeType(Attribute a) {
 		if (null==a.type) "String"
 		else if ("Boolean".equals(a.type)) "boolean"
 		else if ("Integer".equals(a.type)) "int"
 		else a.type;
 	}
-	
-	def generateMetadata(Component e) ''' 
+
+	def generateMetadata(Component e) '''
 		public static final String COMPONENT_TYPE = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
-		
+
 		public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
-		
+
 		public static final String DEFAULT_RENDERER = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
-		
+
 		public «e.name.toFirstUpper»() {
 		«IF e.hasTooltip!=null»
 			«"    Tooltip.addResourceFile();"»
@@ -156,26 +163,26 @@ class ComponentGenerator implements IGenerator {
 			AddResourcesListener.addThemedCSSResource("bsf.css");
 			setRendererType(DEFAULT_RENDERER);
 		}
-		
+
 		public String getFamily() {
 			return COMPONENT_FAMILY;
 		}
-		
-		/** 
+
+		/**
 		 * Manage EL-expression for snake-case attributes
 		 */
 		public void setValueExpression(String name, ValueExpression binding) {
 			name = BsfUtils.snakeCaseToCamelCase(name);
 			super.setValueExpression(name, binding);
-		}		
+		}
 	'''
 
 	def generateCopyrightHeader(Component e) '''
 		/**
 		 *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu), Dario D'Urzo and Stephan Rauh (http://www.beyondjava.net).
-		 *  
+		 *
 		 *  This file is part of BootsFaces.
-		 *  
+		 *
 		 *  BootsFaces is free software: you can redistribute it and/or modify
 		 *  it under the terms of the GNU Lesser General Public License as published by
 		 *  the Free Software Foundation, either version 3 of the License, or
@@ -191,44 +198,44 @@ class ComponentGenerator implements IGenerator {
 		 */
 
     	'''
-	
+
 	def List<Attribute> notInherited(List<Attribute> elements) {
 		val result = newArrayList()
-		elements.forEach[a | 
+		elements.forEach[a |
 			             if ((a.inherited==null) && (!a.name.propertyKeyValue.startsWith("\""))) {
 			                result.add(a)
 		                 }
 		]
 		result
-		
+
 //		var result = new ArrayList<Attribute>();
-//		
+//
 //		FOR a: elements
 //			result.add(a)
 //		ENDFOR
 //   	 	elements.get(0)
   	}
-	
+
 	def generateProperties(Component e) '''
 		    protected enum PropertyKeys {
 		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';' »
-		    «"		"»«f.name.propertyKeyValue»
+		    «"		"»«f.name.propertyKeyValue.validIdentifier»
 		«ENDFOR»
-		
+
 		        String toString;
-		
+
 		        PropertyKeys(String toString) {
 		            this.toString = toString;
 		        }
-		
+
 		        PropertyKeys() {}
-		
+
 		        public String toString() {
 		            return ((this.toString != null) ? this.toString : super.toString());
 		        }
 		    }
 	'''
-	
+
 		def toCamelCase(String s) {
 		var pos = 0 as int
 		var cc = s
@@ -238,5 +245,5 @@ class ComponentGenerator implements IGenerator {
 		}
 		return cc
 	}
-	
+
 }

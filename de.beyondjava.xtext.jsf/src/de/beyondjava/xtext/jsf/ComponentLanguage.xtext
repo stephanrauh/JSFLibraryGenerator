@@ -23,14 +23,14 @@ Attribute:
 
 QualifiedName:
 	ID ('.' ID)*;
-	
+
 CSSID:
 	ID ('-' ID)*;
 
 Attributetype:
-	'String' 
-	| 'Boolean' 
-	| 'Integer' 
+	'String'
+	| 'Boolean'
+	| 'Integer'
 	| 'javax.el.MethodExpression'
 	| 'javax.faces.event.ActionListener'
 	| 'javax.faces.component.UIComponent'
@@ -39,6 +39,8 @@ Attributetype:
 	| 'java.util.List'
 	| 'javax.faces.validator.Validator'
 	| 'TreeNodeEventListener'
-	| 'Map<' QualifiedName ', ' QualifiedName '>';
-  
- 
+	| 'Map<' QualifiedName ', ' QualifiedName '>'
+	| 'Drawing'
+	| 'ScrollSpyEventListener';
+
+
