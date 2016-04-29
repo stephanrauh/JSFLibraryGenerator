@@ -41,6 +41,7 @@ Attributetype:
 	| 'TreeNodeEventListener'
 	| 'Map<' QualifiedName ', ' QualifiedName '>'
 	| 'Drawing'
-	| 'ScrollSpyEventListener';
+	| 'ScrollSpyEventListener'
+	| 'Node';
 
 
