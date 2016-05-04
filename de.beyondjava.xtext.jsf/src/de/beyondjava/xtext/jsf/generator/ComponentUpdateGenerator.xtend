@@ -36,10 +36,14 @@ class ComponentUpdateGenerator implements IGenerator {
 					index = generatedContent.indexOf("protected enum PropertyKeys {")
 					if (index > 0) {
 						var end = generatedContent.substring(index);
-						var merged = start + end;
-						fsa.generateFile(
-							"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java",
-							merged)
+						var oldindex = contentToMerge.indexOf("protected enum PropertyKeys {")
+						var oldEnd=contentToMerge.substring(oldindex);
+						if (!end.withoutWhiteSpace().equals(oldEnd.withoutWhiteSpace())) {
+							var merged = start + end;
+							fsa.generateFile(
+								"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java",
+								merged)
+							}
 						}
 					}
 				}
@@ -47,11 +51,18 @@ class ComponentUpdateGenerator implements IGenerator {
 			}
 		}
 
+		def withoutWhiteSpace(String s) {
+			var r = s.replace(" ", "");
+			r= r.replace("\t", "");
+			r= r.replace("\n", "");
+			r= r.replace("\r", "");
+			return r;
+		}
+
 		def findGeneratedSourceFolder(IFileSystemAccess fsa, Component e) {
 			var uri = (fsa as IFileSystemAccessExtension2).getURI(
 				"net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java");
 			var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
-			System.out.println(uri);
 			var file = FileLocator.toFileURL(eclipseURL);
 			var pathname = file.toString().replace("file:", "");
 			if (new File(pathname).exists()) {

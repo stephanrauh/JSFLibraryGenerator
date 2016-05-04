@@ -18,7 +18,6 @@ class ComponentListGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		var content = resource.compile();
-		System.out.println(content);
 		fsa.generateFile("../src/main/java/net/bootsfaces/component/ComponentsEnum.java", content);
 	}
 
