@@ -5,7 +5,10 @@ package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 import de.beyondjava.xtext.jsf.componentLanguage.Component
+import de.beyondjava.xtext.jsf.formatting.JavaFormatter
 import java.util.List
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -19,15 +22,23 @@ class ComponentCoreGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstLower + "/" +e.name.toFirstUpper + "Core.java", e.compile)
+
+			val platformString = resource.URI.toPlatformString(true);
+			val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+			val project = myFile.getProject();
+			var generated = e.compile
+			var formatted = JavaFormatter.format(generated.toString, project);
+
+			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
+				"Core.java", formatted)
 		}
 	}
 
-	def compile(Component e) '''
+	def compile(
+		Component e) '''
 		«e.generateCopyrightHeader»
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 
-		import javax.el.ValueExpression;
 		import javax.faces.component.*;
 		«IF e.hasTooltip!=null»
 			import net.bootsfaces.render.Tooltip;
@@ -36,13 +47,13 @@ class ComponentCoreGenerator implements IGenerator {
 
 
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
-		public class «e.name.toFirstUpper» extends «parentClass(e)» «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
+		public abstract class «e.name.toFirstUpper»Core extends «parentClass(e)» «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» {
 
 		«e.generateProperties»
 
 		  «FOR f : e.attributes»
-		    «IF f.inherited==null»
-			  	«f.generateAccessors»
+		  	«IF f.inherited==null»
+		  		«f.generateAccessors»
 		  	«ENDIF»
 		  «ENDFOR»
 		}
@@ -50,7 +61,7 @@ class ComponentCoreGenerator implements IGenerator {
 	'''
 
 	def parentClass(Component component) {
-		if (component.extends!=null) {
+		if (component.extends != null) {
 			return component.extends;
 		}
 		if (component.processesInput != null) {
@@ -59,7 +70,8 @@ class ComponentCoreGenerator implements IGenerator {
 		return "UIOutput";
 	}
 
-	def generateAccessors(Attribute e) '''
+	def generateAccessors(
+		Attribute e) '''
 
 		/**
 		 * «e.desc» <P>
@@ -97,49 +109,46 @@ class ComponentCoreGenerator implements IGenerator {
 
 	def getPropertyKeyValue(String s) {
 		if (s == "static") {
-			return "\""+s+"\"";
+			return "\"" + s + "\"";
 		} else {
 			return s.toCamelCase;
 		}
 	}
 
-
 	def getDefaultValueTerm(Attribute a) {
-		if (a.defaultValue!=null && a.type == null) ', "' + a.defaultValue + '"'
-		else if (a.defaultValue!=null && a.type == "String") ', "' + a.defaultValue + '"'
-		else if (a.defaultValue!=null) ', ' + a.defaultValue
-		else if ("Integer".equals(a.type)) ', 0'
-		else if ("Boolean".equals(a.type)) ', false'
-		else ''
+		if (a.defaultValue != null && a.type == null)
+			', "' + a.defaultValue + '"'
+		else if (a.defaultValue != null && a.type == "String")
+			', "' + a.defaultValue + '"'
+		else if (a.defaultValue != null)
+			', ' + a.defaultValue
+		else if ("Integer".equals(a.type))
+			', 0'
+		else if("Boolean".equals(a.type)) ', false' else ''
 	}
-
 
 	def optionalTypeCast(Attribute e) {
-		if (e.objectType!=e.attributeType) '('+e.attributeType+')'
-		else ''
+		if(e.objectType != e.attributeType) '(' + e.attributeType + ')' else ''
 	}
 
-	def getGetter(Attribute f)
-	{
+	def getGetter(Attribute f) {
 		if ("Boolean".equals(f.type)) {
 			'''is«f.name.toCamelCase.toFirstUpper»()'''
-		}
-		else {
+		} else {
 			'''get«f.name.toCamelCase.toFirstUpper»()'''
 		}
 	}
 
 	def getObjectType(Attribute a) {
-		if (null==a.type) "String"
-		else a.type;
+		if(null == a.type) "String" else a.type;
 	}
 
-
 	def getAttributeType(Attribute a) {
-		if (null==a.type) "String"
-		else if ("Boolean".equals(a.type)) "boolean"
-		else if ("Integer".equals(a.type)) "int"
-		else a.type;
+		if (null == a.type)
+			"String"
+		else if ("Boolean".equals(a.type))
+			"boolean"
+		else if("Integer".equals(a.type)) "int" else a.type;
 	}
 
 	def generateCopyrightHeader(Component e) '''
@@ -162,44 +171,44 @@ class ComponentCoreGenerator implements IGenerator {
 		 *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
 		 */
 
-    	'''
+	 	'''
 
 	def List<Attribute> notInherited(List<Attribute> elements) {
 		val result = newArrayList()
-		elements.forEach[a |
-			             if ((a.inherited==null) && (!a.name.propertyKeyValue.startsWith("\""))) {
-			                result.add(a)
-		                 }
+		elements.forEach [ a |
+			if ((a.inherited == null) && (!a.name.propertyKeyValue.startsWith("\""))) {
+				result.add(a)
+			}
 		]
 		result
-  	}
+	}
 
 	def generateProperties(Component e) '''
 		    protected enum PropertyKeys {
-		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';' »
-		    «"		"»«f.name.propertyKeyValue.validIdentifier»
+		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';'»
+			«"		"»«f.name.propertyKeyValue.validIdentifier»
 		«ENDFOR»
 
 		        String toString;
 
 		        PropertyKeys(String toString) {
-		            this.toString = toString;
+		    this.toString = toString;
 		        }
 
 		        PropertyKeys() {}
 
 		        public String toString() {
-		            return ((this.toString != null) ? this.toString : super.toString());
+		    return ((this.toString != null) ? this.toString : super.toString());
 		        }
 		    }
 	'''
 
-		def toCamelCase(String s) {
+	def toCamelCase(String s) {
 		var pos = 0 as int
 		var cc = s
 		while (cc.contains('-')) {
 			pos = cc.indexOf('-');
-			cc = cc.substring(0, pos) + cc.substring(pos+1, pos+2).toUpperCase() + cc.substring(pos+2);
+			cc = cc.substring(0, pos) + cc.substring(pos + 1, pos + 2).toUpperCase() + cc.substring(pos + 2);
 		}
 		return cc
 	}

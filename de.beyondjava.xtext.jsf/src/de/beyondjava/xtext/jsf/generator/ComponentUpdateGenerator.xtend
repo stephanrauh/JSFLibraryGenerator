@@ -9,12 +9,15 @@ import java.io.File
 import java.io.FileReader
 import java.io.IOException
 import java.net.URI
+import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.FileLocator
+import org.eclipse.core.runtime.Path
 import org.eclipse.core.runtime.URIUtil
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IFileSystemAccessExtension2
 import org.eclipse.xtext.generator.IGenerator
+import de.beyondjava.xtext.jsf.formatting.JavaFormatter
 
 /**
  * Generates code from your model files on save.
@@ -37,72 +40,90 @@ class ComponentUpdateGenerator implements IGenerator {
 					if (index > 0) {
 						var end = generatedContent.substring(index);
 						var oldindex = contentToMerge.indexOf("protected enum PropertyKeys {")
-						var oldEnd=contentToMerge.substring(oldindex);
+						var oldEnd = contentToMerge.substring(oldindex);
 						if (!end.withoutWhiteSpace().equals(oldEnd.withoutWhiteSpace())) {
 							var merged = start + end;
-							fsa.generateFile(
-								"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java",
-								merged)
+							val platformString = resource.URI.toPlatformString(true);
+	    					val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+						    val project = myFile.getProject();
+						    merged = JavaFormatter.format(merged, project);
+
+							if (target.toString().endsWith("Core.java")) {
+								fsa.generateFile(
+									"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" +
+										e.name.toFirstUpper + "Core.java", merged)
+							} else {
+								fsa.generateFile(
+									"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" +
+										e.name.toFirstUpper + ".java", merged)
 							}
 						}
 					}
 				}
-
 			}
-		}
 
-		def withoutWhiteSpace(String s) {
-			var r = s.replace(" ", "");
-			r= r.replace("\t", "");
-			r= r.replace("\n", "");
-			r= r.replace("\r", "");
-			return r;
-		}
-
-		def findGeneratedSourceFolder(IFileSystemAccess fsa, Component e) {
-			var uri = (fsa as IFileSystemAccessExtension2).getURI(
-				"net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java");
-			var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
-			var file = FileLocator.toFileURL(eclipseURL);
-			var pathname = file.toString().replace("file:", "");
-			if (new File(pathname).exists()) {
-				return pathname;
-			}
-			return null;
-		}
-
-		def findSourceFolder(IFileSystemAccess fsa, Component e) {
-			var uri = (fsa as IFileSystemAccessExtension2).getURI(
-				"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java");
-			var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
-			var file = FileLocator.toFileURL(eclipseURL);
-			var pathname = file.toString().replace("file:", "");
-			if (new File(pathname).exists()) {
-				return pathname;
-			}
-			return null;
-		}
-
-		def readFile(String filename) {
-			var br = null as BufferedReader;
-			var content = ""
-
-			try {
-				var sCurrentLine = null as String;
-				br = new BufferedReader(new FileReader(filename));
-				while ((sCurrentLine = br.readLine()) != null) {
-					content += sCurrentLine + "\n";
-				}
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					if(br != null) br.close();
-				} catch (IOException ex) {
-					ex.printStackTrace();
-				}
-			}
-			return content
 		}
 	}
+
+	def withoutWhiteSpace(String s) {
+		var r = s.replace(" ", "");
+		r = r.replace("\t", "");
+		r = r.replace("\n", "");
+		r = r.replace("\r", "");
+		r = r.replace("*", ""); // ignore changes of Javadoc formatting
+		return r;
+	}
+
+	def findGeneratedSourceFolder(IFileSystemAccess fsa, Component e) {
+		var uri = (fsa as IFileSystemAccessExtension2).getURI(
+			"net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + "Core.java");
+		var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
+		var file = FileLocator.toFileURL(eclipseURL);
+		var pathname = file.toString().replace("file:", "");
+		if (new File(pathname).exists()) {
+			return pathname;
+		}
+		return null;
+	}
+
+	def findSourceFolder(IFileSystemAccess fsa, Component e) {
+		var uri = (fsa as IFileSystemAccessExtension2).getURI(
+			"../src/main/java/net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
+				"Core.java");
+				var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
+				var file = FileLocator.toFileURL(eclipseURL);
+				var pathname = file.toString().replace("file:", "");
+				if (new File(pathname).exists()) {
+					return pathname;
+				}
+				// provide for backward compatibility (0.8.1-SNAPSHOT didn't emply the ComponentCore.java files)
+				pathname = pathname.replace("Core.java", ".java");
+				if (new File(pathname).exists()) {
+					return pathname;
+				}
+				return null;
+			}
+
+			def readFile(String filename) {
+				var br = null as BufferedReader;
+				var content = ""
+
+				try {
+					var sCurrentLine = null as String;
+					br = new BufferedReader(new FileReader(filename));
+					while ((sCurrentLine = br.readLine()) != null) {
+						content += sCurrentLine + "\n";
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						if(br != null) br.close();
+					} catch (IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+				return content
+			}
+		}

@@ -17,6 +17,7 @@ class ComponentLanguageGenerator implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		new TaglibGenerator().doGenerate(resource, fsa);
 		new PartialTaglibGenerator().doGenerate(resource, fsa);
+		new ComponentCoreGenerator().doGenerate(resource, fsa);
 		new ComponentGenerator().doGenerate(resource, fsa);
 		new ComponentListGenerator().doGenerate(resource, fsa);
 		new ComponentUpdateGenerator().doGenerate(resource, fsa);

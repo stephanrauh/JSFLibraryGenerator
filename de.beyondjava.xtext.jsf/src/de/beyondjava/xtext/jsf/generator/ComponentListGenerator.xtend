@@ -5,6 +5,9 @@
 package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Component
+import de.beyondjava.xtext.jsf.formatting.JavaFormatter
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -17,8 +20,13 @@ import org.eclipse.xtext.generator.IGenerator
 class ComponentListGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		val platformString = resource.URI.toPlatformString(true);
 		var content = resource.compile();
-		fsa.generateFile("../src/main/java/net/bootsfaces/component/ComponentsEnum.java", content);
+		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+		val project = myFile.getProject();
+		var formatted = JavaFormatter.format(content.toString, project);
+
+		fsa.generateFile("../src/main/java/net/bootsfaces/component/ComponentsEnum.java", formatted);
 	}
 
 	def compile(Resource resource) '''
@@ -26,34 +34,34 @@ class ComponentListGenerator implements IGenerator {
 
 		public enum ComponentsEnum {
 			«FOR e : resource.allContents.toIterable.filter(Component) SEPARATOR ","»
-			  	«e.compile»
-		    «ENDFOR»
-		    ;
-		    private String tag;
+				«e.compile»
+			«ENDFOR»
+			;
+			private String tag;
 
-		    private String tagname;
+		   private String tagname;
 
 		    ComponentsEnum(String tag, String tagname) {
-		        this.tag = tag;
-		        this.tagname = tagname;
+		    this.tag = tag;
+		    this.tagname = tagname;
 		    }
 
 		    public String tag() {
-		        return tag;
+		    return tag;
 		    }
 
 		    public String tagname() {
-		    	return tagname;
-		    }
+			return tagname;
+			   }
 		}
-		'''
+	'''
 
 	def compile(Component widget) {
-	    var lower = widget.name.toFirstLower;
-	    var name = lower;
-	    if (lower.equals("switch")) {
-	    	name="switchComponent";
-	    }
+		var lower = widget.name.toFirstLower;
+		var name = lower;
+		if (lower.equals("switch")) {
+			name = "switchComponent";
+		}
 		var line = name + "(\"<b:" + lower + "\", \"" + lower + "\")";
 		return line;
 	}

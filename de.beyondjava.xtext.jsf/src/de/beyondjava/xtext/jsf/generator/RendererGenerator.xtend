@@ -5,29 +5,37 @@ package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
 import de.beyondjava.xtext.jsf.componentLanguage.Component
+import de.beyondjava.xtext.jsf.formatting.JavaFormatter
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class RendererGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (e : resource.allContents.toIterable.filter(Component)) {
-			fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstLower + "/" + e.name.toFirstUpper + "Renderer.java", e.compile)
+		val platformString = resource.URI.toPlatformString(true);
+		var content = e.compile();
+		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
+		val project = myFile.getProject();
+		var formatted = JavaFormatter.format(content.toString, project);
+		fsa.generateFile("net/bootsfaces/component/"+e.name.toFirstLower + "/" + e.name.toFirstUpper + "Renderer.java", formatted)
 		}
 	}
 
-	def compile(Component e) ''' 
+	def compile(Component e) '''
 		/**
 		 *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
-		 *  
+		 *
 		 *  This file is part of BootsFaces.
-		 *  
+		 *
 		 *  BootsFaces is free software: you can redistribute it and/or modify
 		 *  it under the terms of the GNU Lesser General Public License as published by
 		 *  the Free Software Foundation, either version 3 of the License, or
@@ -43,7 +51,7 @@ class RendererGenerator implements IGenerator {
 		 */
 
 		package net.bootsfaces.component.«e.name.toFirstLower»;
-		
+
 		import javax.faces.component.*;
 		import java.io.IOException;
 		import java.util.Map;
@@ -51,27 +59,27 @@ class RendererGenerator implements IGenerator {
 		import javax.faces.context.FacesContext;
 		import javax.faces.context.ResponseWriter;
 		import javax.faces.render.FacesRenderer;
-		
+
 		import net.bootsfaces.render.CoreRenderer;
 		import net.bootsfaces.render.Tooltip;
-		
-		
+
+
 		/** This class generates the HTML code of &lt;b:«e.name» /&gt;. */
 		@FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.«e.name.toFirstLower».«e.widgetClass»")
 		public class «e.widgetClass»Renderer extends CoreRenderer {
 			«IF e.processesInput!=null»
 			«generateDecodeMethod(e)»
 			«ENDIF»
-			
+
 			«generateEncodeBeginMethod(e)»
-			
+
 			«IF e.hasChildren!=null»
 				«generateEncodeEndMethod(e)»
 			«ENDIF»
-			
+
 		}
 			'''
-	
+
 	def generateDecodeMethod(Component e)
 		'''
 			/**
@@ -81,24 +89,24 @@ class RendererGenerator implements IGenerator {
 			 * the values in the <code>submittedValues</code> list are store in the backend bean.
 			 * @param context the FacesContext.
 			 * @param component the current b:«e.widget».
-			 */  
+			 */
 			@Override
 			public void decode(FacesContext context, UIComponent component) {
 			    «e.widgetClass» «e.widget» = («e.widgetClass») component;
-			
+
 				«e.returnIfDisabled»
-			
+
 			    decodeBehaviors(context, «e.widget»);
-			
+
 			    String clientId = «e.widget».getClientId(context);
 			    String submittedValue = (String) context.getExternalContext().getRequestParameterMap().get(clientId);
-			
+
 			    if (submittedValue != null) {
 			    	«e.widget».setSubmittedValue(submittedValue);
 			    }
 			}
 		'''
-	
+
 	def getReturnIfDisabled(Component component) {
 		if (component.attributes.exists[a | "disabled" == a.name])
 		{
@@ -110,7 +118,7 @@ class RendererGenerator implements IGenerator {
 		}
 		""
 	}
-	
+
 
 	def generateEncodeBeginMethod(Component e)
 		'''
@@ -125,7 +133,7 @@ class RendererGenerator implements IGenerator {
 			 * @param context the FacesContext.
 			 * @param component the current b:«e.widget».
 			 * @throws IOException thrown if something goes wrong when writing the HTML code.
-			 */  
+			 */
 			@Override
 			public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
 			    if (!component.isRendered()) {
@@ -134,14 +142,14 @@ class RendererGenerator implements IGenerator {
 				«e.widgetClass» «e.widget» = («e.widgetClass») component;
 				ResponseWriter rw = context.getResponseWriter();
 				String clientId = «e.widget».getClientId();
-				
+
 				// put custom code here
 				// Simple demo widget that simply renders every attribute value
 				rw.startElement("«e.widget»", «e.widget»);
-				«IF e.hasTooltip!=null» 
+				«IF e.hasTooltip!=null»
 					Tooltip.generateTooltip(context, «e.widget», rw);
 				«ENDIF»
-				
+
 			    «FOR f : e.attributes»
 			        rw.writeAttribute("«f.name»", «parameterAsString(e, f)», "«f.name»");
 			    «ENDFOR»
@@ -152,7 +160,7 @@ class RendererGenerator implements IGenerator {
 				    Tooltip.activateTooltips(context, «e.widget»);
 				    «ENDIF»
 				«ENDIF»
-				
+
 			}
 		'''
 
@@ -169,7 +177,7 @@ class RendererGenerator implements IGenerator {
 			 * @param context the FacesContext.
 			 * @param component the current b:«e.widget».
 			 * @throws IOException thrown if something goes wrong when writing the HTML code.
-			 */  
+			 */
 			@Override
 			public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 			    if (!component.isRendered()) {
@@ -185,7 +193,7 @@ class RendererGenerator implements IGenerator {
 
 			}
 		'''
-		
+
 		/** Boolean parameters are rendered slightly unexpected by JSF, so it's better to pass the desired String for the sake of clarity */
 		def parameterAsString(Component e, Attribute f) {
 			if ("Boolean"==f.type)
@@ -193,11 +201,11 @@ class RendererGenerator implements IGenerator {
 			else
 				'''«e.widget»«getGetter(f)»'''
 		}
-		
-		
+
+
 
 		def getGetter(Attribute f)
-		{ 
+		{
 			if ("Boolean".equals(f.type)) {
 				'''.is«f.name.toFirstUpper»()'''
 			}
@@ -205,12 +213,12 @@ class RendererGenerator implements IGenerator {
 				'''.get«f.name.toFirstUpper»()'''
 			}
 		}
-	
-	
+
+
 	def widgetClass(Component c) {
 		'''«c.name.toFirstUpper»'''
 	}
-	
+
 	def widget(Component c) {
 		'''«c.name.toFirstLower»'''
 	}

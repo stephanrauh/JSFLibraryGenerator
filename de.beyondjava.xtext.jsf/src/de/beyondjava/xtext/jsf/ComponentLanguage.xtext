@@ -13,6 +13,7 @@ Component:
 	('extends' extends=QualifiedName)?
 	(hasChildren='has_children')?
 	(hasTooltip='has_tooltip')?
+	(isReponsive='is_responsive')?
 	('description' description=STRING)?
 	'{'
 	   (attributes+=Attribute)*
@@ -41,6 +42,7 @@ Attributetype:
 	| 'TreeNodeEventListener'
 	| 'Map<' QualifiedName ', ' QualifiedName '>'
 	| 'Drawing'
+	| 'java.lang.Object'
 	| 'ScrollSpyEventListener'
 	| 'Node';
 

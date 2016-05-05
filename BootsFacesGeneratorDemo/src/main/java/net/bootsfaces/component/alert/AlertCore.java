@@ -55,15 +55,21 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * An EL expression referring to a server side UIComponent instance in a backing bean. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * An EL expression referring to a server side UIComponent instance in a
+	 * backing bean.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public javax.faces.component.UIComponent getBinding() {
 		return (javax.faces.component.UIComponent) getStateHelper().eval(PropertyKeys.binding);
 	}
 
 	/**
-	 * An EL expression referring to a server side UIComponent instance in a backing bean. <P>
+	 * An EL expression referring to a server side UIComponent instance in a
+	 * backing bean.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setBinding(javax.faces.component.UIComponent _binding) {
@@ -71,15 +77,19 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * If true close button will be displayed. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * If true close button will be displayed.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public boolean isClosable() {
 		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.closable, false);
 	}
 
 	/**
-	 * If true close button will be displayed. <P>
+	 * If true close button will be displayed.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setClosable(boolean _closable) {
@@ -87,15 +97,21 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Severity of the Alert, can be success, info, warning, danger. Default is warning. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * Severity of the Alert, can be success, info, warning, danger. Default is
+	 * warning.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getSeverity() {
 		return (String) getStateHelper().eval(PropertyKeys.severity);
 	}
 
 	/**
-	 * Severity of the Alert, can be success, info, warning, danger. Default is warning. <P>
+	 * Severity of the Alert, can be success, info, warning, danger. Default is
+	 * warning.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setSeverity(String _severity) {
@@ -103,15 +119,19 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Inline style of the input element. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * Inline style of the input element.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getStyle() {
 		return (String) getStateHelper().eval(PropertyKeys.style);
 	}
 
 	/**
-	 * Inline style of the input element. <P>
+	 * Inline style of the input element.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setStyle(String _style) {
@@ -119,15 +139,19 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Style class of this element. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * Style class of this element.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getStyleClass() {
 		return (String) getStateHelper().eval(PropertyKeys.styleClass);
 	}
 
 	/**
-	 * Style class of this element. <P>
+	 * Style class of this element.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setStyleClass(String _styleClass) {
@@ -135,15 +159,19 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Bold Title displayed before your message. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * Bold Title displayed before your message.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getTitle() {
 		return (String) getStateHelper().eval(PropertyKeys.title);
 	}
 
 	/**
-	 * Bold Title displayed before your message. <P>
+	 * Bold Title displayed before your message.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTitle(String _title) {
@@ -151,15 +179,19 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The text of the tooltip. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * The text of the tooltip.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getTooltip() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltip);
 	}
 
 	/**
-	 * The text of the tooltip. <P>
+	 * The text of the tooltip.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltip(String _tooltip) {
@@ -167,15 +199,25 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * Where is the tooltip div generated? That's primarily a technical value
+	 * that can be used to fix rendering errors in special cases. Also see
+	 * data-container in the documentation of Bootstrap. The default value is
+	 * body.
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getTooltipContainer() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltipContainer, "body");
 	}
 
 	/**
-	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
+	 * Where is the tooltip div generated? That's primarily a technical value
+	 * that can be used to fix rendering errors in special cases. Also see
+	 * data-container in the documentation of Bootstrap. The default value is
+	 * body.
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipContainer(String _tooltipContainer) {
@@ -183,15 +225,21 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * The tooltip is shown and hidden with a delay. This value is the delay in
+	 * milliseconds. Defaults to 0 (no delay).
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public int getTooltipDelay() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
 	}
 
 	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * The tooltip is shown and hidden with a delay. This value is the delay in
+	 * milliseconds. Defaults to 0 (no delay).
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelay(int _tooltipDelay) {
@@ -199,15 +247,21 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * The tooltip is hidden with a delay. This value is the delay in
+	 * milliseconds. Defaults to 0 (no delay).
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public int getTooltipDelayHide() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
 	}
 
 	/**
-	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * The tooltip is hidden with a delay. This value is the delay in
+	 * milliseconds. Defaults to 0 (no delay).
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelayHide(int _tooltipDelayHide) {
@@ -215,15 +269,21 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * The tooltip is shown with a delay. This value is the delay in
+	 * milliseconds. Defaults to 0 (no delay).
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public int getTooltipDelayShow() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
 	}
 
 	/**
-	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * The tooltip is shown with a delay. This value is the delay in
+	 * milliseconds. Defaults to 0 (no delay).
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelayShow(int _tooltipDelayShow) {
@@ -231,15 +291,23 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * Where is the tooltip to be displayed? Possible values: "top", "bottom",
+	 * "right", "left", "auto", "auto top", "auto bottom", "auto right" and
+	 * "auto left". Default to "bottom".
+	 * <P>
+	 *
+	 * @return Returns the value of the attribute, or null, if it hasn't been
+	 *         set by the JSF file.
 	 */
 	public String getTooltipPosition() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltipPosition);
 	}
 
 	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
+	 * Where is the tooltip to be displayed? Possible values: "top", "bottom",
+	 * "right", "left", "auto", "auto top", "auto bottom", "auto right" and
+	 * "auto left". Default to "bottom".
+	 * <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipPosition(String _tooltipPosition) {

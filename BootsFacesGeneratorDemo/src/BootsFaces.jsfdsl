@@ -6,6 +6,20 @@ widget accordion
     id                  inherited                                         "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
 	expandedPanels														  "Comma separated list of child panel id that need to render expanded."
+    update                                                                 "Component(s) to be updated with ajax."
+}
+
+widget socialMediaButton
+       implemented_by net.bootsfaces.component.socialMediaButton.SocialMediaButton
+       extends UIComponentBase
+       has_children
+       has_tooltip
+       is_responsive
+{
+    id                  inherited                                         "Unique identifier of the component in a namingContainer."
+    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+	twitter			    Boolean										  "Is it a Twitter button?"
+    update                                                                 "Component(s) to be updated with ajax."
 }
 
 
@@ -1783,8 +1797,10 @@ widget tabView
     tooltip-delay-hide    Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltip-delay-show    Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
     tooltip-position                                                        "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
-    update                                                                 "Component(s) to be updated with ajax."
+    update                                                                "Component(s) to be updated with ajax."
+    update2                                                                 "Component(s) to be updated with ajax."
 }
+
 
 widget tree
        implemented_by net.bootsfaces.component.tree.Tree

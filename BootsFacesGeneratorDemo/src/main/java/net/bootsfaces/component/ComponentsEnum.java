@@ -2,6 +2,7 @@ package net.bootsfaces.component;
 
 public enum ComponentsEnum {
 	accordion("<b:accordion", "accordion"),
+	socialMediaButton("<b:socialMediaButton", "socialMediaButton"),
 	alert("<b:alert", "alert"),
 	badge("<b:badge", "badge"),
 	button("<b:button", "button"),
@@ -61,22 +62,21 @@ public enum ComponentsEnum {
 	tabView("<b:tabView", "tabView"),
 	tree("<b:tree", "tree"),
 	thumbnail("<b:thumbnail", "thumbnail"),
-	well("<b:well", "well")
-    ;
-    private String tag;
+	well("<b:well", "well");
+	private String tag;
 
-    private String tagname;
+	private String tagname;
 
-    ComponentsEnum(String tag, String tagname) {
-        this.tag = tag;
-        this.tagname = tagname;
-    }
+	ComponentsEnum(String tag, String tagname) {
+		this.tag = tag;
+		this.tagname = tagname;
+	}
 
-    public String tag() {
-        return tag;
-    }
+	public String tag() {
+		return tag;
+	}
 
-    public String tagname() {
-    	return tagname;
-    }
+	public String tagname() {
+		return tagname;
+	}
 }
