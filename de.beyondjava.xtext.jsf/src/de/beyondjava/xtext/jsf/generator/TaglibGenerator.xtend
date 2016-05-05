@@ -4,7 +4,14 @@
 package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
+import de.beyondjava.xtext.jsf.componentLanguage.AttributeList
 import de.beyondjava.xtext.jsf.componentLanguage.Component
+import java.util.ArrayList
+import java.util.Collections
+import java.util.Comparator
+import java.util.HashMap
+import java.util.Map
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -16,11 +23,40 @@ import org.eclipse.xtext.generator.IGenerator
  */
 class TaglibGenerator implements IGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		fsa.generateFile("../src/main/meta/META-INF/bootsfaces-b.taglib.xml", resource.compile());
+	def collectAttributeLists(Resource resource) {
+		var attributeLists = new HashMap()
+		for (e : resource.allContents.toIterable.filter(AttributeList)) {
+			attributeLists.put(e.name, e.attributes)
+		}
+		return attributeLists
 	}
 
-	def compile(Resource resource) '''
+	def allAttributes(Component widget, Map<String, EList<Attribute>> lists) {
+		var attributes = new ArrayList<Attribute>();
+		for (e : widget.attributes) {
+			attributes.add(e);
+		}
+		for (e : widget.attributeLists) {
+			var list = lists.get(e)
+			for (a:list) {
+				attributes.add(a)
+			}
+		}
+		Collections.sort(attributes, new Comparator<Attribute>(){
+			override compare(Attribute o1, Attribute o2) {
+				return o1.name.compareTo(o2.name)
+			}
+
+		})
+		return attributes;
+	}
+
+	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		var attributeLists = collectAttributeLists(resource)
+		fsa.generateFile("../src/main/meta/META-INF/bootsfaces-b.taglib.xml", resource.compile(attributeLists));
+	}
+
+	def compile(Resource resource, HashMap<String, EList<Attribute>> attributeLists) '''
 	<?xml version="1.0" encoding="UTF-8"?>
 	<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -29,12 +65,12 @@ class TaglibGenerator implements IGenerator {
 		version="2.0">
 		<namespace>http://bootsfaces.net/ui</namespace>
 		«FOR e : resource.allContents.toIterable.filter(Component)»
-		  «e.compile»
+		  «e.compile(attributeLists)»
 	    «ENDFOR»
 		</facelet-taglib>
 		'''
 
-	def compile(Component widget) '''
+	def compile(Component widget, HashMap<String, EList<Attribute>> attributeLists) '''
 
   <!-- *********** b:«widget.name.toFirstLower» ************************* -->
   <tag>
@@ -42,7 +78,7 @@ class TaglibGenerator implements IGenerator {
   	<component>
   		<component-type>net.bootsfaces.component.«widget.name.toFirstLower».«widget.name.toFirstUpper»</component-type>
   	</component>
-	«FOR f : widget.attributes»
+	«FOR f : widget.allAttributes(attributeLists)»
 	«f.generateAttribute»
 	«ENDFOR»
   </tag>

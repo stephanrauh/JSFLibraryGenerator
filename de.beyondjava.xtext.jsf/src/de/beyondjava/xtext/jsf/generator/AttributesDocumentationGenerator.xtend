@@ -4,16 +4,23 @@
 package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
+import de.beyondjava.xtext.jsf.componentLanguage.AttributeList
 import de.beyondjava.xtext.jsf.componentLanguage.Component
 import java.io.File
 import java.io.FileWriter
 import java.net.URI
+import java.util.ArrayList
+import java.util.Collections
+import java.util.Comparator
+import java.util.HashMap
+import java.util.Map
 import org.eclipse.core.runtime.FileLocator
 import org.eclipse.core.runtime.URIUtil
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IFileSystemAccessExtension2
 import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.emf.common.util.EList
 
 /**
  * Generates code from your model files on save.
@@ -23,9 +30,10 @@ import org.eclipse.xtext.generator.IGenerator
 class AttributesDocumentationGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		var attributeLists = collectAttributeLists(resource)
 		for (e : resource.allContents.toIterable.filter(Component)) {
 			fsa.generateFile("net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper +
-				"Attributes.xhtml", e.compile)
+				"Attributes.xhtml", e.compile(attributeLists))
 			var webProject = fsa.findWebProjectFolder
 			if (null != webProject) {
 				var targetFileAsString = e.name.findDocumentationFolder(webProject)
@@ -33,11 +41,39 @@ class AttributesDocumentationGenerator implements IGenerator {
 					var targetFile = new File(targetFileAsString.toString)
 					targetFile.delete();
 					val writer = new FileWriter(targetFile)
-					writer.append(e.compile.toString.replace("\t", "  "));
+					writer.append(e.compile(attributeLists).toString.replace("\t", "  "));
 					writer.close();
 				}
 			}
 		}
+	}
+
+	def collectAttributeLists(Resource resource) {
+		var attributeLists = new HashMap()
+		for (e : resource.allContents.toIterable.filter(AttributeList)) {
+			attributeLists.put(e.name, e.attributes)
+		}
+		return attributeLists
+	}
+
+	def allAttributes(Component widget, Map<String, EList<Attribute>> lists) {
+		var attributes = new ArrayList<Attribute>();
+		for (e : widget.attributes) {
+			attributes.add(e);
+		}
+		for (e : widget.attributeLists) {
+			var list = lists.get(e)
+			for (a:list) {
+				attributes.add(a)
+			}
+		}
+		Collections.sort(attributes, new Comparator<Attribute>(){
+			override compare(Attribute o1, Attribute o2) {
+				return o1.name.compareTo(o2.name)
+			}
+
+		})
+		return attributes;
 	}
 
 	def findWebProjectFolder(IFileSystemAccess fsa) {
@@ -53,7 +89,7 @@ class AttributesDocumentationGenerator implements IGenerator {
 
 	def findDocumentationFolder(String widget, String pathname) {
 
-		var docFolder=new File(pathname);
+		var docFolder = new File(pathname);
 		if (docFolder.exists()) {
 			var targetFolder = findDocumentationFolder(docFolder, widget);
 
@@ -74,8 +110,7 @@ class AttributesDocumentationGenerator implements IGenerator {
 				}
 			} else {
 				var filename = f.name;
-				var targetFileName = widget.toFirstUpper +
-				"Attributes.xhtml";
+				var targetFileName = widget.toFirstUpper + "Attributes.xhtml";
 				if (targetFileName.equalsIgnoreCase(filename)) {
 					return f.absolutePath;
 				}
@@ -85,7 +120,7 @@ class AttributesDocumentationGenerator implements IGenerator {
 		return null;
 	}
 
-	def compile(Component widget) '''
+	def compile(Component widget, HashMap<String, EList<Attribute>> attributeLists) '''
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <ui:fragment
@@ -110,7 +145,7 @@ class AttributesDocumentationGenerator implements IGenerator {
 						</tr>
 					</thead>
 					<tbody>
-						«FOR f : widget.attributes»
+						«FOR f : widget.allAttributes(attributeLists)»
 						  «f.generateAttribute»
 						«ENDFOR»
 					</tbody>
@@ -120,7 +155,8 @@ class AttributesDocumentationGenerator implements IGenerator {
 </ui:fragment>
 	'''
 
-	def generateAttribute(Attribute a) '''
+	def generateAttribute(
+		Attribute a) '''
 		<tr>
 		    <td>«a.name»«a.name.alternativeWriting»</td>
 		    <td>«IF a.defaultValue!=null» «a.defaultValue» «ELSEIF a.type=="Boolean"»false«ELSEIF a.type=="Integer"»0 «ELSE»(none)«ENDIF»</td>
@@ -140,7 +176,7 @@ class AttributesDocumentationGenerator implements IGenerator {
 		var cc = s
 		while (cc.contains('-')) {
 			pos = cc.indexOf('-');
-			cc = cc.substring(0, pos) + cc.substring(pos+1, pos+2).toUpperCase() + cc.substring(pos+2);
+			cc = cc.substring(0, pos) + cc.substring(pos + 1, pos + 2).toUpperCase() + cc.substring(pos + 2);
 		}
 		return cc
 	}

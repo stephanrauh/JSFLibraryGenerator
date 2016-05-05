@@ -28,7 +28,7 @@ import net.bootsfaces.utils.BsfUtils;
 public class SocialMediaButton extends UIComponentBase implements net.bootsfaces.render.IHasTooltip {
 
 	protected enum PropertyKeys {
-		twitter, update, update2;
+		twitter, update;
 		String toString;
 
 		PropertyKeys(String toString) {
@@ -44,19 +44,15 @@ public class SocialMediaButton extends UIComponentBase implements net.bootsfaces
 	}
 
 	/**
-	 * Is it a Twitter button?
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Is it a Twitter button? <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isTwitter() {
 		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.twitter, false);
 	}
 
 	/**
-	 * Is it a Twitter button?
-	 * <P>
+	 * Is it a Twitter button? <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTwitter(boolean _twitter) {
@@ -64,19 +60,15 @@ public class SocialMediaButton extends UIComponentBase implements net.bootsfaces
 	}
 
 	/**
-	 * Component(s) to be updated with ajax.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Component(s) to be updated with ajax. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getUpdate() {
 		return (String) getStateHelper().eval(PropertyKeys.update);
 	}
 
 	/**
-	 * Component(s) to be updated with ajax.
-	 * <P>
+	 * Component(s) to be updated with ajax. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setUpdate(String _update) {

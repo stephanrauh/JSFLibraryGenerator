@@ -11,7 +11,7 @@ import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class DocumentationGenerator implements IGenerator {
@@ -44,28 +44,7 @@ td {
 		<p>Describe in a few words what <code>&lt;b:«widget.name.toFirstLower»&gt;</code> is about.</p>
 		<h1>Basic usage</h1>
 		<p>Put a short description in simple words here.</p>
-		<b:panel look="info">
-			<f:facet name="heading">
-				<b>Attributes of &lt;b:«widget.name.toFirstLower» &gt;</b>
-			</f:facet>
-			<div class="table-responsive">
-				<table class="table table-striped table-hover"
-					style="background-color: #fff">
-					<thead>
-						<tr>
-							<th>Attribute</th>
-							<th>Default value</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody>
-						«FOR f : widget.attributes»
-						  «f.generateAttribute»
-						«ENDFOR»
-					</tbody>
-				</table>
-			</div>
-		</b:panel>
+		<ui:include src="«widget.name.toFirstUpper»Attributes.xhtml" />
 		<b:panel look="info">
 			<f:facet name="heading">
 				<b>Skinning</b>
@@ -86,13 +65,4 @@ td {
 	</ui:define>
 </ui:composition>
 	'''
-
-	def generateAttribute(Attribute a) '''
-		<tr>
-		    <td>«a.name»</td>
-		    <td>«IF a.defaultValue!=null» «a.defaultValue» «ELSEIF a.type=="Boolean"»false«ELSEIF a.type=="Integer"»0 «ELSE»(none)«ENDIF»</td>
-		    <td>«IF a.desc != null»«a.desc.replace("\\\"", "\"")»«ENDIF»</td>
-		</tr>
-	'''
-	
 }

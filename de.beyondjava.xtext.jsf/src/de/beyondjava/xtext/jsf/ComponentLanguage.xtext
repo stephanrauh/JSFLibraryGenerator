@@ -3,7 +3,15 @@ grammar de.beyondjava.xtext.jsf.ComponentLanguage with org.eclipse.xtext.common.
 generate componentLanguage "http://www.beyondjava.de/xtext/jsf/ComponentLanguage"
 
 Domainmodel:
+	(elements+=AttributeList)*
 	(elements+=Component)*;
+
+AttributeList:
+	'attribute_list' name=ID
+	'{'
+	   (attributes+=Attribute)*
+	'}';
+
 
 Component:
 	'widget' name=ID
@@ -17,6 +25,7 @@ Component:
 	('description' description=STRING)?
 	'{'
 	   (attributes+=Attribute)*
+	   ('+' attributeLists += ID)*
 	'}';
 
 Attribute:

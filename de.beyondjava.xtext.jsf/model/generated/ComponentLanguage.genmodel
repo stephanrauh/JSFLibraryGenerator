@@ -10,6 +10,10 @@
     <genClasses ecoreClass="ComponentLanguage.ecore#//Domainmodel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentLanguage.ecore#//Domainmodel/elements"/>
     </genClasses>
+    <genClasses ecoreClass="ComponentLanguage.ecore#//AttributeList">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//AttributeList/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentLanguage.ecore#//AttributeList/attributes"/>
+    </genClasses>
     <genClasses ecoreClass="ComponentLanguage.ecore#//Component">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/implementedBy"/>
@@ -21,6 +25,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/isReponsive"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/description"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ComponentLanguage.ecore#//Component/attributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Component/attributeLists"/>
     </genClasses>
     <genClasses ecoreClass="ComponentLanguage.ecore#//Attribute">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ComponentLanguage.ecore#//Attribute/name"/>

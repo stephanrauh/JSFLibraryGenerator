@@ -4,10 +4,17 @@
 package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
+import de.beyondjava.xtext.jsf.componentLanguage.AttributeList
 import de.beyondjava.xtext.jsf.componentLanguage.Component
 import de.beyondjava.xtext.jsf.formatting.JavaFormatter
+import java.util.ArrayList
+import java.util.Collections
+import java.util.Comparator
+import java.util.HashMap
+import java.util.Map
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -19,10 +26,39 @@ import org.eclipse.xtext.generator.IGenerator
  */
 class RendererGenerator implements IGenerator {
 
+	def collectAttributeLists(Resource resource) {
+		var attributeLists = new HashMap()
+		for (e : resource.allContents.toIterable.filter(AttributeList)) {
+			attributeLists.put(e.name, e.attributes)
+		}
+		return attributeLists
+	}
+
+	def allAttributes(Component widget, Map<String, EList<Attribute>> lists) {
+		var attributes = new ArrayList<Attribute>();
+		for (e : widget.attributes) {
+			attributes.add(e);
+		}
+		for (e : widget.attributeLists) {
+			var list = lists.get(e)
+			for (a:list) {
+				attributes.add(a)
+			}
+		}
+		Collections.sort(attributes, new Comparator<Attribute>(){
+			override compare(Attribute o1, Attribute o2) {
+				return o1.name.compareTo(o2.name)
+			}
+
+		})
+		return attributes;
+	}
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		var attributeLists = collectAttributeLists(resource)
 		for (e : resource.allContents.toIterable.filter(Component)) {
 		val platformString = resource.URI.toPlatformString(true);
-		var content = e.compile();
+		var content = e.compile(attributeLists);
 		val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
 		val project = myFile.getProject();
 		var formatted = JavaFormatter.format(content.toString, project);
@@ -30,7 +66,7 @@ class RendererGenerator implements IGenerator {
 		}
 	}
 
-	def compile(Component e) '''
+	def compile(Component e, HashMap<String, EList<Attribute>> attributeLists) '''
 		/**
 		 *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
 		 *
@@ -71,7 +107,7 @@ class RendererGenerator implements IGenerator {
 			«generateDecodeMethod(e)»
 			«ENDIF»
 
-			«generateEncodeBeginMethod(e)»
+			«generateEncodeBeginMethod(e, attributeLists)»
 
 			«IF e.hasChildren!=null»
 				«generateEncodeEndMethod(e)»
@@ -120,7 +156,7 @@ class RendererGenerator implements IGenerator {
 	}
 
 
-	def generateEncodeBeginMethod(Component e)
+	def generateEncodeBeginMethod(Component e, HashMap<String, EList<Attribute>> attributeLists)
 		'''
 			/**
 			 * This methods generates the HTML code of the current b:«e.widget».
@@ -150,7 +186,7 @@ class RendererGenerator implements IGenerator {
 					Tooltip.generateTooltip(context, «e.widget», rw);
 				«ENDIF»
 
-			    «FOR f : e.attributes»
+			    «FOR f : e.allAttributes(attributeLists)»
 			        rw.writeAttribute("«f.name»", «parameterAsString(e, f)», "«f.name»");
 			    «ENDFOR»
 				rw.writeText("Dummy content of b:«e.widget»", null);

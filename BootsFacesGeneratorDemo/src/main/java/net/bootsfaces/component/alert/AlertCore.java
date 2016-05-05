@@ -30,16 +30,33 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	protected enum PropertyKeys {
 		binding,
 		closable,
+		colLg,
+		colMd,
+		colSm,
+		colXs,
+		display,
+		hidden,
+		largeScreen,
+		mediumScreen,
+		offset,
+		offsetLg,
+		offsetMd,
+		offsetSm,
+		offsetXs,
 		severity,
+		smallScreen,
+		span,
 		style,
 		styleClass,
+		tinyScreen,
 		title,
 		tooltip,
 		tooltipContainer,
 		tooltipDelay,
 		tooltipDelayHide,
 		tooltipDelayShow,
-		tooltipPosition;
+		tooltipPosition,
+		visible;
 		String toString;
 
 		PropertyKeys(String toString) {
@@ -55,21 +72,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * An EL expression referring to a server side UIComponent instance in a
-	 * backing bean.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * An EL expression referring to a server side UIComponent instance in a backing bean. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public javax.faces.component.UIComponent getBinding() {
 		return (javax.faces.component.UIComponent) getStateHelper().eval(PropertyKeys.binding);
 	}
 
 	/**
-	 * An EL expression referring to a server side UIComponent instance in a
-	 * backing bean.
-	 * <P>
+	 * An EL expression referring to a server side UIComponent instance in a backing bean. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setBinding(javax.faces.component.UIComponent _binding) {
@@ -77,19 +88,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * If true close button will be displayed.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * If true close button will be displayed. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public boolean isClosable() {
 		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.closable, false);
 	}
 
 	/**
-	 * If true close button will be displayed.
-	 * <P>
+	 * If true close button will be displayed. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setClosable(boolean _closable) {
@@ -97,21 +104,223 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Severity of the Alert, can be success, info, warning, danger. Default is
-	 * warning.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColLg() {
+		return (String) getStateHelper().eval(PropertyKeys.colLg, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColLg(String _colLg) {
+		getStateHelper().put(PropertyKeys.colLg, _colLg);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColMd() {
+		return (String) getStateHelper().eval(PropertyKeys.colMd, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColMd(String _colMd) {
+		getStateHelper().put(PropertyKeys.colMd, _colMd);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColSm() {
+		return (String) getStateHelper().eval(PropertyKeys.colSm, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColSm(String _colSm) {
+		getStateHelper().put(PropertyKeys.colSm, _colSm);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColXs() {
+		return (String) getStateHelper().eval(PropertyKeys.colXs, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColXs(String _colXs) {
+		getStateHelper().put(PropertyKeys.colXs, _colXs);
+	}
+
+	/**
+	 * If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getDisplay() {
+		return (String) getStateHelper().eval(PropertyKeys.display, "block");
+	}
+
+	/**
+	 * If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setDisplay(String _display) {
+		getStateHelper().put(PropertyKeys.display, _display);
+	}
+
+	/**
+	 * This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getHidden() {
+		return (String) getStateHelper().eval(PropertyKeys.hidden);
+	}
+
+	/**
+	 * This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setHidden(String _hidden) {
+		getStateHelper().put(PropertyKeys.hidden, _hidden);
+	}
+
+	/**
+	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getLargeScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.largeScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setLargeScreen(String _largeScreen) {
+		getStateHelper().put(PropertyKeys.largeScreen, _largeScreen);
+	}
+
+	/**
+	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getMediumScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.mediumScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setMediumScreen(String _mediumScreen) {
+		getStateHelper().put(PropertyKeys.mediumScreen, _mediumScreen);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffset() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offset, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffset(int _offset) {
+		getStateHelper().put(PropertyKeys.offset, _offset);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetLg() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetLg, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetLg(int _offsetLg) {
+		getStateHelper().put(PropertyKeys.offsetLg, _offsetLg);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetMd() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetMd, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetMd(int _offsetMd) {
+		getStateHelper().put(PropertyKeys.offsetMd, _offsetMd);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetSm() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetSm, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetSm(int _offsetSm) {
+		getStateHelper().put(PropertyKeys.offsetSm, _offsetSm);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetXs() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetXs, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetXs(int _offsetXs) {
+		getStateHelper().put(PropertyKeys.offsetXs, _offsetXs);
+	}
+
+	/**
+	 * Severity of the Alert, can be success, info, warning, danger. Default is warning. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getSeverity() {
 		return (String) getStateHelper().eval(PropertyKeys.severity);
 	}
 
 	/**
-	 * Severity of the Alert, can be success, info, warning, danger. Default is
-	 * warning.
-	 * <P>
+	 * Severity of the Alert, can be success, info, warning, danger. Default is warning. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setSeverity(String _severity) {
@@ -119,19 +328,47 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Inline style of the input element.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getSmallScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.smallScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setSmallScreen(String _smallScreen) {
+		getStateHelper().put(PropertyKeys.smallScreen, _smallScreen);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getSpan() {
+		return (String) getStateHelper().eval(PropertyKeys.span, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setSpan(String _span) {
+		getStateHelper().put(PropertyKeys.span, _span);
+	}
+
+	/**
+	 * Inline style of the input element. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getStyle() {
 		return (String) getStateHelper().eval(PropertyKeys.style);
 	}
 
 	/**
-	 * Inline style of the input element.
-	 * <P>
+	 * Inline style of the input element. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setStyle(String _style) {
@@ -139,19 +376,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Style class of this element.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Style class of this element. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getStyleClass() {
 		return (String) getStateHelper().eval(PropertyKeys.styleClass);
 	}
 
 	/**
-	 * Style class of this element.
-	 * <P>
+	 * Style class of this element. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setStyleClass(String _styleClass) {
@@ -159,19 +392,31 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Bold Title displayed before your message.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getTinyScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.tinyScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setTinyScreen(String _tinyScreen) {
+		getStateHelper().put(PropertyKeys.tinyScreen, _tinyScreen);
+	}
+
+	/**
+	 * Bold Title displayed before your message. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTitle() {
 		return (String) getStateHelper().eval(PropertyKeys.title);
 	}
 
 	/**
-	 * Bold Title displayed before your message.
-	 * <P>
+	 * Bold Title displayed before your message. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTitle(String _title) {
@@ -179,19 +424,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The text of the tooltip.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The text of the tooltip. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTooltip() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltip);
 	}
 
 	/**
-	 * The text of the tooltip.
-	 * <P>
+	 * The text of the tooltip. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltip(String _tooltip) {
@@ -199,25 +440,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Where is the tooltip div generated? That's primarily a technical value
-	 * that can be used to fix rendering errors in special cases. Also see
-	 * data-container in the documentation of Bootstrap. The default value is
-	 * body.
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTooltipContainer() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltipContainer, "body");
 	}
 
 	/**
-	 * Where is the tooltip div generated? That's primarily a technical value
-	 * that can be used to fix rendering errors in special cases. Also see
-	 * data-container in the documentation of Bootstrap. The default value is
-	 * body.
-	 * <P>
+	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipContainer(String _tooltipContainer) {
@@ -225,21 +456,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelay() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
 	}
 
 	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
+	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelay(int _tooltipDelay) {
@@ -247,21 +472,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The tooltip is hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelayHide() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
 	}
 
 	/**
-	 * The tooltip is hidden with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
+	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelayHide(int _tooltipDelayHide) {
@@ -269,21 +488,15 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * The tooltip is shown with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelayShow() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
 	}
 
 	/**
-	 * The tooltip is shown with a delay. This value is the delay in
-	 * milliseconds. Defaults to 0 (no delay).
-	 * <P>
+	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipDelayShow(int _tooltipDelayShow) {
@@ -291,27 +504,35 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 	}
 
 	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom",
-	 * "right", "left", "auto", "auto top", "auto bottom", "auto right" and
-	 * "auto left". Default to "bottom".
-	 * <P>
-	 *
-	 * @return Returns the value of the attribute, or null, if it hasn't been
-	 *         set by the JSF file.
+	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getTooltipPosition() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltipPosition);
 	}
 
 	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom",
-	 * "right", "left", "auto", "auto top", "auto bottom", "auto right" and
-	 * "auto left". Default to "bottom".
-	 * <P>
+	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setTooltipPosition(String _tooltipPosition) {
 		getStateHelper().put(PropertyKeys.tooltipPosition, _tooltipPosition);
+	}
+
+	/**
+	 * This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getVisible() {
+		return (String) getStateHelper().eval(PropertyKeys.visible);
+	}
+
+	/**
+	 * This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setVisible(String _visible) {
+		getStateHelper().put(PropertyKeys.visible, _visible);
 	}
 
 }

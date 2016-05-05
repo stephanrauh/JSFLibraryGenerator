@@ -4,11 +4,18 @@
 package de.beyondjava.xtext.jsf.generator
 
 import de.beyondjava.xtext.jsf.componentLanguage.Attribute
+import de.beyondjava.xtext.jsf.componentLanguage.AttributeList
 import de.beyondjava.xtext.jsf.componentLanguage.Component
 import de.beyondjava.xtext.jsf.formatting.JavaFormatter
+import java.util.ArrayList
+import java.util.Collections
+import java.util.Comparator
+import java.util.HashMap
 import java.util.List
+import java.util.Map
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
@@ -20,12 +27,41 @@ import org.eclipse.xtext.generator.IGenerator
  */
 class ComponentGenerator implements IGenerator {
 
+	def collectAttributeLists(Resource resource) {
+		var attributeLists = new HashMap()
+		for (e : resource.allContents.toIterable.filter(AttributeList)) {
+			attributeLists.put(e.name, e.attributes)
+		}
+		return attributeLists
+	}
+
+	def allAttributes(Component widget, Map<String, EList<Attribute>> lists) {
+		var attributes = new ArrayList<Attribute>();
+		for (e : widget.attributes) {
+			attributes.add(e);
+		}
+		for (e : widget.attributeLists) {
+			var list = lists.get(e)
+			for (a : list) {
+				attributes.add(a)
+			}
+		}
+		Collections.sort(attributes, new Comparator<Attribute>() {
+			override compare(Attribute o1, Attribute o2) {
+				return o1.name.compareTo(o2.name)
+			}
+
+		})
+		return attributes;
+	}
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+		var attributeLists = collectAttributeLists(resource)
 		for (e : resource.allContents.toIterable.filter(Component)) {
 			val platformString = resource.URI.toPlatformString(true);
 			val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
 			val project = myFile.getProject();
-			var generated = e.compile
+			var generated = e.compile(attributeLists)
 			var formatted = JavaFormatter.format(generated.toString, project);
 			fsa.generateFile(
 				"net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java",
@@ -34,8 +70,7 @@ class ComponentGenerator implements IGenerator {
 		}
 	}
 
-	def compile(
-		Component e) '''
+	def compile(Component e, HashMap<String, EList<Attribute>> attributeLists) '''
 		«e.generateCopyrightHeader»
 		package net.bootsfaces.component.«e.name.toFirstLower»;
 
@@ -46,15 +81,20 @@ class ComponentGenerator implements IGenerator {
 		«IF e.hasTooltip!=null»
 			import net.bootsfaces.render.Tooltip;
 		«ENDIF»
+		«IF e.hasTooltip!=null»
+			import net.bootsfaces.render.IResponsive;
+		«ENDIF»
 		import net.bootsfaces.utils.BsfUtils;
 
 
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
 		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
-		public class «e.name.toFirstUpper» extends «e.name.toFirstUpper»Core «IF e.hasTooltip!=null» implements net.bootsfaces.render.IHasTooltip «ENDIF» «IF e.isReponsive!=null», net.bootsfaces.render.IResponsive «ENDIF» {
+		public class «e.name.toFirstUpper» extends «e.name.toFirstUpper»Core
+		       «IF e.hasTooltip !=null || e.isReponsive != null» implements «ENDIF»
+		       «IF e.hasTooltip !=null» net.bootsfaces.render.IHasTooltip «ENDIF»
+		       «IF e.isReponsive!=null», net.bootsfaces.render.IResponsive «ENDIF» {
 
 			«e.generateMetadata»
-
 		}
 
 	'''
@@ -200,7 +240,7 @@ class ComponentGenerator implements IGenerator {
 		 *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
 		 */
 
-	 	'''
+	'''
 
 	def List<Attribute> notInherited(List<Attribute> elements) {
 		val result = newArrayList()
@@ -212,9 +252,9 @@ class ComponentGenerator implements IGenerator {
 		result
 	}
 
-	def generateProperties(Component e) '''
+	def generateProperties(Component e, HashMap<String, EList<Attribute>> attributeLists) '''
 		    protected enum PropertyKeys {
-		«FOR f : e.attributes.notInherited SEPARATOR ',' AFTER ';'»
+		«FOR f : e.allAttributes(attributeLists).notInherited SEPARATOR ',' AFTER ';'»
 			«"		"»«f.name.propertyKeyValue.validIdentifier»
 		«ENDFOR»
 
