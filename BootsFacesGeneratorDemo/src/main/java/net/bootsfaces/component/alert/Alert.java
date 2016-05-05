@@ -56,4 +56,3 @@ public class Alert extends UIComponentBase implements net.bootsfaces.render.IHas
 		super.setValueExpression(name, binding);
 	}
 }
-

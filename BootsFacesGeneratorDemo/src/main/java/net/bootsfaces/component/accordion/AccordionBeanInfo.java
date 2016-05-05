@@ -1,8 +1,8 @@
 /**
  *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu), Stephan Rauh (http://www.beyondjava.net) and Dario D'Urzo.
- *  
+ *
  *  This file is part of BootsFaces.
- *  
+ *
  *  BootsFaces is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -21,9 +21,8 @@ package net.bootsfaces.component.accordion;
 import net.bootsfaces.beans.BsfBeanInfo;
 
 /**
- * BeanInfo class to provide mapping
- * of snake-case attributes to camelCase ones
- * 
+ * BeanInfo class to provide mapping of snake-case attributes to camelCase ones
+ *
  * @author durzod
  */
 public class AccordionBeanInfo extends BsfBeanInfo {

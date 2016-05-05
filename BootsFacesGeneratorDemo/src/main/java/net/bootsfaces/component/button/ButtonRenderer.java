@@ -1,8 +1,8 @@
 /**
  *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
- *  
+ *
  *  This file is part of BootsFaces.
- *  
+ *
  *  BootsFaces is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -40,7 +40,6 @@ import net.bootsfaces.render.H;
 import net.bootsfaces.render.Tooltip;
 import net.bootsfaces.utils.BsfUtils;
 
-
 /** This class generates the HTML code of &lt;b:button /&gt;. */
 @FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.button.Button")
 public class ButtonRenderer extends CoreRenderer {
@@ -49,7 +48,7 @@ public class ButtonRenderer extends CoreRenderer {
 	 * General layout of the generated HTML code:<br>
 	 * &lt;button class="btn btn-large" href="#"%gt;&lt;i
 	 * class="icon-star"&gt;&lt;/i&gt; Star&lt;/button&gt;
-	 * 
+	 *
 	 * @param context
 	 *            the current FacesContext
 	 * @throws IOException
@@ -58,22 +57,21 @@ public class ButtonRenderer extends CoreRenderer {
 	@Override
 	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
 		if (!component.isRendered()) {
-	        return;
-	    }
+			return;
+		}
 		Button button = (Button) component;
 		encodeHTML(context, button);
 	}
 
 	/**
 	 * Encode the HTML code of the button.
-	 * 
+	 *
 	 * @param context
 	 *            the current FacesContext
 	 * @throws IOException
 	 *             thrown if something's wrong with the ResponseWriter
 	 */
-	public void encodeHTML(FacesContext context, Button button) 
-	throws IOException {
+	public void encodeHTML(FacesContext context, Button button) throws IOException {
 		ResponseWriter rw = context.getResponseWriter();
 		String clientId = button.getClientId();
 
@@ -84,7 +82,7 @@ public class ButtonRenderer extends CoreRenderer {
 		rw.writeAttribute("id", clientId, "id");
 		rw.writeAttribute("name", clientId, "name");
 		rw.writeAttribute("type", "button", null);
-		if(BsfUtils.isStringValued(button.getDir())) {
+		if (BsfUtils.isStringValued(button.getDir())) {
 			rw.writeAttribute("dir", button.getDir(), "dir");
 		}
 		if (style != null) {
@@ -109,7 +107,7 @@ public class ButtonRenderer extends CoreRenderer {
 		renderPassThruAttributes(context, button, H.ALLBUTTON);
 
 		String icon = button.getIcon();
-		String faicon = button.getIconAwesome(); 
+		String faicon = button.getIconAwesome();
 		boolean fa = false; // flag to indicate wether the selected icon set is
 							// Font Awesome or not.
 		if (faicon != null) {
@@ -138,7 +136,7 @@ public class ButtonRenderer extends CoreRenderer {
 	 * Renders the Javascript code dealing with the click event. If the
 	 * developer provides their own onclick handler, is precedes the generated
 	 * Javascript code.
-	 * 
+	 *
 	 * @param context
 	 *            The current FacesContext.
 	 * @param attrs
@@ -156,19 +154,20 @@ public class ButtonRenderer extends CoreRenderer {
 			js = "";
 		}
 
-		String fragment = button.getFragment(); 
+		String fragment = button.getFragment();
 		String outcome = button.getOutcome();
 		if (null != outcome && outcome.contains("#")) {
-			if (null != fragment && fragment.length()>0) {
-				throw new FacesException("Please define the URL fragment either in the fragment attribute or in the outcome attribute, but not both");
+			if (null != fragment && fragment.length() > 0) {
+				throw new FacesException(
+						"Please define the URL fragment either in the fragment attribute or in the outcome attribute, but not both");
 			}
 			int pos = outcome.indexOf("#");
 			fragment = outcome.substring(pos);
-			outcome = outcome.substring(0,  pos);
+			outcome = outcome.substring(0, pos);
 		}
 
 		if (outcome == null || outcome.equals("")) {
-			if (null != fragment && fragment.length()>0) {
+			if (null != fragment && fragment.length() > 0) {
 				if (!fragment.startsWith("#")) {
 					fragment = "#" + fragment;
 				}
@@ -176,7 +175,7 @@ public class ButtonRenderer extends CoreRenderer {
 				return js;
 			}
 		}
-		
+
 		if (outcome == null || outcome.equals("") || outcome.equals("@none"))
 			return js;
 
@@ -187,7 +186,7 @@ public class ButtonRenderer extends CoreRenderer {
 
 			if (url != null) {
 				if (url.startsWith("alert(")) {
-					js=url;
+					js = url;
 				} else {
 					if (fragment != null) {
 						if (fragment.startsWith("#")) {
@@ -206,7 +205,7 @@ public class ButtonRenderer extends CoreRenderer {
 
 	/**
 	 * Do we have to suppress the target URL?
-	 * 
+	 *
 	 * @param attrs
 	 *            the component's attribute list
 	 * @param fragment
@@ -218,7 +217,7 @@ public class ButtonRenderer extends CoreRenderer {
 	private boolean canOutcomeBeRendered(Button button, String fragment, String outcome) {
 		boolean renderOutcome = true;
 		if (null == outcome && button.getAttributes() != null && button.getAttributes().containsKey("ng-click")) {
-			String ngClick = (String)button.getAttributes().get("ng-click");
+			String ngClick = (String) button.getAttributes().get("ng-click");
 			if (null != ngClick && (ngClick.length() > 0)) {
 				if (fragment == null) {
 					renderOutcome = false;
@@ -230,7 +229,7 @@ public class ButtonRenderer extends CoreRenderer {
 
 	/**
 	 * Translate the outcome attribute value to the target URL.
-	 * 
+	 *
 	 * @param context
 	 *            the current FacesContext
 	 * @param outcome
@@ -247,7 +246,7 @@ public class ButtonRenderer extends CoreRenderer {
 		 * value is ProjectStage#Production but IDE can set it differently in
 		 * web.xml Expected Values: Development, Production, SystemTest,
 		 * UnitTest Since: 2.0
-		 * 
+		 *
 		 * If we cannot get an outcome we use an Alert to give a feedback to the
 		 * Developer if this build is in the Development Stage
 		 */
@@ -310,7 +309,7 @@ public class ButtonRenderer extends CoreRenderer {
 
 	/**
 	 * Collects the CSS classes of the button.
-	 * 
+	 *
 	 * @param attrs
 	 *            the attribute list.
 	 * @return the CSS classes (separated by a space).
@@ -324,7 +323,7 @@ public class ButtonRenderer extends CoreRenderer {
 			sb.append(" btn-").append(size);
 		}
 
-		String look = button.getLook(); 
+		String look = button.getLook();
 		if (look != null) {
 			sb.append(" btn-").append(look);
 		} else {
@@ -347,7 +346,7 @@ public class ButtonRenderer extends CoreRenderer {
 	 * Detects whether an attribute is a default value or not. Method
 	 * temporarily copied from CoreRenderer. Should be replaced by a call of
 	 * CoreRenderer in the long run.
-	 * 
+	 *
 	 * @param value
 	 *            the value to be checked
 	 * @return true if the value is not the default value
@@ -377,5 +376,5 @@ public class ButtonRenderer extends CoreRenderer {
 
 		return true;
 	}
-	
+
 }

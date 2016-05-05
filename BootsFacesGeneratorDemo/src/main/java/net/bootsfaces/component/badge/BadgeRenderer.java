@@ -1,8 +1,8 @@
 /**
  *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
- *  
+ *
  *  This file is part of BootsFaces.
- *  
+ *
  *  BootsFaces is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU Lesser General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
@@ -35,7 +35,7 @@ public class BadgeRenderer extends CoreRenderer {
 
 	/**
 	 * This methods generates the HTML code of the current b:badge.
-	 * 
+	 *
 	 * @param context
 	 *            the FacesContext.
 	 * @param component
@@ -56,14 +56,14 @@ public class BadgeRenderer extends CoreRenderer {
 			return;
 		}
 		String styleClass = badge.getStyleClass();
-		String style=badge.getStyle();
+		String style = badge.getStyle();
 		String val = getValue2Render(context, badge);
 
 		generateBadge(context, badge, rw, clientId, styleClass, style, val, null);
 	}
 
-	protected void generateBadge(FacesContext context, UIComponent component, ResponseWriter rw,
-			String clientId, String styleClass, String style, String val, String suffix) throws IOException {
+	protected void generateBadge(FacesContext context, UIComponent component, ResponseWriter rw, String clientId,
+			String styleClass, String style, String val, String suffix) throws IOException {
 
 		rw.startElement("span", component);
 		if (null != suffix) {
@@ -78,12 +78,11 @@ public class BadgeRenderer extends CoreRenderer {
 		rw.writeAttribute("class", styleClass, "class");
 		if (null != style)
 			rw.writeAttribute("style", style, "style");
-		if (val!=null) {
+		if (val != null) {
 			rw.writeText(val, null);
 		}
 		rw.endElement("span");
 		Tooltip.activateTooltips(context, component);
 	}
 
-	
 }
