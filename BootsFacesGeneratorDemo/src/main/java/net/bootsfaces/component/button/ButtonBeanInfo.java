@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu), Stephan Rauh (http://www.beyondjava.net) and Dario D'Urzo.
+ *  Copyright 2014-2016 Dario D'Urzo and Stephan Rauh
  *  
  *  This file is part of BootsFaces.
  *  
@@ -16,7 +16,7 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.bootsfaces.component.accordion;
+package net.bootsfaces.component.button;
 
 import net.bootsfaces.beans.BsfBeanInfo;
 
@@ -26,12 +26,12 @@ import net.bootsfaces.beans.BsfBeanInfo;
  * 
  * @author durzod
  */
-public class AccordionBeanInfo extends BsfBeanInfo {
+public class ButtonBeanInfo extends BsfBeanInfo {
 	/**
 	 * Get the reference decorated class
 	 */
 	@Override
 	public Class<?> getDecoratedClass() {
-		return Accordion.class;
+		return Button.class;
 	}
 }

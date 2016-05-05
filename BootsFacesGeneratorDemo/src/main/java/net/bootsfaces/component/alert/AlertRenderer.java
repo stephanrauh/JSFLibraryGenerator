@@ -1,5 +1,5 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu), Stephan Rauh (http://www.beyondjava.net) and Dario D'Urzo.
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *  
  *  This file is part of BootsFaces.
  *  
@@ -16,44 +16,26 @@
  *  You should have received a copy of the GNU Lesser General Public License
  *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
  */
-package net.bootsfaces.component.accordion;
+
+package net.bootsfaces.component.alert;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
 
-import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
-import net.bootsfaces.component.panel.Panel;
 import net.bootsfaces.render.CoreRenderer;
+import net.bootsfaces.render.Tooltip;
 
-/** This class generates the HTML code of &lt;b:accordion /&gt;. */
-@FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.accordion.Accordion")
-public class AccordionRenderer extends CoreRenderer {
-
-	/**
-	 * Override encodeChildren because the children rendering is driven by the
-	 * custom encode of accordion component
-	 */
-	@Override
-	public void encodeChildren(FacesContext context, UIComponent component) throws IOException {
-		// Children are already rendered in encodeBegin()
-	}
+/** This class generates the HTML code of &lt;b:alert /&gt;. */
+@FacesRenderer(componentFamily = "net.bootsfaces.component", rendererType = "net.bootsfaces.component.alert.Alert")
+public class AlertRenderer extends CoreRenderer {
 
 	/**
-	 * Force true to prevent JSF child rendering
-	 */
-	@Override
-	public boolean getRendersChildren() {
-		return true;
-	}
-
-	/**
-	 * This methods generates the HTML code of the current b:accordion.
+	 * This methods generates the HTML code of the current b:alert.
 	 * <code>encodeBegin</code> generates the start of the component. After the,
 	 * the JSF framework calls <code>encodeChildren()</code> to generate the
 	 * HTML code between the beginning and the end of the component. For
@@ -64,7 +46,7 @@ public class AccordionRenderer extends CoreRenderer {
 	 * @param context
 	 *            the FacesContext.
 	 * @param component
-	 *            the current b:accordion.
+	 *            the current b:alert.
 	 * @throws IOException
 	 *             thrown if something goes wrong when writing the HTML code.
 	 */
@@ -73,37 +55,54 @@ public class AccordionRenderer extends CoreRenderer {
 		if (!component.isRendered()) {
 			return;
 		}
-		Accordion accordion = (Accordion) component;
+		Alert alert = (Alert) component;
 		ResponseWriter rw = context.getResponseWriter();
-		String clientId = accordion.getClientId();
-		String accordionClientId = clientId.replace(":", "_");
+		String clientId = alert.getClientId();
+		Map<String, Object> attrs = alert.getAttributes();
 
-		List<String> expandedIds = (null != accordion.getExpandedPanels())
-				? Arrays.asList(accordion.getExpandedPanels().split(",")) : null;
+		String sev = alert.getSeverity();
 
-		rw.startElement("div", accordion);
-		rw.writeAttribute("class", "panel-group", null);
-		rw.writeAttribute("id", accordionClientId, "id");
+		String t = alert.getTitle();
+		boolean closbl = alert.isClosable();
 
-		if (accordion.getChildren() != null && accordion.getChildren().size() > 0) {
-			for (UIComponent _child : accordion.getChildren()) {
-				if (_child instanceof Panel && ((Panel) _child).isCollapsible()) {
-					Panel _childPane = (Panel) _child;
-					_childPane.setAccordionParent(accordionClientId);
-					if (null != expandedIds && expandedIds.contains(_childPane.getClientId()))
-						_childPane.setCollapsed(false);
-					else
-						_childPane.setCollapsed(true);
-					_childPane.encodeAll(context);
-				} else {
-					throw new FacesException("Accordion must contains only collapsible panel components", null);
-				}
-			}
+		rw.startElement("div", alert);
+		rw.writeAttribute("id", clientId, "id");
+		Tooltip.generateTooltip(context, component, rw);
+
+		String style = alert.getStyle();
+		if (null != style)
+			rw.writeAttribute("style", style, "style");
+
+		String styleClass = alert.getStyleClass();
+		if (null == styleClass)
+			styleClass = "";
+		else
+			styleClass = " " + styleClass;
+
+		if (sev != null) {
+			rw.writeAttribute("class", "alert alert-" + sev + " fadein" + styleClass, "class");
+		} else {
+			rw.writeAttribute("class", "alert fadein" + styleClass, "class");
+		}
+		if (closbl) {
+			rw.startElement("button", alert);
+			rw.writeAttribute("type", "button", "type");
+			rw.writeAttribute("class", "close", "class");
+			rw.writeAttribute("data-dismiss", "alert", "data-dismiss");
+			rw.write("&times;");
+			rw.endElement("button");
+		}
+		if (t != null) {
+			rw.startElement("strong", alert);
+			rw.writeText(t, null);
+			rw.endElement("strong");
+			rw.startElement("br", alert);
+			rw.endElement("br");
 		}
 	}
 
 	/**
-	 * This methods generates the HTML code of the current b:accordion.
+	 * This methods generates the HTML code of the current b:alert.
 	 * <code>encodeBegin</code> generates the start of the component. After the,
 	 * the JSF framework calls <code>encodeChildren()</code> to generate the
 	 * HTML code between the beginning and the end of the component. For
@@ -114,7 +113,7 @@ public class AccordionRenderer extends CoreRenderer {
 	 * @param context
 	 *            the FacesContext.
 	 * @param component
-	 *            the current b:accordion.
+	 *            the current b:alert.
 	 * @throws IOException
 	 *             thrown if something goes wrong when writing the HTML code.
 	 */
@@ -123,7 +122,9 @@ public class AccordionRenderer extends CoreRenderer {
 		if (!component.isRendered()) {
 			return;
 		}
+		Alert alert = (Alert) component;
 		ResponseWriter rw = context.getResponseWriter();
 		rw.endElement("div");
+		Tooltip.activateTooltips(context, alert);
 	}
 }
