@@ -39,20 +39,27 @@ class ComponentListGenerator implements IGenerator {
 			;
 			private String tag;
 
-		   private String tagname;
+		    private String tagname;
 
-		    ComponentsEnum(String tag, String tagname) {
-		    this.tag = tag;
-		    this.tagname = tagname;
+		    private String classname;
+
+		    ComponentsEnum(String tag, String tagname, String classname) {
+		      this.tag = tag;
+		      this.tagname = tagname;
+		      this.classname = classname;
 		    }
 
 		    public String tag() {
-		    return tag;
+		      return tag;
 		    }
 
 		    public String tagname() {
-			return tagname;
-			   }
+			  return tagname;
+			}
+
+			public String classname() {
+				return classname;
+			}
 		}
 	'''
 
@@ -62,7 +69,8 @@ class ComponentListGenerator implements IGenerator {
 		if (lower.equals("switch")) {
 			name = "switchComponent";
 		}
-		var line = name + "(\"<b:" + lower + "\", \"" + lower + "\")";
+		var classname = "net.bootsfaces.component." + lower + "." + widget.name.toFirstUpper;
+		var line = name + "(\"<b:" + lower + "\", \"" + lower + "\", \"" + classname + "\")";
 		return line;
 	}
 }

@@ -44,6 +44,7 @@ Attributetype:
 	| 'javax.el.MethodExpression'
 	| 'javax.faces.event.ActionListener'
 	| 'javax.faces.component.UIComponent'
+	| 'javax.el.ValueExpression'
 	| 'javax.faces.event.ValueChangeListener'
 	| 'java.faces.convert.Converter'
 	| 'java.util.List'
@@ -53,6 +54,7 @@ Attributetype:
 	| 'Drawing'
 	| 'java.lang.Object'
 	| 'ScrollSpyEventListener'
-	| 'Node';
+	| 'Node'
+	| 'ADataTablePropertyBean';
 
 

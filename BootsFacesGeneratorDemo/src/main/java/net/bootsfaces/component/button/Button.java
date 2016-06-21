@@ -59,16 +59,29 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	protected enum PropertyKeys {
 		accesskey,
 		binding,
+		colLg,
+		colMd,
+		colSm,
+		colXs,
 		dir,
 		disabled,
 		dismiss,
+		display,
 		fragment,
+		hidden,
 		icon,
 		iconAlign,
 		iconAwesome,
 		immediate,
 		lang,
+		largeScreen,
 		look,
+		mediumScreen,
+		offset,
+		offsetLg,
+		offsetMd,
+		offsetSm,
+		offsetXs,
 		onblur,
 		onchange,
 		onclick,
@@ -85,16 +98,20 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 		onselect,
 		outcome,
 		size,
+		smallScreen,
+		span,
 		style,
 		styleClass,
 		tabindex,
+		tinyScreen,
 		title,
 		tooltip,
 		tooltipContainer,
 		tooltipDelay,
 		tooltipDelayHide,
 		tooltipDelayShow,
-		tooltipPosition;
+		tooltipPosition,
+		visible;
 		String toString;
 
 		PropertyKeys(String toString) {
@@ -139,6 +156,70 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 */
 	public void setBinding(javax.faces.component.UIComponent _binding) {
 		getStateHelper().put(PropertyKeys.binding, _binding);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColLg() {
+		return (String) getStateHelper().eval(PropertyKeys.colLg, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColLg(String _colLg) {
+		getStateHelper().put(PropertyKeys.colLg, _colLg);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColMd() {
+		return (String) getStateHelper().eval(PropertyKeys.colMd, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColMd(String _colMd) {
+		getStateHelper().put(PropertyKeys.colMd, _colMd);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColSm() {
+		return (String) getStateHelper().eval(PropertyKeys.colSm, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColSm(String _colSm) {
+		getStateHelper().put(PropertyKeys.colSm, _colSm);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getColXs() {
+		return (String) getStateHelper().eval(PropertyKeys.colXs, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setColXs(String _colXs) {
+		getStateHelper().put(PropertyKeys.colXs, _colXs);
 	}
 
 	/**
@@ -190,6 +271,22 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
+	 * If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getDisplay() {
+		return (String) getStateHelper().eval(PropertyKeys.display, "block");
+	}
+
+	/**
+	 * If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setDisplay(String _display) {
+		getStateHelper().put(PropertyKeys.display, _display);
+	}
+
+	/**
 	 * The fragment  that is to be appended to the target URL. The # separator is applied automatically and needs not be included. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
@@ -203,6 +300,22 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 */
 	public void setFragment(String _fragment) {
 		getStateHelper().put(PropertyKeys.fragment, _fragment);
+	}
+
+	/**
+	 * This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getHidden() {
+		return (String) getStateHelper().eval(PropertyKeys.hidden);
+	}
+
+	/**
+	 * This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setHidden(String _hidden) {
+		getStateHelper().put(PropertyKeys.hidden, _hidden);
 	}
 
 	/**
@@ -286,6 +399,22 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
+	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getLargeScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.largeScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setLargeScreen(String _largeScreen) {
+		getStateHelper().put(PropertyKeys.largeScreen, _largeScreen);
+	}
+
+	/**
 	 * Look of the Button, can be primary, block, info, success, warning, important, error, inverse. If not specified, Standard gray button with gradient is rendered. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
@@ -299,6 +428,102 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 */
 	public void setLook(String _look) {
 		getStateHelper().put(PropertyKeys.look, _look);
+	}
+
+	/**
+	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getMediumScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.mediumScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setMediumScreen(String _mediumScreen) {
+		getStateHelper().put(PropertyKeys.mediumScreen, _mediumScreen);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffset() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offset, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffset(int _offset) {
+		getStateHelper().put(PropertyKeys.offset, _offset);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetLg() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetLg, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetLg(int _offsetLg) {
+		getStateHelper().put(PropertyKeys.offsetLg, _offsetLg);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetMd() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetMd, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetMd(int _offsetMd) {
+		getStateHelper().put(PropertyKeys.offsetMd, _offsetMd);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetSm() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetSm, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetSm(int _offsetSm) {
+		getStateHelper().put(PropertyKeys.offsetSm, _offsetSm);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public int getOffsetXs() {
+		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetXs, 0);
+	}
+
+	/**
+	 * Integer value to specify how many columns to offset. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setOffsetXs(int _offsetXs) {
+		getStateHelper().put(PropertyKeys.offsetXs, _offsetXs);
 	}
 
 	/**
@@ -558,6 +783,38 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
+	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getSmallScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.smallScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setSmallScreen(String _smallScreen) {
+		getStateHelper().put(PropertyKeys.smallScreen, _smallScreen);
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getSpan() {
+		return (String) getStateHelper().eval(PropertyKeys.span, "-1");
+	}
+
+	/**
+	 * Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setSpan(String _span) {
+		getStateHelper().put(PropertyKeys.span, _span);
+	}
+
+	/**
 	 * Inline style of the input element. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
@@ -603,6 +860,22 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 */
 	public void setTabindex(String _tabindex) {
 		getStateHelper().put(PropertyKeys.tabindex, _tabindex);
+	}
+
+	/**
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getTinyScreen() {
+		return (String) getStateHelper().eval(PropertyKeys.tinyScreen, "-1");
+	}
+
+	/**
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setTinyScreen(String _tinyScreen) {
+		getStateHelper().put(PropertyKeys.tinyScreen, _tinyScreen);
 	}
 
 	/**
@@ -715,6 +988,22 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 */
 	public void setTooltipPosition(String _tooltipPosition) {
 		getStateHelper().put(PropertyKeys.tooltipPosition, _tooltipPosition);
+	}
+
+	/**
+	 * This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getVisible() {
+		return (String) getStateHelper().eval(PropertyKeys.visible);
+	}
+
+	/**
+	 * This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setVisible(String _visible) {
+		getStateHelper().put(PropertyKeys.visible, _visible);
 	}
 
 }

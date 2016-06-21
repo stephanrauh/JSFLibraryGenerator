@@ -25,6 +25,7 @@ class ComponentLanguageGenerator implements IGenerator {
 		new DocumentationGenerator().doGenerate(resource, fsa);
 		new AttributesDocumentationGenerator().doGenerate(resource, fsa);
 		new BeanInfoGenerator().doGenerate(resource, fsa);
+		new UITestGenerator().doGenerate(resource, fsa);
 	}
 
 }

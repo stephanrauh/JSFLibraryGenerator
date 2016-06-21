@@ -77,7 +77,6 @@ public class Accordion extends UIComponentBase {
 		tooltipDelayHide,
 		tooltipDelayShow,
 		tooltipPosition,
-		update,
 		visible;
 		String toString;
 
@@ -459,22 +458,6 @@ public class Accordion extends UIComponentBase {
 	 */
 	public void setTooltipPosition(String _tooltipPosition) {
 		getStateHelper().put(PropertyKeys.tooltipPosition, _tooltipPosition);
-	}
-
-	/**
-	 * Component(s) to be updated with ajax. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
-	 */
-	public String getUpdate() {
-		return (String) getStateHelper().eval(PropertyKeys.update);
-	}
-
-	/**
-	 * Component(s) to be updated with ajax. <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setUpdate(String _update) {
-		getStateHelper().put(PropertyKeys.update, _update);
 	}
 
 	/**
