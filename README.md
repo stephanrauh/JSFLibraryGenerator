@@ -20,4 +20,3 @@ you can generate the JSF component skeletons simply by editing and saving the *.
 
 #What's left to do
 - add the required CSS and Javascript files to the DSL and generate the @ResourceDependencies annotations
-- Generate a single taglib containing every component

@@ -54,7 +54,6 @@ Attributetype:
 	| 'Drawing'
 	| 'java.lang.Object'
 	| 'ScrollSpyEventListener'
-	| 'Node'
-	| 'ADataTablePropertyBean';
+	| 'Node';
 
 
