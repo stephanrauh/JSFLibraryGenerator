@@ -1,10 +1,10 @@
-== Installation ==
+# Installation
 Simply drop the two jar files into the plugins folder of Eclipse.
 
-== Compatibility ==
+# Compatibility
 The plugin is developed with the most current Eclipse version on Mac OSX. At the time of writing, that was Eclipse Mars (4.5). The plugin may also work with other versions of Eclipse, and it probably also works on other operation system, but there's no guarantee. Use at own risk.
 
-== How to use ==
+# How to use: preparations
 Checkout the projects https://github.com/TheCoder4eu/BootsFaces-OSP and https://github.com/TheCoder4eu/BootsFacesWeb into a common folder. The correct folder structure is important, because the plugin modifies files in both projects. It generates both skeletons of the source code and skeletons of the documentation.
 
 cd (your folder of choice)
@@ -15,6 +15,7 @@ git clone https://github.com/TheCoder4eu/BootsFaces-OSP.git
 
 After that, you can import both project into Eclipse. The easiest way is to import them as Maven projects, but you can also import them as Gradle projects.
 
+# How to use: developing components
 Now you can open the file xtext/BootsFaces.jsfdsl in the BootsFaces-OSP project. It generates the code each time you save the file. If you're modifying a component that's already there, the sourcecode and (in most cases) the attribute list in the BootsFacesWeb project are automatically updated. Otherwise, you find the generated files in the folder src-gen. Copy the files to the appropriate folders. Suppose you're creating a widget called "MyWidget". The target folders of the files are:
 
 * Put MyWidget.java, MyWidgetCore.java, MyWidgetRenderer.java and MyWidgetBeanInfo.java into BootsFaces-OSP/src/main/java/net/bootsfaces/components/myWidget.
