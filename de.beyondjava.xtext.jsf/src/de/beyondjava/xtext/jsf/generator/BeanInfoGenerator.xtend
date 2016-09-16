@@ -10,7 +10,7 @@ import org.eclipse.xtext.generator.IGenerator
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class BeanInfoGenerator implements IGenerator {
@@ -22,19 +22,19 @@ class BeanInfoGenerator implements IGenerator {
 	}
 
 	def compile(Component e) '''
-		«e.generateCopyrightHeader» 
+		«e.generateCopyrightHeader»
 		package net.bootsfaces.component.«e.name.toFirstLower»;
-		
+
 		import net.bootsfaces.beans.BsfBeanInfo;
-		
-		/** 
+
+		/**
 		 * BeanInfo class to provide mapping
-		 * of snake-case attributes to camelCase ones 
-		 * 
+		 * of snake-case attributes to camelCase ones
+		 *
 		 * @author Dario D'Urzo
 		 */
 		public class «e.name.toFirstUpper»BeanInfo extends «parentClass(e)» {
-			
+
 			/**
 			 * Get the reference decorated class
 			 */
@@ -43,33 +43,31 @@ class BeanInfoGenerator implements IGenerator {
 				return «e.name.toFirstUpper».class;
 			}
 		}
-		
+
 	'''
-	
+
 	def parentClass(Component component) {
 		return "BsfBeanInfo";
 	}
-	
-	def generateCopyrightHeader(Component e) '''
-	/**
-	 *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
-	 *  
-	 *  This file is part of BootsFaces.
-	 *  
-	 *  BootsFaces is free software: you can redistribute it and/or modify
-	 *  it under the terms of the GNU Lesser General Public License as published by
-	 *  the Free Software Foundation, either version 3 of the License, or
-	 *  (at your option) any later version.
-	 *
-	 *  BootsFaces is distributed in the hope that it will be useful,
-	 *  but WITHOUT ANY WARRANTY; without even the implied warranty of
-	 *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-	 *  GNU Lesser General Public License for more details.
-	 *
-	 *  You should have received a copy of the GNU Lesser General Public License
-	 *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
-	 */
 
+	def generateCopyrightHeader(Component e) '''
+/**
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *
+ *  This file is part of BootsFaces.
+ *
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+ */
 	'''
-	
+
 }

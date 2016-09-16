@@ -41,6 +41,7 @@ Attributetype:
 	'String'
 	| 'Boolean'
 	| 'Integer'
+	| 'Float'
 	| 'javax.el.MethodExpression'
 	| 'javax.faces.event.ActionListener'
 	| 'javax.faces.component.UIComponent'

@@ -1,3 +1,20 @@
+/**
+ *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *
+ *  This file is part of BootsFaces.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package net.bootsfaces.component;
 
 public enum ComponentsEnum {
@@ -10,10 +27,8 @@ public enum ComponentsEnum {
 	canvas("<b:canvas", "canvas", "net.bootsfaces.component.canvas.Canvas"),
 	carousel("<b:carousel", "carousel", "net.bootsfaces.component.carousel.Carousel"),
 	carouselItem("<b:carouselItem", "carouselItem", "net.bootsfaces.component.carouselItem.CarouselItem"),
-	carouselCaption("<b:carouselCaption", "carouselCaption",
-			"net.bootsfaces.component.carouselCaption.CarouselCaption"),
-	carouselControl("<b:carouselControl", "carouselControl",
-			"net.bootsfaces.component.carouselControl.CarouselControl"),
+	carouselCaption("<b:carouselCaption", "carouselCaption", "net.bootsfaces.component.carouselCaption.CarouselCaption"),
+	carouselControl("<b:carouselControl", "carouselControl", "net.bootsfaces.component.carouselControl.CarouselControl"),
 	colorPicker("<b:colorPicker", "colorPicker", "net.bootsfaces.component.colorPicker.ColorPicker"),
 	column("<b:column", "column", "net.bootsfaces.component.column.Column"),
 	commandButton("<b:commandButton", "commandButton", "net.bootsfaces.component.commandButton.CommandButton"),
@@ -36,8 +51,7 @@ public enum ComponentsEnum {
 	inputText("<b:inputText", "inputText", "net.bootsfaces.component.inputText.InputText"),
 	inputTextarea("<b:inputTextarea", "inputTextarea", "net.bootsfaces.component.inputTextarea.InputTextarea"),
 	internalFALink("<b:internalFALink", "internalFALink", "net.bootsfaces.component.internalFALink.InternalFALink"),
-	internalIE8CompatibilityLink("<b:internalIE8CompatibilityLink", "internalIE8CompatibilityLink",
-			"net.bootsfaces.component.internalIE8CompatibilityLink.InternalIE8CompatibilityLink"),
+	internalIE8CompatibilityLink("<b:internalIE8CompatibilityLink", "internalIE8CompatibilityLink", "net.bootsfaces.component.internalIE8CompatibilityLink.InternalIE8CompatibilityLink"),
 	jumbotron("<b:jumbotron", "jumbotron", "net.bootsfaces.component.jumbotron.Jumbotron"),
 	label("<b:label", "label", "net.bootsfaces.component.label.Label"),
 	listLinks("<b:listLinks", "listLinks", "net.bootsfaces.component.listLinks.ListLinks"),
@@ -56,12 +70,10 @@ public enum ComponentsEnum {
 	row("<b:row", "row", "net.bootsfaces.component.row.Row"),
 	scrollUp("<b:scrollUp", "scrollUp", "net.bootsfaces.component.scrollUp.ScrollUp"),
 	scrollSpy("<b:scrollSpy", "scrollSpy", "net.bootsfaces.component.scrollSpy.ScrollSpy"),
-	selectBooleanCheckbox("<b:selectBooleanCheckbox", "selectBooleanCheckbox",
-			"net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox"),
+	selectBooleanCheckbox("<b:selectBooleanCheckbox", "selectBooleanCheckbox", "net.bootsfaces.component.selectBooleanCheckbox.SelectBooleanCheckbox"),
 	shake("<b:shake", "shake", "net.bootsfaces.component.shake.Shake"),
 	switchComponent("<b:switch", "switch", "net.bootsfaces.component.switch.Switch"),
-	selectMultiMenu("<b:selectMultiMenu", "selectMultiMenu",
-			"net.bootsfaces.component.selectMultiMenu.SelectMultiMenu"),
+	selectMultiMenu("<b:selectMultiMenu", "selectMultiMenu", "net.bootsfaces.component.selectMultiMenu.SelectMultiMenu"),
 	selectOneMenu("<b:selectOneMenu", "selectOneMenu", "net.bootsfaces.component.selectOneMenu.SelectOneMenu"),
 	slider("<b:slider", "slider", "net.bootsfaces.component.slider.Slider"),
 	socialShare("<b:socialShare", "socialShare", "net.bootsfaces.component.socialShare.SocialShare"),
@@ -70,25 +82,26 @@ public enum ComponentsEnum {
 	tabView("<b:tabView", "tabView", "net.bootsfaces.component.tabView.TabView"),
 	tree("<b:tree", "tree", "net.bootsfaces.component.tree.Tree"),
 	thumbnail("<b:thumbnail", "thumbnail", "net.bootsfaces.component.thumbnail.Thumbnail"),
-	well("<b:well", "well", "net.bootsfaces.component.well.Well");
+	well("<b:well", "well", "net.bootsfaces.component.well.Well")
+	;
 	private String tag;
 
-	private String tagname;
+    private String tagname;
 
-	private String classname;
+    private String classname;
 
-	ComponentsEnum(String tag, String tagname, String classname) {
-		this.tag = tag;
-		this.tagname = tagname;
-		this.classname = classname;
-	}
+    ComponentsEnum(String tag, String tagname, String classname) {
+      this.tag = tag;
+      this.tagname = tagname;
+      this.classname = classname;
+    }
 
-	public String tag() {
-		return tag;
-	}
+    public String tag() {
+      return tag;
+    }
 
-	public String tagname() {
-		return tagname;
+    public String tagname() {
+	  return tagname;
 	}
 
 	public String classname() {
