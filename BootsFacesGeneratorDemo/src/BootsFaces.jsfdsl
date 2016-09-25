@@ -1,9 +1,18 @@
 attribute_list ajax {
+    ajax                Boolean                                           "Whether the Button submits the form with AJAX."
+    onclick                                                                "The onclick attribute."
     oncomplete                                                            "JavaScript to be executed when ajax completes."
     onerror                                                               "JavaScript to be executed when ajax results on an error (including both network errors and Java exceptions)."
     onsuccess                                                             "JavaScript to be executed when ajax completes with success (i.e. there's neither a network error nor a Java exception)."
 	process                                                               "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     update                                                                "Component(s) to be updated with ajax."
+}
+
+attribute_list iconAwesome {
+    icon-flip                                                             "Flip the icon: can be H (horizontal) or V (vertical)."
+    icon-rotate                                                           "Rotate 90 degrees the icon: Can be L,R."
+    icon-size                                                             "Icon Size: legal values are lg, 2x, 3x, 4x, 5x."
+    icon-spin                Boolean                                      "Boolean value: if true the icon will spin."
 }
 
 attribute_list tooltip {
@@ -25,14 +34,39 @@ attribute_list responsive {
     small-screen        default "-1"                                       "Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
     tiny-screen         default "-1"                                       "Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
     display				default "block"									   "If you use the \"visible\" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block."
-    hidden				      											   "This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs."
-    offset              Integer                                            "Integer value to specify how many columns to offset."
-    offset-lg           Integer                                            "Integer value to specify how many columns to offset."
-    offset-md           Integer                                            "Integer value to specify how many columns to offset."
-    offset-sm           Integer                                            "Integer value to specify how many columns to offset."
-    offset-xs           Integer                                            "Integer value to specify how many columns to offset."
-    span                default "-1"                                       "Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    visible				       											   "This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs."
+    hidden				      											   "This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs."
+    offset                                                                 "Integer value to specify how many columns to offset."
+    offset-lg                                                              "Integer value to specify how many columns to offset."
+    offset-md                                                              "Integer value to specify how many columns to offset."
+    offset-sm                                                              "Integer value to specify how many columns to offset."
+    offset-xs                                                              "Integer value to specify how many columns to offset."
+    span                                                                   "Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    visible				       											   "This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs."
+}
+
+attribute_list responsiveLabel {
+	label-col-lg              default "-1"                                       "Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-col-md              default "-1"                                       "Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-col-sm              default "-1"                                       "Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-col-xs              default "-1"                                       "Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-large-screen        default "-1"                                       "Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-medium-screen       default "-1"                                       "Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-small-screen        default "-1"                                       "Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    label-tiny-screen         default "-1"                                       "Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+}
+
+attribute_list responsiveContainer {
+	content-col-lg              default "-1"                               "List of integer values to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-col-md              default "-1"                               "List of integer values to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-col-sm              default "-1"                               "List of integer values to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-col-xs              default "-1"                               "List of integer values to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-large-screen        default "-1"                               "Alternative spelling to col-lg. List of integer values to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-medium-screen       default "-1"                               "Alternative spelling to col-md. List of integer values to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-small-screen        default "-1"                               "Alternative spelling to col-sm. List of integer values to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-tiny-screen         default "-1"                               "Alternative spelling to col-xs. List of integer values to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-hidden				      								       "Comma-separated list of values determining the visibility of the columns of the container. This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs."
+    content-span                                                           "List of integer values to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
+    content-visible				       									   "Comma-separated list of values determining the visibility of the columns of the container. This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs."
 }
 
 attribute_list style {
@@ -52,6 +86,7 @@ widget accordion
 	expanded-panels														  "Comma separated list of child panel id that need to render expanded."
 	+tooltip
 	+responsive
+	+style
 }
 
 widget alert
@@ -74,13 +109,17 @@ widget alert
 
 widget badge
        implemented_by net.bootsfaces.component.Badge
-       extends UIComponentBase
+       extends UIOutput
+       has_tooltip
+       is_responsive
  {
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     value               mandatory inherited                                "Label text."
     +style
+    +tooltip
+    +responsive
 }
 
 widget button
@@ -125,6 +164,7 @@ widget button
     +style
     +tooltip
 	+responsive
+	+iconAwesome
 }
 
 
@@ -133,6 +173,7 @@ widget buttonGroup
        extends net.bootsfaces.component.GenContainerDiv
        has_children
        has_tooltip
+       is_responsive
  {
     binding              javax.faces.component.UIComponent                "An EL expression referring to a server side UIComponent instance in a backing bean."
     id                   inherited                                        "Unique identifier of the component in a namingContainer."
@@ -142,6 +183,7 @@ widget buttonGroup
     size                                                                  "Size of the grouped Buttons, can be lg, sm or xs."
     +style
     +tooltip
+    +responsive
 }
 
 
@@ -150,6 +192,7 @@ widget buttonToolbar
        extends net.bootsfaces.component.GenContainerDiv
        has_children
        has_tooltip
+       is_responsive
 {
     binding              javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     id                   inherited                                          "Unique identifier of the component in a namingContainer."
@@ -157,10 +200,12 @@ widget buttonToolbar
     rendered             Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     +style
     +tooltip
+    +responsive
 }
 
 widget canvas
        has_tooltip
+       is_responsive
 {
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     height              Integer default "600"                              "Height of the canvas in pixels. This is a mandatory field."
@@ -170,6 +215,7 @@ widget canvas
     width               Integer default "600"                              "Width of the canvas in pixels. This is a mandatory field."
 	+style
     +tooltip
+    +responsive
 }
 
 widget carousel
@@ -178,6 +224,7 @@ widget carousel
        extends UICommand
        has_children
        has_tooltip
+       is_responsive
  {
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     disabled            Boolean                                            "Boolean value to specify if the button is disabled."
@@ -207,6 +254,7 @@ widget carousel
     update                                                                 "Component(s) to be updated with ajax."
 	+style
 	+tooltip
+	+responsive
 }
 
 widget carouselItem implemented_by net.bootsfaces.component.Carousel
@@ -297,6 +345,7 @@ widget colorPicker
        processes_input
        extends HtmlInputText
        has_tooltip
+       is_responsive
  {
     accesskey                                                              "Access key to transfer focus to the input element."
     ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
@@ -315,7 +364,9 @@ widget colorPicker
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
  	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
-    label                                                                  "The label of the field."
+    label                                                                  "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     onblur                                                                 "Client side callback to execute when input element loses focus."
     onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
@@ -340,7 +391,6 @@ widget colorPicker
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     size                Integer                                            "Number of characters used to determine the width of the input element."
-    span                Integer                                            "The size of the input specified as number of grid columns."
     tabindex                                                               "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
     title                                                                  "Advisory tooltip information."
     type                                                                   "Type of the input. The default is text."
@@ -351,6 +401,7 @@ widget colorPicker
     value-change-listener javax.faces.event.ValueChangeListener inherited  "A method binding expression referring to a method for handling a valuechangeevent."
 	+style
 	+tooltip
+	+responsive
 }
 
 widget column
@@ -377,7 +428,6 @@ widget commandButton
     accesskey                                                              "Access key to transfer focus to the input element."
     action              javax.el.MethodExpression inherited                "The button action, this can be method expression or a string outcome."
     action-listener     javax.faces.event.ActionListener inherited         "A method expression that refers to a method with this signature: void methodName(Action-Event)."
-    ajax                Boolean                                            "Whether the Button submits the form with AJAX."
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     dir                                                                    "Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content)."
     disabled            Boolean                                            "Boolean value to specify if the button is disabled."
@@ -385,12 +435,11 @@ widget commandButton
     icon-align                                                             "Alignment can be right or left."
     icon-awesome                                                           "Font Awesome Icon to show in this CommandButton, can be one of the Font Awesome icon names. Alignment can be specified with the icon-align attribute."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
-    immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
+    immediate           Boolean inherited                                  "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     look                                                                   "Look of the Button, can be primary, block, info, success, warning, important, danger. If not specified, Standard gray button with gradient is rendered."
     onblur                                                                 "Client side callback to execute when input element loses focus."
     onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
-    onclick                                                                "The onclick attribute."
     ondblclick                                                             "Client side callback to execute when input element is double clicked."
     onfocus                                                                "Client side callback to execute when input element receives focus."
     onkeydown                                                              "Client side callback to execute when a key is pressed down over input element."
@@ -412,6 +461,7 @@ widget commandButton
     +style
     +responsive
     +tooltip
+    +iconAwesome
 }
 
 
@@ -433,16 +483,19 @@ widget dataTable
        extends UIData
        has_children
        has_tooltip
+       is_responsive
  {
-    ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
+    ajax                 Boolean                                           "Activates AJAX. The default value is false (no AJAX)."
+	border               Boolean default "true"                            "If set, this will surround the table by a border. Defaults to true."
 	custom-lang-url      String                                            "Defines a custom lang file url for languages BootsFaces doesn't support out-of-the-box."
-    dataTable-properties Map<DataTablePropertyType, Object>                "Activates Multi-column search inputs. The default value is false (no multi-column searching). A java.util.Map&lt;net.bootsfaces.component.dataTable.DataTable.DataTablePropertyType, Object&gt; map on the backing bean where the state of the DataTable can be saved, and retrieved after re-rendering."
-    disabled            Boolean                                            "Boolean value to specify if the button is disabled."
+	custom-options       String                                            "Allows you to pass an arbitrary option to the datatable widget. Separate the options by a comma if you pass more than one. Note that this may cause incompatibilities when the next version of BootsFaces is released. Use at own risk."
+    disabled             Boolean                                           "Boolean value to specify if the button is disabled."
 	fixed-header         Boolean                                           "Activates the fixed header plugin of the dataTable."
-    id                  inherited                                          "Unique identifier of the component in a namingContainer."
-    immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
+    id                   inherited                                         "Unique identifier of the component in a namingContainer."
+    immediate            Boolean                                           "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
 	lang                 String                                            "Configured lang for the dataTable. If no default language is configured, the language configured in the browser is used."
     multi-column-search  Boolean                                           "If true, &lt;b:inputText /&gt; fields will be generated at the bottom of each column which allow you to perform per-column filtering."
+//    multi-column-search-position default "bottom"                          "Doesn't work yet. Should the multi-column-search attributes be at the bottom or the top of the table? Legal values: 'top','botton', and 'both'. Default to 'bottom'."
     onclick                                                                "The onclick attribute."
     oncomplete                                                             "JavaScript to be executed when ajax completes with success."
     ondblclick                                                             "Client side callback to execute when input element is double clicked."
@@ -451,25 +504,58 @@ widget dataTable
     onmouseout                                                             "Client side callback to execute when a pointer input element is moved away from input element."
     onmouseover                                                            "Client side callback to execute when a pointer input element is moved onto input element."
     onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
+    onorder                                                                "Client side and/or AJAX callback to execute when the table is sorted."
+    onpage                                                                 "Client side and/or AJAX callback to execute when the current table page changes."
+    onsearch                                                               "Client side and/or AJAX callback to execute when the user starts a search."
+    onselect                                                               "Client side and/or AJAX callback to execute when a row is selected."
+    ondeselect                                                             "Client side and/or AJAX callback to execute when a row is deselected."
     page-length          Integer default "10"                              "Sets the default page length for paginated dataTable. The default value is 10."
-    page-length-menu     default "[ 10, 25, 50, 100 ]"                     "Sets the default page length for paginated dataTable. The default value is [10, 25, 50, 100]. Read https://www.datatables.net/examples/advanced_init/length_menu.html for details."
+    page-length-menu     default "[ 10, 25, 50, 100 ]"                     "Sets the default page length for paginated dataTable. The default value is [10, 25, 50, 100]. The brackets are optional. Read https://www.datatables.net/examples/advanced_init/length_menu.html for details."
 	paginated            Boolean default "true"                            "Activates the pagination of the dataTable. Default value is 'true'."
 	process                                                                "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
 	responsive           Boolean                                           "Activates the responsive plugin of the dataTable"
     rendered             Boolean inherited                                 "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    row-highlight		 Boolean default "true"							   "Enable the row highlight css. Default: true."
+    save-state           Boolean default "true"                            "Stores the state of the datatable on the client, so that after a page reload the same filters are active, the same page is shown etc."
     searching            Boolean default "true"                            "If set to false, this feature completely disables the search functionality of the datatable (i.e. both the UI and the JavaScript API)."
+    scroll-size 		 String    						                   "If set, force the height of table to the size specified. You can optionally to add the unit (e.g. scroll-size=\"200px\"). By default, it's px."
+    scroll-x 		     Boolean    						               "If set, the table can scroll horizontally. Defaults to false."
+    scroll-collapse	     Boolean default "true"							   "If set, this will have the container match the height of the rows shown in the table if that height is smaller than that given height by the scroll-size. Default: true."
+    select 		         Boolean    						               "Allows the user to select rows. Defaults to false."
+	striped              Boolean default "true"                            "If set, this will show the row in alternating background colors (typically shades of gray). Defaults to true."
     update                                                                 "Component(s) to be updated with ajax."
     value                inherited                                         "EL expression referring to the back-end bean attribute providing the value of the field."
     var                  String  inherited                                 "The var attribute sets the name of a request-scope attribute exposing the data for each iteration over the rows in the underlying data model for this table."
     widgetVar            String                                            "optional widget variable to access the datatable widget in JavaScript code."
 	+style
+	+responsive
 	+tooltip
 }
 
+widget dataTableColumn {
+	custom-options       String                                            "Allows you to pass an arbitrary option to the datatable widget. Separate the options by a comma if you pass more than one. Note that this may cause incompatibilities when the next version of BootsFaces is released. Use at own risk."
+    label                                                                  "Label in the header of the colum."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
+    order                                                                  "Is the table to be sorted by this column? Legal values are 'asc' and 'desc'."
+    order-by                                                               "Allows you to sort input field. Legal values are dom-text, dom-text-numeric, dom-select and dom-checkbox."
+    data-type                                                              "Specifies order-by more precisely. Is also used by the filtering methods. Legal values are 'string', 'date', 'numeric'."
+	content-style                                                          "Inline style of the cells in the content area."
+    content-style-class                                                    "Style class of cells in the content area.."
+	footer-style                                                           "Inline style of the footer cell."
+    footer-style-class                                                     "Style class of this footer cell."
+	header-style                                                           "Inline style of the header cell."
+    header-style-class                                                     "Style class of this header cell."
+    orderable          Boolean default "true"                              "Disables or enables the sort button for this column."
+    searchable         Boolean default "true"                              "If set to false, this column is excluded from the multi-column-search feature of b:dataTable. Defaults to true. Note that this feature is active only if both searching='true' and multi-column-search='true' are set on the datatable."
+    value              inherited                                           "EL expression referring to the back-end bean attribute providing the value of the field."
+	+style
+}
 
 widget datepicker
        implemented_by net.bootsfaces.component.DatePicker
        has_tooltip
+       is_responsive
 {
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     change-month        Boolean                                            "Boolean value to specify if month selector should be shown."
@@ -481,36 +567,68 @@ widget datepicker
     number-of-months    Integer                                            "Number of months to show."
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
+    required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     show-button-panel   Boolean                                            "Boolean value to specify if row Buttons to the bottom of calendar should be shown."
     show-week           Boolean                                            "Boolean value to specify if Week number should be shown."
    	value               inherited                                          "Value."
 	+style
 	+tooltip
+	+responsive
 }
 
-widget dateTimePicker
+widget dateTimePicker 
 		implemented_by net.bootsfaces.component.DateTimePicker
 		has_tooltip
 		is_responsive
 {
-    allow-input-toggle	     Boolean									   "If true, the picker will show on textbox focus and icon click when used in a button group. Default: false."
+    allow-input-toggle 	     Boolean									   "If true, the picker will show on textbox focus and icon click when used in a button group. Default: false."
+	ajax                     Boolean                                       "Activates AJAX. The default value is false (no AJAX)."
 	binding                  javax.faces.component.UIComponent             "An EL expression referring to a server side UIComponent instance in a backing bean."
-    collapse				 Boolean default "true"						   "Using a Bootstraps collapse to switch between date/time pickers."
+    collapse				 Boolean default "true"						   "If true, a Bootstrap collapse animation is used to switch between the date picker and the time picker."
     day-view-header-format   default "MMMM YYYY"						   "Changes the heading of the datepicker when in 'days' view. Default: 'MMMM YYYY'."
 	disabled-dates														   "Disables selection of dates in the array, e.g. holidays. Default: false. Accepts: array of [date, moment, string]."
     disable-time-interval   											   "Disables time selection between the given moments. Default: false."
 	enabled-dates														   "Disables selection of dates NOT in the array, e.g. holidays. Default: false. Accepts: array of [date, moment, string]."
     focus-on-show			 Boolean default "true"						   "If false, the textbox will not be given focus when the picker is shown. Default: true."
-    format																   "See momentjs' docs for valid formats. Format also dictates what components are shown, e.g. MM/dd/YYYY will not display the time picker."
+    format																   "See momentjs' docs for valid formats. Format also dictates which components are shown, e.g. MM/dd/YYYY will not display the time picker."
+    icon                                                                   "Picker Icon, can be one of the Bootstrap icon names. "
+    icon-awesome                                                           "Font Awesome Icon to show in this DateTimePicker, can be one of the Font Awesome icon names."
+    immediate                Boolean                                        "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     initial-date			 											   "Sets the picker default date/time. Overrides useCurrent. Default: false. Accepts: date, moment, string."
     keep-invalid		     Boolean									   "Will cause the date picker to not revert or overwrite invalid dates. Default: false."
     keep-open				 Boolean								       "Will cause the date picker to stay open after selecting a date if no time components are being used. Deafult: false."
+    label                    inherited                             "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     locale															       "The desired locale. It uses the moment.js locales."
     min-date															   "Prevents date/time selections before this date. minDate will override defaultDate and useCurrent if either of these settings are the same day since both options are invalid according to the rules you've selected. Default: false, Accepts: date, moment, string."
     max-date															   "Prevents date/time selections after this date. minDate will override defaultDate and useCurrent if either of these settings are the same day since both options are invalid according to the rules you've selected. Default: false, Accepts: date, moment, string."
+    onblur                           inherited                             "Client side callback to execute when input element loses focus."
+    onchange                         inherited                             "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
+    onclick                          inherited                             "OnClick DHTML event ."
+    oncomplete                                                             "JavaScript to be executed when ajax completes with success."
+    ondblclick                       inherited                             "Client side callback to execute when input element is double clicked."
+    ondtchange															   "JavaScript event to manage date time change."
+    onfocus                          inherited                             "Client side callback to execute when input element receives focus."
+    onkeydown                        inherited                             "Client side callback to execute when a key is pressed down over input element."
+    onkeypress                       inherited                             "Client side callback to execute when a key is pressed and released over input element."
+    onkeyup                          inherited                             "Client side callback to execute when a key is released over input element."
+    onmousedown                      inherited                             "Client side callback to execute when a pointer input element is pressed down over input element."
+    onmousemove                      inherited                             "Client side callback to execute when a pointer input element is moved within input element."
+    onmouseout                       inherited                             "Client side callback to execute when a pointer input element is moved away from input element."
+    onmouseover                      inherited                             "Client side callback to execute when a pointer input element is moved onto input element."
+    onmouseup                        inherited                             "Client side callback to execute when a pointer input element is released over input element."
+    onselect                         inherited                             "Client side callback to execute when text within input element is selected by user." 
     placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
+    process                                                                "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     rendered                 Boolean inherited                             "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    render-label             Boolean default "net.bootsfaces.component.ComponentUtils.isRenderLabelDefault()" "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    required                 Boolean                                       "Boolean value Require input in the component when the form is submitted."
+    required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     show-button-panel        Boolean                                       "Boolean value to specify if row Buttons to the bottom of calendar should be shown (all button at once)."
+    show-date                Boolean default "true"                        "By setting this to false you can deactivate the date part of the dateTimePicker. Is ignored if the attribute 'format' is used.."
+    show-time                Boolean default "true"                        "By setting this to false you can deactivate the time part of the dateTimePicker. Is ignored if the attribute 'format' is used."
     show-week	     		 Boolean									   "Whether or not to show week numbers to the left of week rows. Default false."
     show-clear-button		 Boolean									   "Show the 'Clear' button in the icon toolbar. Default: false."
     show-close-button	     Boolean									   "Show the 'Close' button in the icon toolbar. Default: false."
@@ -519,11 +637,13 @@ widget dateTimePicker
     time-stepping			 Integer default "1"						   "Number of minutes the up/down arrow's will move the minutes value in the time picker. Default 1."
     toolbar-placement		 default "default"  						   "Changes the placement of the icon toolbar. Default: 'default'. Accepts: 'default', 'top', 'bottom'."
     mode					 default "component"						   "Determine the display mode of the component. Available types are: 'inline' (display the full calendar object), 'popup' (text with icon) and 'plain' (only text). Default: 'popup'."
+    update                                                                 "Component(s) to be updated with ajax."
     use-current				 Boolean default "true"						   "On show, will set the picker to the current date/time. Default: true."
     use-strict			     Boolean 									   "Defines if moment should use strict date parsing when considering a date to be valid."
    	value               	 inherited                                     "Value."
     view-mode				 default "days"								   "The default view to display when the picker is shown. Note: To limit the picker to selecting, for instance the year and month, use format: MM/YYYY. Default: 'days'. Accepts: 'decades','years','months','days'."
     week-days-disabled		         									   "Days of the week that should be disabled. Values are 0 (Sunday) to 6 (Saturday). Multiple values should be comma-separated. Example: disable weekends: 0,6 or [0,6]."
+    widgetParent														   "Parent widget of the popup to prevent overlap in case of DateTimePicker inside a small size container."
     +style
 	+responsive
 	+tooltip
@@ -578,13 +698,17 @@ widget dropMenu
 	+style
 	+tooltip
 	+responsive
+	+iconAwesome
 }
 
 
 widget fetchBeanInfos
        implemented_by net.bootsfaces.component.FetchBeanInfos
        extends UIComponentBase
- {}
+ {
+ 	    id                                                                 "Unique identifier of the component in a namingContainer."
+
+ }
 
 widget flyOutMenu
        implemented_by net.bootsfaces.component.FlyOutMenu
@@ -605,7 +729,36 @@ widget focus
 {
  	id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    target																   "Id of the element to focus."
+    target																   "Id of the element to focus. May be omitted if you put the b:focus element inside the element."
+}
+
+widget fullCalendar
+       implemented_by net.bootsfaces.component.fullCalendar.FullCalendar
+       extends UIData
+       has_tooltip
+       is_responsive
+{
+    id                  inherited                                         "Unique identifier of the component in a namingContainer."
+    rendered            Boolean inherited                                 "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    defaultDate                                                           "String value of default date in iso 8601 format; this is the date where the calendar position is set on loading"
+    day-click            default "function(calEvent, jsEvent, view){ $(this).css('background', 'yellow'); }"  "String value to bind a javascript function to the on click event of a day; javascript signature is function(calEvent, jsEvent, view){ ... }; calEvent contains a day when clicked on the month's calendar, a day time of a slot otherwise"
+    event-click          default "function(calEvent, jsEvent, view){ $(this).css('background', 'yellow'); }"  "String value to bind a javascript function to the on click event on a date; javascript signature is function(calEvent, jsEvent, view){ ... }"
+    defaultView         default "month"                                   "String value to determine which view to display on page load; use one of month, basicDay, basicWeek, agendaDay, agendaWeek"
+    slot-duration        default "00:30:00"                                "String value to define the duration of a slot; default is 00:30:00 for 30 minutes"
+    all-day-slot          Boolean default "true"                            "String value to determine if the 'all-day' slot is displayed at the top of the calendar in agenda views"
+    scroll-time          default "06:00:00"                                "String value that contains the hour where weekly and daily calendars start, for example: 06:00:00 (default), 12:00:00, 09:00:00"
+    calendar-header      default "{left: 'prev,next today', center: 'title', right: 'month,agendaWeek,agendaDay'}" "String value that contains the calendar header, for example: {left: 'prev,next today', center: 'title', right: 'month,agendaWeek,agendaDay'}"
+    business-hours       default "{start: '8:00', end: '18:00', dow: [1, 2, 3, 4, 5]}" "String value that contains the business hours and the days of week, for example: {start: '8:00', end: '18:00', dow: \\[1, 2, 3, 4, 5\\]}"
+    height              Integer default "480"                             "Integer value to specify the height of the calender"
+    lang                default "en"                                      "String value to specify the calendar language"
+    week-numbers         Boolean                                           "Boolean value to specify if this calendar should display week numbers"
+    weekends            Boolean default "true"                            "Boolean value to specify if this calendar should display weekends"
+    week-mode            default "liquid"                                  "String value to specify calendar size, one of liquid, fixed or variable"
+    editable            Boolean                                           "Boolean value to specify if this calendar is editable"
+    events              default "[]"                                      "String value that contains events of this calendar in json notation; see http:\\/\\/fullcalendar.io/docs/event_data/Event_Object/ for details; also, use net.bootsfaces.component.fullCalendar.FullCalendarEventList to generate a json string from java beans"
+    +responsive
+    +style
+    +tooltip
 }
 
 widget growl
@@ -639,9 +792,9 @@ widget gyroscope
     action              javax.el.MethodExpression inherited                         "The button action, this can be method expression or a string outcome."
     action-listener     javax.faces.event.ActionListener inherited                  "A method expression that refers to a method with this signature: void methodName(Action-Event)."
     ajax                Boolean                                                     "Whether the Button submits the form with AJAX."
-    alpha               javax.el.ValueExpression required                           "Variable to store the alpha value of the gyroscope's rotation"
-    beta                javax.el.ValueExpression required                           "Variable to store the beta value of the gyroscope's rotation"
-    gamma               javax.el.ValueExpression required                           "Variable to store the gamma value of the gyroscope's rotation"
+    alpha               javax.el.ValueExpression                                    "Variable to store the alpha value of the gyroscope's rotation"
+    beta                javax.el.ValueExpression                                    "Variable to store the beta value of the gyroscope's rotation"
+    gamma               javax.el.ValueExpression                                    "Variable to store the gamma value of the gyroscope's rotation"
     disabled            Boolean                                                     "Disables the input element, default is false."
     id                  inherited      												"Unique identifier of the component in a namingContainer."
     interval            Integer default "500"                                       "Specifies the delay (in milliseconds) between each slide."
@@ -650,13 +803,13 @@ widget gyroscope
 	process                                                                  		"Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     threshold           Integer default "15"                                        "Specifies the sensitivity of the skae detector."
     update                                                                			"Component(s) to be updated with ajax."
-    widgetVar           String  default "bfGyroscope"                               "optional widget variable to access the datatable widget in JavaScript code."
 }
 
 widget icon
        implemented_by net.bootsfaces.component.Icon
-       extends UIComponentBase
+       extends UICommand
        has_tooltip
+       is_responsive
  {
     addon               Boolean                                            "Boolean value: if true the element is used as Addon."
     ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
@@ -682,12 +835,14 @@ widget icon
     update                                                                 "Component(s) to be updated with ajax."
 	+style
 	+tooltip
+	+responsive
 }
 
 widget iconAwesome
        implemented_by net.bootsfaces.component.iconAwesome
        extends Icon
        has_tooltip
+       is_responsive
 {
     addon               Boolean                             inherited      "Boolean value: if true the element is used as Addon."
     ajax                Boolean                             inherited      "Activates AJAX. The default value is false (no AJAX)."
@@ -711,6 +866,7 @@ widget iconAwesome
     spin                Boolean                             inherited      "Boolean value: if true the icon will spin."
     update                                                  inherited      "Component(s) to be updated with ajax."
 	+style
+	+responsive
 	+tooltip
 }
 
@@ -718,6 +874,7 @@ widget image
        implemented_by net.bootsfaces.component.Image
        extends UIComponentBase
        has_tooltip
+       is_responsive
 {
     ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
 	alt																   	   "Alternate textual description of the element rendered by this component."
@@ -749,6 +906,7 @@ widget image
     width																   "Override for the width of this image."
     +style
     +tooltip
+    +responsive
 }
 
 widget inputSecret
@@ -756,6 +914,7 @@ widget inputSecret
        rendered_by net.bootsfaces.component.InputTextRenderer
        extends net.bootsfaces.component.InputText
        has_tooltip
+       is_responsive
  {
     accesskey                                                              "Access key to transfer focus to the input element."
     alt                                                                    "Alternate textual description of the input element."
@@ -766,12 +925,16 @@ widget inputSecret
     dir                                                                    "Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content)."
     disabled            Boolean                                            "Disables the input element, default is false."
     field-size                                                             "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    field-id                                                               "Unique id of the input field itself (as opposed to the id, which is belongs to the entire component, including the div surrounding the input field).  Useful for frameworks like JAAS, which require you to use a specific field id."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
  	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
-    label                                                                  "The label of the field."
+    label                                                                  "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     maxlength           Integer inherited                                  "The maximum length of the input."
+    name                                                                   "The name of the field in the HMTL form and the HTTP request. Useful for frameworks like JAAS, which require you to use a specific field name."
     onblur                                                                 "Client side callback to execute when input element loses focus."
     onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
     onclick                                                                "OnClick DHTML event ."
@@ -795,7 +958,6 @@ widget inputSecret
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     size                Integer                                            "Number of characters used to determine the width of the input element."
-    span                Integer                                            "The size of the input specified as number of grid columns."
     tabindex                                                               "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
     title                                                                  "Advisory tooltip information."
     type                                                                   "Type of the input. The default is text."
@@ -806,6 +968,8 @@ widget inputSecret
     value-change-listener javax.faces.event.ValueChangeListener inherited  "A method binding expression referring to a method for handling a valuechangeevent."
 	+style
 	+tooltip
+	+responsive
+	+responsiveLabel
 }
 
 
@@ -815,6 +979,7 @@ widget inputText
        processes_input
        extends HtmlInputText
        has_tooltip
+       is_responsive
  {
     accesskey                        inherited                             "Access key to transfer focus to the input element."
     ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
@@ -826,12 +991,16 @@ widget inputText
     dir                              inherited                             "Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content)."
     disabled            Boolean      inherited                             "Disables the input element, default is false."
     field-size                                                             "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    field-id                                                               "Unique id of the input field itself (as opposed to the id, which is belongs to the entire component, including the div surrounding the input field).  Useful for frameworks like JAAS, which require you to use a specific field id."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     immediate           Boolean      inherited                             "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
  	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
-    label                            inherited                             "The label of the field."
+    label                            inherited                             "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                             inherited                             "Code describing the language used in the generated markup for this component."
     maxlength           Integer inherited                                  "The maximum length of the input."
+    name                                                                   "The name of the field in the HMTL form and the HTTP request. Useful for frameworks like JAAS, which require you to use a specific field name."
     onblur                           inherited                             "Client side callback to execute when input element loses focus."
     onchange                         inherited                             "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
     onclick                          inherited                             "OnClick DHTML event ."
@@ -855,10 +1024,16 @@ widget inputText
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     size                Integer inherited                                  "Number of characters used to determine the width of the input element."
-    span                Integer                                            "The size of the input specified as number of grid columns."
     tabindex                          inherited                            "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
+    tags                Boolean                                            "Show the words of the input text as tags (similar to price tags in the supermarket). You can select one or more tags. The list is sent to the backend bean as a comma-separated list."
     title                             inherited                            "Advisory tooltip information."
     type                                                                   "Type of the input. The default is text."
+    typeahead           Boolean                                            "Activates the type-ahead aka autocomplete function. The list of values has to be defined in typeahead-values."
+    typeahead-limit     Integer default "5"                                "Maximum number of suggestions to be shown. Defaults to 5."
+    typeahead-highlight Boolean default "true"                             "Highlights the part of the suggestions that has already been entered. Defaults to true."
+    typeahead-hint      Boolean default "true"                             "If set to false, the typeahead will not show a hint. Defaults to true."
+    typeahead-minLength Integer default "1"                                "Minimum number of characters to be entered before a suggestion is shown."
+    typeahead-values                                                       "Comma-separated list of values that can be used for the typeahead list."
     update                                                                 "Component(s) to be updated with ajax."
     validator           javax.faces.validator.Validator inherited          "A method expression referring to a method validationg the input."
     validator-message   inherited                                          "Message to display when validation fails."
@@ -866,6 +1041,8 @@ widget inputText
     value-change-listener javax.faces.event.ValueChangeListener inherited  "A method binding expression referring to a method for handling a valuechangeevent."
 	+style
 	+tooltip
+	+responsive
+	+responsiveLabel
 }
 
 widget inputTextarea
@@ -874,6 +1051,7 @@ widget inputTextarea
        processes_input
        extends HtmlInputText
        has_tooltip
+       is_responsive
  {
     accesskey                                                              "Access key to transfer focus to the input element."
     ajax                  Boolean                                          "Activates AJAX. The default value is false (no AJAX)."
@@ -888,7 +1066,9 @@ widget inputTextarea
     id                    inherited                                        "Unique identifier of the component in a namingContainer."
     inline				  Boolean										   "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
     immediate             Boolean                                          "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
-    label                                                                  "The label of the field."
+    label                                                                  "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     maxlength             Integer inherited                                "The maximum length of the input."
     onblur                                                                 "Client side callback to execute when input element loses focus."
@@ -915,7 +1095,6 @@ widget inputTextarea
     required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     rows                  Integer default "5"                              "Number of rows"
     size                  Integer inherited                                "Number of characters used to determine the width of the input element."
-    span                  Integer                                          "The size of the input specified as number of grid columns."
     tabindex                                                               "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
     title                                                                  "Advisory tooltip information."
     type                                                                   "Type of the input. The default is text."
@@ -926,6 +1105,7 @@ widget inputTextarea
     value-change-listener javax.faces.event.ValueChangeListener inherited  "A method binding expression referring to a method for handling a valuechangeevent."
 	+style
 	+tooltip
+	+responsive
 }
 
 
@@ -948,6 +1128,17 @@ widget jumbotron
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
 	+style
 	+tooltip
+}
+
+widget kebab 
+       implemented_by net.bootsfaces.component.Kebab
+       extends UIComponentBase
+       has_children
+ {
+    binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
+    id                  inherited                                          "Unique identifier of the component in a namingContainer."
+    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+	+style
 }
 
 widget label
@@ -977,12 +1168,14 @@ widget listLinks
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
 	+tooltip
+	+style
 }
 
 widget message
        implemented_by net.bootsfaces.component.Message
        rendered_by net.bootsfaces.component.MessageRenderer
        extends UIMessage
+       is_responsive
  {
     dir                                                                    "HTML: The direction of text display, either 'ltr' (left-to-right) or 'rtl' (right-to-left)."
     error-class                                                            "CSS class to be used for messages with severity \"ERROR\"."
@@ -996,6 +1189,7 @@ widget message
     info-style                                                             "CSS style to be used for messages with severity \"INFO\"."
     line-break          Boolean default "true"                             "If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag."
     line-break-tag      String  default "<br />"                           "If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag. You can replace if with an arbitrary HTML snippet."
+    only-most-severe    Boolean default "false"                            "By default, b:message shows every message reported for the component. You can limit it to one message by setting this flag to true. In this case, BootsFaces shows only the most important message (measured by the severity level)."
     rendered            Boolean inherited                                  "A boolean value that indicates whether this component should be rendered. Default value: true."
     show-detail         Boolean default "true"                             "Specifies whether the detailed information from the message should be shown. Default to true."
     show-icon           Boolean default "true"                             "If false, the icon of the message is not show. Default = true."
@@ -1005,6 +1199,7 @@ widget message
     style-class                                                            "The CSS class for this element.  Corresponds to the HTML 'class' attribute."
     warn-class                                                             "CSS class to be used for messages with severity \"WARN\"."
     warn-style                                                             "CSS style to be used for messages with severity \"WARN\"."
+	+responsive
 }
 
 widget messages
@@ -1012,6 +1207,7 @@ widget messages
        rendered_by net.bootsfaces.component.MessagesRenderer
        extends UIMessages
        has_tooltip
+       is_responsive
  {
     dir                                                                    "HTML: The direction of text display, either 'ltr' (left-to-right) or 'rtl' (right-to-left)."
     error-class                                                            "CSS class to be used for messages with severity \"ERROR\"."
@@ -1019,6 +1215,7 @@ widget messages
     escape              Boolean default "true"                             "By default, error messages encode HTML and JavaScript code. Instead of being executed, the source code is displayed. This protects you against hacker attacks. By setting escape=false, you deactivate the protection, and allow HTML and JavaScript code to be rendered."
     fatal-class                                                            "CSS class to be used for messages with severity \"FATAL\"."
     fatal-style                                                            "CSS style to be used for messages with severity \"FATAL\"."
+    for                 String                                             "Optional id or search expression. Only the messages of the component defined by the id and its children are shown. By default, the algorithm checks the ids, which means the the 'for' component has to be a NamingContainer. Note that this algorithm fails if you use the prependId='false'. Alternatively, you can activate a slower but more flexible algorithm by setting 'recursive' to true."
     global-only         Boolean                                            "Specifies whether only messages (FacesMessage objects) not associated with a specific component should be displayed, ie whether messages should be ignored if they are attached to a particular component. Defaults to false."
     id                  inherited                                          "Get a string which uniquely identifies this UIComponent within the scope of the nearest ancestor NamingContainer component. The id is not necessarily unique across all components in the current view."
     info-class                                                             "CSS class to be used for messages with severity \"INFO\"."
@@ -1026,7 +1223,9 @@ widget messages
     line-break          Boolean default "true"                             "If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag."
     line-break-tag      String  default "<br />"                           "If there's more than one message, they can optionally be separated by a line break. By default, the separator is a br tag. You can replace if with an arbitrary HTML snippet."
     rendered            Boolean inherited                                  "A boolean value that indicates whether this component should be rendered. Default value: true."
-    show-detail         Boolean default "true"                            "Specifies whether the detailed information from the message should be shown. Default to true."
+    redisplay           Boolean inherited                                  "Set the flag indicating whether the <code>detail</code> property of the associated message(s) should be displayed"
+    recursive           Boolean default "false"                            "If set to true, b:messages checks the for attributes using a slower algorithm that doesn't require you to put the component into a namingcontainer."
+    show-detail         Boolean default "true"                             "Specifies whether the detailed information from the message should be shown. Default to true."
     show-summary        Boolean default "true"                             "Specifies whether the summary information from the message should be shown. Defaults to true."
     show-icon           Boolean default "true"                             "If false, the icon of the message is not show. Default = true."
     style                                                                  "HTML: CSS styling instructions."
@@ -1039,6 +1238,7 @@ widget messages
     tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     warn-class                                                             "CSS class to be used for messages with severity \"WARN\"."
     warn-style                                                             "CSS style to be used for messages with severity \"WARN\"."
+    +responsive
 }
 
 
@@ -1052,6 +1252,8 @@ widget modal
     close-on-escape     Boolean default "true"                             "By default, users can close modal dialogs by hitting the ESC key. Set close-on-escape=\"false\" to disable this feature."
     content-class                                                          "content-class is optional: if specified, the content will be displayed with this specific class"
     content-style                                                          "Inline style of the content area."
+    header-class                                                           "The style class of the header is optional. If specified, it will add a CSS style class to the header."
+    header-style                                                           "The style of the header is optional. If specified, it will add the CSS style to the header."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     size                                                                   "Modal's size. Possible values modal-sm, modal-lg"
@@ -1138,39 +1340,18 @@ widget navCommandLink
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     style                                                                  "Inline style"
     style-class                                                            "CSS style class"
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Component(s) to be updated with ajax."
     value               inherited                                          "Navigation Link text."
-
-    col-lg              default "-1"                                       "Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    col-md              default "-1"                                       "Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    col-sm              default "-1"                                       "Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    col-xs              default "-1"                                       "Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    large-screen        default "-1"                                       "Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    medium-screen       default "-1"                                       "Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    small-screen        default "-1"                                       "Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    tiny-screen         default "-1"                                       "Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    display				default "block"									   "If you use the \"visible\" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block."
-    hidden				      											   "This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs."
-    offset              Integer                                            "Integer value to specify how many columns to offset."
-    offset-lg           Integer                                            "Integer value to specify how many columns to offset."
-    offset-md           Integer                                            "Integer value to specify how many columns to offset."
-    offset-sm           Integer                                            "Integer value to specify how many columns to offset."
-    offset-xs           Integer                                            "Integer value to specify how many columns to offset."
-    span                default "-1"                                       "Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    visible				       											   "This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs."
-
+    +responsive
+    +tooltip
+    +iconAwesome
 }
 
 widget navLink
        implemented_by net.bootsfaces.component.NavLink
        extends UICommand
        has_tooltip
+       is_responsive
  {
     action              javax.el.MethodExpression inherited                "The button action, this can be method expression or a string outcome."
     action-listener     javax.faces.event.ActionListener inherited         "A method expression that refers to a method with this signature: void methodName(Action-Event)."
@@ -1209,33 +1390,11 @@ widget navLink
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     style                                                                  "Inline style"
     style-class                                                            "CSS style class"
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Component(s) to be updated with ajax."
     value               inherited                                          "Navigation Link text."
-
-    col-lg              default "-1"                                       "Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    col-md              default "-1"                                       "Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    col-sm              default "-1"                                       "Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    col-xs              default "-1"                                       "Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    large-screen        default "-1"                                       "Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    medium-screen       default "-1"                                       "Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    small-screen        default "-1"                                       "Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    tiny-screen         default "-1"                                       "Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    display				default "block"									   "If you use the \"visible\" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block."
-    hidden				      											   "This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs."
-    offset              Integer                                            "Integer value to specify how many columns to offset."
-    offset-lg           Integer                                            "Integer value to specify how many columns to offset."
-    offset-md           Integer                                            "Integer value to specify how many columns to offset."
-    offset-sm           Integer                                            "Integer value to specify how many columns to offset."
-    offset-xs           Integer                                            "Integer value to specify how many columns to offset."
-    span                default "-1"                                       "Integer value to specify how many columns to span on medium screens (≥992 pixels). The number may optionally be followed by \"column\" or \"columns\". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths."
-    visible				       											   "This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs."
-
+    +responsive
+    +tooltip
+    +iconAwesome
 }
 
 
@@ -1247,12 +1406,8 @@ widget navbarLinks
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     pull                                                                   "Can be right or left. Pulls the element right or left."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+	+style
 }
 
 
@@ -1261,6 +1416,7 @@ widget panel
        processes_input
        has_children
        has_tooltip
+       is_responsive
  {
     ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
@@ -1287,24 +1443,22 @@ widget panel
     onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
 	process                                                                "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    show-collapse-link  Boolean default "true"                             "Collapsible panel headers are decorated by an underline to indicate it can be toggled using the keyboard unless you deactivate this feature by setting showCollapseLink='false'."
     style                                                                  "Inline style of the entire panel area."
     style-class                                                            "Style class of the input element."
     title                                                                  "Title is optional: if specified, the heading facet will not be rendered and the panel will render with a heading with this Title."
     title-class                                                            "TitleClass is optional: if specified, the title will be displayed with this specific class"
     title-style                                                            "Inline style of the title area."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Which region of the screen is to be updated? Default value: @form"
+    +responsive
+    +tooltip
 }
 
 
 widget panelGrid
        implemented_by net.bootsfaces.component.PanelGrid
        has_tooltip
+       is_responsive
  {
     col-spans                                                              "Comma-separated list of the column spans"
     column-classes                                                         "Comma-separated list of the CSS classes assigned to each column."
@@ -1316,12 +1470,8 @@ widget panelGrid
     size                                                                   "Optional. Legal values are lg, md, sm and xs. Default is lg. Influences the grid size."
     style                                                                  "CSS inline style of the div surrounding the panel grid."
     style-class                                                            "Style class of the div surrounding the panel grid."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+    +responsive
 }
 
 widget pillLinks
@@ -1333,12 +1483,8 @@ widget pillLinks
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+	+style
 }
 
 widget poll
@@ -1359,6 +1505,7 @@ widget poll
 widget progressBar
        implemented_by net.bootsfaces.component.ProgressBar
        has_tooltip
+       is_responsive
  {
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
@@ -1373,14 +1520,43 @@ widget progressBar
     look                                                                   "Look of the ProgressBar, can be info, success, warning, or danger. If not specified, a blue bar will be rendered."
     striped             Boolean default "false"                            "If true, stripes will be added to the ProgressBar's look. Default value: false."
     animated            Boolean default "false"                            "If true, stripes will be added and animated to move from right to left to indicate running actions. Default value: false."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+    +responsive
 }
 
+widget radiobutton implemented_by net.bootsfaces.component.radiobutton
+       has_children
+       has_tooltip
+ {
+    dir                                                                    "Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content)."
+    disabled            Boolean                                            "Boolean value to specify if the button is disabled."
+    id                  inherited                                          "Unique identifier of the component in a namingContainer."
+    immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
+    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    item-label                                                                  "The caption of the radio button. Alternatively you can use arbitrary captions by embedding them as child elements of the b:radiobutton. As a third alternative, you can follow the traditional JSF approach using &lt;f:f:selectItem /&gt; or &lt;f:selectItems /&gt;."
+    value               inherited                                          "EL expression denoting the property of the backend bean. This expression is also used to determine which radiobuttons belong together."
+    item-value           String                                             "Value of the item. Must be omitted if you use the traditional JSF approach using &lt;f:selectItem /&gt; or &lt;f:selectItems /&gt;."
+    +ajax
+    +style
+    +tooltip
+    +responsive
+}
+
+widget remoteCommand
+       implemented_by net.bootsfaces.component.remoteCommand.RemoteCommand
+       processes_input
+       extends UICommand
+ {
+    action              javax.el.MethodExpression inherited                "The button action, this can be method expression or a string outcome."
+    action-listener     javax.faces.event.ActionListener inherited         "A method expression that refers to a method with this signature: void methodName(Action-Event)."
+    binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
+    disabled            Boolean                                            "Boolean value to specify if the button is disabled."
+    id                  inherited                                          "Unique identifier of the component in a namingContainer."
+    immediate           Boolean inherited                                  "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
+    name                mandatory                                          "Name of the JavaScript function."
+    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    +ajax
+}
 
 widget row
        implemented_by net.bootsfaces.layout.Row
@@ -1392,12 +1568,7 @@ widget row
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     style                                                                  "Inline style of the input element."
     style-class                                                            "Style class of this element."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
 }
 
 widget scrollUp
@@ -1426,8 +1597,8 @@ widget scrollSpy
 {
  	id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    container															   "Id of the element that is the scrollable container. If not specified, body is set by default."
-	target																   "Id of the navigation target. Usually the id of the NavBar component. If not specified, component with .navbar class is set."
+    container															   "Id of the element that is the scrollable container. Search expressions are allowed if they yield only one result. If not specified, body is set by default."
+	target																   "Id of the navigation target. Usually the id of the NavBar component. Search expressions are allowed if they yield only one result. If not specified, component with .navbar class is set."
 	offset				Integer											   "Scroll offset"
 	smooth				Boolean											   "Enable smooth scroll"
 	smoothSpeed			Integer	default "800"							   "Speed of the smooth scroll (default 800)"
@@ -1441,6 +1612,7 @@ widget selectBooleanCheckbox
        processes_input
        extends HtmlInputText
        has_tooltip
+       is_responsive
  {
     accesskey                                                              "Access key to transfer focus to the input element."
     ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
@@ -1455,6 +1627,8 @@ widget selectBooleanCheckbox
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     label                                                                  "The label above of the field ."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     onblur                                                                 "Client side callback to execute when input element loses focus."
     onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
@@ -1475,20 +1649,15 @@ widget selectBooleanCheckbox
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
     render-label        Boolean default "net.bootsfaces.component.ComponentUtils.isRenderLabelDefault()" "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    span                Integer                                            "The size of the input specified as number of grid columns."
     style                                                                  "Inline style of the input element."
     style-class                                                            "Style class of the input element."
     tabindex                                                               "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
     title                                                                  "Advisory tooltip information."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Component(s) to be updated with ajax."
     value               inherited                                          "EL expression referring to the back-end bean attribute providing the value of the field."
     value-change-listener javax.faces.event.ValueChangeListener inherited  "A method binding expression referring to a method for handling a valuechangeevent."
+    +tooltip
+    +responsive
 }
 
 widget shake
@@ -1506,7 +1675,37 @@ widget shake
 	process                                                                  		"Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     threshold           Integer default "15"                                        "Specifies the sensitivity of the skae detector."
     update                                                                 			"Component(s) to be updated with ajax."
-    widgetVar           String  default "bfShakeDetector"                           "optional widget variable to access the datatable widget in JavaScript code."
+}
+
+widget spinner
+	   implemented_by net.bootsfaces.component.spinner
+	   extends IconAwesome
+	   has_tooltip
+	   is_responsive
+{
+    addon               Boolean                             inherited      "Boolean value: if true the element is used as Addon."
+    ajax                Boolean                             inherited      "Activates AJAX. The default value is false (no AJAX)."
+    binding             javax.faces.component.UIComponent   inherited      "An EL expression referring to a server side UIComponent instance in a backing bean."
+    disabled            Boolean                             inherited      "Boolean value to specify if the button is disabled."
+    flip                                                    inherited      "Flip the icon: can be H (horizontal) or V (vertical)."
+    id                                                      inherited      "Unique identifier of the component in a namingContainer."
+    name                default "circle-o-notch" 			      		   "Icon name: default 'circle-o-notch'."
+    onclick                                                 inherited      "The onclick attribute."
+    oncomplete                                              inherited      "JavaScript to be executed when ajax completes with success."
+    ondblclick                                              inherited      "Client side callback to execute when input element is double clicked."
+    onmousedown                                             inherited      "Client side callback to execute when a pointer input element is pressed down over input element."
+    onmousemove                                             inherited      "Client side callback to execute when a pointer input element is moved within input element."
+    onmouseout                                              inherited      "Client side callback to execute when a pointer input element is moved away from input element."
+    onmouseover                                             inherited      "Client side callback to execute when a pointer input element is moved onto input element."
+    onmouseup                                               inherited      "Client side callback to execute when a pointer input element is released over input element."
+    readonly            Boolean                             inherited      "Flag indicating that this input element will prevent changes by the user."
+    rendered            Boolean                             inherited      "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    rotate                                                  inherited      "Rotate 90 degrees the icon: Can be L,R."
+    size                                                    inherited      "Icon Size: legal values are lg, 2x, 3x, 4x, 5x."
+    update                                                  inherited      "Component(s) to be updated with ajax."
+	+style
+	+responsive
+	+tooltip
 }
 
 widget switch
@@ -1514,6 +1713,7 @@ widget switch
        processes_input
        extends net.bootsfaces.component.SelectBooleanCheckbox
        has_tooltip
+       is_responsive
  {
     accesskey                                                        inherited      "Access key to transfer focus to the input element."
     alt                                                              inherited      "Alternate textual description of the input element."
@@ -1527,6 +1727,8 @@ widget switch
     id                                                               inherited      "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                      inherited      "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     label                                                            inherited      "The label above of the field ."
+    label-style                                                                     "The CSS inline style of the label."
+    label-style-class                                                               "The CSS class of the label."
     lang                                                             inherited      "Code describing the language used in the generated markup for this component."
     onblur                                                           inherited      "Client side callback to execute when input element loses focus."
     onchange                                                         inherited      "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
@@ -1547,17 +1749,10 @@ widget switch
     readonly            Boolean                                      inherited      "Flag indicating that this input element will prevent changes by the user."
     render-label        Boolean default "net.bootsfaces.component.ComponentUtils.isRenderLabelDefault()"  inherited      "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean                                      inherited      "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    span                Integer                                      inherited      "The size of the input specified as number of grid columns."
     style                                                            inherited      "Inline style of the input element."
     style-class                                                      inherited      "Style class of the input element."
     tabindex                                                         inherited      "Advisory tooltip information."
     title                                                            inherited      "Advisory tooltip information."
-    tooltip                                                          inherited      "The text of the tooltip."
-    tooltip-container   default "body"                               inherited      "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                      inherited      "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                      inherited      "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                      inherited      "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                 inherited      "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value                                                            inherited      "EL expression referring to the back-end bean attribute providing the value of the field."
     value-change-listener javax.faces.event.ValueChangeListener      inherited      "A method binding expression referring to a method for handling a valuechangeevent."
     on-color                                                                        "Color of the left hand side of the switch. Legal values: 'primary', 'info', 'success', 'warning', 'danger', 'default'. Default value: 'primary'."
@@ -1571,12 +1766,16 @@ widget switch
     label-text                                                                      "Text of the center handle of the switch. Default value: a space (nbsp)."
     handle-width        Integer                                                     "Width of the left and right sides in pixels."
     label-width         Integer                                                     "Width of the center handle in pixels."
+    +tooltip
+    +responsive
+    +ajax
 }
 
 
 widget selectMultiMenu
        extends HtmlInputText
        has_tooltip
+       is_responsive
        description "Similar to a traditional combobox, but with the option to select multiple values."
  {
     accesskey                                                              "Access key to transfer focus to the input element."
@@ -1590,6 +1789,8 @@ widget selectMultiMenu
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
    	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
     label                                                                  "The Label of the field ."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     max-height          Integer                                            "Maximum height of the options panel."
     non-selected-text   String                                             "Text which is displayed if no option has been selected."
@@ -1612,30 +1813,25 @@ widget selectMultiMenu
     button-width        Integer                                            "The width of the multiselect button may be fixed using this option."
     enable-case-insensitive-filtering  Boolean default "false"             "If set to true, the filter is case-insensitive."
 
-    placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
     render-label        Boolean default "net.bootsfaces.component.ComponentUtils.isRenderLabelDefault()" "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
     size                Integer                                            "Number of characters used to determine the width of the input element."
-    span                Integer                                            "The size of the input specified as number of grid columns."
     style                                                                  "Inline style of the input element."
     tabindex                                                               "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
     title                                                                  "Advisory tooltip information."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Value."
+    +tooltip
+    +responsive
 }
 
 
 widget selectOneMenu
        extends HtmlInputText
        has_tooltip
+       is_responsive
        description "This component is also known as combobox or drop-down-menu."
  {
     accesskey                                                              "Access key to transfer focus to the input element."
@@ -1648,7 +1844,9 @@ widget selectOneMenu
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
    	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
-    label                                                                  "The label of the field."
+    label                                                                  "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     lang                                                                   "Code describing the language used in the generated markup for this component."
     onblur                                                                 "Client side callback to execute when input element loses focus."
     onchange                                                               "Client side callback to execute when input element loses focus and its value has been modified since gaining focus."
@@ -1665,7 +1863,6 @@ widget selectOneMenu
     onmouseover                                                            "Client side callback to execute when a pointer input element is moved onto input element."
     onmouseup                                                              "Client side callback to execute when a pointer input element is released over input element."
     onselect                                                               "Client side callback to execute when text within input element is selected by user."
-    placeholder                                                            "The placeholder attribute shows text in a field until the field is focused upon, then hides the text."
 	process                                                                "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     readonly            Boolean                                            "Flag indicating that this input element will prevent changes by the user."
     render-label        Boolean default "net.bootsfaces.component.ComponentUtils.isRenderLabelDefault()" "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
@@ -1673,19 +1870,14 @@ widget selectOneMenu
     required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
     required-message                                                        "Message to show if the user did not specify a value and the attribute required is set to true."
     size                Integer                                            "Number of characters used to determine the width of the input element."
-    span                Integer                                            "The size of the input specified as number of grid columns."
     style                                                                  "Inline style of the input element."
     style-class                                                            "Style class of the input element."
     tabindex                                                               "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
     title                                                                  "Advisory tooltip information."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Component(s) to be updated with ajax."
     value               inherited                                          "Value."
+    +tooltip
+    +responsive
 }
 
 
@@ -1702,6 +1894,8 @@ widget slider
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
  	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
     label                                                                  "Label for the widget field."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
     max                 Integer default "100"                              "The maximum value of the slider. (default 100)"
     min                 Integer default "0"                                "The minimum value of the slider. (default 0)"
     mode                default "badge"                                    "Mode of the Slider Widget. There are three modes available : badge, edit and basic. In basic mode, only the slider and the label(if present) will be shown and the slider value will be hidden. In badge mode, the default, the slider value will be shown in a badge. In edit mode, an editable input field showing the slider value will be shown; in this mode you can change the value by sliding or editing the value in the field."
@@ -1711,13 +1905,43 @@ widget slider
     step                Integer                                            "The step of the slider."
     style                                                                  "Inline style of the input element."
     style-class                                                            "Style class of the input element."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     value               inherited                                          "Value."
+    +tooltip
+}
+
+widget slider2
+	implemented_by net.bootsfaces.component.Slider2
+	processes_input
+	extends HtmlInputText
+{
+	binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
+	disabled			Boolean default	"false"							   "If true, you can't move the slider, nor can you edit the number."
+	focus				Boolean default "false"							   "Focus the appropriate slider handle after a value change."
+	formatter															   "Javascript function that returns the plain value to be displayed in the tooltip"
+	handle-shape		default "round"									   "Handle shape. Accepts: 'round', 'square', 'triangle' or 'custom'"
+    id                  inherited                                          "Unique identifier of the component in a namingContainer."
+	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
+    label                                                                  "Label for the widget field."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                       "The CSS class of the label."
+    labelled-by														   "Labels for the slider handle's, Use array for multiple values in a range slider."
+	max					Float default "100"							   "Maximum possible value"
+	min					Float default "0"								   "Minimum possible value"
+	mode                default "badge"                                    "Mode of the Slider Widget. There are three modes available : badge, edit and basic. In basic mode, only the slider and the label(if present) will be shown and the slider value will be hidden. In badge mode, the default, the slider value will be shown in a badge. In edit mode, an editable input field showing the slider value will be shown; in this mode you can change the value by sliding or editing the value in the field."
+    natural_arrow_keys	Boolean	default "false"							   "The natural order is used for the arrow keys. Arrow up select the upper slider value for vertical sliders, arrow right the righter slider value for a horizontal slider - no matter if the slider was reversed or not. By default the arrow keys are oriented by arrow up/right to the higher slider value, arrow down/left to the lower slider value."
+	orientation			default "horizontal"							   "Set the orientation. Accepts 'vertical' or 'horizontal'"
+	precision			Integer											   "The number of digits shown after the decimal. Defaults to the number of digits after the decimal of step value."
+	rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    reversed			    Boolean default "false"							   "Whether or not the slider should be reversed"
+	scale				default "linear"								   "Set to 'logarithmic' to use a logarithmic scale."
+	selection			default "before"								   "Selection placement. Accepts: 'before', 'after' or 'none'. In case of a range slider, the selection will be placed between the handles."
+	span                Integer default "12"                               "The column span of the slider."
+    step				Float  default "1"								   "Increment step"
+	tooltip-visibility	default "show"									   "Whether to show the tooltip on drag, hide the tooltip, or always show the tooltip. Accepts: 'show', 'hide', or 'always'."
+	tooltip-split		Boolean default "false"							   "If false show one tootip if true show two tooltips one for each handler."
+	tooltip-slider-position												   "Position of tooltip, relative to slider. Accepts 'top'/'bottom' for horizontal sliders and 'left'/'right' for vertically orientated sliders. Default positions are 'top' for horizontal and 'right' for vertical slider."
+	value				default "5" 								   	   "Initial value float mode."
+	+style
 }
 
 widget socialShare
@@ -1725,6 +1949,8 @@ widget socialShare
 	extends UIOutput
 	is_responsive
 {
+    block-message   default "Click to enable sharing links"				    "Message of the block overaly."
+    disable-block	Boolean default "false"									"Disable the block of buttons. Attention: the block is for respect of new law about social sharing. Disable at your risk."
     shares																	"A list of share button to display. Is a list of comma separated values. Accepted values are: email, twitter, facebook, googleplus, linkedin, pinterest, stumbleupon, whatsapp, line."
     share-in		default "popup"											"A string specifying the name of sharing strategy. Available strategies are: blank, popup or self. Default popup."
     show-label		Boolean													"A boolean specifying whether to show the text on the share button. Default false."
@@ -1734,6 +1960,97 @@ widget socialShare
     url																		"A string specifying url to share. Value of window.location.href is used by default."
 	+style
 	+responsive
+}
+
+widget touchSpin
+       implemented_by net.bootsfaces.component.TouchSpin
+       rendered_by net.bootsfaces.component.InputTextRenderer
+       processes_input
+       extends InputText
+       has_tooltip
+       is_responsive
+ {
+    accesskey                        inherited                             "Access key to transfer focus to the input element."
+    ajax                Boolean                                            "Activates AJAX. The default value is false (no AJAX)."
+    alt                              inherited                             "Alternate textual description of the input element."
+    binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
+    booster				Boolean default "true"							   "If enabled, the the spinner is continually becoming faster as holding the button."
+    boostat				Integer default "10"							   "Boost at every nth step."
+    button-down-class	default "btn btn-default"						   "Class(es) of down button."
+    button-up-class	  	default "btn btn-default"						   "Class(es) of up button."
+    converter           java.faces.convert.Converter inherited             "An EL expression or a literal text that defines a converter for the component. When it's an EL expression, it's resolved to a converter instance. In case it's a static text, it must refer to a converter id."
+    converter-message                                                      "Message to display when conversion fails."
+    decimals			Integer default "0"								   "Number of decimal points."
+    dir                              inherited                             "Direction indication for text that does not inherit directionality. Legal values: ltr (Default. Left-to-right text direction), rtl (Right-to-left text direction) and auto (let the browser figure out the direction of your alphabet, based on the page content)."
+    disabled            Boolean      inherited                             "Disables the input element, default is false."
+    field-size                                                             "The size of the input. Possible values are xs (extra small), sm (small), md (medium) and lg (large) ."
+    field-id                                                               "Unique id of the input field itself (as opposed to the id, which is belongs to the entire component, including the div surrounding the input field).  Useful for frameworks like JAAS, which require you to use a specific field id."
+    force-step-divisibility default "round"								   "How to force the value to be divisible by step value: 'none' | 'round' | 'floor' | 'ceil'"
+    id                  inherited                                          "Unique identifier of the component in a namingContainer."
+    immediate           Boolean      inherited                             "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
+ 	initval				default ""										   "Applied when no explicit value is set on the input with the value attribute. Empty string means that the value remains empty on initialization."
+ 	inline              Boolean default "false"                            "Inline forms are more compact and put the label to the left hand side of the input field instead of putting it above the input field. Inline applies only to screens that are at least 768 pixels wide."
+    label                            inherited                             "An optional label of the field. The label is only shown if you also set render-attribute='true'. The label is also used for error messages."
+    label-style                                                            "The CSS inline style of the label."
+    label-style-class                                                      "The CSS class of the label."
+    lang                             inherited                             "Code describing the language used in the generated markup for this component."
+    min					Double default "0"								   "Minimum value."
+    max					Double default "100"							   "Maximum value."
+    max-boosted-step	Integer default "0"								   "Maximum step when boosted."
+    maxlength           Integer inherited                                  "The maximum length of the input."
+    mousewheel			Boolean default "true"							   "Enables the mouse wheel to change the value of the input."
+    name                                                                   "The name of the field in the HMTL form and the HTTP request. Useful for frameworks like JAAS, which require you to use a specific field name."
+    onblur                           inherited                             "Client side callback to execute when input element loses focus."
+    onclick                          inherited                             "OnClick DHTML event ."
+    oncomplete                                                             "JavaScript to be executed when ajax completes with success."
+    ondblclick                       inherited                             "Client side callback to execute when input element is double clicked."
+    onfocus                          inherited                             "Client side callback to execute when input element receives focus."
+    onkeydown                        inherited                             "Client side callback to execute when a key is pressed down over input element."
+    onkeypress                       inherited                             "Client side callback to execute when a key is pressed and released over input element."
+    onkeyup                          inherited                             "Client side callback to execute when a key is released over input element."
+    onmousedown                      inherited                             "Client side callback to execute when a pointer input element is pressed down over input element."
+    onmousemove                      inherited                             "Client side callback to execute when a pointer input element is moved within input element."
+    onmouseout                       inherited                             "Client side callback to execute when a pointer input element is moved away from input element."
+    onmouseover                      inherited                             "Client side callback to execute when a pointer input element is moved onto input element."
+    onmouseup                        inherited                             "Client side callback to execute when a pointer input element is released over input element."
+    onselect                         inherited                             "Client side callback to execute when text within input element is selected by user."
+    onstartspin															   "Client side callback to execute when the spinner starts spinning upwards or downwards."
+	onstartupspin														   "Client side callback to execute when the spinner starts spinning upwards."
+	onstartdownspin														   "Client side callback to execute when the spinner starts spinning downwards."
+	onstopspin															   "Client side callback to execute when the spinner stops spinning."
+	onstopupspin														   "Client side callback to execute when the spinner stops upspinning."
+	onstopdownspin														   "Client side callback to execute when the spinner stops downspinning."
+	onchange															   "Client side callback to execute when the value is changed with one of the buttons (but not triggered when the spinner hits the limit set by min or max."
+    prefix																   "Text before the input."
+    prefix-extra-class													   "Text after the input."
+    postfix																   "Extra class(es) for prefix."
+    postfix-extra-class													   "Extra class(es) for postfix."
+    process                                                                "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
+    readonly            Boolean      inherited                             "Flag indicating that this input element will prevent changes by the user."
+    render-label        Boolean default "net.bootsfaces.component.ComponentUtils.isRenderLabelDefault()" "Allows you to suppress automatic rendering of labels. Used by AngularFaces, too."
+    rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
+    required            Boolean                                            "Boolean value Require input in the component when the form is submitted."
+    required-message                                                       "Message to show if the user did not specify a value and the attribute required is set to true."
+    size                Integer inherited                                  "Number of characters used to determine the width of the input element."
+    step			    Double default "1"								   "Incremental/decremental step on up/down change."
+    step-interval		Integer default "100"							   "Refresh rate of the spinner in milliseconds."
+	step-interval-delay Integer default "500" 							   "Time in milliseconds before the spinner starts to spin."   
+    tabindex                          inherited                            "Position of this element in the tabbing order for the current document.  This value must be an integer between 0 and 32767."
+    tags                Boolean                                            "Show the words of the input text as tags (similar to price tags in the supermarket). You can select one or more tags. The list is sent to the backend bean as a comma-separated list."
+    title                             inherited                            "Advisory tooltip information."
+    type                                                                   "Type of the input. The default is text."
+    update                                                                 "Component(s) to be updated with ajax."
+    validator           javax.faces.validator.Validator inherited          "A method expression referring to a method validationg the input."
+    validator-message   inherited                                          "Message to display when validation fails."
+    value                                                            	   "Value."
+    value-change-listener javax.faces.event.ValueChangeListener inherited  "A method binding expression referring to a method for handling a valuechangeevent."
+    vertical-buttons	Boolean default "false"							   "Enables the traditional up/down buttons."
+	vertical-up-class	default "glyphicon glyphicon-chevron-up"		   "Class of the up button with vertical buttons mode enabled."
+	vertical-down-class default "glyphicon glyphicon-chevron-down"		   "Class of the down button with vertical buttons mode enabled."
+	+style
+	+tooltip
+	+responsive
+	+responsiveLabel
 }
 
 
@@ -1754,13 +2071,8 @@ widget tab
     style                                                                  "Inline CSS of the tab."
     style-class                                                            "Style class of the div surrounding the tab pane."
     title                                                                  "Caption of the tab."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Component(s) to be updated with ajax."
+    +tooltip
 }
 
 widget tabLinks
@@ -1772,12 +2084,8 @@ widget tabLinks
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+	+style
 }
 
 widget tabView
@@ -1797,21 +2105,21 @@ widget tabView
     immediate           Boolean                                            "Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false."
     onclick                                                                "OnClick DHTML event ."
     oncomplete                                                             "JavaScript to be executed when ajax completes with success."
+    onshow                                                                 "JavaScript and/or AJAX code to be executed just before bringing a tab to the front"
+    onshown                                                                "JavaScript and/or AJAX code to be executed just after bringing a tab to the front"
+    onhide                                                                 "JavaScript and/or AJAX code to be executed just before pushing a tab to the back"
+    onhidden                                                               "JavaScript and/or AJAX code to be executed just after pushing a tab to the back"
 	process                                                                "Comma or space separated list of ids or search expressions denoting which values are to be sent to the server."
     role                                                                   "The role can be used to provide information to screenreaders."
     style-class                                                            "Style class of the div surrounding this element."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
     update                                                                 "Component(s) to be updated with ajax."
+    +tooltip
 }
 
 widget tree
        implemented_by net.bootsfaces.component.tree.Tree
        extends UIComponentBase
+       is_responsive
 {
  	id                  	inherited                                          			"Unique identifier of the component in a namingContainer."
     rendered            	Boolean inherited                                  			"Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
@@ -1830,6 +2138,8 @@ widget tree
     selected-color																		"Hex value of selected color."
     border-color			default "#DDDDDD"											"Hex value of border color (default #DDDDDD)"
     update																   				"Component(s) to be updated with ajax."
+	+responsive
+    +style
 }
 
 
@@ -1838,18 +2148,15 @@ widget thumbnail
        extends UIComponentBase
        has_children
        has_tooltip
+       is_responsive
  {
     binding             javax.faces.component.UIComponent                  "An EL expression referring to a server side UIComponent instance in a backing bean."
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     style                                                                  "Inline CSS of the tab."
     style-class                                                             "Style class of the div surrounding the tab pane."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+    +responsive
 }
 
 
@@ -1857,16 +2164,13 @@ widget well
        implemented_by net.bootsfaces.layout.Well
        has_children
        has_tooltip
+       is_responsive
  {
     id                  inherited                                          "Unique identifier of the component in a namingContainer."
     rendered            Boolean inherited                                  "Boolean value to specify the rendering of the component, when set to false the component will not be rendered."
     size                                                                   "Size can be large or small and controls padding and rounded corners."
     style                                                                  "Inline CSS of the tab."
     style-class                                                            "Style class of the div surrounding the tab pane."
-    tooltip                                                                "The text of the tooltip."
-    tooltip-container   default "body"                                     "Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body."
-    tooltip-delay       Integer                                            "The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-hide  Integer                                            "The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-delay-show  Integer                                            "The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay)."
-    tooltip-position                                                       "Where is the tooltip to be displayed? Possible values: \"top\", \"bottom\", \"right\", \"left\", \"auto\", \"auto top\", \"auto bottom\", \"auto right\" and \"auto left\". Default to \"bottom\"."
+    +tooltip
+    +responsive
 }

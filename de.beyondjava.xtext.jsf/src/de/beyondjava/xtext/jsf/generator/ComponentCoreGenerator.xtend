@@ -113,7 +113,7 @@ class ComponentCoreGenerator implements IGenerator {
 		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
-			return «optionalTypeCast(e)» («e.objectType»)getStateHelper().eval(«e.name.propertyKey.validIdentifier»«e.defaultValueTerm»);
+			return «optionalTypeCast(e)» («realType(e.objectType)»)getStateHelper().eval(«e.name.propertyKey.validIdentifier»«e.defaultValueTerm»);
 		}
 
 		/**
@@ -159,11 +159,18 @@ class ComponentCoreGenerator implements IGenerator {
 			', ' + a.defaultValue
 		else if ("Integer".equals(a.type))
 			', 0'
+		else if ("Float".equals(a.type))
+			', 0.0d'
 		else if("Boolean".equals(a.type)) ', false' else ''
 	}
 
 	def optionalTypeCast(Attribute e) {
 		if(e.objectType != e.attributeType) '(' + e.attributeType + ')' else ''
+	}
+
+	def realType(String e) {
+		if("Float" == e) return "Double";
+		return e;
 	}
 
 	def getGetter(Attribute f) {
@@ -183,7 +190,8 @@ class ComponentCoreGenerator implements IGenerator {
 			"String"
 		else if ("Boolean".equals(a.type))
 			"boolean"
-		else if("Integer".equals(a.type)) "int" else a.type;
+		else if("Integer".equals(a.type)) "int"
+		else if("Float".equals(a.type)) "double" else a.type;
 	}
 
 	def generateCopyrightHeader(Component e) '''

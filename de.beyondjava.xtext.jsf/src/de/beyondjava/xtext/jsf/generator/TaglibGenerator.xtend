@@ -120,6 +120,7 @@ class TaglibGenerator implements IGenerator {
 		'''«IF a.type == null»java.lang.String«
 		ELSEIF a.type == 'Boolean'»java.lang.Boolean«
 		ELSEIF a.type == 'Integer'»java.lang.Integer«
+		ELSEIF a.type == 'Float'»java.lang.Double«
 		ELSEIF a.type.startsWith("Map<")»java.util.Map«
 		ELSE»«a.type»«ENDIF»'''
 	}

@@ -51,7 +51,7 @@ Attributetype:
 	| 'java.util.List'
 	| 'javax.faces.validator.Validator'
 	| 'TreeNodeEventListener'
-	| 'Map<' QualifiedName ', ' QualifiedName '>'
+	| 'Map<' QualifiedName ',' QualifiedName '>'
 	| 'Drawing'
 	| 'java.lang.Object'
 	| 'ScrollSpyEventListener'

@@ -163,6 +163,8 @@ class ComponentGenerator implements IGenerator {
 			', ' + a.defaultValue
 		else if ("Integer".equals(a.type))
 			', 0'
+		else if ("Float".equals(a.type))
+			', 0.0d'
 		else if("Boolean".equals(a.type)) ', false' else ''
 	}
 
@@ -187,7 +189,9 @@ class ComponentGenerator implements IGenerator {
 			"String"
 		else if ("Boolean".equals(a.type))
 			"boolean"
-		else if("Integer".equals(a.type)) "int" else a.type;
+		else if("Integer".equals(a.type)) "int" 
+        else if("Float".equals(a.type)) "double"
+		else a.type;
 	}
 
 	def generateMetadata(
