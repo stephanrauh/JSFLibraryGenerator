@@ -62,7 +62,8 @@ class TaglibGenerator implements IGenerator {
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
-		version="2.0">
+		version="2.0"
+		id="b">
 		<namespace>http://bootsfaces.net/ui</namespace>
 		«FOR e : resource.allContents.toIterable.filter(Component)»
 		  «e.compile(attributeLists)»
