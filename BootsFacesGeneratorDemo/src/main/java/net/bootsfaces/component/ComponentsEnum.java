@@ -41,6 +41,7 @@ public enum ComponentsEnum {
 	dropButton("<b:dropButton", "dropButton", "net.bootsfaces.component.dropButton.DropButton"),
 	dropMenu("<b:dropMenu", "dropMenu", "net.bootsfaces.component.dropMenu.DropMenu"),
 	fetchBeanInfos("<b:fetchBeanInfos", "fetchBeanInfos", "net.bootsfaces.component.fetchBeanInfos.FetchBeanInfos"),
+	form("<b:form", "form", "net.bootsfaces.component.form.Form"),
 	flyOutMenu("<b:flyOutMenu", "flyOutMenu", "net.bootsfaces.component.flyOutMenu.FlyOutMenu"),
 	focus("<b:focus", "focus", "net.bootsfaces.component.focus.Focus"),
 	fullCalendar("<b:fullCalendar", "fullCalendar", "net.bootsfaces.component.fullCalendar.FullCalendar"),
@@ -90,6 +91,7 @@ public enum ComponentsEnum {
 	tabView("<b:tabView", "tabView", "net.bootsfaces.component.tabView.TabView"),
 	tree("<b:tree", "tree", "net.bootsfaces.component.tree.Tree"),
 	thumbnail("<b:thumbnail", "thumbnail", "net.bootsfaces.component.thumbnail.Thumbnail"),
+	video("<b:video", "video", "net.bootsfaces.component.video.Video"),
 	well("<b:well", "well", "net.bootsfaces.component.well.Well")
 	;
 	private String tag;

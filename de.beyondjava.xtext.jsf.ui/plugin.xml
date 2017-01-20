@@ -247,6 +247,7 @@
 	    <persistent value="true"/>
 	</extension>
 
+<!--
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
@@ -255,6 +256,42 @@
             >
       </participant>
    </extension>
+   -->
+   <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="de.beyondjava.xtext.jsf.ui.ComponentLanguageExecutableExtensionFactory:de.beyondjava.xtext.jsf.ui.handler.GenerationHandler"
+           commandId="de.beyondjava.xtext.jsf.ui.handler.GenerationCommand">
+     </handler>
+      
+  </extension>
+   
+  <extension
+        point="org.eclipse.ui.commands">
+        <command name="Generate JSF components"
+              id="de.beyondjava.xtext.jsf.ui.handler.GenerationCommand">
+        </command>
+  </extension>
+   
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="popup:org.eclipse.jdt.ui.PackageExplorer">
+        <command
+            commandId="de.beyondjava.xtext.jsf.ui.handler.GenerationCommand"
+            style="push">
+            <visibleWhen
+                  checkEnabled="false">
+                  <iterate>
+       				<adapt type="org.eclipse.core.resources.IResource">
+          				<test property="org.eclipse.core.resources.name" 
+                		  	  value="*.jsfdsl"/>
+       				</adapt>
+    			</iterate>
+            </visibleWhen>
+        </command>
+    </menuContribution>
+   </extension>
+   
+   
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
