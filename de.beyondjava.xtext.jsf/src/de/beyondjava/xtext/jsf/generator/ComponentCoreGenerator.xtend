@@ -110,7 +110,7 @@ class ComponentCoreGenerator implements IGenerator {
 
 		/**
 		 * «e.desc» <P>
-		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+		 * @return Returns the value of the attribute, or «e.getDefaultValueForDocumentation», if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
 			return «optionalTypeCast(e)» («realType(e.objectType)»)getStateHelper().eval(«e.name.propertyKey.validIdentifier»«e.defaultValueTerm»);
@@ -162,6 +162,20 @@ class ComponentCoreGenerator implements IGenerator {
 		else if ("Float".equals(a.type))
 			', 0.0d'
 		else if("Boolean".equals(a.type)) ', false' else ''
+	}
+	
+	def getDefaultValueForDocumentation(Attribute a) {
+		if (a.defaultValue != null && a.type == null)
+			'"' + a.defaultValue + '"'
+		else if (a.defaultValue != null && a.type == "String")
+			'"' + a.defaultValue + '"'
+		else if (a.defaultValue != null)
+			a.defaultValue
+		else if ("Integer".equals(a.type))
+			'0'
+		else if ("Float".equals(a.type))
+			'0.0d'
+		else if("Boolean".equals(a.type)) ', false' else 'null'
 	}
 
 	def optionalTypeCast(Attribute e) {
