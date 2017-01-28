@@ -147,12 +147,12 @@
                  commandId="de.beyondjava.xtext.jsf.ComponentLanguage.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
-            <visibleWhen checkEnabled="false">
-                <reference
-                    definitionId="de.beyondjava.xtext.jsf.ComponentLanguage.Editor.opened">
-                </reference>
-            </visibleWhen>
-         </command>  
+	            <visibleWhen checkEnabled="false">
+	                <reference
+	                    definitionId="de.beyondjava.xtext.jsf.ComponentLanguage.Editor.opened">
+	                </reference>
+	            </visibleWhen>
+	         </command>  
          </menuContribution>
          <!-- copy qualified name -->
          <menuContribution locationURI="popup:#TextEditorContext?after=copy">
@@ -289,6 +289,27 @@
             </visibleWhen>
         </command>
     </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+         locationURI=
+         "popup:org.eclipse.ui.navigator.ProjectExplorer#PopupMenu?after=additions">
+       <command
+            commandId="de.beyondjava.xtext.jsf.ui.handler.GenerationCommand"
+            style="push">
+            <visibleWhen
+                  checkEnabled="false">
+                  <iterate>
+       				<adapt type="org.eclipse.core.resources.IResource">
+          				<test property="org.eclipse.core.resources.name" 
+                		  	  value="*.jsfdsl"/>
+       				</adapt>
+    			</iterate>
+            </visibleWhen>
+        </command>
+      </menuContribution>
    </extension>
    
    

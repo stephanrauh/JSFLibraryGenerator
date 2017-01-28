@@ -31,7 +31,7 @@ class ComponentListGenerator implements IGenerator {
 
 	def compile(Resource resource) '''
 		/**
-		 *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+		 *  Copyright 2014 - 17 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
 		 *
 		 *  This file is part of BootsFaces.
 		 *

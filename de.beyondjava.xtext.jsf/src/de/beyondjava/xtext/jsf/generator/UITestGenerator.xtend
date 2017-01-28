@@ -35,7 +35,7 @@ class UITestGenerator implements IGenerator {
 
 	def compile(Component widget, HashMap<String, EList<Attribute>> attributeLists) '''
 		/**
-		 *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+		 *  Copyright 2014 - 17 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
 		 *
 		 *  This file is part of BootsFaces.
 		 *

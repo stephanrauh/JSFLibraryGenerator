@@ -109,7 +109,7 @@ class ComponentCoreGenerator implements IGenerator {
 		Attribute e) '''
 
 		/**
-		 * «e.desc» <P>
+		 * «if (e.desc!=null) e.desc.replace("<", "&lt;").replace(">", "&gt;")» <P>
 		 * @return Returns the value of the attribute, or «e.getDefaultValueForDocumentation», if it hasn't been set by the JSF file.
 		 */
 		public «e.attributeType» «e.getter» {
@@ -117,7 +117,7 @@ class ComponentCoreGenerator implements IGenerator {
 		}
 
 		/**
-		 * «e.desc» <P>
+		 * «if (e.desc!=null) e.desc.replace("<", "&lt;").replace(">", "&gt;")» <P>
 		 * Usually this method is called internally by the JSF engine.
 		 */
 		public void set«e.name.toCamelCase.toFirstUpper»(«e.attributeType» _«e.name.toCamelCase») {
@@ -168,7 +168,7 @@ class ComponentCoreGenerator implements IGenerator {
 		if (a.defaultValue != null && a.type == null)
 			'"' + a.defaultValue + '"'
 		else if (a.defaultValue != null && a.type == "String")
-			'"' + a.defaultValue + '"'
+			'"' + a.defaultValue.replace("<", "&lt;").replace(">", "&gt;") + '"'
 		else if (a.defaultValue != null)
 			a.defaultValue
 		else if ("Integer".equals(a.type))
@@ -210,7 +210,7 @@ class ComponentCoreGenerator implements IGenerator {
 
 	def generateCopyrightHeader(Component e) '''
 /**
- *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014 - 17 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *
  *  This file is part of BootsFaces.
  *

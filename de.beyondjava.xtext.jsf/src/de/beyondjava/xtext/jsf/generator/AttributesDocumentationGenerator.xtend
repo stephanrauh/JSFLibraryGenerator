@@ -160,7 +160,7 @@ class AttributesDocumentationGenerator implements IGenerator {
 		<tr>
 		    <td>«a.name»«a.name.alternativeWriting»</td>
 		    <td>«IF a.defaultValue!=null» «a.defaultValue» «ELSEIF a.type=="Boolean"»false«ELSEIF a.type=="Integer"»0 «ELSE»(none)«ENDIF»</td>
-		    <td>«IF a.desc != null»«a.desc.replace("\\\"", "\"")»«ENDIF»</td>
+		    <td>«IF a.desc != null»«a.desc.replace("\\\"", "\"").replace("<", "&lt;").replace(">", "&gt;")»«ENDIF»</td>
 		</tr>
 	'''
 

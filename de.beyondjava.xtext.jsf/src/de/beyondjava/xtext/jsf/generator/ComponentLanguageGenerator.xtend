@@ -15,7 +15,8 @@ import org.eclipse.xtext.generator.IGenerator
 class ComponentLanguageGenerator implements IGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		System.out.println("TimeStamp: " + resource.timeStamp + " URI: " + resource.URI);
+		var start = System.nanoTime;
+		System.out.println("Starting to generate the JSF components.");
 		new TaglibGenerator().doGenerate(resource, fsa);
 		new PartialTaglibGenerator().doGenerate(resource, fsa);
 		new ComponentCoreGenerator().doGenerate(resource, fsa);
@@ -27,6 +28,9 @@ class ComponentLanguageGenerator implements IGenerator {
 		new AttributesDocumentationGenerator().doGenerate(resource, fsa);
 		new BeanInfoGenerator().doGenerate(resource, fsa);
 //		new UITestGenerator().doGenerate(resource, fsa);
+        var time = System.nanoTime-start
+        var ms=(time/1000) / 1000.0d
+		System.out.println("Finished generating the JSF components. Time: " + ms + " ms");
 	}
 
 }

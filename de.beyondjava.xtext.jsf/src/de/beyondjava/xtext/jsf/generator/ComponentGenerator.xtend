@@ -109,27 +109,6 @@ class ComponentGenerator implements IGenerator {
 		return "UIOutput";
 	}
 
-	def generateAccessors(
-		Attribute e) '''
-
-		/**
-		 * «e.desc» <P>
-		 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
-		 */
-		public «e.attributeType» «e.getter» {
-			return «optionalTypeCast(e)» («e.objectType»)getStateHelper().eval(«e.name.propertyKey.validIdentifier»«e.defaultValueTerm»);
-		}
-
-		/**
-		 * «e.desc» <P>
-		 * Usually this method is called internally by the JSF engine.
-		 */
-		public void set«e.name.toCamelCase.toFirstUpper»(«e.attributeType» _«e.name.toCamelCase») {
-		    getStateHelper().put(«e.name.propertyKey.validIdentifier», _«e.name.toCamelCase»);
-		}
-
-	'''
-
 	def validIdentifier(String s) {
 		if ("for".equals(s)) {
 			return "_for";
@@ -158,7 +137,7 @@ class ComponentGenerator implements IGenerator {
 		if (a.defaultValue != null && a.type == null)
 			', "' + a.defaultValue + '"'
 		else if (a.defaultValue != null && a.type == "String")
-			', "' + a.defaultValue + '"'
+			', "' + a.defaultValue.replace("<", "&lt;").replace(">", "&gt;") + '"'
 		else if (a.defaultValue != null)
 			', ' + a.defaultValue
 		else if ("Integer".equals(a.type))
@@ -226,7 +205,7 @@ class ComponentGenerator implements IGenerator {
 
 	def generateCopyrightHeader(Component e) '''
 /**
- *  Copyright 2014-16 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
+ *  Copyright 2014-17 by Riccardo Massera (TheCoder4.Eu) and Stephan Rauh (http://www.beyondjava.net).
  *
  *  This file is part of BootsFaces.
  *
