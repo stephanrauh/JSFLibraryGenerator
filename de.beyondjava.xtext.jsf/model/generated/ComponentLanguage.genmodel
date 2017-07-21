@@ -4,7 +4,7 @@
     editorDirectory="/de.beyondjava.xtext.jsf.editor/src" modelPluginID="de.beyondjava.xtext.jsf"
     forceOverwrite="true" modelName="ComponentLanguage" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="de.beyondjava.xtext.jsf.edit"
-    editorPluginID="de.beyondjava.xtext.jsf.editor" runtimeVersion="2.12">
+    editorPluginID="de.beyondjava.xtext.jsf.editor" runtimeVersion="2.13">
   <genPackages prefix="ComponentLanguage" basePackage="de.beyondjava.xtext.jsf" disposableProviderFactory="true"
       fileExtensions="jsfdsl" ecorePackage="ComponentLanguage.ecore#/">
     <genClasses ecoreClass="ComponentLanguage.ecore#//Domainmodel">

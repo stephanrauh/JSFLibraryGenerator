@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/de.beyondjava.xtext.jsf.sdk_1.0.0.201707211449.jar" id="de.beyondjava.xtext.jsf.sdk" version="1.0.0.201707211449"/>
+</site>
