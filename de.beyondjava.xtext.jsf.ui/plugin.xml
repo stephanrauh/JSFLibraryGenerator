@@ -268,7 +268,7 @@
    
   <extension
         point="org.eclipse.ui.commands">
-        <command name="Generate JSF components"
+        <command name="Generate BootsFaces 1.x components "
               id="de.beyondjava.xtext.jsf.ui.handler.GenerationCommand">
         </command>
   </extension>

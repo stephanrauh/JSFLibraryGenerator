@@ -1,77 +1,32 @@
 /**
- *  Copyright 2014-15 by Riccardo Massera (TheCoder4.Eu), Stephan Rauh (http://www.beyondjava.net) and Dario D'Urzo.
+ *  Copyright 2014-2017 Riccardo Massera (TheCoder4.Eu), Dario D'Urzo and Stephan Rauh (http://www.beyondjava.net).
  *
  *  This file is part of BootsFaces.
  *
- *  BootsFaces is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  BootsFaces is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
- *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with BootsFaces. If not, see <http://www.gnu.org/licenses/>.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
  */
-package net.bootsfaces.component.accordion;
 
-import javax.faces.context.FacesContext;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ListenerFor;
-import javax.faces.event.ListenersFor;
-import javax.faces.event.PostAddToViewEvent;
+package net.bootsfaces.component.socialShare;
 
-import javax.el.ValueExpression;
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.FacesComponent;
-import javax.faces.component.UIComponentBase;
+import javax.faces.component.UIOutput;
 
-import net.bootsfaces.listeners.AddResourcesListener;
-import net.bootsfaces.utils.BsfUtils;
+import net.bootsfaces.render.IResponsive;
 
-/** This class holds the attributes of &lt;b:accordion /&gt;. */
-@ResourceDependencies({ @ResourceDependency(library = "bsf", name = "js/transition.js", target = "body"),
-		@ResourceDependency(library = "bsf", name = "js/collapse.js", target = "body"), })
-@ListenersFor({ @ListenerFor(systemEventClass = PostAddToViewEvent.class) })
-@FacesComponent("net.bootsfaces.component.accordion.Accordion")
-public class Accordion extends UIComponentBase {
-
-	public static final String COMPONENT_TYPE = "net.bootsfaces.component.accordion.Accordion";
-	public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
-	public static final String DEFAULT_RENDERER = "net.bootsfaces.component.accordion.Accordion";
-
-	public Accordion() {
-		AddResourcesListener.addThemedCSSResource("core.css");
-		AddResourcesListener.addThemedCSSResource("bsf.css");
-		AddResourcesListener.addThemedCSSResource("panels.css");
-		setRendererType(DEFAULT_RENDERER);
-	}
-
-	public String getFamily() {
-		return COMPONENT_FAMILY;
-	}
-
-	public void setValueExpression(String name, ValueExpression binding) {
-		name = BsfUtils.snakeCaseToCamelCase(name);
-		super.setValueExpression(name, binding);
-	}
-
-	public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
-		if (isAutoUpdate()) {
-			if (FacesContext.getCurrentInstance().isPostback()) {
-				FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add(getClientId());
-			}
-			super.processEvent(event);
-		}
-	}
+/** This class holds the attributes of &lt;b:socialShare /&gt;. */
+public abstract class SocialShareCore extends UIOutput implements IResponsive {
 
 	protected enum PropertyKeys {
-		autoUpdate, colLg, colMd, colSm, colXs, contentDisabled, display, expandedPanels, hidden, largeScreen, mediumScreen, offset, offsetLg, offsetMd, offsetSm, offsetXs, smallScreen, span, style, styleClass, tinyScreen, tooltip, tooltipContainer, tooltipDelay, tooltipDelayHide, tooltipDelayShow, tooltipPosition, visible;
+		autoUpdate, blockMessage, colLg, colMd, colSm, colXs, disableBlock, display, hidden, largeScreen, mediumScreen, offset, offsetLg, offsetMd, offsetSm, offsetXs, shareIn, shares, showCount, showLabel, smallScreen, span, style, styleClass, text, theme, tinyScreen, url, visible;
 		String toString;
 
 		PropertyKeys(String toString) {
@@ -100,6 +55,22 @@ public class Accordion extends UIComponentBase {
 	 */
 	public void setAutoUpdate(boolean _autoUpdate) {
 		getStateHelper().put(PropertyKeys.autoUpdate, _autoUpdate);
+	}
+
+	/**
+	 * Message of the block overaly. <P>
+	 * @return Returns the value of the attribute, or "Click to enable sharing links", if it hasn't been set by the JSF file.
+	 */
+	public String getBlockMessage() {
+		return (String) getStateHelper().eval(PropertyKeys.blockMessage, "Click to enable sharing links");
+	}
+
+	/**
+	 * Message of the block overaly. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setBlockMessage(String _blockMessage) {
+		getStateHelper().put(PropertyKeys.blockMessage, _blockMessage);
 	}
 
 	/**
@@ -167,19 +138,19 @@ public class Accordion extends UIComponentBase {
 	}
 
 	/**
-	 * Enables or disables every child element of this container. By default, child elements are enabled. <P>
+	 * Disable the block of buttons. Attention: the block is for respect of new law about social sharing. Disable at your risk. <P>
 	 * @return Returns the value of the attribute, or false, if it hasn't been set by the JSF file.
 	 */
-	public boolean isContentDisabled() {
-		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.contentDisabled, false);
+	public boolean isDisableBlock() {
+		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.disableBlock, false);
 	}
 
 	/**
-	 * Enables or disables every child element of this container. By default, child elements are enabled. <P>
+	 * Disable the block of buttons. Attention: the block is for respect of new law about social sharing. Disable at your risk. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setContentDisabled(boolean _contentDisabled) {
-		getStateHelper().put(PropertyKeys.contentDisabled, _contentDisabled);
+	public void setDisableBlock(boolean _disableBlock) {
+		getStateHelper().put(PropertyKeys.disableBlock, _disableBlock);
 	}
 
 	/**
@@ -196,22 +167,6 @@ public class Accordion extends UIComponentBase {
 	 */
 	public void setDisplay(String _display) {
 		getStateHelper().put(PropertyKeys.display, _display);
-	}
-
-	/**
-	 * Comma separated list of child panel id that need to render expanded. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
-	 */
-	public String getExpandedPanels() {
-		return (String) getStateHelper().eval(PropertyKeys.expandedPanels);
-	}
-
-	/**
-	 * Comma separated list of child panel id that need to render expanded. <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setExpandedPanels(String _expandedPanels) {
-		getStateHelper().put(PropertyKeys.expandedPanels, _expandedPanels);
 	}
 
 	/**
@@ -343,6 +298,70 @@ public class Accordion extends UIComponentBase {
 	}
 
 	/**
+	 * A string specifying the name of sharing strategy. Available strategies are: blank, popup or self. Default popup. <P>
+	 * @return Returns the value of the attribute, or "popup", if it hasn't been set by the JSF file.
+	 */
+	public String getShareIn() {
+		return (String) getStateHelper().eval(PropertyKeys.shareIn, "popup");
+	}
+
+	/**
+	 * A string specifying the name of sharing strategy. Available strategies are: blank, popup or self. Default popup. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setShareIn(String _shareIn) {
+		getStateHelper().put(PropertyKeys.shareIn, _shareIn);
+	}
+
+	/**
+	 * A list of share button to display. Is a list of comma separated values. Accepted values are: email, twitter, facebook, googleplus, linkedin, pinterest, stumbleupon, whatsapp, line. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getShares() {
+		return (String) getStateHelper().eval(PropertyKeys.shares);
+	}
+
+	/**
+	 * A list of share button to display. Is a list of comma separated values. Accepted values are: email, twitter, facebook, googleplus, linkedin, pinterest, stumbleupon, whatsapp, line. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setShares(String _shares) {
+		getStateHelper().put(PropertyKeys.shares, _shares);
+	}
+
+	/**
+	 * A true, false or inside to specifying whether and how to show share count. Default false. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getShowCount() {
+		return (String) getStateHelper().eval(PropertyKeys.showCount);
+	}
+
+	/**
+	 * A true, false or inside to specifying whether and how to show share count. Default false. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setShowCount(String _showCount) {
+		getStateHelper().put(PropertyKeys.showCount, _showCount);
+	}
+
+	/**
+	 * A boolean specifying whether to show the text on the share button. Default false. <P>
+	 * @return Returns the value of the attribute, or , false, if it hasn't been set by the JSF file.
+	 */
+	public boolean isShowLabel() {
+		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.showLabel, false);
+	}
+
+	/**
+	 * A boolean specifying whether to show the text on the share button. Default false. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setShowLabel(boolean _showLabel) {
+		getStateHelper().put(PropertyKeys.showLabel, _showLabel);
+	}
+
+	/**
 	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
@@ -407,6 +426,38 @@ public class Accordion extends UIComponentBase {
 	}
 
 	/**
+	 * A string specifying text to share. The content of &lt;meta name='description'&gt; or &lt;title&gt; (if first is missing) is used by default. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getText() {
+		return (String) getStateHelper().eval(PropertyKeys.text);
+	}
+
+	/**
+	 * A string specifying text to share. The content of &lt;meta name='description'&gt; or &lt;title&gt; (if first is missing) is used by default. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setText(String _text) {
+		getStateHelper().put(PropertyKeys.text, _text);
+	}
+
+	/**
+	 * A string specifying the theme. Available themes are flat or minimal. Default flat. <P>
+	 * @return Returns the value of the attribute, or "flat", if it hasn't been set by the JSF file.
+	 */
+	public String getTheme() {
+		return (String) getStateHelper().eval(PropertyKeys.theme, "flat");
+	}
+
+	/**
+	 * A string specifying the theme. Available themes are flat or minimal. Default flat. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setTheme(String _theme) {
+		getStateHelper().put(PropertyKeys.theme, _theme);
+	}
+
+	/**
 	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
 	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
@@ -423,99 +474,19 @@ public class Accordion extends UIComponentBase {
 	}
 
 	/**
-	 * The text of the tooltip. <P>
+	 * A string specifying url to share. Value of window.location.href is used by default. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public String getTooltip() {
-		return (String) getStateHelper().eval(PropertyKeys.tooltip);
+	public String getUrl() {
+		return (String) getStateHelper().eval(PropertyKeys.url);
 	}
 
 	/**
-	 * The text of the tooltip. <P>
+	 * A string specifying url to share. Value of window.location.href is used by default. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setTooltip(String _tooltip) {
-		getStateHelper().put(PropertyKeys.tooltip, _tooltip);
-	}
-
-	/**
-	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
-	 * @return Returns the value of the attribute, or "body", if it hasn't been set by the JSF file.
-	 */
-	public String getTooltipContainer() {
-		return (String) getStateHelper().eval(PropertyKeys.tooltipContainer, "body");
-	}
-
-	/**
-	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setTooltipContainer(String _tooltipContainer) {
-		getStateHelper().put(PropertyKeys.tooltipContainer, _tooltipContainer);
-	}
-
-	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or 0, if it hasn't been set by the JSF file.
-	 */
-	public int getTooltipDelay() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
-	}
-
-	/**
-	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setTooltipDelay(int _tooltipDelay) {
-		getStateHelper().put(PropertyKeys.tooltipDelay, _tooltipDelay);
-	}
-
-	/**
-	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or 0, if it hasn't been set by the JSF file.
-	 */
-	public int getTooltipDelayHide() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
-	}
-
-	/**
-	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setTooltipDelayHide(int _tooltipDelayHide) {
-		getStateHelper().put(PropertyKeys.tooltipDelayHide, _tooltipDelayHide);
-	}
-
-	/**
-	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or 0, if it hasn't been set by the JSF file.
-	 */
-	public int getTooltipDelayShow() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
-	}
-
-	/**
-	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setTooltipDelayShow(int _tooltipDelayShow) {
-		getStateHelper().put(PropertyKeys.tooltipDelayShow, _tooltipDelayShow);
-	}
-
-	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
-	 */
-	public String getTooltipPosition() {
-		return (String) getStateHelper().eval(PropertyKeys.tooltipPosition);
-	}
-
-	/**
-	 * Where is the tooltip to be displayed? Possible values: "top", "bottom", "right", "left", "auto", "auto top", "auto bottom", "auto right" and "auto left". Default to "bottom". <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setTooltipPosition(String _tooltipPosition) {
-		getStateHelper().put(PropertyKeys.tooltipPosition, _tooltipPosition);
+	public void setUrl(String _url) {
+		getStateHelper().put(PropertyKeys.url, _url);
 	}
 
 	/**

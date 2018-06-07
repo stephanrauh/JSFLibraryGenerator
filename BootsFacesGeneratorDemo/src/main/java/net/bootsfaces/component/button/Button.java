@@ -19,6 +19,13 @@
 
 package net.bootsfaces.component.button;
 
+import javax.faces.context.FacesContext;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ComponentSystemEvent;
+import javax.faces.event.ListenerFor;
+import javax.faces.event.ListenersFor;
+import javax.faces.event.PostAddToViewEvent;
+
 import javax.el.ValueExpression;
 import javax.faces.component.FacesComponent;
 import javax.faces.component.html.HtmlOutcomeTargetButton;
@@ -28,6 +35,7 @@ import net.bootsfaces.render.Tooltip;
 import net.bootsfaces.utils.BsfUtils;
 
 /** This class holds the attributes of &lt;b:button /&gt;. */
+@ListenersFor({ @ListenerFor(systemEventClass = PostAddToViewEvent.class) })
 @FacesComponent("net.bootsfaces.component.button.Button")
 public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.render.IHasTooltip {
 
@@ -56,62 +64,17 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 		super.setValueExpression(name, binding);
 	}
 
+	public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
+		if (isAutoUpdate()) {
+			if (FacesContext.getCurrentInstance().isPostback()) {
+				FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add(getClientId());
+			}
+			super.processEvent(event);
+		}
+	}
+
 	protected enum PropertyKeys {
-		accesskey,
-		binding,
-		colLg,
-		colMd,
-		colSm,
-		colXs,
-		dir,
-		disabled,
-		dismiss,
-		display,
-		fragment,
-		hidden,
-		icon,
-		iconAlign,
-		iconAwesome,
-		immediate,
-		lang,
-		largeScreen,
-		look,
-		mediumScreen,
-		offset,
-		offsetLg,
-		offsetMd,
-		offsetSm,
-		offsetXs,
-		onblur,
-		onchange,
-		onclick,
-		ondblclick,
-		onfocus,
-		onkeydown,
-		onkeypress,
-		onkeyup,
-		onmousedown,
-		onmousemove,
-		onmouseout,
-		onmouseover,
-		onmouseup,
-		onselect,
-		outcome,
-		size,
-		smallScreen,
-		span,
-		style,
-		styleClass,
-		tabindex,
-		tinyScreen,
-		title,
-		tooltip,
-		tooltipContainer,
-		tooltipDelay,
-		tooltipDelayHide,
-		tooltipDelayShow,
-		tooltipPosition,
-		visible;
+		accesskey, autoUpdate, binding, colLg, colMd, colSm, colXs, dir, disabled, dismiss, display, fragment, hidden, href, icon, iconAlign, iconAwesome, iconFlip, iconRotate, iconSize, iconSpin, lang, largeScreen, look, mediumScreen, offset, offsetLg, offsetMd, offsetSm, offsetXs, onblur, onchange, onclick, ondblclick, onfocus, onkeydown, onkeypress, onkeyup, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup, outcome, size, smallScreen, span, style, styleClass, tabindex, target, tinyScreen, title, tooltip, tooltipContainer, tooltipDelay, tooltipDelayHide, tooltipDelayShow, tooltipPosition, visible;
 		String toString;
 
 		PropertyKeys(String toString) {
@@ -143,6 +106,22 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
+	 * Setting this flag updates the widget on every AJAX request. <P>
+	 * @return Returns the value of the attribute, or , false, if it hasn't been set by the JSF file.
+	 */
+	public boolean isAutoUpdate() {
+		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.autoUpdate, false);
+	}
+
+	/**
+	 * Setting this flag updates the widget on every AJAX request. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setAutoUpdate(boolean _autoUpdate) {
+		getStateHelper().put(PropertyKeys.autoUpdate, _autoUpdate);
+	}
+
+	/**
 	 * An EL expression referring to a server side UIComponent instance in a backing bean. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
@@ -160,7 +139,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getColLg() {
 		return (String) getStateHelper().eval(PropertyKeys.colLg, "-1");
@@ -176,7 +155,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getColMd() {
 		return (String) getStateHelper().eval(PropertyKeys.colMd, "-1");
@@ -192,7 +171,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getColSm() {
 		return (String) getStateHelper().eval(PropertyKeys.colSm, "-1");
@@ -208,7 +187,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getColXs() {
 		return (String) getStateHelper().eval(PropertyKeys.colXs, "-1");
@@ -240,7 +219,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Boolean value to specify if the button is disabled. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or , false, if it hasn't been set by the JSF file.
 	 */
 	public boolean isDisabled() {
 		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.disabled, false);
@@ -272,7 +251,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * If you use the "visible" attribute, the value of this attribute is added. Legal values: block, inline, inline-block. Default: block. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "block", if it hasn't been set by the JSF file.
 	 */
 	public String getDisplay() {
 		return (String) getStateHelper().eval(PropertyKeys.display, "block");
@@ -303,7 +282,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
+	 * This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getHidden() {
@@ -311,11 +290,27 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * This row is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
+	 * This column is hidden on a certain screen size and below. Legal values: lg, md, sm, xs. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setHidden(String _hidden) {
 		getStateHelper().put(PropertyKeys.hidden, _hidden);
+	}
+
+	/**
+	 * Specifies the URL of the page the link goes to. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getHref() {
+		return (String) getStateHelper().eval(PropertyKeys.href);
+	}
+
+	/**
+	 * Specifies the URL of the page the link goes to. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setHref(String _href) {
+		getStateHelper().put(PropertyKeys.href, _href);
 	}
 
 	/**
@@ -367,19 +362,67 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false. <P>
+	 * Flip the icon: can be H (horizontal) or V (vertical). <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public boolean isImmediate() {
-		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.immediate, false);
+	public String getIconFlip() {
+		return (String) getStateHelper().eval(PropertyKeys.iconFlip);
 	}
 
 	/**
-	 * Flag indicating that, if this component is activated by the user, notifications should be delivered to interested listeners and actions immediately (that is, during Apply Request Values phase) rather than waiting until Invoke Application phase. Default is false. <P>
+	 * Flip the icon: can be H (horizontal) or V (vertical). <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setImmediate(boolean _immediate) {
-		getStateHelper().put(PropertyKeys.immediate, _immediate);
+	public void setIconFlip(String _iconFlip) {
+		getStateHelper().put(PropertyKeys.iconFlip, _iconFlip);
+	}
+
+	/**
+	 * Rotate 90 degrees the icon: Can be L,R. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getIconRotate() {
+		return (String) getStateHelper().eval(PropertyKeys.iconRotate);
+	}
+
+	/**
+	 * Rotate 90 degrees the icon: Can be L,R. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setIconRotate(String _iconRotate) {
+		getStateHelper().put(PropertyKeys.iconRotate, _iconRotate);
+	}
+
+	/**
+	 * Icon Size: legal values are lg, 2x, 3x, 4x, 5x. <P>
+	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getIconSize() {
+		return (String) getStateHelper().eval(PropertyKeys.iconSize);
+	}
+
+	/**
+	 * Icon Size: legal values are lg, 2x, 3x, 4x, 5x. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setIconSize(String _iconSize) {
+		getStateHelper().put(PropertyKeys.iconSize, _iconSize);
+	}
+
+	/**
+	 * Boolean value: if true the icon will spin. <P>
+	 * @return Returns the value of the attribute, or , false, if it hasn't been set by the JSF file.
+	 */
+	public boolean isIconSpin() {
+		return (boolean) (Boolean) getStateHelper().eval(PropertyKeys.iconSpin, false);
+	}
+
+	/**
+	 * Boolean value: if true the icon will spin. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setIconSpin(boolean _iconSpin) {
+		getStateHelper().put(PropertyKeys.iconSpin, _iconSpin);
 	}
 
 	/**
@@ -400,7 +443,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Alternative spelling to col-lg. Integer value to specify how many columns to span on large screens (≥1200 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getLargeScreen() {
 		return (String) getStateHelper().eval(PropertyKeys.largeScreen, "-1");
@@ -432,7 +475,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Alternative spelling to col-md. Integer value to specify how many columns to span on medium screens (≥992 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getMediumScreen() {
 		return (String) getStateHelper().eval(PropertyKeys.mediumScreen, "-1");
@@ -450,15 +493,15 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 * Integer value to specify how many columns to offset. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getOffset() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.offset, 0);
+	public String getOffset() {
+		return (String) getStateHelper().eval(PropertyKeys.offset);
 	}
 
 	/**
 	 * Integer value to specify how many columns to offset. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setOffset(int _offset) {
+	public void setOffset(String _offset) {
 		getStateHelper().put(PropertyKeys.offset, _offset);
 	}
 
@@ -466,15 +509,15 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 * Integer value to specify how many columns to offset. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getOffsetLg() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetLg, 0);
+	public String getOffsetLg() {
+		return (String) getStateHelper().eval(PropertyKeys.offsetLg);
 	}
 
 	/**
 	 * Integer value to specify how many columns to offset. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setOffsetLg(int _offsetLg) {
+	public void setOffsetLg(String _offsetLg) {
 		getStateHelper().put(PropertyKeys.offsetLg, _offsetLg);
 	}
 
@@ -482,15 +525,15 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 * Integer value to specify how many columns to offset. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getOffsetMd() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetMd, 0);
+	public String getOffsetMd() {
+		return (String) getStateHelper().eval(PropertyKeys.offsetMd);
 	}
 
 	/**
 	 * Integer value to specify how many columns to offset. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setOffsetMd(int _offsetMd) {
+	public void setOffsetMd(String _offsetMd) {
 		getStateHelper().put(PropertyKeys.offsetMd, _offsetMd);
 	}
 
@@ -498,15 +541,15 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 * Integer value to specify how many columns to offset. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getOffsetSm() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetSm, 0);
+	public String getOffsetSm() {
+		return (String) getStateHelper().eval(PropertyKeys.offsetSm);
 	}
 
 	/**
 	 * Integer value to specify how many columns to offset. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setOffsetSm(int _offsetSm) {
+	public void setOffsetSm(String _offsetSm) {
 		getStateHelper().put(PropertyKeys.offsetSm, _offsetSm);
 	}
 
@@ -514,15 +557,15 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 * Integer value to specify how many columns to offset. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
-	public int getOffsetXs() {
-		return (int) (Integer) getStateHelper().eval(PropertyKeys.offsetXs, 0);
+	public String getOffsetXs() {
+		return (String) getStateHelper().eval(PropertyKeys.offsetXs);
 	}
 
 	/**
 	 * Integer value to specify how many columns to offset. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
-	public void setOffsetXs(int _offsetXs) {
+	public void setOffsetXs(String _offsetXs) {
 		getStateHelper().put(PropertyKeys.offsetXs, _offsetXs);
 	}
 
@@ -735,22 +778,6 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * Client side callback to execute when text within input element is selected by user. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
-	 */
-	public String getOnselect() {
-		return (String) getStateHelper().eval(PropertyKeys.onselect);
-	}
-
-	/**
-	 * Client side callback to execute when text within input element is selected by user. <P>
-	 * Usually this method is called internally by the JSF engine.
-	 */
-	public void setOnselect(String _onselect) {
-		getStateHelper().put(PropertyKeys.onselect, _onselect);
-	}
-
-	/**
 	 * The outcome to navigate to. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
@@ -767,7 +794,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * Size of the Button, can be large, small, mini. If not specified, Standard size button is rendered. <P>
+	 * Size of the button, can be large ('lg'), small ('sm'), or tiny ('xs'). If not specified, standard size button is rendered. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getSize() {
@@ -775,7 +802,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * Size of the Button, can be large, small, mini. If not specified, Standard size button is rendered. <P>
+	 * Size of the button, can be large ('lg'), small ('sm'), or tiny ('xs'). If not specified, standard size button is rendered. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setSize(String _size) {
@@ -784,7 +811,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Alternative spelling to col-sm. Integer value to specify how many columns to span on small screens (≥768p pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getSmallScreen() {
 		return (String) getStateHelper().eval(PropertyKeys.smallScreen, "-1");
@@ -803,7 +830,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getSpan() {
-		return (String) getStateHelper().eval(PropertyKeys.span, "-1");
+		return (String) getStateHelper().eval(PropertyKeys.span);
 	}
 
 	/**
@@ -863,8 +890,24 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * Optional target of the HTML anchor tag that's rendered. E.g. # opens the link in a new tab. This attribute is only evaluated if you provide an href. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 */
+	public String getTarget() {
+		return (String) getStateHelper().eval(PropertyKeys.target);
+	}
+
+	/**
+	 * Optional target of the HTML anchor tag that's rendered. E.g. # opens the link in a new tab. This attribute is only evaluated if you provide an href. <P>
+	 * Usually this method is called internally by the JSF engine.
+	 */
+	public void setTarget(String _target) {
+		getStateHelper().put(PropertyKeys.target, _target);
+	}
+
+	/**
+	 * Alternative spelling to col-xs. Integer value to specify how many columns to span on tiny screens (≤ 767 pixels wide). The number may optionally be followed by "column" or "columns". Alternative legal values: half, one-third, two-thirds, one-fourth, three-fourths. <P>
+	 * @return Returns the value of the attribute, or "-1", if it hasn't been set by the JSF file.
 	 */
 	public String getTinyScreen() {
 		return (String) getStateHelper().eval(PropertyKeys.tinyScreen, "-1");
@@ -912,7 +955,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * Where is the tooltip div generated? That's primarily a technical value that can be used to fix rendering errors in special cases. Also see data-container in the documentation of Bootstrap. The default value is body. <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or "body", if it hasn't been set by the JSF file.
 	 */
 	public String getTooltipContainer() {
 		return (String) getStateHelper().eval(PropertyKeys.tooltipContainer, "body");
@@ -928,7 +971,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * The tooltip is shown and hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or 0, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelay() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelay, 0);
@@ -944,7 +987,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * The tooltip is hidden with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or 0, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelayHide() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayHide, 0);
@@ -960,7 +1003,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 
 	/**
 	 * The tooltip is shown with a delay. This value is the delay in milliseconds. Defaults to 0 (no delay). <P>
-	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
+	 * @return Returns the value of the attribute, or 0, if it hasn't been set by the JSF file.
 	 */
 	public int getTooltipDelayShow() {
 		return (int) (Integer) getStateHelper().eval(PropertyKeys.tooltipDelayShow, 0);
@@ -991,7 +1034,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
+	 * This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
 	 * @return Returns the value of the attribute, or null, if it hasn't been set by the JSF file.
 	 */
 	public String getVisible() {
@@ -999,7 +1042,7 @@ public class Button extends HtmlOutcomeTargetButton implements net.bootsfaces.re
 	}
 
 	/**
-	 * This row is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
+	 * This column is shown on a certain screen size and above. Legal values: lg, md, sm, xs. <P>
 	 * Usually this method is called internally by the JSF engine.
 	 */
 	public void setVisible(String _visible) {

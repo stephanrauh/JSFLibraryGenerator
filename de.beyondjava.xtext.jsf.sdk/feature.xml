@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="de.beyondjava.xtext.jsf.sdk"
-	label="ComponentLanguage SDK Feature "
-	version="1.0.0.qualifier">
-	<plugin
-			id="de.beyondjava.xtext.jsf"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="de.beyondjava.xtext.jsf.ui"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
+<feature
+      id="de.beyondjava.xtext.jsf.sdk"
+      label="ComponentLanguage SDK Feature "
+      version="1.0.2.qualifier">
+
+   <plugin
+         id="de.beyondjava.xtext.jsf"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.beyondjava.xtext.jsf.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

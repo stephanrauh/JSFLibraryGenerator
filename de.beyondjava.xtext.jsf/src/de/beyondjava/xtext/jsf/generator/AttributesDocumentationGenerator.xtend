@@ -77,13 +77,20 @@ class AttributesDocumentationGenerator implements IGenerator {
 	}
 
 	def findWebProjectFolder(IFileSystemAccess fsa) {
+		
+		var messages = "Looking for web folder\n";
 		var uri = (fsa as IFileSystemAccessExtension2).getURI("../../BootsFacesWeb/src/main/webapp");
 		var eclipseURL = URIUtil.toURL(new URI(uri.toString()));
 		var file = FileLocator.toFileURL(eclipseURL);
 		var pathname = file.toString().replace("file:", "");
+		messages += "web folder = " + pathname + "\n";
 		if (new File(pathname).exists()) {
+			messages += "Exists!\n";
+			fsa.generateFile("messages", messages)
 			return pathname;
 		}
+		messages += "Does not exist!";
+		fsa.generateFile("messages.txt", messages)
 		return null;
 	}
 

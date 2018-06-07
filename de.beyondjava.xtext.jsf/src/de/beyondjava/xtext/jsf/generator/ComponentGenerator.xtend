@@ -61,7 +61,13 @@ class ComponentGenerator implements IGenerator {
 			val platformString = resource.URI.toPlatformString(true);
 			val myFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformString));
 			val project = myFile.getProject();
-			var generated = e.compile(attributeLists)
+			var autoUpdatable = false;
+			for (a : e.attributes) {
+				if (a.name == "auto-update") {
+					autoUpdatable = true;
+				}
+			}
+			var generated = e.compile(attributeLists, autoUpdatable)
 			var formatted = JavaFormatter.format(generated.toString, project);
 			fsa.generateFile(
 				"net/bootsfaces/component/" + e.name.toFirstLower + "/" + e.name.toFirstUpper + ".java",
@@ -70,10 +76,17 @@ class ComponentGenerator implements IGenerator {
 		}
 	}
 
-	def compile(Component e, HashMap<String, EList<Attribute>> attributeLists) '''
+	def compile(Component e, HashMap<String, EList<Attribute>> attributeLists, boolean autoUpdatable) '''
 		«e.generateCopyrightHeader»
 		package net.bootsfaces.component.«e.name.toFirstLower»;
-
+		
+		«IF autoUpdatable»
+		import javax.faces.event.AbortProcessingException;
+		import javax.faces.event.ComponentSystemEvent;
+		import javax.faces.event.ListenerFor;
+		import javax.faces.event.ListenersFor;
+		import javax.faces.event.PostAddToViewEvent;
+		«ENDIF»
 		import javax.el.ValueExpression;
 		import javax.faces.application.ResourceDependencies;
 		import javax.faces.application.ResourceDependency;
@@ -88,13 +101,16 @@ class ComponentGenerator implements IGenerator {
 
 
 		/** This class holds the attributes of &lt;b:«e.name» /&gt;. */
+		«IF autoUpdatable»
+		@ListenersFor({ @ListenerFor(systemEventClass = PostAddToViewEvent.class) })
+		«ENDIF»
 		@FacesComponent("net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»")
 		public class «e.name.toFirstUpper» extends «e.name.toFirstUpper»Core
 		       «IF e.hasTooltip !=null || e.isReponsive != null» implements «ENDIF»
 		       «IF e.hasTooltip !=null» net.bootsfaces.render.IHasTooltip «ENDIF»
 		       «IF e.isReponsive!=null», net.bootsfaces.render.IResponsive «ENDIF» {
 
-			«e.generateMetadata»
+			«e.generateMetadata(autoUpdatable)»
 		}
 
 	'''
@@ -174,7 +190,7 @@ class ComponentGenerator implements IGenerator {
 	}
 
 	def generateMetadata(
-		Component e) '''
+		Component e, boolean autoUpdatable) '''
 		public static final String COMPONENT_TYPE = "net.bootsfaces.component.«e.name.toFirstLower».«e.name.toFirstUpper»";
 
 		public static final String COMPONENT_FAMILY = "net.bootsfaces.component";
@@ -201,6 +217,17 @@ class ComponentGenerator implements IGenerator {
 			name = BsfUtils.snakeCaseToCamelCase(name);
 			super.setValueExpression(name, binding);
 		}
+		
+		«IF autoUpdatable»
+		public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
+			if (isAutoUpdate()) {
+				if (FacesContext.getCurrentInstance().isPostback()) {
+					FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add(getClientId());
+				}
+			 	super.processEvent(event);
+			}
+		}
+		«ENDIF»
 	'''
 
 	def generateCopyrightHeader(Component e) '''
